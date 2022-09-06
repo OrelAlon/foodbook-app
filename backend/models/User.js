@@ -24,10 +24,7 @@ const UserSchema = new mongoose.Schema(
       type: String,
       default: "",
     },
-    coverPicture: {
-      type: String,
-      default: "",
-    },
+
     followers: {
       type: Array,
       default: [],

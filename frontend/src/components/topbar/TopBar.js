@@ -1,6 +1,9 @@
 import { Link, useNavigate } from "react-router-dom";
 import Me from "../../assets/noAvatar.png";
+import Food from "../../assets/food.png";
+
 import "./topbar.css";
+
 const TopBar = () => {
   const navigate = useNavigate();
   const handleLogout = (r) => {
@@ -11,7 +14,9 @@ const TopBar = () => {
     <div className='topbarContainer'>
       <div className='topbarLeft'>
         <Link to='/' style={{ textDecoration: "none" }}>
-          <span className='logo'>Social - Food</span>
+          <img src={Food} className='foodImg' />
+
+          <span className='logo'>Foodbook</span>
         </Link>
       </div>
       {/* <div className='topbarCenter'>

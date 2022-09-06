@@ -24,7 +24,9 @@ app.use(cookieParser());
 
 // end-point
 app.use("/api/auth", require("./routes/auth"));
+app.use("/api/users", require("./routes/users"));
 app.use("/api/posts", require("./routes/posts"));
+app.use("/api/restaurants", require("./routes/restaurants"));
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);

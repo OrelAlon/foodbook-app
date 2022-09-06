@@ -2,12 +2,17 @@ const Post = require("../models/Post");
 
 //
 const createPost = async (req, res) => {
-  const newPost = new Post(req.body);
+  const newPost = new Post({
+    userId: req.body.userId,
+    restaurantId: req.body.restaurantId,
+    desc: req.body.desc,
+    img: req.body.img,
+  });
   try {
     const savedPost = await newPost.save();
     res.status(200).json(savedPost);
   } catch (err) {
-    res.status(400).json(err);
+    res.status(500).json(err);
   }
 };
 
@@ -26,7 +31,19 @@ const updatePost = async (req, res) => {
   }
 };
 
+//
+const deletePost = async (req, res) => {
+  try {
+    const post = await Post.findById(req.params.id);
+    await post.deleteOne();
+    res.status(200).json("the post has been deleted");
+  } catch (err) {
+    res.status(500).json(err);
+  }
+};
+
 module.exports = {
   createPost,
   updatePost,
+  deletePost,
 };

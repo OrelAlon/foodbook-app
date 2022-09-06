@@ -8,6 +8,8 @@ body,
 }
 
 .register {
+  text-align: center;
+
   position: relative;
   height: 560px;
   width: 405px;
@@ -48,16 +50,6 @@ h2 {
 
 h2:first-child {
   padding-left: 0px;
-}
-
-span {
-  text-transform: uppercase;
-  font-size: 12px;
-  opacity: 0.4;
-  display: inline-block;
-  position: relative;
-  top: -65px;
-  transition: all 0.5s ease-in-out;
 }
 
 .text {

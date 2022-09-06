@@ -8,7 +8,7 @@ const Register = () => {
   return (
     <div>
       {" "}
-      <div className='login'>
+      <div className='register'>
         <h2 className='nonactive' onClick={() => navigate("/login")}>
           {" "}
           sign in{" "}
@@ -17,12 +17,20 @@ const Register = () => {
         <h2 className='active'> sign up </h2>
         <form>
           <div className='input-div'>
-            <p>email:</p>
+            <p>username:</p>
             <input type='text' className='text' name='username'></input>
+          </div>
+          <div className='input-div'>
+            <p>email:</p>
+            <input type='email' className='text' name='email'></input>
           </div>
 
           <div className='input-div'>
             <p>password:</p>
+            <input type='password' className='text' name='password'></input>
+          </div>
+          <div className='input-div'>
+            <p>password again:</p>
             <input type='password' className='text' name='password'></input>
           </div>
           <button className='signin'>Sign Up</button>

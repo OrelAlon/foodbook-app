@@ -1,12 +1,20 @@
+import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import Me from "../../assets/noAvatar.png";
+import { AuthContext } from "../../context/AuthContext";
+import noAvatar from "../../assets/noAvatar.png";
 import Food from "../../assets/food.png";
 
 import "./topbar.css";
 
 const TopBar = () => {
+  const { user } = useContext(AuthContext);
+  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+
   const navigate = useNavigate();
-  const handleLogout = (r) => {
+
+  const handleLogout = () => {
+    localStorage.clear();
+
     navigate("/login");
   };
 
@@ -38,8 +46,7 @@ const TopBar = () => {
         <div>
           {/* <Link to={`/profile/${user.username}`}> */}
           <img
-            //   src={user.profilePicture ? PF + user.profilePicture : noAvatar}
-            src={Me}
+            src={user.profilePicture ? PF + user.profilePicture : noAvatar}
             alt=''
             className='topbarImg'
           />

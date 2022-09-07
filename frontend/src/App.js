@@ -7,13 +7,13 @@ import Home from "./pages/home/Home.jsx";
 import "./App.css";
 
 function App() {
-  useEffect(() => {
-    const fetchPost = async () => {
-      const res = await axios.get("/restaurants/restaurants");
-      console.log(res.data);
-    };
-    fetchPost();
-  }, []);
+  // useEffect(() => {
+  //   const fetchPost = async () => {
+  //     const res = await axios.get("/restaurants/restaurants");
+  //     console.log(res.data);
+  //   };
+  //   fetchPost();
+  // }, []);
 
   return (
     <div className='App'>

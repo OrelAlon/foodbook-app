@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node backend/server.js",
     "server": "nodemon backend/server.js",
-    "client": "npm start --prefix frontend"
+    "client": "npm start --prefix frontend",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "author": "",
   "license": "ISC",
@@ -20,5 +21,13 @@
   "devDependencies": {
     "concurrently": "^7.3.0",
     "nodemon": "^2.0.19"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OrelAlon/foodbook-app.git"
+  },
+  "bugs": {
+    "url": "https://github.com/OrelAlon/foodbook-app/issues"
+  },
+  "homepage": "https://github.com/OrelAlon/foodbook-app#readme"
 }

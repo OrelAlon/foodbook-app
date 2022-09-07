@@ -2,8 +2,7 @@ const express = require("express");
 const dotenv = require("dotenv").config();
 const cookieParser = require("cookie-parser");
 const mongoose = require("mongoose");
-
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 5500;
 
 const app = express();
 
@@ -28,13 +27,9 @@ app.use("/api/users", require("./routes/users"));
 app.use("/api/posts", require("./routes/posts"));
 app.use("/api/restaurants", require("./routes/restaurants"));
 
-app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
-});
-
 // connect to backend
 // process env for Heroku
-app.listen(process.env.PORT || 8000, () => {
+app.listen(process.env.PORT || 5500, () => {
   connect();
-  console.log("Connected to backend !!");
+  console.log(`Server running on port ${port}`);
 });

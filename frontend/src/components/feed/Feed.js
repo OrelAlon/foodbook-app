@@ -1,4 +1,5 @@
 import Post from "../post/Post";
+import SharePost from "../sharePost/SharePost";
 import { Posts } from "../../dummyData";
 import "./feed.css";
 

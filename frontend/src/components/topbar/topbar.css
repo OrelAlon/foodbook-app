@@ -9,6 +9,7 @@
   position: sticky;
   top: 0;
   z-index: 999;
+  color: goldenrod;
 }
 
 .topbarLeft {
@@ -19,7 +20,7 @@
   font-size: 24px;
   margin-left: 65px;
   font-weight: bold;
-  color: white;
+  color: goldenrod;
   cursor: pointer;
 }
 
@@ -33,7 +34,7 @@
   display: flex;
   align-items: center;
   justify-content: space-around;
-  color: white;
+  color: goldenrod;
 }
 
 .topbarLink,
@@ -41,7 +42,7 @@
   margin-right: 20px;
   font-size: 16px;
   cursor: pointer;
-  color: white;
+  color: goldenrod;
   outline: none;
   font-weight: bold;
   text-decoration: none;
@@ -56,7 +57,7 @@
   margin-right: 15px;
   cursor: pointer;
   position: relative;
-  color: white;
+  /* color: white; */
 }
 
 .topbarImg {

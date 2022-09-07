@@ -1,8 +1,17 @@
 .rightbar {
   flex: 1.5;
-  background-color: palegoldenrod;
+  /* background-color: palegoldenrod; */
 }
 
 .rightbarWrapper {
   padding: 20px 20px 0 0;
+}
+.rightbarRestList {
+  margin-top: 60px;
+  margin-left: 40px;
+}
+.rightbarTitle {
+  text-align: center;
+  font-size: 20px;
+  text-decoration: underline;
 }

@@ -1,3 +1,6 @@
+import FavoriteRestaurants from "../favoriteRest/FavoriteRestaurants";
+import { Restaurants } from "../../dummyData";
+
 import "./rightbar.css";
 
 const RightBar = () => {
@@ -6,14 +9,10 @@ const RightBar = () => {
       <div className='rightbar'>
         <div className='rightbarFav'></div>
         <h4 className='rightbarTitle'>Favorite Restaurants</h4>
-        <ul className='rightbarFriendList'>
-          <h4>orel</h4>
-          <h4>orel</h4>
-          <h4>orel</h4>
-          <h4>orel</h4>
-          {/* {restaurantsList.map((res) => (
-        <Favorite key={res._id} restaurant={res} />
-      ))} */}
+        <ul className='rightbarRestList'>
+          {Restaurants.map((res) => (
+            <FavoriteRestaurants key={res._id} restaurant={res} />
+          ))}
         </ul>{" "}
       </div>
     </>

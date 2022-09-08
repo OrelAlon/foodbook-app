@@ -1,9 +1,31 @@
+import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
+
+import axios from "axios";
 
 import "./login.css";
 
 const Login = () => {
+  const emailRef = useRef();
+  const passwordRef = useRef();
+
+  const [errorMsg, setErrorMsg] = useState("");
+
   const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const user = {
+      email: emailRef.current.value,
+      password: passwordRef.current.value,
+    };
+    try {
+      await axios.post("/auth/login", user);
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div>
@@ -15,15 +37,25 @@ const Login = () => {
           {" "}
           sign up{" "}
         </h2>
-        <form>
+        <form onSubmit={handleSubmit}>
           <div className='input-div'>
             <p>email:</p>
-            <input type='email' className='text' name='email'></input>
+            <input
+              type='email'
+              ref={emailRef}
+              className='text'
+              name='email'
+            ></input>
           </div>
 
           <div className='input-div'>
             <p>password:</p>
-            <input type='password' className='text' name='password'></input>
+            <input
+              type='password'
+              ref={passwordRef}
+              className='text'
+              name='password'
+            ></input>
           </div>
           <button className='signin'>Sign In</button>
         </form>

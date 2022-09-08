@@ -1,5 +1,7 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { loginCall } from "../../apiCalls";
+import { AuthContext } from "../../context/AuthContext";
 
 import axios from "axios";
 
@@ -8,6 +10,8 @@ import "./login.css";
 const Login = () => {
   const emailRef = useRef();
   const passwordRef = useRef();
+
+  const { dispatch } = useContext(AuthContext);
 
   const [errorMsg, setErrorMsg] = useState("");
 
@@ -20,7 +24,13 @@ const Login = () => {
       password: passwordRef.current.value,
     };
     try {
-      await axios.post("/auth/login", user);
+      await loginCall(
+        {
+          email: emailRef.current.value,
+          password: passwordRef.current.value,
+        },
+        dispatch
+      );
       navigate("/");
     } catch (error) {
       console.log(error);

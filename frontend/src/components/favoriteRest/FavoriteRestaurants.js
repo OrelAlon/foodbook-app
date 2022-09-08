@@ -4,7 +4,6 @@ import "./favoriteRestaurants.css";
 const FavoriteRestaurants = ({ restaurant }) => {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 
-  console.log(restaurant);
   return (
     <li className='   '>
       <div className='rightbarProfileImgContainer'>

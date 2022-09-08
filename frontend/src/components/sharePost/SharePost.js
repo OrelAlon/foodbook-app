@@ -1,4 +1,4 @@
-import Me from "../../assets/noAvatar.png";
+import noAvatar from "../../assets/noAvatar.png";
 import { Restaurants } from "../../dummyData";
 
 import "./sharePost.css";
@@ -12,7 +12,7 @@ const SharePost = () => {
     <div className='share'>
       <div className='shareWrapper'>
         <div className='shareTop'>
-          <img className='shareProfileImg' src={Me} alt='' />
+          <img className='shareProfileImg' src={noAvatar} alt='' />
 
           <input
             className='shareInput'

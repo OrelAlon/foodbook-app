@@ -44,13 +44,13 @@ const TopBar = () => {
           </span>
         </div>
         <div>
-          {/* <Link to={`/profile/${user.username}`}> */}
-          <img
-            src={user.profilePicture ? PF + user.profilePicture : noAvatar}
-            alt=''
-            className='topbarImg'
-          />
-          {/* </Link> */}
+          <Link to={`/profile/${user.username}`}>
+            <img
+              src={user.profilePicture ? PF + user.profilePicture : noAvatar}
+              alt=''
+              className='topbarImg'
+            />
+          </Link>
         </div>
       </div>
     </div>

@@ -1,7 +1,11 @@
 const express = require("express");
-const dotenv = require("dotenv").config();
 const cookieParser = require("cookie-parser");
+const fileupload = require("express-fileupload");
+
 const mongoose = require("mongoose");
+const dotenv = require("dotenv").config();
+const path = require("path");
+
 const port = process.env.PORT || 5500;
 
 const app = express();
@@ -16,6 +20,27 @@ const connect = async () => {
     throw error;
   }
 };
+
+// file-upload - create a path to img folder
+app.use("/upload", express.static(path.join(__dirname, "/public/upload")));
+
+app.use(fileupload());
+
+// file-upload - upload files
+app.post("/api/upload", (req, res) => {
+  if (req.files === null) {
+    return res.status(400).json({ msg: "no file!" });
+  }
+
+  const file = req.files.file;
+  file.mv(`${__dirname}/public/upload/${file.name}`, (err) => {
+    if (err) {
+      console.log(err);
+      return res.status(500).json(err);
+    }
+  });
+  res.json({ fileName: file.name, filePath: `/public/upload/${file.name}` });
+});
 
 // // middlewares
 app.use(express.json());

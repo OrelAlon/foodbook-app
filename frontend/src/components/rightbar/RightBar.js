@@ -7,12 +7,12 @@ import axios from "axios";
 import "./rightbar.css";
 
 const RightBar = () => {
-  const [restaurantsList, setRestaurantsList] = useState([]);
+  const [restaurants, setRestaurants] = useState([]);
 
   useEffect(() => {
     const fetchRestaurants = async () => {
       const res = await axios.get(`/restaurants/restaurants`);
-      setRestaurantsList(res.data);
+      setRestaurants(res.data);
     };
     fetchRestaurants();
   }, []);
@@ -23,7 +23,7 @@ const RightBar = () => {
         <div className='rightbarFav'></div>
         <h4 className='rightbarTitle'>Favorite Restaurants</h4>
         <ul className='rightbarRestList'>
-          {restaurantsList.map((res) => (
+          {restaurants.map((res) => (
             <FavoriteRestaurants key={res._id} restaurant={res} />
           ))}
         </ul>{" "}

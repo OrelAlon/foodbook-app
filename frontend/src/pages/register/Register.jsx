@@ -1,6 +1,7 @@
-import { useState } from "react";
-import { useRef } from "react";
+import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
+
+import axios from "axios";
 
 import "./register.css";
 
@@ -11,14 +12,44 @@ const Register = () => {
   const passwordAgainRef = useRef();
 
   const [file, setFile] = useState(null);
+  const [errorMsg, setErrorMsg] = useState("");
 
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(usernameRef.current.value);
-    console.log(usernameRef.current);
-    console.log(usernameRef);
+    if (passwordRef.current.value !== passwordAgainRef.current.value) {
+      return setErrorMsg("Password don't match...");
+    } else {
+      setErrorMsg("");
+      const user = {
+        username: usernameRef.current.value,
+        email: emailRef.current.value,
+        password: passwordRef.current.value,
+      };
+      if (file) {
+        const data = new FormData();
+        const fileName = file.name;
+        data.append("name", fileName);
+        data.append("file", file);
+        user.profilePicture = fileName;
+        try {
+          await axios.post("/upload", data);
+        } catch (error) {
+          console.log(error);
+        }
+      }
+
+      try {
+        console.log(user);
+        await axios.post("/auth/register", user);
+        console.log("her2");
+
+        navigate("/login");
+      } catch (error) {
+        console.log(error);
+      }
+    }
   };
 
   return (
@@ -90,6 +121,7 @@ const Register = () => {
               />
             </label>
           </div>
+          <h1>{errorMsg}</h1>
           <button className='signin'>Sign Up</button>
         </form>
       </div>

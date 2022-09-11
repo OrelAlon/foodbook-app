@@ -42,7 +42,7 @@ const deletePost = async (req, res) => {
   }
 };
 
-// get all posts
+//
 const getAllPosts = async (req, res) => {
   try {
     const data = await Post.find();
@@ -52,9 +52,26 @@ const getAllPosts = async (req, res) => {
   }
 };
 
+//
+const likePost = async (req, res) => {
+  try {
+    const post = await Post.findByIdAndUpdate(req.params.id);
+    if (!post.likes.includes(req.body.userId)) {
+      await post.updateOne({ $push: { likes: req.body.userId } });
+      res.status(200).json("The post has been liked");
+    } else {
+      await post.updateOne({ $pull: { likes: req.body.userId } });
+      res.status(200).json("The post has been disliked");
+    }
+  } catch (err) {
+    res.status(500).json(err);
+  }
+};
+
 module.exports = {
   createPost,
   updatePost,
   deletePost,
   getAllPosts,
+  likePost,
 };

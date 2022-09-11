@@ -2,16 +2,16 @@ import { useState, useEffect, useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import axios from "axios";
 
-import Me from "../../assets/noAvatar.png";
 import heart from "../../assets/heart.png";
-import like from "../../assets/like.png";
-import { Restaurants } from "../../dummyData";
+// import { Restaurants } from "../../dummyData";
 
 import "./post.css";
 
 const Post = ({ post }) => {
   const [user, setUser] = useState({});
   const [restaurant, setRestaurant] = useState({});
+  const [like, setLike] = useState(post.likes.length);
+  const [isLiked, setIsLiked] = useState(false);
 
   const { user: currentUser } = useContext(AuthContext);
 
@@ -33,6 +33,16 @@ const Post = ({ post }) => {
 
     fetchUser();
   }, [post.userId]);
+
+  const likeHandler = () => {
+    try {
+      axios.put(`/posts/${post._id}/like`, { userId: currentUser._id });
+    } catch (error) {
+      console.log(error);
+    }
+    setLike(isLiked ? like - 1 : like + 1);
+    setIsLiked(!isLiked);
+  };
 
   return (
     <div className='post'>
@@ -63,14 +73,8 @@ const Post = ({ post }) => {
           <div className='postBottomLeft'>
             <img
               className='likeIcon'
-              src={like}
-              //   onClick={likeHandler}
-              alt=''
-            />
-            <img
-              className='likeIcon'
               src={heart}
-              //   onClick={likeHandler}
+              onClick={likeHandler}
               alt=''
             />
             {/* <span className='postLikeCounter'>{like} people like it</span> */}

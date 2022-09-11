@@ -11,8 +11,6 @@ import "./feed.css";
 const Feed = ({ username }) => {
   const [posts, setPosts] = useState([]);
   const { user } = useContext(AuthContext);
-  console.log("uesr: ");
-  console.log(user);
   useEffect(() => {
     const fetchPosts = async () => {
       const res = await axios.get(`/posts/feed`);

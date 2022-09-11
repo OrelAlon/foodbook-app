@@ -11,6 +11,7 @@ import "./feed.css";
 const Feed = ({ username }) => {
   const [posts, setPosts] = useState([]);
   const { user } = useContext(AuthContext);
+  console.log("uesr: ");
   console.log(user);
   useEffect(() => {
     const fetchPosts = async () => {
@@ -27,7 +28,8 @@ const Feed = ({ username }) => {
   return (
     <div className='feed'>
       <div className='feedWrapper'>
-        {!user.username && <SharePost />}
+        {/* {user.username && <SharePost />} */}
+        <SharePost />
         {posts.map((p) => (
           <Post key={p._id} post={p} />
         ))}

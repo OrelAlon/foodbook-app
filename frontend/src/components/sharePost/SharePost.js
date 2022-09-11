@@ -3,7 +3,7 @@ import { AuthContext } from "../../context/AuthContext";
 import axios from "axios";
 
 import noAvatar from "../../assets/noAvatar.png";
-import { Restaurants } from "../../dummyData";
+// import { Restaurants } from "../../dummyData";
 
 import "./sharePost.css";
 
@@ -103,7 +103,7 @@ const SharePost = () => {
                   {" "}
                   -- Restaurant --{" "}
                 </option>
-                {Restaurants.map((res) => {
+                {restaurants.map((res) => {
                   return (
                     <option key={res._id} value={res._id}>
                       {res.restaurantname}

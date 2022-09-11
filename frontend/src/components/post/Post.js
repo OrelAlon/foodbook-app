@@ -57,7 +57,7 @@ const Post = ({ post }) => {
           {/* <h6 className='postDate'>{format(post.createdAt)}</h6> */}
         </div>
         <div className='postCenter'>
-          <img className='postImg' src={post.img} alt='' />
+          <img className='postImg' src={PF + post.img} alt='' />
         </div>
         <div className='postBottom'>
           <div className='postBottomLeft'>

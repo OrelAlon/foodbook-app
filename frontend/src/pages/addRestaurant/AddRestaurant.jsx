@@ -39,7 +39,7 @@ const AddRestaurant = () => {
 
     try {
       await axios.post("/restaurants/", restaurant);
-      navigate("/login");
+      navigate("/");
     } catch (error) {
       console.log(error);
     }

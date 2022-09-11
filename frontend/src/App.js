@@ -1,9 +1,11 @@
 import { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import axios from "axios";
+
 import Register from "./pages/register/Register.jsx";
 import Login from "./pages/login/Login.jsx";
 import Home from "./pages/home/Home.jsx";
+import AddRestaurant from "./pages/addRestaurant/AddRestaurant.jsx";
 import "./App.css";
 
 function App() {
@@ -23,6 +25,7 @@ function App() {
 
           <Route path='/register' element={<Register />} />
           <Route path='/' element={<Home />} />
+          <Route path='/addrestaurant' element={<AddRestaurant />} />
         </Routes>
       </Router>
     </div>

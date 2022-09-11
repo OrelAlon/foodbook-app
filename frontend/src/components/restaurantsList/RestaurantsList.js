@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import "./favoriteRestaurants.css";
+import "./restaurantsList.css";
 
-const FavoriteRestaurants = ({ restaurant }) => {
+const RestaurantsList = ({ restaurant }) => {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 
   return (
@@ -24,4 +24,4 @@ const FavoriteRestaurants = ({ restaurant }) => {
   );
 };
 
-export default FavoriteRestaurants;
+export default RestaurantsList;

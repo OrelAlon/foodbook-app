@@ -1,3 +1,7 @@
+import { useState, useEffect, useContext } from "react";
+import { AuthContext } from "../../context/AuthContext";
+import axios from "axios";
+
 import Me from "../../assets/noAvatar.png";
 import heart from "../../assets/heart.png";
 import like from "../../assets/like.png";
@@ -6,15 +10,47 @@ import { Restaurants } from "../../dummyData";
 import "./post.css";
 
 const Post = ({ post }) => {
+  const [user, setUser] = useState({});
+  const [restaurant, setRestaurant] = useState({});
+
+  const { user: currentUser } = useContext(AuthContext);
+
+  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      const res = await axios.get(`/users/?userId=${post.userId}`);
+      setUser(res.data);
+    };
+    const fetchRestaurant = async () => {
+      const res = await axios.get(
+        `/restaurants/?restaurantId=${post.restaurantId}`
+      );
+
+      setRestaurant(res.data);
+    };
+    fetchRestaurant();
+
+    fetchUser();
+  }, [post.userId]);
+
   return (
     <div className='post'>
       <div className='postWrapper'>
         <div className='postTop'>
           <div className='postTopLeft'>
-            <img className='postProfileImg' src={Me} alt='' />
+            <img
+              className='postProfileImg'
+              src={
+                user.profilePicture
+                  ? PF + user.profilePicture
+                  : PF + "noAvatar.png"
+              }
+              alt=''
+            />
             <span className='postUsername'>
-              <span className='bold'> Orel </span>in{" "}
-              <span className='bold'>{Restaurants[0].restaurantname}</span>
+              <span className='bold'> {user.username} </span>in{" "}
+              <span className='bold'>{restaurant.restaurantname}</span>
             </span>{" "}
           </div>
 

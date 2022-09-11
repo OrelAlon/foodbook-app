@@ -42,8 +42,19 @@ const deletePost = async (req, res) => {
   }
 };
 
+// get all posts
+const getAllPosts = async (req, res) => {
+  try {
+    const data = await Post.find();
+    res.status(201).json(data);
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
 module.exports = {
   createPost,
   updatePost,
   deletePost,
+  getAllPosts,
 };

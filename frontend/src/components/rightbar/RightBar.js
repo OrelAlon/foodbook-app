@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 import RestaurantsList from "../restaurantsList/RestaurantsList";
+
 import axios from "axios";
 
 import "./rightbar.css";
@@ -20,7 +21,7 @@ const RightBar = ({ user }) => {
 
   const submitHandler = async (e) => {
     e.preventDefault();
-
+    console.log(user._id);
     const update = {
       userId: user._id,
     };
@@ -82,7 +83,7 @@ const RightBar = ({ user }) => {
           <label htmlFor='file' className='shareOption'>
             <span className='shareOptionText'>Change Picture</span>
             <input
-              style={{ display: "none" }}
+              // style={{ display: "none" }}
               type='file'
               id='file'
               accept='.png,.jpeg,.jpg,.jfif'

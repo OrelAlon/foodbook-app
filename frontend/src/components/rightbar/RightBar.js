@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-import { Restaurants } from "../../dummyData";
-
 import RestaurantsList from "../restaurantsList/RestaurantsList";
 import axios from "axios";
 

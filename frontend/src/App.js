@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Register from "./pages/register/Register.jsx";
 import Login from "./pages/login/Login.jsx";
 import Home from "./pages/home/Home.jsx";
+import Profile from "./pages/profile/Profile.jsx";
 import AddRestaurant from "./pages/addRestaurant/AddRestaurant.jsx";
 import "./App.css";
 
@@ -23,6 +24,7 @@ function App() {
 
           <Route path='/register' element={<Register />} />
           <Route path='/' element={<Home />} />
+          <Route path='/profile/:username' element={<Profile />} />
           <Route path='/addrestaurant' element={<AddRestaurant />} />
         </Routes>
       </Router>

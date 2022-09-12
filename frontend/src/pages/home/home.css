@@ -4,7 +4,7 @@
   color: black;
   background: url("../../assets/gold2.jpg") no-repeat center center fixed;
   height: 100%;
-  height: 100vh;
+  /* height: 100vh; */
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;

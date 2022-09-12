@@ -1,9 +1,7 @@
-import { useState, useRef, useContext } from "react";
+import { useRef, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { loginCall } from "../../apiCalls";
 import { AuthContext } from "../../context/AuthContext";
-
-import axios from "axios";
 
 import "./login.css";
 
@@ -12,8 +10,6 @@ const Login = () => {
   const passwordRef = useRef();
 
   const { dispatch } = useContext(AuthContext);
-
-  const [errorMsg, setErrorMsg] = useState("");
 
   const navigate = useNavigate();
 

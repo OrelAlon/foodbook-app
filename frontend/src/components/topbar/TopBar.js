@@ -22,7 +22,7 @@ const TopBar = () => {
     <div className='topbarContainer'>
       <div className='topbarLeft'>
         <Link to='/' style={{ textDecoration: "none" }}>
-          <img src={Food} className='foodImg' />
+          <img src={Food} alt='' className='foodImg' />
 
           <span className='logo'>Foodbook</span>
         </Link>

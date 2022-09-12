@@ -1,5 +1,6 @@
 import { useContext, useState, useEffect } from "react";
 import { AuthContext } from "../../context/AuthContext";
+import { useParams } from "react-router";
 
 import axios from "axios";
 
@@ -11,6 +12,8 @@ import "./feed.css";
 const Feed = ({ username }) => {
   const [posts, setPosts] = useState([]);
   const { user } = useContext(AuthContext);
+  const link = useParams();
+
   useEffect(() => {
     const fetchPosts = async () => {
       const res = await axios.get(`/posts/feed`);
@@ -26,8 +29,9 @@ const Feed = ({ username }) => {
   return (
     <div className='feed'>
       <div className='feedWrapper'>
-        {/* {user.username && <SharePost />} */}
-        <SharePost />
+        {user.username && <SharePost />}
+        {!Object.keys(link).length === 0 && <h1>chek</h1>}
+
         {posts.map((p) => (
           <Post key={p._id} post={p} />
         ))}

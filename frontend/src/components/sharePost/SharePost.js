@@ -50,7 +50,7 @@ const SharePost = () => {
 
   useEffect(() => {
     const fetchRestaurants = async () => {
-      const res = await axios.get(`/restaurants/restaurants`);
+      const res = await axios.get(`/api/restaurants/restaurants`);
       setRestaurants(res.data);
     };
     fetchRestaurants();

@@ -16,7 +16,7 @@ const Feed = ({ username }) => {
 
   useEffect(() => {
     const fetchPosts = async () => {
-      const res = await axios.get(`/posts/feed`);
+      const res = await axios.get(`/api/posts/feed`);
       setPosts(
         res.data.sort(
           (p1, p2) => new Date(p2.createdAt) - new Date(p1.createdAt)
@@ -29,7 +29,7 @@ const Feed = ({ username }) => {
   return (
     <div className='feed'>
       <div className='feedWrapper'>
-        {user.username && <SharePost />}
+        {/* {user.username && <SharePost />} */}
         {!Object.keys(link).length === 0 && <h1>chek</h1>}
 
         {posts.map((p) => (

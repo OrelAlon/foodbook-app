@@ -19,12 +19,12 @@ const Post = ({ post }) => {
 
   useEffect(() => {
     const fetchUser = async () => {
-      const res = await axios.get(`/users/?userId=${post.userId}`);
+      const res = await axios.get(`/api/users/?userId=${post.userId}`);
       setUser(res.data);
     };
     const fetchRestaurant = async () => {
       const res = await axios.get(
-        `/restaurants/?restaurantId=${post.restaurantId}`
+        `/api/restaurants/?restaurantId=${post.restaurantId}`
       );
 
       setRestaurant(res.data);

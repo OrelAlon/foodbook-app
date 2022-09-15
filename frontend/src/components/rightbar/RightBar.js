@@ -13,7 +13,7 @@ const RightBar = ({ user }) => {
 
   useEffect(() => {
     const fetchRestaurants = async () => {
-      const res = await axios.get(`/restaurants/restaurants`);
+      const res = await axios.get(`/api/restaurants/restaurants`);
       setRestaurants(res.data);
     };
     fetchRestaurants();
@@ -35,13 +35,13 @@ const RightBar = ({ user }) => {
 
       try {
         console.log("post");
-        await axios.post("/upload", data);
+        await axios.post("/api/upload", data);
       } catch (error) {
         console.log(error);
       }
     }
     try {
-      await axios.put("/users/" + user._id, update);
+      await axios.put("/api/users/" + user._id, update);
       await localStorage.setItem("user", JSON.stringify(user));
 
       try {

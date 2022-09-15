@@ -33,23 +33,19 @@ const Profile = () => {
             <div className='profileCover'>
               <img
                 className='profileCoverImg'
-                src={
-                  user.coverPicture
-                    ? PF + user.coverPicture
-                    : PF + "noCover.jpg"
-                }
+                src={PF + "noCover.jpg"}
                 alt=''
               />
-              <img
+              {/* <img
                 className='profileUserImg'
                 src={user ? PF + user.profilePicture : PF + "noAvatar.png"}
                 alt=''
-              />
+              /> */}
             </div>
-            {/* <div className='profileInfo'>
+            <div className='profileInfo'>
               <h1 className='profileInfoName'>{user.username}</h1>
               <span className='profileInfoDesc'>{user.desc}</span>
-            </div> */}
+            </div>
           </div>
           <div className='margin-top'></div>
 

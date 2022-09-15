@@ -31,14 +31,14 @@ const AddRestaurant = () => {
       data.append("file", file);
       restaurant.profilePicture = fileName;
       try {
-        await axios.post("/upload", data);
+        await axios.post("/api/upload", data);
       } catch (error) {
         console.log(error);
       }
     }
 
     try {
-      await axios.post("/restaurants/", restaurant);
+      await axios.post("/api/restaurants/", restaurant);
       navigate("/");
     } catch (error) {
       console.log(error);

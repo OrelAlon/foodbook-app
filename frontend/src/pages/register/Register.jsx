@@ -34,14 +34,14 @@ const Register = () => {
         data.append("file", file);
         user.profilePicture = fileName;
         try {
-          await axios.post("/upload", data);
+          await axios.post("/api/upload", data);
         } catch (error) {
           console.log(error);
         }
       }
 
       try {
-        await axios.post("/auth/register", user);
+        await axios.post("/api/auth/register", user);
 
         navigate("/login");
       } catch (error) {

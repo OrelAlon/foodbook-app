@@ -1,6 +1,7 @@
 const express = require("express");
 const cookieParser = require("cookie-parser");
 const fileupload = require("express-fileupload");
+const cors = require("cors");
 
 const mongoose = require("mongoose");
 const dotenv = require("dotenv").config();
@@ -43,6 +44,7 @@ app.post("/api/upload", (req, res) => {
 });
 
 // // middlewares
+app.use(cors());
 app.use(express.json());
 app.use(cookieParser());
 

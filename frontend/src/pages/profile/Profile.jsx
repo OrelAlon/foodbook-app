@@ -36,11 +36,11 @@ const Profile = () => {
                 src={PF + "noCover.jpg"}
                 alt=''
               />
-              <img
+              {/* <img
                 className='profileUserImg'
                 src={user ? PF + user.profilePicture : PF + "noAvatar.png"}
                 alt=''
-              />
+              /> */}
             </div>
             <div className='profileInfo'>
               <h1 className='profileInfoName'>{user.username}</h1>

@@ -76,14 +76,30 @@ h2:first-child {
 .text:focus + span {
   opacity: 0.6;
 }
-
+.imgLog {
+  height: 40px;
+  width: 180px;
+  background-color: rgba(136, 130, 130, 0.341);
+  /* opacity: 0.6; */
+  margin: 20px;
+  cursor: pointer;
+  border-radius: 20px;
+  border: 1px solid gray;
+  font-size: 18px;
+  padding-left: 20px;
+  margin: auto;
+  margin-top: 30px;
+}
 input[type="text"],
 input[type="email"],
 input[type="password"] {
   font-family: "Montserrat", sans-serif;
   color: #fff;
 }
-
+.shareOptionText {
+  color: #fff;
+  font-weight: bold;
+}
 input {
   display: inline-block;
   padding-top: 20px;

@@ -78,7 +78,7 @@ const SharePost = () => {
           <div className='shareOptions'>
             <label htmlFor='file' className='shareOption'>
               {/* <PermMedia htmlColor='tomato' className='shareIcon' /> */}
-              <span className='shareOptionText'>Photo</span>
+              <span className='shareText'>Photo</span>
               <input
                 style={{ display: "none" }}
                 type='file'
@@ -89,7 +89,7 @@ const SharePost = () => {
             </label>
             <div className='shareOption'>
               {/* <Label htmlColor='blue' className='shareIcon' /> */}
-              <span className='shareOptionText'>Tag- </span>
+              <span className='shareText'>Tag- </span>
               <label htmlFor='restaurant'> a place:</label>
               <select
                 className='select'

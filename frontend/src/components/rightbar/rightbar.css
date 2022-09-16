@@ -9,6 +9,7 @@
 .rightbarRestList {
   margin-top: 60px;
   margin-left: 40px;
+  list-style-type: none;
 }
 .rightbarTitle {
   text-align: center;

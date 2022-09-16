@@ -31,6 +31,9 @@
 
 .rightbarRestaurant {
   font-weight: 500;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 20px;
 }
 .addBtn {
   padding: 10px 25px;
@@ -38,4 +41,7 @@
   margin-top: 80px;
   font-weight: bold;
   font-size: larger;
+}
+.rest-div {
+  display: flex;
 }

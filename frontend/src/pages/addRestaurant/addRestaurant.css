@@ -16,18 +16,7 @@
   margin: auto;
   /* justify-content: space-between; */
 }
-.imgLog {
-  height: 50px;
-  width: 180px;
-  background-color: white;
-  margin: 20px;
-  cursor: pointer;
-  border-radius: 10px;
-  border: 1px solid gray;
-  font-size: 18px;
-  padding-left: 20px;
-  margin: auto;
-}
+
 .loginImg {
   display: flex;
   align-items: center;

@@ -5,7 +5,7 @@ const RestaurantsList = ({ restaurant }) => {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 
   return (
-    <li className='   '>
+    <li li className='rest-div'>
       <div className='rightbarProfileImgContainer'>
         <Link to={`/restaurant/${restaurant.restaurantname}`}>
           <img

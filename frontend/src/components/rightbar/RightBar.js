@@ -66,9 +66,11 @@ const RightBar = ({ user }) => {
               ))}
             </ul>{" "}
           </div>
-          <Link to='/addrestaurant' className='linkTimeLine'>
-            <button className='addBtn'>Add Restaurant</button>{" "}
-          </Link>
+          <div className='btnDiv'>
+            <Link to='/addrestaurant' className='linkTimeLine'>
+              <button className='addRestBtn'>Add Restaurant</button>{" "}
+            </Link>
+          </div>
         </div>
       </>
     );

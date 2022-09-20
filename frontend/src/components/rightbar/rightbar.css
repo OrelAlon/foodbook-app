@@ -49,3 +49,13 @@
   font-size: 18px;
   margin-right: 3px;
 }
+.addRestBtn {
+  object-fit: cover;
+  border: solid 3px rgb(167, 167, 167);
+  padding: 8px;
+  border-style: outset;
+  background-color: aliceblue;
+}
+.btnDiv {
+  text-align: center;
+}

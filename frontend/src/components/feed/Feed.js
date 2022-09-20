@@ -30,7 +30,7 @@ const Feed = ({ username }) => {
     <div className='feed'>
       <div className='feedWrapper'>
         {user.username && <SharePost />}
-        {/* {!Object.keys(link).length === 0 && <h1>chek</h1>} */}
+        {!Object.keys(link).length === 0 && <h1>chek</h1>}
 
         {posts.map((p) => (
           <Post key={p._id} post={p} />

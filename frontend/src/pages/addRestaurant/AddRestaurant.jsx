@@ -88,8 +88,8 @@ const AddRestaurant = () => {
               />
             </label>
           </div>
-          <button className='loginButton' type='submit'>
-            Add
+          <button className='saveButton' type='submit'>
+            Save Restaurant
           </button>
         </form>
       </div>

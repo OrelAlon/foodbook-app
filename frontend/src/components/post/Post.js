@@ -1,5 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
+
 import axios from "axios";
 
 import heart from "../../assets/heart.png";
@@ -43,6 +44,14 @@ const Post = ({ post }) => {
     setLike(isLiked ? like - 1 : like + 1);
     setIsLiked(!isLiked);
   };
+  const deleteHandler = async () => {
+    try {
+      await axios.delete(`/posts/${post._id}`);
+      window.location.reload();
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div className='post'>
@@ -66,6 +75,7 @@ const Post = ({ post }) => {
 
           {/* <h6 className='postDate'>{format(post.createdAt)}</h6> */}
         </div>
+
         <div className='postCenter'>
           <img className='postImg' src={PF + post.img} alt='' />
         </div>

@@ -4,6 +4,7 @@ const {
   updatePost,
   deletePost,
   getAllPosts,
+  getUserPost,
   likePost,
 } = require("../controllers/postController");
 
@@ -14,6 +15,8 @@ router.put("/:id", updatePost);
 router.delete("/:id", deletePost);
 
 router.get("/feed", getAllPosts);
+
+router.get("/timeline/:userId", getUserPost);
 
 router.put("/:id/like", likePost);
 

@@ -51,6 +51,21 @@ const getAllPosts = async (req, res) => {
     console.log(error.message);
   }
 };
+//
+const getUserPost = async (req, res) => {
+  try {
+    const currentUser = await Post.findById(req.params.userId);
+    const userPosts = await Post.find({ userId: currentUser._id });
+    const friendPosts = await Promise.all(
+      currentUser.followings.map((friendId) => {
+        return console.log("working!!!");
+      })
+    );
+    res.status(200).json(userPosts.concat(...friendPosts));
+  } catch (err) {
+    res.status(500).json("not workingggg");
+  }
+};
 
 //
 const likePost = async (req, res) => {
@@ -73,5 +88,6 @@ module.exports = {
   updatePost,
   deletePost,
   getAllPosts,
+  getUserPost,
   likePost,
 };

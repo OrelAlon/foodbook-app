@@ -4,7 +4,7 @@ import { useParams } from "react-router";
 import axios from "axios";
 
 import TopBar from "../../components/topbar/TopBar";
-import Feed from "../../components/feed/Feed";
+import UserFeed from "../../components/feed/UserFeed";
 import RightBar from "../../components/rightbar/RightBar";
 
 import "./profile.css";
@@ -50,7 +50,7 @@ const Profile = () => {
           <div className='margin-top'></div>
 
           <div className='profileRightBottom'>
-            <Feed username={username} />
+            <UserFeed username={username} />
             <RightBar user={user} />
           </div>
         </div>

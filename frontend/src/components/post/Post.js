@@ -37,7 +37,7 @@ const Post = ({ post }) => {
 
   const likeHandler = () => {
     try {
-      axios.put(`/posts/${post._id}/like`, { userId: currentUser._id });
+      axios.put(`/api/posts/${post._id}/like`, { userId: currentUser._id });
     } catch (error) {
       console.log(error);
     }
@@ -46,7 +46,7 @@ const Post = ({ post }) => {
   };
   const deleteHandler = async () => {
     try {
-      await axios.delete(`/posts/${post._id}`);
+      await axios.delete(`/api/posts/${post._id}`);
       window.location.reload();
     } catch (error) {
       console.log(error);

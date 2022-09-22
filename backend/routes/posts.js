@@ -5,6 +5,7 @@ const {
   deletePost,
   getAllPosts,
   getUserPost,
+  getUsernamePost,
   likePost,
 } = require("../controllers/postController");
 
@@ -17,6 +18,8 @@ router.delete("/:id", deletePost);
 router.get("/feed", getAllPosts);
 
 router.get("/timeline/:userId", getUserPost);
+
+router.get("/profile/:username", getUsernamePost);
 
 router.put("/:id/like", likePost);
 

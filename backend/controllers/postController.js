@@ -68,6 +68,17 @@ const getUserPost = async (req, res) => {
 };
 
 //
+const getUsernamePost = async (req, res) => {
+  try {
+    const user = await User.findOne({ username: req.params.username });
+    const posts = await Post.find({ userId: user._id });
+    res.status(200).json(posts);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+};
+
+//
 const likePost = async (req, res) => {
   try {
     const post = await Post.findByIdAndUpdate(req.params.id);
@@ -89,5 +100,6 @@ module.exports = {
   deletePost,
   getAllPosts,
   getUserPost,
+  getUsernamePost,
   likePost,
 };

@@ -74,7 +74,7 @@ const UserPost = ({ post }) => {
             </span>
             {/* <span className='postDate'>{format(post.createdAt)}</span> */}
           </div>
-          <div className='postTopRight' onClick={deleteHandler}>
+          <div className='postTopRight delete' onClick={deleteHandler}>
             X{" "}
           </div>
         </div>

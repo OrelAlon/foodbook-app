@@ -1,6 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import axios from "axios";
+import heart from "../../assets/heart.png";
 
 import "./post.css";
 
@@ -84,13 +85,7 @@ const UserPost = ({ post }) => {
           <div className='postBottomLeft'>
             <img
               className='likeIcon'
-              src={`${PF}like.png`}
-              onClick={likeHandler}
-              alt=''
-            />
-            <img
-              className='likeIcon'
-              src={`${PF}heart.png`}
+              src={heart}
               onClick={likeHandler}
               alt=''
             />

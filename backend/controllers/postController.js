@@ -1,4 +1,5 @@
 const Post = require("../models/Post");
+const User = require("../models/User");
 
 //
 const createPost = async (req, res) => {
@@ -63,7 +64,7 @@ const getUserPost = async (req, res) => {
     );
     res.status(200).json(userPosts.concat(...friendPosts));
   } catch (err) {
-    res.status(500).json("not workingggg");
+    res.status(500).json("not workingggg" + err);
   }
 };
 
@@ -74,7 +75,7 @@ const getUsernamePost = async (req, res) => {
     const posts = await Post.find({ userId: user._id });
     res.status(200).json(posts);
   } catch (err) {
-    res.status(500).json(err);
+    res.status(500).json("no!" + err);
   }
 };
 

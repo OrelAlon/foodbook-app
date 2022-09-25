@@ -30,17 +30,13 @@ const SharePost = () => {
       data.append("name", fileName);
       data.append("file", file);
       newPost.img = fileName;
-      console.log(fileName);
-      console.log(data);
       try {
         await axios.post("/api/upload", data);
       } catch (error) {
         console.log(error);
       }
     }
-    console.log(newPost);
     try {
-      console.log("yes");
       await axios.post("/api/posts", newPost);
       window.location.reload();
     } catch (error) {

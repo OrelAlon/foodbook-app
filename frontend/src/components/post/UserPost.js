@@ -21,7 +21,6 @@ const UserPost = ({ post }) => {
     const fetchUser = async () => {
       const res = await axios.get(`/api/users/?userId=${post.userId}`);
       setUser(res.data);
-      console.log(user);
     };
     const fetchRestaurant = async () => {
       const res = await axios.get(

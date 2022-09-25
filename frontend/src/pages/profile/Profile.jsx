@@ -18,7 +18,6 @@ const Profile = () => {
   useEffect(() => {
     const fetchUser = async () => {
       const res = await axios.get(`/api/users/?username=${username}`);
-      //   console.log(res.data);
       setUser(res.data);
     };
     fetchUser();
@@ -38,7 +37,7 @@ const Profile = () => {
               />
               <img
                 className='profileUserImg'
-                src={ PF + user.profilePicture}
+                src={PF + user.profilePicture}
                 alt=''
               />
             </div>

@@ -1,6 +1,5 @@
 import { useContext, useState, useEffect } from "react";
 import { AuthContext } from "../../context/AuthContext";
-import { useParams } from "react-router";
 
 import axios from "axios";
 
@@ -12,7 +11,6 @@ import "./feed.css";
 const Feed = ({ username }) => {
   const [posts, setPosts] = useState([]);
   const { user } = useContext(AuthContext);
-  const link = useParams();
 
   useEffect(() => {
     const fetchPosts = async () => {

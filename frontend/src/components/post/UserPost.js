@@ -1,5 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
+import { format } from "timeago.js";
+
 import axios from "axios";
 import heart from "../../assets/heart.png";
 
@@ -56,7 +58,6 @@ const UserPost = ({ post }) => {
       <div className='postWrapper'>
         <div className='postTop'>
           <div className='postTopLeft'>
-            {/* <Link to={`/profile/${user.username}`}> */}
             <img
               className='postProfileImg'
               src={
@@ -68,14 +69,16 @@ const UserPost = ({ post }) => {
             />
             {/* </Link> */}
             <span className='postUsername'>
-              <span className='bold'> {user.username} sssa</span>in{" "}
+              <span className='bold'> {user.username} </span>in{" "}
               <span className='bold'>{restaurant.restaurantname}</span>
             </span>
-            {/* <span className='postDate'>{format(post.createdAt)}</span> */}
+            <span className='postDate'>{format(post.createdAt)}</span>
           </div>
-          <div className='postTopRight delete' onClick={deleteHandler}>
-            X{" "}
-          </div>
+          {post.userId === currentUser._id && (
+            <div className='postTopRight delete' onClick={deleteHandler}>
+              X{" "}
+            </div>
+          )}
         </div>
         <div className='postCenter'>
           <img className='postImg' src={PF + post.img} alt='' />

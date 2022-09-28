@@ -1,5 +1,7 @@
 import { useState, useEffect, useContext } from "react";
+import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
+import { format } from "timeago.js";
 
 import axios from "axios";
 
@@ -44,36 +46,30 @@ const Post = ({ post }) => {
     setLike(isLiked ? like - 1 : like + 1);
     setIsLiked(!isLiked);
   };
-  const deleteHandler = async () => {
-    try {
-      await axios.delete(`/api/posts/${post._id}`);
-      window.location.reload();
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   return (
     <div className='post'>
       <div className='postWrapper'>
         <div className='postTop'>
           <div className='postTopLeft'>
-            <img
-              className='postProfileImg'
-              src={
-                user.profilePicture
-                  ? PF + user.profilePicture
-                  : PF + "noAvatar.png"
-              }
-              alt=''
-            />
+            <Link to={`/profile/${user.username}`}>
+              <img
+                className='postProfileImg'
+                src={
+                  user.profilePicture
+                    ? PF + user.profilePicture
+                    : PF + "noAvatar.png"
+                }
+                alt=''
+              />
+            </Link>
             <span className='postUsername'>
               <span className='bold'> {user.username} </span>in{" "}
               <span className='bold'>{restaurant.restaurantname}</span>
             </span>{" "}
           </div>
 
-          {/* <h6 className='postDate'>{format(post.createdAt)}</h6> */}
+          <h6 className='postDate'>{format(post.createdAt)}</h6>
         </div>
 
         <div className='postCenter'>

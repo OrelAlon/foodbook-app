@@ -3,16 +3,15 @@ import { AuthContext } from "../../context/AuthContext";
 
 import moment from "moment";
 import axios from "axios";
-import heart from "../../assets/heart.png";
 
 import "./post.css";
 
-const UserPost = ({ post }) => {
+const RestaurantPost = ({ post }) => {
   const [like, setLike] = useState(post.likes.length);
   const [isLiked, setIsLiked] = useState(false);
   const [user, setUser] = useState({});
-  const [restaurant, setRestaurant] = useState({});
   const { user: currentUser } = useContext(AuthContext);
+
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 
   useEffect(() => {
@@ -24,13 +23,7 @@ const UserPost = ({ post }) => {
       const res = await axios.get(`/api/users/?userId=${post.userId}`);
       setUser(res.data);
     };
-    const fetchRestaurant = async () => {
-      const res = await axios.get(
-        `/api/restaurants/?restaurantId=${post.restaurantId}`
-      );
-      setRestaurant(res.data);
-    };
-    fetchRestaurant();
+
     fetchUser();
   }, [post]);
 
@@ -42,15 +35,6 @@ const UserPost = ({ post }) => {
     }
     setLike(isLiked ? like - 1 : like + 1);
     setIsLiked(!isLiked);
-  };
-
-  const deleteHandler = async () => {
-    try {
-      await axios.delete(`/api/posts/${post._id}`);
-      window.location.reload();
-    } catch (error) {
-      console.log(error);
-    }
   };
 
   return (
@@ -67,17 +51,9 @@ const UserPost = ({ post }) => {
               }
               alt=''
             />
-            <span className='postUsername'>
-              <span className='bold'> {user.username} </span>in{" "}
-              <span className='bold'>{restaurant.restaurantname}</span>
-            </span>
+            <span className='postUsername'>from {user.username} </span>
             <p>Posted {moment(post.updatedAt).fromNow()}</p>
           </div>
-          {post.userId === currentUser._id && (
-            <div className='postTopRight delete' onClick={deleteHandler}>
-              X{" "}
-            </div>
-          )}
         </div>
         <div className='postCenter'>
           <img className='postImg' src={PF + post.img} alt='' />
@@ -86,13 +62,14 @@ const UserPost = ({ post }) => {
           <div className='postBottomLeft'>
             <img
               className='likeIcon'
-              src={heart}
+              src={`${PF}heart.png`}
               onClick={likeHandler}
               alt=''
             />
             <span className='postLikeCounter'>{like} people like it</span>
           </div>
           <div className='postBottomRight'>
+            {" "}
             <span className='postText'>{post.desc}</span>
           </div>
         </div>
@@ -101,4 +78,4 @@ const UserPost = ({ post }) => {
   );
 };
 
-export default UserPost;
+export default RestaurantPost;

@@ -69,7 +69,6 @@ const Post = ({ post }) => {
             </span>{" "}
           </div>
 
-          {/* <h6 className='postDate'>{format(post.createdAt)}</h6> */}
           <p>Posted {moment(post.updatedAt).fromNow()}</p>
         </div>
 

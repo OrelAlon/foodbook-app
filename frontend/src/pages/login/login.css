@@ -12,11 +12,12 @@ body,
   height: 560px;
   width: 405px;
   margin: auto;
-  padding: 60px 60px;
+  padding: 40px;
   background: url("../../assets/oil.jpg") no-repeat center center #505050;
   background-size: cover;
   box-shadow: 0px 30px 60px -5px #000;
   text-align: center;
+  margin-top: 40px;
 }
 
 input {
@@ -25,7 +26,7 @@ input {
 
 form,
 .input-div {
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 .active {
@@ -115,4 +116,19 @@ input {
 
 .signin:focus {
   outline: none;
+}
+@media only screen and (max-width: 600px) {
+  .login {
+    height: 90vh;
+    width: 80vw;
+    margin: auto;
+  }
+
+  /* .text {
+    width: 79%;
+    padding: 1px;
+    height: 15px;
+    margin: auto;
+    margin-top: 5px;
+  } */
 }

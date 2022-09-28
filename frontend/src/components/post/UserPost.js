@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
-import { format } from "timeago.js";
 
+import moment from "moment";
 import axios from "axios";
 import heart from "../../assets/heart.png";
 
@@ -32,6 +32,7 @@ const UserPost = ({ post }) => {
     };
     fetchRestaurant();
     fetchUser();
+    console.log(post);
   }, [post]);
 
   const likeHandler = () => {
@@ -67,12 +68,11 @@ const UserPost = ({ post }) => {
               }
               alt=''
             />
-            {/* </Link> */}
             <span className='postUsername'>
               <span className='bold'> {user.username} </span>in{" "}
               <span className='bold'>{restaurant.restaurantname}</span>
             </span>
-            <span className='postDate'>{format(post.createdAt)}</span>
+            <p>Posted {moment(post.updatedAt).fromNow()}</p>
           </div>
           {post.userId === currentUser._id && (
             <div className='postTopRight delete' onClick={deleteHandler}>

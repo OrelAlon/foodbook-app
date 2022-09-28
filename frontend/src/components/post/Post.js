@@ -1,8 +1,8 @@
 import { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
-import { format } from "timeago.js";
 
+import moment from "moment";
 import axios from "axios";
 
 import heart from "../../assets/heart.png";
@@ -35,7 +35,7 @@ const Post = ({ post }) => {
     fetchRestaurant();
 
     fetchUser();
-  }, [post.userId]);
+  }, [post.userId, post.restaurantId]);
 
   const likeHandler = () => {
     try {
@@ -69,7 +69,8 @@ const Post = ({ post }) => {
             </span>{" "}
           </div>
 
-          <h6 className='postDate'>{format(post.createdAt)}</h6>
+          {/* <h6 className='postDate'>{format(post.createdAt)}</h6> */}
+          <p>Posted {moment(post.updatedAt).fromNow()}</p>
         </div>
 
         <div className='postCenter'>

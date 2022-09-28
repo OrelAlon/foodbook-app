@@ -15,10 +15,6 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const user = {
-      email: emailRef.current.value,
-      password: passwordRef.current.value,
-    };
     try {
       await loginCall(
         {

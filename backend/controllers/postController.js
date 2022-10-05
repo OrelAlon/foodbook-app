@@ -1,5 +1,6 @@
 const Post = require("../models/Post");
 const User = require("../models/User");
+const Restaurant = require("../models/Restaurant");
 
 //
 const createPost = async (req, res) => {
@@ -80,6 +81,19 @@ const getUsernamePost = async (req, res) => {
 };
 
 //
+const getRestaurantPosts = async (req, res) => {
+  try {
+    const restaurant = await Restaurant.findOne({
+      restaurantname: req.params.restaurantname,
+    });
+    const posts = await Post.find({ restaurantId: restaurant._id });
+    res.status(200).json(posts);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+};
+
+//
 const likePost = async (req, res) => {
   try {
     const post = await Post.findByIdAndUpdate(req.params.id);
@@ -102,5 +116,6 @@ module.exports = {
   getAllPosts,
   getUserPost,
   getUsernamePost,
+  getRestaurantPosts,
   likePost,
 };

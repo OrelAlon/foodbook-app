@@ -6,6 +6,7 @@ const {
   getAllPosts,
   getUserPost,
   getUsernamePost,
+  getRestaurantPosts,
   likePost,
 } = require("../controllers/postController");
 
@@ -20,6 +21,8 @@ router.get("/feed", getAllPosts);
 router.get("/timeline/:userId", getUserPost);
 
 router.get("/profile/:username", getUsernamePost);
+
+router.get("/restaurants/:restaurantname", getRestaurantPosts);
 
 router.put("/:id/like", likePost);
 

@@ -17,6 +17,7 @@ import AddRestaurant from "./pages/addRestaurant/AddRestaurant.jsx";
 import "./App.css";
 
 function App() {
+  //test git
   const ProtectedRoute = ({ children }) => {
     const { user } = useContext(AuthContext);
     if (!user) {

@@ -1,31 +1,34 @@
+import { useEffect } from "react";
+import { useState } from "react";
 import { useRef, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { loginCall } from "../../apiCalls";
 import { AuthContext } from "../../context/AuthContext";
 
 import "./login.css";
 
 const Login = () => {
+  const [error, setError] = useState(null);
   const emailRef = useRef();
   const passwordRef = useRef();
 
-  const { dispatch } = useContext(AuthContext);
+  const { login } = useContext(AuthContext);
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    console.log(error);
+  }, [error]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await loginCall(
-        {
-          email: emailRef.current.value,
-          password: passwordRef.current.value,
-        },
-        dispatch
-      );
+      await login({
+        email: emailRef.current.value,
+        password: passwordRef.current.value,
+      });
       navigate("/");
     } catch (error) {
-      console.log(error);
+      setError(error);
     }
   };
 
@@ -60,6 +63,8 @@ const Login = () => {
             ></input>
           </div>
           <button className='signin'>Sign In</button>
+          <p>orel</p>
+          {error && <p>{error}</p>}
         </form>
       </div>
     </div>

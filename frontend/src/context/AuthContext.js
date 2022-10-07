@@ -1,30 +1,31 @@
-import { createContext, useEffect, useReducer } from "react";
+import axios from "axios";
+import { createContext, useEffect, useState } from "react";
 
-import AuthReducer from "./AuthReducer";
-
-const INITIAL_STATE = {
-  user: JSON.parse(localStorage.getItem("user")) || null,
-  isFetching: false,
-  error: false,
-};
-
-export const AuthContext = createContext(INITIAL_STATE);
+export const AuthContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(AuthReducer, INITIAL_STATE);
+  const [user, setCurrentUser] = useState(
+    JSON.parse(localStorage.getItem("user")) || null
+  );
+
+  const login = async (inputs) => {
+    const res = await axios.post("api/auth/login", inputs);
+    setCurrentUser(res.data);
+  };
+
+  const logout = async (inputs) => {
+    await axios.post("api/auth/logout");
+    setCurrentUser(null);
+  };
+
   useEffect(() => {
-    localStorage.setItem("user", JSON.stringify(state.user));
-  }, [state.user]);
+    localStorage.setItem("user", JSON.stringify(user));
+    console.log("here");
+    console.log(user);
+  }, [user]);
+
   return (
-    <AuthContext.Provider
-      value={{
-        user: state.user,
-        isFetching: state.isFetching,
-        error: state.error,
-        dispatch,
-      }}
-    >
-      {" "}
+    <AuthContext.Provider value={{ user, login, logout }}>
       {children}
     </AuthContext.Provider>
   );

@@ -21,7 +21,6 @@ const RightBar = ({ user }) => {
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    console.log(user._id);
     const update = {
       userId: user._id,
     };

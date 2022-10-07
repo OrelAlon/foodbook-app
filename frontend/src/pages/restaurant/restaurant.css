@@ -1,5 +1,6 @@
 .restaurant {
   display: flex;
+  color: black;
 }
 
 .restaurantRight {

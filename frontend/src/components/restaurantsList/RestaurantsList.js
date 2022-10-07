@@ -3,7 +3,6 @@ import "./restaurantsList.css";
 
 const RestaurantsList = ({ restaurant }) => {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
-
   return (
     <>
       <li className='rest-div'>

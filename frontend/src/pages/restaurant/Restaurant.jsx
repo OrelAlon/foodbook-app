@@ -35,21 +35,17 @@ const Restaurant = () => {
           <div className='restaurantInfo'>
             <img
               className='restaurantImg'
-              src={
-                restaurant
-                  ? PF + restaurant.profilePicture
-                  : PF + "noAvatar.png"
-              }
+              src={PF + restaurant.profilePicture}
               alt=''
             />
 
-            <h1 className='restaurantInfoName'>{restaurant.restaurantname}</h1>
-            <span className='restaurantInfoDesc'>{restaurant.desc}</span>
-            <img
+            {/* <h1 className='restaurantInfoName'>{restaurant.restaurantname}</h1> */}
+            {/* <span className='restaurantInfoDesc'>{restaurant.desc}</span> */}
+            {/* <img
               className='restaurantImg'
               src={restaurant.profilePicture}
               alt=''
-            />
+            /> */}
           </div>
 
           <div className='restaurantRightBottom'>

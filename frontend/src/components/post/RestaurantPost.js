@@ -3,6 +3,7 @@ import { AuthContext } from "../../context/AuthContext";
 
 import moment from "moment";
 import axios from "axios";
+import heart from "../../assets/heart.png";
 
 import "./post.css";
 
@@ -51,7 +52,7 @@ const RestaurantPost = ({ post }) => {
               }
               alt=''
             />
-            <span className='postUsername'>from {user.username} </span>
+            <span className='postUsername'> {user.username} </span>
             <p>Posted {moment(post.updatedAt).fromNow()}</p>
           </div>
         </div>
@@ -62,7 +63,7 @@ const RestaurantPost = ({ post }) => {
           <div className='postBottomLeft'>
             <img
               className='likeIcon'
-              src={`${PF}heart.png`}
+              src={heart}
               onClick={likeHandler}
               alt=''
             />

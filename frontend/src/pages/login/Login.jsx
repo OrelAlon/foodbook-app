@@ -16,6 +16,7 @@ const Login = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    console.log("login");
     console.log(error);
   }, [error]);
 
@@ -28,7 +29,7 @@ const Login = () => {
       });
       navigate("/");
     } catch (error) {
-      setError(error);
+      setError(error.response.data);
     }
   };
 
@@ -63,7 +64,6 @@ const Login = () => {
             ></input>
           </div>
           <button className='signin'>Sign In</button>
-          <p>orel</p>
           {error && <p>{error}</p>}
         </form>
       </div>

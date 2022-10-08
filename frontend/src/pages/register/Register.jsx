@@ -119,7 +119,7 @@ const Register = () => {
               />
             </label>
           </div>
-          <h1>{errorMsg}</h1>
+          <h1 className='errMsg'>{errorMsg}</h1>
           <button className='signin'>Sign Up</button>
         </form>
       </div>

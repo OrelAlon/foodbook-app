@@ -26,7 +26,10 @@ const getRestaurant = async (req, res) => {
     const restaurant = restaurantId
       ? await Restaurant.findById(restaurantId)
       : await Restaurant.findOne({ restaurantname: restaurantname });
-
+    if (restaurant == null) {
+      res.status(404).json("no data");
+      return;
+    }
     res.status(200).json(restaurant);
   } catch (err) {
     res.status(500).json("error:" + err);

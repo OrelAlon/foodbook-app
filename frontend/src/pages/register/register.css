@@ -148,3 +148,6 @@ input {
     margin-top: 5px;
   } */
 }
+.errMsg {
+  background-color: #8dade4;
+}

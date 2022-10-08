@@ -32,10 +32,10 @@
   width: 150px;
   height: 150px;
   /* border-radius: 50%; */
-  position: absolute;
+  /* position: absolute; */
   left: 0;
   right: 0;
-  margin-left: 700px;
+  /* margin-left: 700px; */
   margin-top: 20px;
   top: 50px;
   border: 1px solid rgb(191, 186, 186);
@@ -50,7 +50,6 @@
   justify-content: center;
   font-weight: bold;
   margin-top: 20px;
-  background-color: rgb(206, 205, 203);
 }
 
 .restaurantInfoDesc {

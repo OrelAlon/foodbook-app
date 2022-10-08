@@ -34,6 +34,9 @@
   font-weight: bold;
   text-align: center;
   margin-top: 20px;
+  background-color: aliceblue;
+  height: 50%;
+  padding: 4px;
 }
 .addBtn {
   padding: 10px 25px;

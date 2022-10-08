@@ -29,7 +29,7 @@ const Restaurant = () => {
   return (
     <>
       <TopBar />
-      <div className='restaurant'>
+      <div className='restaurantPage'>
         <div></div>
         <div className='restaurantRight'>
           <div className='restaurantInfo'>

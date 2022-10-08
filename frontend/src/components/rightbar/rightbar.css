@@ -15,6 +15,9 @@
   text-align: center;
   font-size: 20px;
   text-decoration: underline;
+  background-color: aliceblue;
+  width: 60%;
+  margin-left: 80px;
 }
 
 .saveButton {

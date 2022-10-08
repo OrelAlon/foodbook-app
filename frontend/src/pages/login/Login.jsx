@@ -15,10 +15,9 @@ const Login = () => {
 
   const navigate = useNavigate();
 
-  useEffect(() => {
-    console.log("login");
-    console.log(error);
-  }, [error]);
+  // useEffect(() => {
+  //   console.log(error);
+  // }, [error]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

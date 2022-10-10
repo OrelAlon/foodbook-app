@@ -1,23 +1,20 @@
-import { useEffect } from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRef, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import "./login.css";
 
 const Login = () => {
-  const [error, setError] = useState(null);
   const emailRef = useRef();
   const passwordRef = useRef();
 
   const { login } = useContext(AuthContext);
 
   const navigate = useNavigate();
-
-  // useEffect(() => {
-  //   console.log(error);
-  // }, [error]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -28,7 +25,7 @@ const Login = () => {
       });
       navigate("/");
     } catch (error) {
-      setError(error.response.data);
+      toast.error(error.response.data);
     }
   };
 
@@ -63,7 +60,7 @@ const Login = () => {
             ></input>
           </div>
           <button className='signin'>Sign In</button>
-          {error && <p>{error}</p>}
+          <ToastContainer />
         </form>
       </div>
     </div>

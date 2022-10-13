@@ -121,7 +121,7 @@ const Register = () => {
           </div>
           <h1 className='errMsg'>{errorMsg}</h1>
           <button className='signin'>Sign Up</button>
-          <ToastContainer />
+          {/* <ToastContainer /> */}
         </form>
       </div>
     </div>

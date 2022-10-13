@@ -1,9 +1,6 @@
 import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-
 import axios from "axios";
 
 import "./register.css";
@@ -48,7 +45,7 @@ const Register = () => {
 
         navigate("/login");
       } catch (error) {
-        toast.error(error.response.data);
+        console.log(error);
       }
     }
   };

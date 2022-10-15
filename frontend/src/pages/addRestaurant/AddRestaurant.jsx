@@ -54,9 +54,9 @@ const AddRestaurant = () => {
       <TopBar />
       <div className='addRestaurant'>
         <form action='submit' className='formBox' onSubmit={handleSubmit}>
-          <label htmlFor='file' className='loginImg'>
+          {/* <label htmlFor='file' className='loginImg'>
             Add Restaurant Name
-          </label>
+          </label> */}
           <input
             placeholder='Restaurant Name'
             type='string'

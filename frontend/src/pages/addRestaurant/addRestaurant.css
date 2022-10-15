@@ -2,13 +2,21 @@
   display: block;
   width: 100%;
   height: 100px;
-  background-color: rgb(117, 67, 198);
+  background-color: rgb(171, 160, 189);
 }
 
 .formBox {
   height: 500px;
-  padding: 70px;
-  background-color: rgb(80, 68, 188);
+  padding: 30px;
+  background-color: rgb(166, 161, 207);
+  background: url("../../assets/restt.jpg") no-repeat center center fixed;
+  height: 100%;
+  height: 80vh;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
   border-radius: 10px;
   border: 1px solid black;
   display: flex;
@@ -25,6 +33,9 @@
   cursor: pointer;
   margin-right: 10px;
   font-size: larger;
+  color: black;
+  font-size: 24px;
+  font-weight: bold;
 }
 .restaurantInput {
   width: 50%;

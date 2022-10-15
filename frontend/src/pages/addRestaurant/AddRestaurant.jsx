@@ -12,7 +12,7 @@ const AddRestaurant = () => {
   const [file, setFile] = useState(null);
 
   const restaurantnameRef = useRef();
-  const descRef = useRef();
+  // const descRef = useRef();
 
   const navigate = useNavigate();
 
@@ -21,7 +21,7 @@ const AddRestaurant = () => {
 
     const restaurant = {
       restaurantname: restaurantnameRef.current.value,
-      desc: descRef.current.value,
+      // desc: descRef.current.value,
     };
 
     if (file) {
@@ -64,7 +64,7 @@ const AddRestaurant = () => {
             className='restaurantInput'
             ref={restaurantnameRef}
           />
-          <label htmlFor='file' className='loginImg'>
+          {/* <label htmlFor='file' className='loginImg'>
             Add Restaurant Description
           </label>
           <input
@@ -72,7 +72,7 @@ const AddRestaurant = () => {
             type='string'
             className='restaurantInput'
             ref={descRef}
-          />
+          /> */}
 
           <div className='imgLog'>
             <label htmlFor='file' className='loginImg'>

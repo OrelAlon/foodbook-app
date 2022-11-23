@@ -57,17 +57,17 @@ app.use("/api/posts", require("./routes/posts"));
 app.use("/api/restaurants", require("./routes/restaurants"));
 
 // Serve frontend for heroku
-// if (process.env.NODE_ENV === "production") {
-//   app.use(express.static(path.join(__dirname, "../frontend/build")));
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "../frontend/build")));
 
-//   app.get("*", (req, res) =>
-//     res.sendFile(
-//       path.resolve(__dirname, "../", "frontend", "build", "index.html")
-//     )
-//   );
-// } else {
-//   app.get("/", (req, res) => res.send("Please set to production"));
-// }
+  app.get("*", (req, res) =>
+    res.sendFile(
+      path.resolve(__dirname, "../", "frontend", "build", "index.html")
+    )
+  );
+} else {
+  app.get("/", (req, res) => res.send("Please set to production"));
+}
 
 // connect to backend
 // process env for Heroku

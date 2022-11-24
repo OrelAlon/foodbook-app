@@ -60,7 +60,7 @@ app.use("/api/users", require("./routes/users"));
 app.use("/api/posts", require("./routes/posts"));
 app.use("/api/restaurants", require("./routes/restaurants"));
 
-// Serve frontend for heroku
+// Serve frontend for aws
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "../frontend/build")));
 
@@ -74,7 +74,7 @@ if (process.env.NODE_ENV === "production") {
 }
 
 // connect to backend
-// process env for Heroku
+// process env for aws
 app.listen(process.env.PORT || 5500, () => {
   connect();
   console.log(`Server running on port ${port}`);

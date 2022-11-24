@@ -2,6 +2,7 @@
 
 This app is sharing photos of dishes from restaurants
 
+![](ezgif.com-gif-maker.gif)
 https://www.youtube.com/watch?v=sEdxyZksgM8
 
 You can see my project at [Foodbook](https://foodbook.onrender.com/login).

@@ -1,43 +1,43 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
 
 import { GiHamburgerMenu } from "react-icons/gi";
 import { MdOutlineRestaurantMenu } from "react-icons/md";
 import Food from "../../assets/food.png";
+import noAvatar from "../../assets/noAvatar.png";
+
 import "./navbar.css";
 
 const Navbar = () => {
   const [toggleMenu, setToggleMenu] = useState(false);
+  const { user } = useContext(AuthContext);
+  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.clear();
+
+    navigate("/login");
+  };
   return (
     <nav className='app__navbar'>
-      <div className='app__navbar-logo'>
-        <img src={Food} alt='' className='foodImg' />
-        <span className='logo'>Foodbook</span>
-      </div>
-      {/* <ul className='app__navbar-links'>
-        <li className='p__opensans'>
-          <a href='#home'>Home</a>
-        </li>
-        <li className='p__opensans'>
-          <a href='#about'>About</a>
-        </li>
-        <li className='p__opensans'>
-          <a href='#menu'>Menu</a>
-        </li>
-        <li className='p__opensans'>
-          <a href='#awards'>Awards</a>
-        </li>
-        <li className='p__opensans'>
-          <a href='#contact'>Contact</a>
-        </li>
-      </ul> */}
+      <Link to='/' style={{ textDecoration: "none" }}>
+        <div className='app__navbar-logo'>
+          <img src={Food} alt='' className='foodImg' />
+          <span className='logo'>Foodbook</span>
+        </div>
+      </Link>
+
       <div className='app__navbar-login'>
-        <a href='#login' className='p__opensans'>
+        <a className='p__opensans' onClick={handleLogout}>
           Log-Out
         </a>
         <div />
-        <a href='/' className='p__opensans'>
+        <Link to={`/profile/${user.username}`} className='p__opensans'>
           My Profile
-        </a>
+        </Link>
       </div>
       <div className='app__navbar-smallscreen'>
         <GiHamburgerMenu
@@ -54,9 +54,12 @@ const Navbar = () => {
             />
             <ul className='app__navbar-smallscreen_links'>
               <li>
-                <a href='#home' onClick={() => setToggleMenu(false)}>
-                  Home
-                </a>
+                <Link
+                  to={`/profile/${user.username}`}
+                  onClick={() => setToggleMenu(false)}
+                >
+                  My Profile
+                </Link>
               </li>
               <li>
                 <a href='#about' onClick={() => setToggleMenu(false)}>
@@ -73,9 +76,9 @@ const Navbar = () => {
                   Awards
                 </a>
               </li>
-              <li>
+              <li onClick={handleLogout}>
                 <a href='#contact' onClick={() => setToggleMenu(false)}>
-                  Contact
+                  Log-Out
                 </a>
               </li>
             </ul>

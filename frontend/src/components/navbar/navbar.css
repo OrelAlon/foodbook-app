@@ -21,7 +21,7 @@
   height: 2rem;
   border-radius: 50%;
   object-fit: cover;
-  margin-top: 0.5px;
+  margin: 1.5px;
   /* margin: 1px;
   padding: 5px; */
 }
@@ -61,10 +61,12 @@
   text-decoration: none;
   transition: 0.5s ease;
   color: goldenrod;
+  cursor: pointer;
 }
 
 .app__navbar-login a:hover {
   border-bottom: 1px solid goldenrod;
+  cursor: pointer;
 }
 
 .app__navbar-login div {
@@ -101,14 +103,21 @@
 }
 
 .app__navbar-smallscreen_links {
+  text-decoration: none;
   list-style: none;
+  margin-top: 1.5rem;
 }
-
 .app__navbar-smallscreen_links li {
+  text-align: center;
+  margin-bottom: 15px;
+}
+.app__navbar-smallscreen_links li a {
+  text-decoration: none;
+
   margin: 2rem;
   cursor: pointer;
   color: gold;
-  font-size: 2rem;
+  font-size: 1.5rem;
   text-align: center;
 }
 

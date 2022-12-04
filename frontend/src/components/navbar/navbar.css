@@ -143,9 +143,9 @@
 }
 
 @media screen and (max-width: 650px) {
-  .app__navbar {
+  /* .app__navbar {
     padding: 1rem;
-  }
+  } */
 
   .app__navbar-login {
     display: none;

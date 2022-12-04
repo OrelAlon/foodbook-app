@@ -88,7 +88,6 @@
   background: black;
   transition: 0.5s ease;
 
-  flex-direction: column;
   z-index: 5;
 }
 
@@ -101,15 +100,22 @@
   top: 20px;
   right: 20px;
 }
-
+.flex__center {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  align-content: center;
+}
 .app__navbar-smallscreen_links {
   text-decoration: none;
   list-style: none;
   margin-top: 1.5rem;
 }
 .app__navbar-smallscreen_links li {
-  text-align: center;
   margin-bottom: 15px;
+  display: flex;
+  justify-content: space-evenly;
 }
 .app__navbar-smallscreen_links li a {
   text-decoration: none;
@@ -118,17 +124,12 @@
   cursor: pointer;
   color: gold;
   font-size: 1.5rem;
-  text-align: center;
+  display: flex;
+  margin-left: 40px;
 }
 
 .app__navbar-smallscreen_links li:hover {
   color: goldenrod;
-}
-
-@media screen and (min-width: 2000px) {
-  /* .app__navbar-logo img {
-    width: 210px;
-  } */
 }
 
 @media screen and (max-width: 1150px) {

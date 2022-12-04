@@ -55,6 +55,7 @@ const Navbar = () => {
             <ul className='app__navbar-smallscreen_links'>
               <li>
                 <Link
+                  className='auto'
                   to={`/profile/${user.username}`}
                   onClick={() => setToggleMenu(false)}
                 >
@@ -62,18 +63,26 @@ const Navbar = () => {
                 </Link>
               </li>
               <li>
-                <a href='#about' onClick={() => setToggleMenu(false)}>
-                  About
+                <a
+                  className='auto'
+                  href='#about'
+                  onClick={() => setToggleMenu(false)}
+                >
+                  Restaurants
                 </a>
               </li>
               <li>
-                <a href='#menu' onClick={() => setToggleMenu(false)}>
-                  Menu
-                </a>
+                <Link
+                  to='/'
+                  style={{ textDecoration: "none" }}
+                  onClick={() => setToggleMenu(false)}
+                >
+                  Feed
+                </Link>
               </li>
               <li>
-                <a href='#awards' onClick={() => setToggleMenu(false)}>
-                  Awards
+                <a href='#contact' onClick={() => setToggleMenu(false)}>
+                  Contact Us
                 </a>
               </li>
               <li onClick={handleLogout}>

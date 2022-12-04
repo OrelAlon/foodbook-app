@@ -3,8 +3,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  /* padding: 1rem 2rem; */
+  padding: 0.5rem 0;
   background: url("https://media.istockphoto.com/photos/black-grey-wooden-plank-wall-texture-background-old-natural-pattern-picture-id1321288902?b=1&k=20&m=1321288902&s=170667a&w=0&h=JpmqzaVRY0z5Q20nSyteIx3rk9WUutTz5Kx4HeTjcGI=");
   background-repeat: no-repeat;
   background-size: 100% 100%;
@@ -23,8 +22,16 @@
   border-radius: 50%;
   object-fit: cover;
   margin-top: 0.5px;
+  /* margin: 1px;
+  padding: 5px; */
 }
-
+.logo {
+  font-size: 24px;
+  margin-left: 65px;
+  font-weight: bold;
+  color: goldenrod;
+  cursor: pointer;
+}
 .app__navbar-links {
   flex: 1;
   display: flex;
@@ -103,11 +110,10 @@
   color: gold;
   font-size: 2rem;
   text-align: center;
-  font-family: var(--font-base);
 }
 
 .app__navbar-smallscreen_links li:hover {
-  color: white;
+  color: goldenrod;
 }
 
 @media screen and (min-width: 2000px) {

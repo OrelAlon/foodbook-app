@@ -8,8 +8,9 @@ body,
 }
 
 .login {
+  text-align: center;
   position: relative;
-  height: 560px;
+  height: 530px;
   width: 405px;
   margin: auto;
   padding: 40px;

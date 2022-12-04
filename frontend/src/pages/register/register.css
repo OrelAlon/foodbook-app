@@ -17,7 +17,7 @@ body,
   background: url("../../assets/oil.jpg") no-repeat center center #505050;
   background-size: cover;
   box-shadow: 0px 30px 60px -5px #000;
-  margin-top: 40px;
+  /* margin-top: 40px; */
 }
 
 form,

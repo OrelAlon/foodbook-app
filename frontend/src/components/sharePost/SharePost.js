@@ -60,7 +60,11 @@ const SharePost = () => {
         <div className='shareTop'>
           <img
             className='shareProfileImg'
-            src={user.profilePicture ? PF + user.profilePicture : noAvatar}
+            src={
+              user.profilePicture
+                ? PF + user.profilePicture
+                : "https://media.istockphoto.com/id/1131164548/vector/avatar-5.jpg?s=612x612&w=0&k=20&c=CK49ShLJwDxE4kiroCR42kimTuuhvuo2FH5y_6aSgEo="
+            }
             alt=''
           />
 

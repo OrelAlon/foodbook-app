@@ -1,6 +1,7 @@
 .share {
   width: 90%;
   border-radius: 10px;
+  margin: auto;
   -webkit-box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.68);
   box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.68);
 }

@@ -1,11 +1,14 @@
 .post {
-  width: 80%;
+  width: 90%;
   border-radius: 10px;
   -webkit-box-shadow: 0px 0px 66px -8px rgba(0, 0, 0, 0.98);
   box-shadow: 0px 0px 46px -8px rgba(0, 0, 0, 0.68);
   align-items: center;
   margin: auto;
   margin-top: 35px;
+}
+.postBottomRight {
+  max-width: 15rem;
 }
 .posttime {
   font-size: 0.7rem;
@@ -100,6 +103,7 @@
   display: flex;
   align-items: center;
   font-size: 1rem;
+  text-align: center;
 }
 @media only screen and (max-width: 600px) {
 }

@@ -1,6 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
+import { AiOutlineLike } from "react-icons/ai";
 
 import moment from "moment";
 import axios from "axios";
@@ -64,29 +65,37 @@ const Post = ({ post }) => {
             </Link>
             <span className='postUsername'>
               <span className='bold'> {user.username} </span>in{" "}
-              <span className='bold'>{restaurant.restaurantname}</span>
+              <span className='restaurantname bold'>
+                {restaurant.restaurantname}
+              </span>
             </span>{" "}
           </div>
 
-          <p>Posted {moment(post.updatedAt).fromNow()}</p>
+          <p className='posttime'>{moment(post.updatedAt).fromNow()}</p>
         </div>
 
         <div className='postCenter'>
-          <img className='postImg' src={PF + post.img} alt='' />
+          <img
+            className='postImg'
+            src={PF + post.img}
+            alt=''
+            width='200'
+            height='100'
+          />
         </div>
         <div className='postBottom'>
           <div className='postBottomLeft'>
-            <img
+            <AiOutlineLike
+              fontSize={22}
               className='likeIcon'
-              src={heart}
               onClick={likeHandler}
-              alt=''
+              color={"blue"}
             />
             <span className='postLikeCounter'>{like} people like it</span>
           </div>
           <div className='postBottomRight'>
             {" "}
-            <h3 className='postText'>{post.desc}</h3>
+            <p className='postText'>{post.desc}</p>
           </div>
         </div>
       </div>

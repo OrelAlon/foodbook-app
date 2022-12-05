@@ -81,7 +81,7 @@ const SharePost = () => {
             <label htmlFor='file' className='shareOption'>
               {/* <PermMedia htmlColor='tomato' className='shareIcon' /> */}
               <span className='shareText'>Upload</span>
-              <BiImage fontSize={22} />
+              <BiImage fontSize={22} color={"red"} />
               <input
                 style={{ display: "none" }}
                 type='file'

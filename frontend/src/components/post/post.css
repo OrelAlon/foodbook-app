@@ -7,6 +7,9 @@
   margin: auto;
   margin-top: 35px;
 }
+.posttime {
+  font-size: 0.7rem;
+}
 
 .postWrapper {
   padding: 10px;
@@ -26,18 +29,20 @@
 }
 
 .postProfileImg {
-  width: 62px;
-  height: 62px;
+  width: 3rem;
+  height: 3rem;
   border-radius: 50%;
   object-fit: cover;
 }
 
 .postUsername {
-  font-size: 20px;
-  font-weight: 500;
+  font-size: 1.25rem;
+  /* font-weight: 500; */
   margin: 0 10px;
 }
-
+.restaurantname {
+  font-size: 1rem;
+}
 .postDate {
   font-size: 18px;
   line-break: auto;
@@ -54,14 +59,14 @@
 .postImg {
   margin-top: 20px;
   /* width: 100%; */
-  max-height: 500px;
   object-fit: contain;
   border-radius: 10px;
   display: block;
   margin-left: auto;
   margin-right: auto;
   border: 1px solid rgb(138, 138, 138);
-  width: 20vw;
+  width: 80%;
+  height: 60%;
 }
 
 .postBottom {
@@ -76,20 +81,13 @@
 }
 
 .likeIcon {
-  width: 24px;
-  height: 24px;
   margin-right: 5px;
+  margin-left: 15px;
   cursor: pointer;
 }
 
 .postLikeCounter {
-  font-size: 20px;
-}
-
-.postCommentText {
-  cursor: pointer;
-  border-bottom: 1px dashed gray;
-  font-size: 15px;
+  font-size: 1rem;
 }
 
 .deleteIcon {
@@ -101,12 +99,9 @@
 .postText {
   display: flex;
   align-items: center;
-  font-size: 25px;
+  font-size: 1rem;
 }
-@media only screen and (min-width: 600px) {
-  .postImg {
-    width: 20vw;
-  }
+@media only screen and (max-width: 600px) {
 }
 .delete {
   cursor: pointer;

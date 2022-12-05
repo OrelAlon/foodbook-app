@@ -3,6 +3,8 @@ import { AuthContext } from "../../context/AuthContext";
 import axios from "axios";
 
 import noAvatar from "../../assets/noAvatar.png";
+import { BiImage } from "react-icons/bi";
+
 // import { Restaurants } from "../../dummyData";
 
 import "./sharePost.css";
@@ -74,7 +76,8 @@ const SharePost = () => {
           <div className='shareOptions'>
             <label htmlFor='file' className='shareOption'>
               {/* <PermMedia htmlColor='tomato' className='shareIcon' /> */}
-              <span className='shareText'>Photo</span>
+              <span className='shareText'>Upload</span>
+              <BiImage fontSize={22} />
               <input
                 style={{ display: "none" }}
                 type='file'
@@ -85,8 +88,8 @@ const SharePost = () => {
             </label>
             <div className='shareOption'>
               {/* <Label htmlColor='blue' className='shareIcon' /> */}
-              <span className='shareText'>Tag- </span>
-              <label htmlFor='restaurant'> a place:</label>
+              {/* <span className='shareText'>Tag- </span>
+              <label htmlFor='restaurant'> a place:</label> */}
               <select
                 className='select'
                 name='restaurant'
@@ -97,7 +100,7 @@ const SharePost = () => {
               >
                 <option value='DEFAULT' disabled>
                   {" "}
-                  -- Restaurant --{" "}
+                  Restaurant{" "}
                 </option>
                 {restaurants.map((res) => {
                   return (

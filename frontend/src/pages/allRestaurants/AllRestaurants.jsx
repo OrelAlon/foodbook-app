@@ -10,6 +10,7 @@ import "./allRestaurants.css";
 const AllRestaurants = () => {
   const [restaurants, setRestaurants] = useState([]);
   const [file, setFile] = useState(null);
+  const [searchRestaurant, setSearchRestaurant] = useState("");
 
   useEffect(() => {
     const fetchRestaurants = async () => {
@@ -18,16 +19,27 @@ const AllRestaurants = () => {
     };
     fetchRestaurants();
   }, []);
+
   return (
     <>
       <Navbar />
       <div className='restaurantSContainer'>
         <h1>AllRestaurants</h1>
-        <input placeholder='Search restaurant' type={"search"}></input>
+        <input
+          placeholder='Search restaurant'
+          type={"search"}
+          onChange={(e) => setSearchRestaurant(e.target.value)}
+        ></input>
         <div className='restaurantsCards'>
-          {restaurants.map((restaurant) => (
-            <RestaurantCard key={restaurant._id} restaurant={restaurant} />
-          ))}
+          {restaurants
+            .filter((rest) => {
+              return searchRestaurant.toLowerCase() === ""
+                ? rest
+                : rest.restaurantname.toLowerCase().includes(searchRestaurant);
+            })
+            .map((restaurant) => (
+              <RestaurantCard key={restaurant._id} restaurant={restaurant} />
+            ))}
         </div>
       </div>
     </>

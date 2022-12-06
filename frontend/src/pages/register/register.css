@@ -100,6 +100,13 @@ input[type="password"] {
   color: #fff;
   font-weight: bold;
 }
+
+.imgLog:hover {
+  color: black;
+  font-weight: bold;
+  box-shadow: 8px 8px 35px -5px #e0ebe5;
+  border: 2px solid gray;
+}
 input {
   display: inline-block;
   padding-top: 20px;
@@ -137,16 +144,6 @@ input {
     width: 80vw;
     margin: auto;
   }
-  /* input {
-    padding-top: 10px;
-  }
-  .text {
-    width: 79%;
-    padding: 1px;
-    height: 15px;
-    margin: auto;
-    margin-top: 5px;
-  } */
 }
 .errMsg {
   background-color: #8dade4;

@@ -120,7 +120,7 @@ const Register = () => {
             </label>
           </div>
           <h1 className='errMsg'>{errorMsg}</h1>
-          <button className='signin'>Sign Up</button>
+          <button className='signinBtn'>Sign Up</button>
           {/* <ToastContainer /> */}
         </form>
       </div>

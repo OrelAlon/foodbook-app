@@ -58,7 +58,7 @@ const Login = () => {
               name='password'
             ></input>
           </div>
-          <button className='signin'>Sign In</button>
+          <button className='signinBtn'>Sign In</button>
           <ToastContainer />
         </form>
       </div>

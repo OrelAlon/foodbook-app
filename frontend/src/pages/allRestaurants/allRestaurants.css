@@ -1,0 +1,12 @@
+.restaurantsCards {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  gap: 1rem;
+}
+
+@media (min-width: 600px) {
+  .restaurantsCards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

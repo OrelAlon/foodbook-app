@@ -3,6 +3,9 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 import Navbar from "../../components/navbar/Navbar";
+import RestaurantCard from "../../components/restaurantCard/RestaurantCard";
+
+import "./allRestaurants.css";
 
 const AllRestaurants = () => {
   const [restaurants, setRestaurants] = useState([]);
@@ -18,10 +21,14 @@ const AllRestaurants = () => {
   return (
     <>
       <Navbar />
-      <div className='homeContainer'>
+      <div className='restaurantSContainer'>
         <h1>AllRestaurants</h1>
-        {/* <Feed /> */}
-        {/* <RightBar /> */}
+        <input placeholder='Search restaurant' type={"search"}></input>
+        <div className='restaurantsCards'>
+          {restaurants.map((restaurant) => (
+            <RestaurantCard key={restaurant._id} restaurant={restaurant} />
+          ))}
+        </div>
       </div>
     </>
   );

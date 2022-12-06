@@ -35,7 +35,11 @@ const Restaurant = () => {
           <div className='restaurantInfo'>
             <img
               className='restaurantImg'
-              src={PF + restaurant.profilePicture}
+              src={
+                restaurant.profilePicture
+                  ? restaurant.profilePicture
+                  : PF + restaurant.profilePicture
+              }
               alt=''
             />
 

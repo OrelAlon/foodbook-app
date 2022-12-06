@@ -12,7 +12,7 @@ const AddRestaurant = () => {
   const [file, setFile] = useState(null);
 
   const restaurantnameRef = useRef();
-  // const descRef = useRef();
+  const cityRef = useRef();
 
   const navigate = useNavigate();
 
@@ -21,7 +21,7 @@ const AddRestaurant = () => {
 
     const restaurant = {
       restaurantname: restaurantnameRef.current.value,
-      // desc: descRef.current.value,
+      city: cityRef.current.value,
     };
 
     if (file) {
@@ -54,9 +54,9 @@ const AddRestaurant = () => {
       <TopBar />
       <div className='addRestaurant'>
         <form action='submit' className='formBox' onSubmit={handleSubmit}>
-          {/* <label htmlFor='file' className='loginImg'>
+          <label htmlFor='file' className='loginImg'>
             Add Restaurant Name
-          </label> */}
+          </label>
           <input
             placeholder='Restaurant Name'
             type='string'
@@ -64,19 +64,19 @@ const AddRestaurant = () => {
             className='restaurantInput'
             ref={restaurantnameRef}
           />
-          {/* <label htmlFor='file' className='loginImg'>
-            Add Restaurant Description
+          <label htmlFor='file' className='loginImg'>
+            City
           </label>
           <input
             placeholder='Restaurant Description'
             type='string'
             className='restaurantInput'
-            ref={descRef}
-          /> */}
+            ref={cityRef}
+          />
 
           <div className='imgLog'>
             <label htmlFor='file' className='loginImg'>
-              <span className='shareOptionText'>Add Restaurant Logo</span>
+              <span className='shareOptionText'>Add Restaurant Image</span>
               <input
                 required
                 style={{ display: "none" }}

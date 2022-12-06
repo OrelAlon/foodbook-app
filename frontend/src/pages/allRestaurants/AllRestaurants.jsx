@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 import axios from "axios";
 
@@ -22,7 +23,9 @@ const AllRestaurants = () => {
   return (
     <>
       <Navbar />
-      <button className='addRestaurantBtn'>Add Restaurant</button>
+      <Link to='/addrestaurant' className='linkTimeLine'>
+        <button className='addRestaurantBtn'>Add Restaurant</button>
+      </Link>
       <div className='restaurantSContainer'>
         <h1>All - Restaurants</h1>
         <input

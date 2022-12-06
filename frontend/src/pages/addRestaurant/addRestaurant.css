@@ -2,14 +2,11 @@
   display: block;
   width: 100%;
   height: 100px;
-  background-color: rgb(171, 160, 189);
 }
 
 .formBox {
   height: 500px;
   padding: 30px;
-  background-color: rgb(166, 161, 207);
-  background: url("../../assets/restt.jpg") no-repeat center center fixed;
   height: 100%;
   height: 80vh;
   -webkit-background-size: cover;

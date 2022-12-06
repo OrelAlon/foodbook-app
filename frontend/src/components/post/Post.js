@@ -6,8 +6,6 @@ import { AiOutlineLike } from "react-icons/ai";
 import moment from "moment";
 import axios from "axios";
 
-import heart from "../../assets/heart.png";
-
 import "./post.css";
 
 const Post = ({ post }) => {

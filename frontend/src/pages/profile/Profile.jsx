@@ -3,7 +3,7 @@ import { useParams } from "react-router";
 
 import axios from "axios";
 
-import TopBar from "../../components/topbar/TopBar";
+import Navbar from "../../components/navbar/Navbar";
 import UserFeed from "../../components/feed/UserFeed";
 import RightBar from "../../components/rightbar/RightBar";
 
@@ -25,7 +25,7 @@ const Profile = () => {
 
   return (
     <>
-      <TopBar />
+      <Navbar />
       <div className='profile'>
         <div className='profileRight'>
           <div className='profileRightTop'>
@@ -41,10 +41,6 @@ const Profile = () => {
                 alt=''
               />
             </div>
-            {/* <div className='profileInfo'>
-              <h1 className='profileInfoName'>{user.username}</h1>
-              <span className='profileInfoDesc'>{user.desc}</span>
-            </div> */}
           </div>
           <div className='margin-top'></div>
 

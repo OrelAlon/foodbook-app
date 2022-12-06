@@ -5,7 +5,6 @@ import { AuthContext } from "../../context/AuthContext";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { MdOutlineRestaurantMenu } from "react-icons/md";
 import Food from "../../assets/food.png";
-import noAvatar from "../../assets/noAvatar.png";
 
 import "./navbar.css";
 
@@ -31,13 +30,17 @@ const Navbar = () => {
       </Link>
 
       <div className='app__navbar-login'>
-        <a className='p__opensans' onClick={handleLogout}>
-          Log-Out
-        </a>
-        <div />
         <Link to={`/profile/${user.username}`} className='p__opensans'>
           My Profile
         </Link>
+        <div />
+        <Link to={`/Restaurants`} className='p__opensans'>
+          Restaurants
+        </Link>
+        <div />
+        <a className='p__opensans' onClick={handleLogout}>
+          Log-Out
+        </a>
       </div>
       <div className='app__navbar-smallscreen'>
         <GiHamburgerMenu
@@ -63,13 +66,13 @@ const Navbar = () => {
                 </Link>
               </li>
               <li>
-                <a
-                  className='auto'
-                  href='#about'
+                <Link
+                  to={`/Restaurants`}
+                  className='p__opensans auto'
                   onClick={() => setToggleMenu(false)}
                 >
                   Restaurants
-                </a>
+                </Link>
               </li>
               <li>
                 <Link

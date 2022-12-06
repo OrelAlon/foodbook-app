@@ -1,0 +1,24 @@
+.restaurantCard {
+  background-color: gray;
+  display: flex;
+  justify-content: center;
+
+  color: white;
+  margin: 0.2rem 1.5rem;
+  padding: 0.2rem 1rem;
+}
+
+.rightbarProfileImg {
+  width: 4rem;
+  height: 4rem;
+  /* border-radius: 50%; */
+  object-fit: cover;
+  border: solid 3px rgb(167, 167, 167);
+  padding: 6px;
+  border-style: outset;
+  background-color: aliceblue;
+}
+.restaurantName {
+  color: black;
+  text-align: center;
+}

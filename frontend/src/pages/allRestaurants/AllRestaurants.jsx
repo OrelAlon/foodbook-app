@@ -9,7 +9,6 @@ import "./allRestaurants.css";
 
 const AllRestaurants = () => {
   const [restaurants, setRestaurants] = useState([]);
-  const [file, setFile] = useState(null);
   const [searchRestaurant, setSearchRestaurant] = useState("");
 
   useEffect(() => {
@@ -23,9 +22,11 @@ const AllRestaurants = () => {
   return (
     <>
       <Navbar />
+      <button className='addRestaurantBtn'>Add Restaurant</button>
       <div className='restaurantSContainer'>
-        <h1>AllRestaurants</h1>
+        <h1>All - Restaurants</h1>
         <input
+          className='restaurantSearch'
           placeholder='Search restaurant'
           type={"search"}
           onChange={(e) => setSearchRestaurant(e.target.value)}

@@ -4,9 +4,28 @@
   display: grid;
   gap: 1rem;
 }
+.restaurantSContainer {
+  text-align: center;
+  align-items: center;
+  margin-bottom: 2rem;
+}
 
 @media (min-width: 600px) {
   .restaurantsCards {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
+}
+.restaurantSearch {
+  margin-bottom: 2rem;
+  height: 2rem;
+  text-align: center;
+}
+.restaurantSContainer input {
+  padding-top: 0;
+}
+.addRestaurantBtn {
+  padding: 1rem;
+  position: absolute;
+
+  right: 0;
 }

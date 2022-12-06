@@ -50,7 +50,7 @@
   display: flex;
   width: 100%;
   color: black;
-  background: url("../../assets/gold2.jpg") no-repeat center center fixed;
+  /* background: url("../../assets/gold2.jpg") no-repeat center center fixed; */
   height: 100%;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -59,7 +59,7 @@
 }
 .margin-top {
   height: 100px;
-  background: url("../../assets/gold2.jpg") no-repeat center center fixed;
+  /* background: url("../../assets/gold2.jpg") no-repeat center center fixed; */
   /* height: 100%; */
   -webkit-background-size: cover;
   -moz-background-size: cover;

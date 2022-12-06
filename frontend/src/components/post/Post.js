@@ -65,9 +65,14 @@ const Post = ({ post }) => {
             </Link>
             <span className='postUsername'>
               <span className='bold'> {user.username} </span>in{" "}
-              <span className='restaurantname bold'>
-                {restaurant.restaurantname}
-              </span>
+              <Link
+                className='linkwithout'
+                to={`/restaurant/${restaurant.restaurantname}`}
+              >
+                <span className='restaurantname bold'>
+                  {restaurant.restaurantname}
+                </span>
+              </Link>
             </span>{" "}
           </div>
 

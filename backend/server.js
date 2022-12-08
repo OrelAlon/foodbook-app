@@ -2,6 +2,7 @@ const express = require("express");
 const cookieParser = require("cookie-parser");
 const fileupload = require("express-fileupload");
 const cors = require("cors");
+const cloudinary = require("cloudinary").v2;
 
 const mongoose = require("mongoose");
 const dotenv = require("dotenv").config();
@@ -9,23 +10,32 @@ const path = require("path");
 
 const port = process.env.PORT || 5500;
 
+const MONGO_URL =
+  "mongodb://localhost:27017/testDatabase" || process.env.MONGO_URL;
+
 const app = express();
 
 // connect to mongoose
 const connect = async () => {
   try {
-    await mongoose.connect(process.env.MONGO_URL, () => {
+    await mongoose.connect(MONGO_URL, () => {
       console.log("Connected to MongoDB !!");
     });
   } catch (error) {
     throw error;
   }
 };
+// Setting up cloudinary configuration
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+});
 
 // file-upload - create a path to img folder
 app.use("/upload", express.static(path.join(__dirname, "/public/upload")));
 
-app.use(fileupload());
+app.use(fileupload({ useTempFiles: true }));
 
 // file-upload - upload files
 app.post("/api/upload", (req, res) => {

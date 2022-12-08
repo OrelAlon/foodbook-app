@@ -1,14 +1,22 @@
 const Post = require("../models/Post");
 const User = require("../models/User");
 const Restaurant = require("../models/Restaurant");
+const cloudinary = require("cloudinary");
 
 //
 const createPost = async (req, res) => {
+  const file = req.files.img;
+  // upload to cloudinary
+  const result = await cloudinary.v2.uploader.upload(file.tempFilePath, {
+    folder: "avatars",
+    width: 150,
+    crop: "scale",
+  });
   const newPost = new Post({
     userId: req.body.userId,
     restaurantId: req.body.restaurantId,
     desc: req.body.desc,
-    img: req.body.img,
+    img: result.secure_url,
   });
   try {
     const savedPost = await newPost.save();

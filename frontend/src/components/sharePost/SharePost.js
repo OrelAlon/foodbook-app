@@ -1,8 +1,6 @@
 import { useContext, useRef, useState, useEffect } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import axios from "axios";
-
-import noAvatar from "../../assets/noAvatar.png";
 import { BiImage } from "react-icons/bi";
 
 // import { Restaurants } from "../../dummyData";
@@ -15,31 +13,17 @@ const SharePost = () => {
   const [restaurantName, setRestaurantName] = useState(null);
   const [restaurants, setRestaurants] = useState([]);
 
-  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
-
   const desc = useRef();
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    const newPost = {
-      userId: user._id,
-      restaurantId: restaurantName,
-      desc: desc.current.value,
-    };
-    if (file) {
-      const data = new FormData();
-      const fileName = file.name;
-      data.append("name", fileName);
-      data.append("file", file);
-      newPost.img = fileName;
-      try {
-        await axios.post("/api/upload", data);
-      } catch (error) {
-        console.log(error);
-      }
-    }
     try {
-      await axios.post("/api/posts", newPost);
+      const data = new FormData();
+      data.set("img", file);
+      data.set("userId", user._id);
+      data.set("desc", desc.current.value);
+      data.set("restaurantId", restaurantName);
+      await axios.post("/api/posts", data);
       window.location.reload();
     } catch (error) {
       console.log(error);
@@ -58,15 +42,7 @@ const SharePost = () => {
     <div className='share'>
       <div className='shareWrapper'>
         <div className='shareTop'>
-          <img
-            className='shareProfileImg'
-            src={
-              user.profilePicture
-                ? PF + user.profilePicture
-                : "https://media.istockphoto.com/id/1131164548/vector/avatar-5.jpg?s=612x612&w=0&k=20&c=CK49ShLJwDxE4kiroCR42kimTuuhvuo2FH5y_6aSgEo="
-            }
-            alt=''
-          />
+          <img className='shareProfileImg' src={user.profilePicture} alt='' />
 
           <input
             className='shareInput'

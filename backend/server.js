@@ -10,8 +10,7 @@ const path = require("path");
 
 const port = process.env.PORT || 5500;
 
-const MONGO_URL =
-  "mongodb://localhost:27017/testDatabase" || process.env.MONGO_URL;
+const MONGO_URL = process.env.MONGO_URL;
 
 const app = express();
 

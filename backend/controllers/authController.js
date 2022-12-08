@@ -1,17 +1,29 @@
 const User = require("../models/User");
 const bcrypt = require("bcrypt");
+const cloudinary = require("cloudinary");
+
 //
 const register = async (req, res) => {
   try {
+    const file = req.files.profilePicture;
+
+    // upload to cloudinary
+    const result = await cloudinary.v2.uploader.upload(file.tempFilePath, {
+      folder: "avatars",
+      width: 150,
+      crop: "scale",
+    });
+
     // bcrypt for new password
     const salt = await bcrypt.genSalt();
+
     const hashedPassword = await bcrypt.hash(req.body.password, salt);
 
     const newUser = new User({
       username: req.body.username,
       email: req.body.email,
       password: hashedPassword,
-      profilePicture: req.body.profilePicture,
+      profilePicture: result.secure_url,
     });
 
     const user = await newUser.save();

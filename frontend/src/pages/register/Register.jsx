@@ -22,26 +22,13 @@ const Register = () => {
       return setErrorMsg("Password don't match...");
     } else {
       setErrorMsg("");
-      const user = {
-        username: usernameRef.current.value,
-        email: emailRef.current.value,
-        password: passwordRef.current.value,
-      };
-      if (file) {
-        const data = new FormData();
-        const fileName = file.name;
-        data.append("name", fileName);
-        data.append("file", file);
-        user.profilePicture = fileName;
-        try {
-          await axios.post("/api/upload", data);
-        } catch (error) {
-          console.log(error);
-        }
-      }
-
       try {
-        await axios.post("/api/auth/register", user);
+        const data = new FormData();
+        data.set("profilePicture", file);
+        data.set("username", usernameRef.current.value);
+        data.set("email", emailRef.current.value);
+        data.set("password", passwordRef.current.value);
+        await axios.post("/api/auth/register", data);
 
         navigate("/login");
       } catch (error) {
@@ -60,7 +47,7 @@ const Register = () => {
         </h2>
 
         <h2 className='active'> sign up </h2>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} encType='multipart/form-data'>
           <div className='input-div'>
             <p>username:</p>
             <input

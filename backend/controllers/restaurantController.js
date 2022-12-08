@@ -1,13 +1,22 @@
 const Restaurant = require("../models/Restaurant");
+const cloudinary = require("cloudinary");
 
 //
 //
 const createRestaurant = async (req, res) => {
   try {
+    const file = req.files.profilePicture;
+    // upload to cloudinary
+    const result = await cloudinary.v2.uploader.upload(file.tempFilePath, {
+      folder: "avatars",
+      width: 150,
+      crop: "scale",
+    });
+
     const newRestaurant = new Restaurant({
       restaurantname: req.body.restaurantname,
       desc: req.body.desc,
-      profilePicture: req.body.profilePicture,
+      profilePicture: result.secure_url,
     });
 
     const savedRestaurant = await newRestaurant.save();

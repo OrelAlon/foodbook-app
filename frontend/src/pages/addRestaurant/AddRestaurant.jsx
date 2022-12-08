@@ -1,16 +1,12 @@
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import React from "react";
-
 import axios from "axios";
-
 import TopBar from "../../components/topbar/TopBar";
-
 import "./addRestaurant.css";
 
 const AddRestaurant = () => {
   const [file, setFile] = useState(null);
-
   const restaurantnameRef = useRef();
   const cityRef = useRef();
 
@@ -18,36 +14,17 @@ const AddRestaurant = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    const restaurant = {
-      restaurantname: restaurantnameRef.current.value,
-      city: cityRef.current.value,
-    };
-
-    if (file) {
-      const data = new FormData();
-      const fileName = file.name;
-      data.append("name", fileName);
-      data.append("file", file);
-      restaurant.profilePicture = fileName;
-      try {
-        await axios.post("/api/upload", data);
-      } catch (error) {
-        console.log(error);
-      }
-    }
-
     try {
-      await axios.post("/api/restaurants/", restaurant);
+      const data = new FormData();
+      data.set("profilePicture", file);
+      data.set("restaurantname", restaurantnameRef.current.value);
+      data.set("city", cityRef.current.value);
+      await axios.post("/api/restaurants/", data);
       navigate("/");
     } catch (error) {
       console.log(error);
     }
   };
-
-  // const submitBtn = () => {
-  //   navigate("/login");
-  // };
 
   return (
     <>

@@ -1,5 +1,6 @@
 const User = require("../models/User");
 const bcrypt = require("bcrypt");
+const cloudinary = require("cloudinary");
 
 //
 const getUser = async (req, res) => {
@@ -39,9 +40,21 @@ const updateUser = async (req, res) => {
       }
     }
     try {
-      const user = await User.findByIdAndUpdate(req.params.id, {
-        $set: req.body,
+      const user = await User.findById({ _id: req.params.id });
+
+      const file = req.files.profilePicture;
+
+      // upload to cloudinary
+      const result = await cloudinary.v2.uploader.upload(file.tempFilePath, {
+        folder: "avatars",
+        width: 150,
+        crop: "scale",
       });
+
+      user.profilePicture = result.secure_url;
+
+      await user.save();
+
       res.status(200).json("User has been updated");
     } catch (err) {
       return res.status(500).json(err);

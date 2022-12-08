@@ -5,7 +5,6 @@ import axios from "axios";
 
 import Navbar from "../../components/navbar/Navbar";
 import UserFeed from "../../components/feed/UserFeed";
-import RightBar from "../../components/rightbar/RightBar";
 
 import "./profile.css";
 
@@ -42,7 +41,6 @@ const Profile = () => {
 
           <div className='profileRightBottom'>
             <UserFeed username={username} />
-            <RightBar user={user} />
           </div>
         </div>
       </div>

@@ -5,7 +5,6 @@ import axios from "axios";
 
 import TopBar from "../../components/topbar/TopBar";
 import RestaurantFeed from "../../components/feed/RestaurantFeed";
-import RightBar from "../../components/rightbar/RightBar";
 
 import "./restaurant.css";
 
@@ -54,7 +53,6 @@ const Restaurant = () => {
 
           <div className='restaurantRightBottom'>
             <RestaurantFeed restaurant={restaurant} />
-            <RightBar />
           </div>
         </div>
       </div>

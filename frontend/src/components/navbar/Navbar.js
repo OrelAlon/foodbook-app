@@ -1,5 +1,5 @@
-import { useState, useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useState, useContext, useEffect } from "react";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 
 import { GiHamburgerMenu } from "react-icons/gi";
@@ -10,8 +10,34 @@ import "./navbar.css";
 
 const Navbar = () => {
   const [toggleMenu, setToggleMenu] = useState(false);
+  const [leftTitle, setLeftTitle] = useState("");
+  const [middleTitle, setMiddleTitle] = useState("");
   const { user } = useContext(AuthContext);
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+
+  const location = useLocation();
+  console.log("lookk " + window.location.pathname);
+
+  // useEffect(() => {
+  //   switch (location.pathname) {
+  //     case "/":
+  //       setLeftTitle("My Profilee");
+  //       setMiddleTitle("Restaurants");
+  //       break;
+  //     case location.pathname.startsWith("/profile"):
+  //       setLeftTitle("Feed");
+  //       setMiddleTitle("Restaurants");
+  //       break;
+  //     case "/analytics":
+  //       setLeftTitle("My Profile");
+  //       setMiddleTitle("Restaurants");
+  //       break;
+  //     default:
+  //       setLeftTitle("My Profile def");
+  //       setMiddleTitle("Restaurants");
+  //       break;
+  //   }
+  // }, [location.pathname]);
 
   const navigate = useNavigate();
 
@@ -31,11 +57,11 @@ const Navbar = () => {
 
       <div className='app__navbar-login'>
         <Link to={`/profile/${user.username}`} className='p__opensans'>
-          My Profile
+          {leftTitle}
         </Link>
         <div />
         <Link to={`/Restaurants`} className='p__opensans'>
-          Restaurants
+          {middleTitle}
         </Link>
         <div />
         <a className='p__opensans' onClick={handleLogout}>

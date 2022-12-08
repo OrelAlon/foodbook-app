@@ -62,7 +62,10 @@ const Post = ({ post }) => {
               />
             </Link>
             <span className='postUsername'>
-              <span className='bold'> {user.username} </span>in{" "}
+              <Link to={`/profile/${user.username}`} className='linkwithout'>
+                <span className='bold '> {user.username} </span>
+              </Link>
+              in{" "}
               <Link
                 className='linkwithout'
                 to={`/restaurant/${restaurant.restaurantname}`}

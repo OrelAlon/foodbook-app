@@ -1,5 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
+import { Link } from "react-router-dom";
 
 import moment from "moment";
 import axios from "axios";
@@ -43,7 +44,7 @@ const RestaurantPost = ({ post }) => {
           <div className='postTopLeft'>
             <img className='postProfileImg' src={user.profilePicture} alt='' />
             <span className='postUsername'> {user.username} </span>
-            <p>Posted {moment(post.updatedAt).fromNow()}</p>
+            <p className='posttime'> {moment(post.updatedAt).fromNow()}</p>
           </div>
         </div>
         <div className='postCenter'>

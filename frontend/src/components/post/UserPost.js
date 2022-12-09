@@ -1,10 +1,10 @@
 import { useState, useEffect, useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
+import { Link } from "react-router-dom";
 
 import moment from "moment";
 import axios from "axios";
 import heart from "../../assets/heart.png";
-
 import "./post.css";
 
 const UserPost = ({ post }) => {
@@ -60,7 +60,12 @@ const UserPost = ({ post }) => {
             <img className='postProfileImg' src={user.profilePicture} alt='' />
             <span className='postUsername'>
               <span className='bold'> {user.username} </span>in{" "}
-              <span className='bold'>{restaurant.restaurantname}</span>
+              <Link
+                className='linkwithout'
+                to={`/restaurant/${restaurant.restaurantname}`}
+              >
+                <span className='bold'>{restaurant.restaurantname}</span>
+              </Link>
             </span>
             <p>Posted {moment(post.updatedAt).fromNow()}</p>
           </div>

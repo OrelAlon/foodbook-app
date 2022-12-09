@@ -11,7 +11,6 @@ import "./restaurant.css";
 const Restaurant = () => {
   const [restaurant, setRestaurant] = useState({});
   const restaurantname = useParams().restaurantname;
-  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 
   useEffect(() => {
     const fetchRestaurant = async () => {
@@ -34,11 +33,7 @@ const Restaurant = () => {
           <div className='restaurantInfo'>
             <img
               className='restaurantImg'
-              src={
-                restaurant.profilePicture
-                  ? restaurant.profilePicture
-                  : PF + restaurant.profilePicture
-              }
+              src={restaurant.profilePicture}
               alt=''
             />
 

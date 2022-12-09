@@ -3,7 +3,6 @@ import { useParams } from "react-router";
 
 import axios from "axios";
 
-import TopBar from "../../components/topbar/TopBar";
 import RestaurantFeed from "../../components/feed/RestaurantFeed";
 
 import "./restaurant.css";
@@ -26,7 +25,6 @@ const Restaurant = () => {
 
   return (
     <>
-      <TopBar />
       <div className='restaurantPage'>
         <div></div>
         <div className='restaurantRight'>

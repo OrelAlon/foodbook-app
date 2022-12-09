@@ -12,7 +12,6 @@ const register = async (req, res) => {
       folder: "avatars",
       width: 200,
       crop: "scale",
-      effect: "sharpen",
     });
 
     // bcrypt for new password

@@ -9,7 +9,9 @@
   background-size: 100% 100%;
   /* background-color: black; */
 }
-
+.capitalize {
+  text-transform: capitalize;
+}
 .app__navbar-logo {
   display: flex;
   justify-content: flex-start;

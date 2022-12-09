@@ -10,31 +10,30 @@ import "./navbar.css";
 
 const Navbar = () => {
   const [toggleMenu, setToggleMenu] = useState(false);
-  const [leftTitle, setLeftTitle] = useState("");
-  const [middleTitle, setMiddleTitle] = useState("");
+  const [leftTitle, setLeftTitle] = useState("my profile");
+  const [middleTitle, setMiddleTitle] = useState("restaurants");
   const { user } = useContext(AuthContext);
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 
   const location = useLocation();
-  console.log("lookk " + window.location.pathname);
 
   // useEffect(() => {
   //   switch (location.pathname) {
   //     case "/":
-  //       setLeftTitle("My Profilee");
+  //       setLeftTitle("My Profile /");
   //       setMiddleTitle("Restaurants");
   //       break;
-  //     case location.pathname.startsWith("/profile"):
+  //     case "/profile":
   //       setLeftTitle("Feed");
   //       setMiddleTitle("Restaurants");
   //       break;
-  //     case "/analytics":
+  //     case "/restaurants":
   //       setLeftTitle("My Profile");
-  //       setMiddleTitle("Restaurants");
+  //       setMiddleTitle("Feed");
   //       break;
   //     default:
-  //       setLeftTitle("My Profile def");
-  //       setMiddleTitle("Restaurants");
+  //       setLeftTitle("Restaurants");
+  //       setMiddleTitle("Feed");
   //       break;
   //   }
   // }, [location.pathname]);
@@ -55,12 +54,12 @@ const Navbar = () => {
         </div>
       </Link>
 
-      <div className='app__navbar-login'>
+      <div className='app__navbar-login capitalize'>
         <Link to={`/profile/${user.username}`} className='p__opensans'>
           {leftTitle}
         </Link>
         <div />
-        <Link to={`/Restaurants`} className='p__opensans'>
+        <Link to={`/restaurants`} className='p__opensans'>
           {middleTitle}
         </Link>
         <div />
@@ -93,7 +92,7 @@ const Navbar = () => {
               </li>
               <li>
                 <Link
-                  to={`/Restaurants`}
+                  to={`/restaurants`}
                   className='p__opensans auto'
                   onClick={() => setToggleMenu(false)}
                 >

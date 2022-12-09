@@ -45,7 +45,7 @@ function App() {
               <Route path='/login' element={<Login />} />
               <Route path='/register' element={<Register />} />
               <Route path='/profile/:username' element={<Profile />} />
-              <Route path='/Restaurants' element={<AllRestaurants />} />
+              <Route path='/restaurants' element={<AllRestaurants />} />
               <Route
                 path='/restaurant/:restaurantname'
                 element={<Restaurant />}

@@ -47,8 +47,9 @@ const updateUser = async (req, res) => {
       // upload to cloudinary
       const result = await cloudinary.v2.uploader.upload(file.tempFilePath, {
         folder: "avatars",
-        width: 150,
+        width: 800,
         crop: "scale",
+        effect: "sharpen",
       });
 
       user.profilePicture = result.secure_url;

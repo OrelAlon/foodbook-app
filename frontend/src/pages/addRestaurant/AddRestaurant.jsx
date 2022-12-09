@@ -2,7 +2,6 @@ import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import React from "react";
 import axios from "axios";
-import TopBar from "../../components/topbar/TopBar";
 import "./addRestaurant.css";
 
 const AddRestaurant = () => {
@@ -28,7 +27,7 @@ const AddRestaurant = () => {
 
   return (
     <>
-      <TopBar />
+      {/* // <TopBar /> */}
       <div className='addRestaurant'>
         <form action='submit' className='formBox' onSubmit={handleSubmit}>
           <label htmlFor='file' className='loginImg'>

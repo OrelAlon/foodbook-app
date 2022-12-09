@@ -9,8 +9,9 @@ const createRestaurant = async (req, res) => {
     // upload to cloudinary
     const result = await cloudinary.v2.uploader.upload(file.tempFilePath, {
       folder: "avatars",
-      width: 150,
+      width: 500,
       crop: "scale",
+      effect: "sharpen",
     });
 
     const newRestaurant = new Restaurant({

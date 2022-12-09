@@ -30,29 +30,19 @@ const AddRestaurant = () => {
       {/* // <TopBar /> */}
       <div className='addRestaurant'>
         <form action='submit' className='formBox' onSubmit={handleSubmit}>
-          <label htmlFor='file' className='loginImg'>
-            Add Restaurant Name
-          </label>
+          <label htmlFor='file'>Add Restaurant Name</label>
           <input
             placeholder='Restaurant Name'
             type='string'
             required
-            className='restaurantInput'
             ref={restaurantnameRef}
           />
-          <label htmlFor='file' className='loginImg'>
-            City
-          </label>
-          <input
-            placeholder='Restaurant Description'
-            type='string'
-            className='restaurantInput'
-            ref={cityRef}
-          />
+          <label htmlFor='file'>City</label>
+          <input placeholder='City' type='string' ref={cityRef} />
 
           <div className='imgLog'>
             <label htmlFor='file' className='loginImg'>
-              <span className='shareOptionText'>Add Restaurant Image</span>
+              <div className='shareOptionText'>Add Image</div>
               <input
                 required
                 style={{ display: "none" }}

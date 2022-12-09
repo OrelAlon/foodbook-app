@@ -94,7 +94,7 @@ const Register = () => {
           <div className='imgLog'>
             {/* http://jsfiddle.net/4cwpLvae/ */}
             <label htmlFor='file' className='loginImg'>
-              <span className='shareOptionText'>Add Profile Photo</span>
+              <div className='shareOptionText'>Add Profile Photo</div>
               <input
                 required
                 style={{ display: "none" }}

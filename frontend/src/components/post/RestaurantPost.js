@@ -13,8 +13,6 @@ const RestaurantPost = ({ post }) => {
   const [user, setUser] = useState({});
   const { user: currentUser } = useContext(AuthContext);
 
-  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
-
   useEffect(() => {
     setIsLiked(post.likes.includes(currentUser._id));
   }, [currentUser._id, post.likes]);
@@ -43,21 +41,13 @@ const RestaurantPost = ({ post }) => {
       <div className='postWrapper'>
         <div className='postTop'>
           <div className='postTopLeft'>
-            <img
-              className='postProfileImg'
-              src={
-                user.profilePicture
-                  ? PF + user.profilePicture
-                  : PF + "noAvatar.png"
-              }
-              alt=''
-            />
+            <img className='postProfileImg' src={user.profilePicture} alt='' />
             <span className='postUsername'> {user.username} </span>
             <p>Posted {moment(post.updatedAt).fromNow()}</p>
           </div>
         </div>
         <div className='postCenter'>
-          <img className='postImg' src={PF + post.img} alt='' />
+          <img className='postImg' src={post.img} alt='' />
         </div>
         <div className='postBottom'>
           <div className='postBottomLeft'>

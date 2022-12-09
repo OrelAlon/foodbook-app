@@ -16,8 +16,6 @@ const Post = ({ post }) => {
 
   const { user: currentUser } = useContext(AuthContext);
 
-  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
-
   useEffect(() => {
     const fetchUser = async () => {
       const res = await axios.get(`/api/users/?userId=${post.userId}`);
@@ -53,11 +51,7 @@ const Post = ({ post }) => {
             <Link to={`/profile/${user.username}`}>
               <img
                 className='postProfileImg'
-                src={
-                  user.profilePicture
-                    ? PF + user.profilePicture
-                    : "https://media.istockphoto.com/id/1131164548/vector/avatar-5.jpg?s=612x612&w=0&k=20&c=CK49ShLJwDxE4kiroCR42kimTuuhvuo2FH5y_6aSgEo="
-                }
+                src={user.profilePicture}
                 alt=''
               />
             </Link>
@@ -83,7 +77,7 @@ const Post = ({ post }) => {
         <div className='postCenter'>
           <img
             className='postImg'
-            src={PF + post.img}
+            src={post.img}
             alt=''
             width='200'
             height='100'

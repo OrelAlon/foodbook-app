@@ -13,7 +13,6 @@ const UserPost = ({ post }) => {
   const [user, setUser] = useState({});
   const [restaurant, setRestaurant] = useState({});
   const { user: currentUser } = useContext(AuthContext);
-  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 
   useEffect(() => {
     setIsLiked(post.likes.includes(currentUser._id));
@@ -58,15 +57,7 @@ const UserPost = ({ post }) => {
       <div className='postWrapper'>
         <div className='postTop'>
           <div className='postTopLeft'>
-            <img
-              className='postProfileImg'
-              src={
-                user.profilePicture
-                  ? PF + user.profilePicture
-                  : PF + "noAvatar.png"
-              }
-              alt=''
-            />
+            <img className='postProfileImg' src={user.profilePicture} alt='' />
             <span className='postUsername'>
               <span className='bold'> {user.username} </span>in{" "}
               <span className='bold'>{restaurant.restaurantname}</span>
@@ -80,7 +71,7 @@ const UserPost = ({ post }) => {
           )}
         </div>
         <div className='postCenter'>
-          <img className='postImg' src={PF + post.img} alt='' />
+          <img className='postImg' src={post.img} alt='' />
         </div>
         <div className='postBottom'>
           <div className='postBottomLeft'>

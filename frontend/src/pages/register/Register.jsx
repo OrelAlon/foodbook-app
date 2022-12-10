@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
 import axios from "axios";
@@ -12,35 +12,12 @@ const Register = () => {
   const passwordAgainRef = useRef();
 
   const [file, setFile] = useState(null);
-  const [preview, setPreview] = useState();
   const [errorMsg, setErrorMsg] = useState("");
-
-  useEffect(() => {
-    if (!file) {
-      setPreview(undefined);
-      return;
-    }
-    const objectUrl = URL.createObjectURL(file);
-    setPreview(objectUrl);
-
-    // free memory when ever this component is unmounted
-    return () => URL.revokeObjectURL(objectUrl);
-  }, [file]);
 
   const navigate = useNavigate();
 
-  const onSelectFile = (e) => {
-    if (!e.target.files || e.target.files.length === 0) {
-      setFile(undefined);
-      return;
-    }
-
-    setFile(e.target.files[0]);
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     if (passwordRef.current.value !== passwordAgainRef.current.value) {
       return setErrorMsg("Password don't match...");
     } else {
@@ -53,7 +30,7 @@ const Register = () => {
         data.set("password", passwordRef.current.value);
         await axios.post("/api/auth/register", data);
 
-        await navigate("/login");
+        navigate("/login");
       } catch (error) {
         console.log(error);
       }
@@ -117,7 +94,7 @@ const Register = () => {
           <div className='imgLog'>
             {/* http://jsfiddle.net/4cwpLvae/ */}
             <label htmlFor='file' className='loginImg'>
-              <div className='shareOptionText'>Add Profile Photo</div>
+              <span className='shareOptionText'>Add Profile Photo</span>
               <input
                 required
                 style={{ display: "none" }}
@@ -125,9 +102,8 @@ const Register = () => {
                 name='file'
                 id='file'
                 accept='.png,.jpeg,.jpg,.jfif'
-                onChange={(e) => onSelectFile}
+                onChange={(e) => setFile(e.target.files[0])}
               />
-              {file && <img src={preview} />}
             </label>
           </div>
           <h1 className='errMsg'>{errorMsg}</h1>

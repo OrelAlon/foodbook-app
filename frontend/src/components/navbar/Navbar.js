@@ -96,7 +96,7 @@ const Navbar = () => {
                   className='p__opensans auto'
                   onClick={() => setToggleMenu(false)}
                 >
-                  Restaurants
+                  All Restaurants
                 </Link>
               </li>
               <li>
@@ -105,12 +105,12 @@ const Navbar = () => {
                   style={{ textDecoration: "none" }}
                   onClick={() => setToggleMenu(false)}
                 >
-                  Feed
+                  Edit user
                 </Link>
               </li>
               <li>
                 <a href='#contact' onClick={() => setToggleMenu(false)}>
-                  Contact Us
+                  Delete account
                 </a>
               </li>
               <li onClick={handleLogout}>

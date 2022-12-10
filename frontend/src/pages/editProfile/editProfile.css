@@ -26,10 +26,11 @@
 }
 
 .edit_profile input,
-textarea {
+.edit_profile textarea {
   /* To make sure that all text fields have the same font settings
        By default, textareas have a monospace font */
   font: 1em sans-serif;
+  color: #000;
 
   /* Uniform text field size */
   width: 300px;
@@ -40,7 +41,7 @@ textarea {
 }
 
 .edit_profile input:focus,
-textarea:focus {
+.edit_profile textarea:focus {
   /* Additional highlight for focused elements */
   border-color: #000;
 }

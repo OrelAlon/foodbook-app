@@ -7,53 +7,50 @@ import axios from "axios";
 import "./editProfile.css";
 
 const EditProfile = () => {
+  const usernameRef = useRef();
+  const emailRef = useRef();
+  const passwordRef = useRef();
+  const confirmPasswordRef = useRef();
+
+  const [test, setTest] = useState("test work");
   const [file, setFile] = useState(null);
   const [picMessage, setPicMessage] = useState();
+  const [errorMsg, setErrorMsg] = useState("");
+
   const [user, setCurrentUser] = useState(
     JSON.parse(localStorage.getItem("user")) || null
   );
   const navigate = useNavigate();
 
   useEffect(() => {
-    // const fetchRestaurants = async () => {
-    //   const res = await axios.get(`/api/restaurants/restaurants`);
-    //   setRestaurants(res.data);
-    // };
-    // fetchRestaurants();
+    console.log("k");
   }, []);
 
   const postDetails = async (e) => {
     e.preventDefault();
-    try {
-      const data = new FormData();
-      data.set("profilePicture", file);
-      data.set("userId", user._id);
-      await axios.put("/api/users/" + user._id, data);
-      localStorage.setItem("user", JSON.stringify(user));
+    if (passwordRef.current.value !== confirmPasswordRef.current.value) {
+      return setErrorMsg("Password don't match...");
+    } else {
+      setErrorMsg("");
       try {
-        window.location.reload(false);
+        const data = new FormData();
+        data.set("profilePicture", file);
+        data.append("profilePicture", test);
+        data.set("userId", user._id);
+        await axios.put("/api/users/" + user._id, data);
+        localStorage.setItem("user", JSON.stringify(user));
+        try {
+          window.location.reload(false);
 
-        navigate("/login");
+          navigate("/login");
+        } catch (error) {
+          console.log(error);
+        }
       } catch (error) {
         console.log(error);
       }
-    } catch (error) {
-      console.log(error);
     }
   };
-
-  //       .then((res) => res.json())
-  //       .then((data) => {
-  //         setPic(data.url.toString());
-  //         console.log(pic);
-  //       })
-  //       .catch((err) => {
-  //         console.log(err);
-  //       });
-  //   } else {
-  //     return setPicMessage("Please Select an Image");
-  //   }
-  // };
 
   return (
     <>
@@ -64,25 +61,34 @@ const EditProfile = () => {
           <ul>
             <li>
               <label htmlFor='name'>Name:</label>
-              <input type='text' id='name' name='user_name' />
+              <input type='text' id='name' ref={usernameRef} name='user_name' />
             </li>
             <li>
               <label htmlFor='mail'>E-mail:</label>
-              <input type='email' id='mail' name='user_email' />
+              <input type='email' id='mail' ref={emailRef} name='user_email' />
             </li>
             <li>
               <label htmlFor='mail'>Password:</label>
-              <input type='email' id='mail' name='user_email' />
+              <input
+                type='email'
+                id='mail'
+                ref={passwordRef}
+                name='user_email'
+              />
             </li>
             <li>
               <label htmlFor='mail'>Confirm Password:</label>
-              <input type='email' id='mail' name='user_email' />
+              <input
+                type='email'
+                id='mail'
+                ref={confirmPasswordRef}
+                name='user_email'
+              />
             </li>
             <li>
               <label htmlFor='file'>Change Profile Image:</label>
 
               <input
-                required
                 // style={}
                 type='file'
                 name='file'

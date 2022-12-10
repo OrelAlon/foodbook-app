@@ -11,6 +11,7 @@ import Register from "./pages/register/Register.jsx";
 import Login from "./pages/login/Login.jsx";
 import Home from "./pages/home/Home.jsx";
 import Profile from "./pages/profile/Profile.jsx";
+import EditProfile from "./pages/editProfile/EditProfile";
 import Restaurant from "./pages/restaurant/Restaurant";
 import AllRestaurants from "./pages/allRestaurants/AllRestaurants";
 import AddRestaurant from "./pages/addRestaurant/AddRestaurant.jsx";
@@ -45,6 +46,8 @@ function App() {
               <Route path='/login' element={<Login />} />
               <Route path='/register' element={<Register />} />
               <Route path='/profile/:username' element={<Profile />} />
+              <Route path='/editprofile' element={<EditProfile />} />
+
               <Route path='/restaurants' element={<AllRestaurants />} />
               <Route
                 path='/restaurant/:restaurantname'

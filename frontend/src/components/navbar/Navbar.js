@@ -101,7 +101,7 @@ const Navbar = () => {
               </li>
               <li>
                 <Link
-                  to='/'
+                  to='/editprofile'
                   style={{ textDecoration: "none" }}
                   onClick={() => setToggleMenu(false)}
                 >

@@ -9,7 +9,7 @@ const Register = () => {
   const usernameRef = useRef();
   const emailRef = useRef();
   const passwordRef = useRef();
-  const passwordAgainRef = useRef();
+  const confirmPasswordRef = useRef();
 
   const [file, setFile] = useState(null);
   const [errorMsg, setErrorMsg] = useState("");
@@ -18,7 +18,7 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (passwordRef.current.value !== passwordAgainRef.current.value) {
+    if (passwordRef.current.value !== confirmPasswordRef.current.value) {
       return setErrorMsg("Password don't match...");
     } else {
       setErrorMsg("");
@@ -81,10 +81,10 @@ const Register = () => {
             ></input>
           </div>
           <div className='input-div'>
-            <p>password again:</p>
+            <p>Confirm Password:</p>
             <input
               type='password'
-              ref={passwordAgainRef}
+              ref={confirmPasswordRef}
               className='text'
               name='password'
               required

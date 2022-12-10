@@ -105,7 +105,7 @@ const Navbar = () => {
                   style={{ textDecoration: "none" }}
                   onClick={() => setToggleMenu(false)}
                 >
-                  Edit user
+                  Update Profile
                 </Link>
               </li>
               <li>

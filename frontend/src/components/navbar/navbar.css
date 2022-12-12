@@ -28,10 +28,17 @@
 }
 .logo {
   font-size: 24px;
-  margin-left: 65px;
+  margin-left: 5px;
   font-weight: bold;
   color: goldenrod;
   cursor: pointer;
+}
+.shareProfileImg {
+  width: 3.2rem;
+  height: 3.2rem;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 10px;
 }
 .app__navbar-links {
   flex: 1;

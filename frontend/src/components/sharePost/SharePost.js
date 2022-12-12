@@ -4,6 +4,7 @@ import { AuthContext } from "../../context/AuthContext";
 import axios from "axios";
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
+import AsyncSelect from "react-select/async";
 
 import { foodCategoryOptions, dishTypeOptions } from "../../assets/foodData";
 import { BiImage } from "react-icons/bi";
@@ -63,10 +64,18 @@ const SharePost = () => {
     fetchRestaurants();
   }, [file]);
 
+  const loadOptions = (searchValue, callback) => {
+    setTimeout(() => {
+      const filterOptions = restaurants.filter((option) =>
+        option.label.toLowerCase().includes(searchValue.toLowerCase())
+      );
+      callback(filterOptions);
+    }, 1000);
+  };
   return (
     <div className='share'>
       <div className='shareWrapper'>
-        <div className='shareTop'>
+        {/* <div className='shareTop'>
           <img className='shareProfileImg' src={user.profilePicture} alt='' />
 
           <input
@@ -74,14 +83,14 @@ const SharePost = () => {
             placeholder={"What do you think " + user.username + "?"}
             ref={desc}
           />
-        </div>
-        <hr className='shareHr' />
+        </div> */}
+        {/* <hr className='shareHr' /> */}
 
         <form className='shareBottom' onSubmit={submitHandler}>
           <div className='shareOptions'>
             <label htmlFor='file' className='shareOption'>
               {/* <span className='shareText'>Upload</span> */}
-              <BiImage fontSize={22} color={file ? "green" : "red"} />
+              <BiImage fontSize={26} color={file ? "green" : "red"} />
               <input
                 style={{ display: "none" }}
                 type='file'
@@ -92,24 +101,28 @@ const SharePost = () => {
             </label>
             {file && <ImageUpload file={file} setFile={setFile} />}
 
-            <Select
-              options={restaurantsList}
+            <AsyncSelect
+              loadOptions={loadOptions}
               components={animatedComponents}
               onChange={setRestaurantName}
+              className='select-post'
             />
             <Select
               options={dishTypeOptions}
               components={animatedComponents}
               isMulti
               onChange={setSelectDishType}
+              className='select-post'
             />
             <Select
               options={foodCategoryOptions}
+              defaultValue={"Food - Category"}
               // closeMenuOnSelect={false}
               components={animatedComponents}
               // defaultValue={[colourOptions[4], colourOptions[5]]}
               isMulti
               onChange={setSelectFoodCatgory}
+              className='select-post'
             />
           </div>
           <button className='shareButton' type='submit'>

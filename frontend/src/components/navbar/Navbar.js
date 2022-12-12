@@ -13,7 +13,6 @@ const Navbar = () => {
   const [leftTitle, setLeftTitle] = useState("my profile");
   const [middleTitle, setMiddleTitle] = useState("restaurants");
   const { user } = useContext(AuthContext);
-  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 
   const navigate = useNavigate();
 
@@ -26,7 +25,9 @@ const Navbar = () => {
     <nav className='app__navbar'>
       <Link to='/' style={{ textDecoration: "none" }}>
         <div className='app__navbar-logo'>
-          <img src={Food} alt='' className='foodImg' />
+          {/* <img src={Food} alt='' className='foodImg' /> */}
+          <img className='shareProfileImg' src={user.profilePicture} alt='' />
+
           <span className='logo'>Foodbook</span>
         </div>
       </Link>

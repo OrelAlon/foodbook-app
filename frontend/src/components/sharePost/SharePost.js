@@ -1,9 +1,10 @@
 import { useContext, useRef, useState, useEffect } from "react";
 import { AuthContext } from "../../context/AuthContext";
+
 import axios from "axios";
 import { BiImage } from "react-icons/bi";
 
-// import { Restaurants } from "../../dummyData";
+import ImageUpload from "../imageUpload/ImageUpload";
 
 import "./sharePost.css";
 
@@ -55,7 +56,6 @@ const SharePost = () => {
         <form className='shareBottom' onSubmit={submitHandler}>
           <div className='shareOptions'>
             <label htmlFor='file' className='shareOption'>
-              {/* <PermMedia htmlColor='tomato' className='shareIcon' /> */}
               <span className='shareText'>Upload</span>
               <BiImage fontSize={22} color={file ? "green" : "red"} />
               <input
@@ -67,23 +67,7 @@ const SharePost = () => {
               />
             </label>
 
-            {file && (
-              <div className='overflow-hidden relative'>
-                <i
-                  onClick={() => {
-                    setFile(null);
-                  }}
-                  className='remove-image'
-                >
-                  X
-                </i>
-                <img
-                  src={file ? URL.createObjectURL(file) : null}
-                  alt={file ? file.name : null}
-                  className='img-preview'
-                />
-              </div>
-            )}
+            {file && <ImageUpload file={file} setFile={setFile} />}
 
             <div className='shareOption'>
               {/* <Label htmlColor='blue' className='shareIcon' /> */}

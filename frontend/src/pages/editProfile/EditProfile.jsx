@@ -41,17 +41,14 @@ const EditProfile = () => {
 
       data.set("profilePicture", file);
       data.set("userId", currentUser._id);
-      console.log("currentUser");
-      console.log(currentUser);
 
       await axios.put("/api/users/" + currentUser._id, data);
       try {
-        // const res = await axios.get(`/api/users/?userId=${currentUser._id}`);
-        // setUpdateUser(res.data);
-        // await localStorage.setItem("user", JSON.stringify(updateUser));
-        localStorage.clear();
-        navigate("/login");
+        const res = await axios.get(`/api/users/?userId=${currentUser._id}`);
+        await localStorage.setItem("user", JSON.stringify(res.data));
         window.location.reload(true);
+
+        navigate("/");
       } catch (error) {
         console.log(error);
       }

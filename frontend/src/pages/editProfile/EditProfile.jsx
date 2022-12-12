@@ -1,8 +1,11 @@
 import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
+import ImageUpload from "../../components/imageUpload/ImageUpload";
 import Navbar from "../../components/navbar/Navbar";
 import axios from "axios";
+
+import { BiImage } from "react-icons/bi";
 
 import "./editProfile.css";
 
@@ -91,15 +94,27 @@ const EditProfile = () => {
               />
             </li> */}
             <li>
-              <label htmlFor='file'>Change Profile Image:</label>
+              <div className='shareOptions'>
+                <label htmlFor='file' className='shareOption'>
+                  <span className='shareText'>Upload</span>
+                  <BiImage fontSize={22} color={file ? "green" : "red"} />
+                  <input
+                    style={{ display: "none" }}
+                    type='file'
+                    id='file'
+                    accept='.png,.jpeg,.jpg,.jfif'
+                    onChange={(e) => setFile(e.target.files[0])}
+                  />
+                </label>
 
-              <input
-                type='file'
-                name='file'
-                id='file'
-                accept='.png,.jpeg,.jpg,.jfif'
-                onChange={(e) => setFile(e.target.files[0])}
-              />
+                {file && (
+                  <ImageUpload
+                    className={"register-image"}
+                    file={file}
+                    setFile={setFile}
+                  />
+                )}
+              </div>
             </li>
             {picMessage && <p>{picMessage}</p>}
             <li className='button'>

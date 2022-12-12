@@ -10,7 +10,7 @@ body,
 .register {
   text-align: center;
   position: relative;
-  height: 530px;
+  min-height: 530px;
   width: 405px;
   margin: auto;
   padding: 40px;
@@ -86,12 +86,11 @@ h2:first-child {
   /* opacity: 0.6; */
   margin: 20px;
   cursor: pointer;
-  border-radius: 20px;
-  border: 1px solid gray;
   font-size: 18px;
   padding-left: 20px;
   margin: auto;
   margin-top: 30px;
+  display: inline;
 }
 input[type="text"],
 input[type="email"],
@@ -140,6 +139,9 @@ input {
 
 .signin:focus {
   outline: none;
+}
+.log-image {
+  display: inline;
 }
 
 @media only screen and (max-width: 600px) {

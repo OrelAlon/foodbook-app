@@ -1,6 +1,9 @@
 import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
+import ImageUpload from "../../components/imageUpload/ImageUpload";
+import { BiImage } from "react-icons/bi";
+
 import axios from "axios";
 
 import "./register.css";
@@ -91,19 +94,26 @@ const Register = () => {
               minLength='6'
             ></input>
           </div>
-          <div className='imgLog'>
-            <label htmlFor='file' className='loginImg'>
-              <span className='shareOptionText'>Add Profile Photo</span>
+          <div className='shareOptions'>
+            <label htmlFor='file' className='shareOption'>
+              <span className='shareText'>Upload</span>
+              <BiImage fontSize={22} color={file ? "green" : "red"} />
               <input
-                required
                 style={{ display: "none" }}
                 type='file'
-                name='file'
                 id='file'
                 accept='.png,.jpeg,.jpg,.jfif'
                 onChange={(e) => setFile(e.target.files[0])}
               />
             </label>
+
+            {file && (
+              <ImageUpload
+                className={"register-image"}
+                file={file}
+                setFile={setFile}
+              />
+            )}
           </div>
           <h1 className='errMsg'>{errorMsg}</h1>
           <button className='signinBtn'>Sign Up</button>

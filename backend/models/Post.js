@@ -11,12 +11,12 @@ const PostSchema = new mongoose.Schema(
       required: true,
     },
     foodCategory: {
-      type: String,
-      max: 50,
+      type: Array,
+      default: [],
     },
     dishType: {
-      type: String,
-      max: 50,
+      type: Array,
+      default: [],
     },
     desc: {
       type: String,

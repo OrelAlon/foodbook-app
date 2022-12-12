@@ -16,6 +16,10 @@ const SharePost = () => {
   const { user } = useContext(AuthContext);
   const [file, setFile] = useState(null);
   const [restaurantName, setRestaurantName] = useState(null);
+  const [selectFoodCatgory, setSelectFoodCatgory] = useState([
+    { value: "breakfast", label: "breakfast" },
+  ]);
+  const [selectDishType, setSelectDishType] = useState([]);
   const [restaurants, setRestaurants] = useState([]);
 
   const desc = useRef();
@@ -29,6 +33,7 @@ const SharePost = () => {
       data.set("img", file);
       data.set("userId", user._id);
       data.set("desc", desc.current.value);
+      data.set("foodCategory", selectFoodCatgory);
       data.set("restaurantId", restaurantName);
       await axios.post("/api/posts", data);
       window.location.reload();
@@ -36,6 +41,9 @@ const SharePost = () => {
       console.log(error);
     }
   };
+  // const handleSelectFood = (selectOption) => {
+  //   setSelectFoodCatgory([...selectFoodCatgory, selectOption]);
+  // };
 
   useEffect(() => {
     const fetchRestaurants = async () => {
@@ -104,6 +112,7 @@ const SharePost = () => {
               components={animatedComponents}
               // defaultValue={[colourOptions[4], colourOptions[5]]}
               isMulti
+              onChange={setSelectFoodCatgory}
             />
           </div>
           <button className='shareButton' type='submit'>

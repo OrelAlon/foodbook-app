@@ -2,6 +2,9 @@ import { useContext, useRef, useState, useEffect } from "react";
 import { AuthContext } from "../../context/AuthContext";
 
 import axios from "axios";
+import Select from "react-select";
+import makeAnimated from "react-select/animated";
+
 import { BiImage } from "react-icons/bi";
 
 import ImageUpload from "../imageUpload/ImageUpload";
@@ -15,6 +18,16 @@ const SharePost = () => {
   const [restaurants, setRestaurants] = useState([]);
 
   const desc = useRef();
+
+  const categoryOptions = [
+    { value: "breakfast", label: "breakfast" },
+    { value: "vegan", label: "vegan" },
+    { value: "kosher", label: "kosher" },
+    { value: "gluten free", label: "gluten" },
+    { value: "fish", label: "fish" },
+    { value: "sharing", label: "sharing" },
+  ];
+  const animatedComponents = makeAnimated();
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -56,7 +69,7 @@ const SharePost = () => {
         <form className='shareBottom' onSubmit={submitHandler}>
           <div className='shareOptions'>
             <label htmlFor='file' className='shareOption'>
-              <span className='shareText'>Upload</span>
+              {/* <span className='shareText'>Upload</span> */}
               <BiImage fontSize={22} color={file ? "green" : "red"} />
               <input
                 style={{ display: "none" }}
@@ -66,9 +79,7 @@ const SharePost = () => {
                 onChange={(e) => setFile(e.target.files[0])}
               />
             </label>
-
             {file && <ImageUpload file={file} setFile={setFile} />}
-
             <div className='shareOption'>
               {/* <Label htmlColor='blue' className='shareIcon' /> */}
               {/* <span className='shareText'>Tag- </span>
@@ -94,6 +105,13 @@ const SharePost = () => {
                 })}
               </select>
             </div>
+            <Select
+              options={categoryOptions}
+              // closeMenuOnSelect={false}
+              components={animatedComponents}
+              // defaultValue={[colourOptions[4], colourOptions[5]]}
+              isMulti
+            />
           </div>
           <button className='shareButton' type='submit'>
             Share

@@ -1,5 +1,5 @@
 export const foodCategoryOptions = [
-  { value: "breakfast", label: "breakfast" },
+  { value: "breakfast", label: "breakfasttt" },
   { value: "vegan", label: "vegan" },
   { value: "kosher", label: "kosher" },
   { value: "gluten-free", label: "gluten-free" },
@@ -8,11 +8,11 @@ export const foodCategoryOptions = [
 ];
 
 export const dishTypeOptions = [
-  { value: "Entree", label: "breakfast" },
-  { value: "Appetizer", label: "vegan" },
-  { value: "Soup", label: "kosher" },
-  { value: "Main Course", label: "gluten" },
-  { value: "Salad", label: "fish" },
-  { value: "Dessert", label: "sharing" },
-  { value: "Cocktail", label: "sharing" },
+  { value: "Entree", label: "Entree" },
+  { value: "Appetizer", label: "Appetizer" },
+  { value: "Soup", label: "Soup" },
+  { value: "Main-Course", label: "Main-Course" },
+  { value: "Salad", label: "Salad" },
+  { value: "Dessert", label: "Dessert" },
+  { value: "Cocktail", label: "Cocktail" },
 ];

@@ -10,10 +10,19 @@ const PostSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    foodCategory: {
+      type: String,
+      max: 50,
+    },
+    dishType: {
+      type: String,
+      max: 50,
+    },
     desc: {
       type: String,
       max: 500,
     },
+
     img: {
       type: String,
     },

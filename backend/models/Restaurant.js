@@ -32,6 +32,10 @@ const RestaurantSchema = new mongoose.Schema(
       type: String,
       max: 50,
     },
+    foodCategory: {
+      type: String,
+      max: 50,
+    },
     city: {
       type: String,
       max: 50,

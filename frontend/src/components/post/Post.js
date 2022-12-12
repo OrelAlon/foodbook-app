@@ -29,7 +29,6 @@ const Post = ({ post }) => {
       setRestaurant(res.data);
     };
     fetchRestaurant();
-
     fetchUser();
   }, [post.userId, post.restaurantId]);
 
@@ -95,7 +94,15 @@ const Post = ({ post }) => {
           </div>
           <div className='postBottomRight'>
             {" "}
-            <p className='postText'>{post.desc}</p>
+            <ul className='tags'>
+              {post.foodCategory.map((el) => (
+                <li key={el.label}>
+                  <a href='#' className='tag'>
+                    {el.value}
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </div>

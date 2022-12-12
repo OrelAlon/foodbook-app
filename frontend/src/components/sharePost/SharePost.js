@@ -33,7 +33,7 @@ const SharePost = () => {
       data.set("img", file);
       data.set("userId", user._id);
       data.set("desc", desc.current.value);
-      data.set("foodCategory", selectFoodCatgory);
+      data.set("foodCategory", JSON.stringify(selectFoodCatgory));
       data.set("restaurantId", restaurantName);
       await axios.post("/api/posts", data);
       window.location.reload();
@@ -41,9 +41,6 @@ const SharePost = () => {
       console.log(error);
     }
   };
-  // const handleSelectFood = (selectOption) => {
-  //   setSelectFoodCatgory([...selectFoodCatgory, selectOption]);
-  // };
 
   useEffect(() => {
     const fetchRestaurants = async () => {

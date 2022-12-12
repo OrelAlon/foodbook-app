@@ -2,7 +2,7 @@ export const foodCategoryOptions = [
   { value: "breakfast", label: "breakfast" },
   { value: "vegan", label: "vegan" },
   { value: "kosher", label: "kosher" },
-  { value: "gluten free", label: "gluten" },
+  { value: "gluten-free", label: "gluten-free" },
   { value: "fish", label: "fish" },
   { value: "sharing", label: "sharing" },
 ];

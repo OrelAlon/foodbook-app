@@ -28,27 +28,25 @@ const EditProfile = () => {
 
   const postDetails = async (e) => {
     e.preventDefault();
-    if (passwordRef.current.value !== confirmPasswordRef.current.value) {
-      return setErrorMsg("Password don't match...");
-    } else {
-      setErrorMsg("");
-      try {
-        const data = new FormData();
-        data.set("profilePicture", file);
-        data.append("profilePicture", test);
-        data.set("userId", user._id);
-        await axios.put("/api/users/" + user._id, data);
-        localStorage.setItem("user", JSON.stringify(user));
-        try {
-          window.location.reload(false);
 
-          navigate("/login");
-        } catch (error) {
-          console.log(error);
-        }
+    setErrorMsg("");
+    try {
+      const data = new FormData();
+      data.set("profilePicture", file);
+      data.append("profilePicture", test);
+      data.set("userId", user._id);
+      await axios.put("/api/users/" + user._id, data);
+      localStorage.setItem("user", JSON.stringify(user));
+      try {
+        localStorage.clear();
+
+        navigate("/login");
+        window.location.reload(true);
       } catch (error) {
         console.log(error);
       }
+    } catch (error) {
+      console.log(error);
     }
   };
 

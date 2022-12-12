@@ -1,5 +1,5 @@
-import { useState, useContext, useEffect } from "react";
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import { useState, useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 
 import { GiHamburgerMenu } from "react-icons/gi";
@@ -14,29 +14,6 @@ const Navbar = () => {
   const [middleTitle, setMiddleTitle] = useState("restaurants");
   const { user } = useContext(AuthContext);
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
-
-  const location = useLocation();
-
-  // useEffect(() => {
-  //   switch (location.pathname) {
-  //     case "/":
-  //       setLeftTitle("My Profile /");
-  //       setMiddleTitle("Restaurants");
-  //       break;
-  //     case "/profile":
-  //       setLeftTitle("Feed");
-  //       setMiddleTitle("Restaurants");
-  //       break;
-  //     case "/restaurants":
-  //       setLeftTitle("My Profile");
-  //       setMiddleTitle("Feed");
-  //       break;
-  //     default:
-  //       setLeftTitle("Restaurants");
-  //       setMiddleTitle("Feed");
-  //       break;
-  //   }
-  // }, [location.pathname]);
 
   const navigate = useNavigate();
 
@@ -105,7 +82,7 @@ const Navbar = () => {
                   style={{ textDecoration: "none" }}
                   onClick={() => setToggleMenu(false)}
                 >
-                  Update Profile
+                  Update Profile Image
                 </Link>
               </li>
               <li>

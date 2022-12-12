@@ -59,7 +59,7 @@ const EditProfile = () => {
         <h1>Edit Profile</h1>
         <form method='post' className='black_font' onSubmit={postDetails}>
           <ul>
-            <li>
+            {/* <li>
               <label htmlFor='name'>Name:</label>
               <input type='text' id='name' ref={usernameRef} name='user_name' />
             </li>
@@ -84,12 +84,11 @@ const EditProfile = () => {
                 ref={confirmPasswordRef}
                 name='user_email'
               />
-            </li>
+            </li> */}
             <li>
               <label htmlFor='file'>Change Profile Image:</label>
 
               <input
-                // style={}
                 type='file'
                 name='file'
                 id='file'

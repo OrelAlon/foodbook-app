@@ -5,6 +5,7 @@ import axios from "axios";
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
 
+import { foodCategoryOptions } from "../../assets/foodData";
 import { BiImage } from "react-icons/bi";
 
 import ImageUpload from "../imageUpload/ImageUpload";
@@ -19,14 +20,6 @@ const SharePost = () => {
 
   const desc = useRef();
 
-  const categoryOptions = [
-    { value: "breakfast", label: "breakfast" },
-    { value: "vegan", label: "vegan" },
-    { value: "kosher", label: "kosher" },
-    { value: "gluten free", label: "gluten" },
-    { value: "fish", label: "fish" },
-    { value: "sharing", label: "sharing" },
-  ];
   const animatedComponents = makeAnimated();
 
   const submitHandler = async (e) => {
@@ -106,7 +99,7 @@ const SharePost = () => {
               </select>
             </div>
             <Select
-              options={categoryOptions}
+              options={foodCategoryOptions}
               // closeMenuOnSelect={false}
               components={animatedComponents}
               // defaultValue={[colourOptions[4], colourOptions[5]]}

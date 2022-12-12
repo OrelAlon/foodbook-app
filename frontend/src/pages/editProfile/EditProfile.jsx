@@ -7,24 +7,27 @@ import axios from "axios";
 import "./editProfile.css";
 
 const EditProfile = () => {
-  const usernameRef = useRef();
-  const emailRef = useRef();
-  const passwordRef = useRef();
-  const confirmPasswordRef = useRef();
+  // const usernameRef = useRef();
+  // const emailRef = useRef();
+  // const passwordRef = useRef();
+  // const confirmPasswordRef = useRef();
 
-  const [test, setTest] = useState("test work");
   const [file, setFile] = useState(null);
   const [picMessage, setPicMessage] = useState();
   const [errorMsg, setErrorMsg] = useState("");
 
-  const [user, setCurrentUser] = useState(
+  const [currentUser, setCurrentUser] = useState(
     JSON.parse(localStorage.getItem("user")) || null
   );
+
+  const [updateUser, setUpdateUser] = useState({});
+
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log("k");
-  }, []);
+    console.log("updateUser");
+    console.log(updateUser);
+  }, [updateUser]);
 
   const postDetails = async (e) => {
     e.preventDefault();
@@ -32,14 +35,18 @@ const EditProfile = () => {
     setErrorMsg("");
     try {
       const data = new FormData();
-      data.set("profilePicture", file);
-      data.append("profilePicture", test);
-      data.set("userId", user._id);
-      await axios.put("/api/users/" + user._id, data);
-      localStorage.setItem("user", JSON.stringify(user));
-      try {
-        localStorage.clear();
 
+      data.set("profilePicture", file);
+      data.set("userId", currentUser._id);
+      console.log("currentUser");
+      console.log(currentUser);
+
+      await axios.put("/api/users/" + currentUser._id, data);
+      try {
+        // const res = await axios.get(`/api/users/?userId=${currentUser._id}`);
+        // setUpdateUser(res.data);
+        // await localStorage.setItem("user", JSON.stringify(updateUser));
+        localStorage.clear();
         navigate("/login");
         window.location.reload(true);
       } catch (error) {
@@ -106,3 +113,5 @@ const EditProfile = () => {
 };
 
 export default EditProfile;
+
+// {_id: '63931ce478ba61e01dbf2a1b', username: 'ran', email: 'ran@gmail.com', password: '$2b$10$kzIPSI.kcsdFpRQN8bHaCexjqTvEtygLBwf0MWiN5.rux1q7PUiji', profilePicture: 'https://res.cloudinary.com/dlml6omng/image/upload/v1670851003/avatars/vrdkkhqygndqrnxdlqam.png', …}

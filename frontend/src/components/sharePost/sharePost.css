@@ -104,3 +104,15 @@
   margin: 3px;
   width: 8rem;
 }
+.img-preview {
+  width: 8rem;
+}
+.remove-image {
+  position: absolute;
+  font-size: larger;
+}
+.remove-image:hover {
+  cursor: pointer;
+  font-weight: bold;
+  font-size: large;
+}

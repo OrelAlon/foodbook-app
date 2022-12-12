@@ -57,7 +57,7 @@ const SharePost = () => {
             <label htmlFor='file' className='shareOption'>
               {/* <PermMedia htmlColor='tomato' className='shareIcon' /> */}
               <span className='shareText'>Upload</span>
-              <BiImage fontSize={22} color={"red"} />
+              <BiImage fontSize={22} color={file ? "green" : "red"} />
               <input
                 style={{ display: "none" }}
                 type='file'
@@ -66,6 +66,25 @@ const SharePost = () => {
                 onChange={(e) => setFile(e.target.files[0])}
               />
             </label>
+
+            {file && (
+              <div className='overflow-hidden relative'>
+                <i
+                  onClick={() => {
+                    setFile(null);
+                  }}
+                  className='remove-image'
+                >
+                  X
+                </i>
+                <img
+                  src={file ? URL.createObjectURL(file) : null}
+                  alt={file ? file.name : null}
+                  className='img-preview'
+                />
+              </div>
+            )}
+
             <div className='shareOption'>
               {/* <Label htmlColor='blue' className='shareIcon' /> */}
               {/* <span className='shareText'>Tag- </span>

@@ -3,24 +3,27 @@ import { useNavigate } from "react-router-dom";
 
 import ImageUpload from "../../components/imageUpload/ImageUpload";
 import { BiImage } from "react-icons/bi";
+import noAvatar from "../../assets/noAvatar.png";
 
 import axios from "axios";
 
 import "./register.css";
-
 const Register = () => {
   const usernameRef = useRef();
   const emailRef = useRef();
   const passwordRef = useRef();
   const confirmPasswordRef = useRef();
-
   const [file, setFile] = useState(null);
   const [errorMsg, setErrorMsg] = useState("");
-
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (file == null) {
+      setErrorMsg("Please upload a profile image");
+      return;
+    }
+
     if (passwordRef.current.value !== confirmPasswordRef.current.value) {
       return setErrorMsg("Password don't match...");
     } else {

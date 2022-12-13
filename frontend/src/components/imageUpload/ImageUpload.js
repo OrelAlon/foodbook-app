@@ -13,7 +13,6 @@ const ImageUpload = ({ file, setFile }) => {
       </i>
       <img
         src={file ? URL.createObjectURL(file) : null}
-        alt={file ? file.name : null}
         className='img-preview'
       />
     </div>

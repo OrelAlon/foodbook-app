@@ -9,7 +9,7 @@ body {
 .login {
   text-align: center;
   position: relative;
-  height: 530px;
+  min-height: 530px;
   width: 405px;
   margin: auto;
   padding: 40px;

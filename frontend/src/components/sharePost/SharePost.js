@@ -22,18 +22,18 @@ const SharePost = () => {
   const [restaurants, setRestaurants] = useState([]);
   const [restaurantsList, setRestaurantsList] = useState([]);
 
-  const desc = useRef();
   const animatedComponents = makeAnimated();
 
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
+      console.log("restaurantName " + JSON.stringify(restaurantName.value));
       const data = new FormData();
       data.set("img", file);
       data.set("userId", user._id);
-      data.set("desc", desc.current.value);
       data.set("foodCategory", JSON.stringify(selectFoodCatgory));
-      data.set("restaurantId", restaurantName);
+      data.set("dishType", JSON.stringify(selectDishType));
+      data.set("restaurantId", restaurantName.value);
       await axios.post("/api/posts", data);
       window.location.reload();
     } catch (error) {
@@ -45,11 +45,11 @@ const SharePost = () => {
     const sortRestaurants = (res) => {
       let arr = [];
       res.map((el) => {
-        arr.push({ value: el.restaurantname, label: el.restaurantname });
+        arr.push({ value: el._id, label: el.restaurantname });
       });
       return setRestaurantsList(
         arr.sort((a, b) =>
-          a.value.toLowerCase() > b.value.toLowerCase() ? 1 : -1
+          a.label.toLowerCase() > b.label.toLowerCase() ? 1 : -1
         )
       );
     };
@@ -62,30 +62,21 @@ const SharePost = () => {
       setRestaurants(res.data);
     };
     fetchRestaurants();
-  }, [file]);
+  }, []);
 
+  // filter rest
   const loadOptions = (searchValue, callback) => {
     setTimeout(() => {
-      const filterOptions = restaurants.filter((option) =>
+      const filterOptions = restaurantsList.filter((option) =>
         option.label.toLowerCase().includes(searchValue.toLowerCase())
       );
       callback(filterOptions);
-    }, 1000);
+    }, 0);
   };
+
   return (
     <div className='share'>
       <div className='shareWrapper'>
-        {/* <div className='shareTop'>
-          <img className='shareProfileImg' src={user.profilePicture} alt='' />
-
-          <input
-            className='shareInput'
-            placeholder={"What do you think " + user.username + "?"}
-            ref={desc}
-          />
-        </div> */}
-        {/* <hr className='shareHr' /> */}
-
         <form className='shareBottom' onSubmit={submitHandler}>
           <div className='shareOptions'>
             <label htmlFor='file' className='shareOption'>
@@ -118,16 +109,19 @@ const SharePost = () => {
               options={foodCategoryOptions}
               defaultValue={"Food - Category"}
               // closeMenuOnSelect={false}
-              components={animatedComponents}
               // defaultValue={[colourOptions[4], colourOptions[5]]}
+
+              components={animatedComponents}
               isMulti
               onChange={setSelectFoodCatgory}
               className='select-post'
             />
           </div>
-          <button className='shareButton' type='submit'>
-            Share
-          </button>
+          <div>
+            <button className='shareButton' type='submit'>
+              Share
+            </button>
+          </div>
         </form>
       </div>
     </div>

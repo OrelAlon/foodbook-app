@@ -86,41 +86,49 @@ const SharePost = () => {
       <div className='shareWrapper'>
         <form className='shareBottom' onSubmit={submitHandler}>
           <div className='shareOptions'>
-            <label htmlFor='file' className='shareOption'>
-              {/* <span className='shareText'>Upload</span> */}
-              <BiImage fontSize={26} color={file ? "green" : "red"} />
-              <input
-                style={{ display: "none" }}
-                type='file'
-                id='file'
-                accept='.png,.jpeg,.jpg,.jfif'
-                onChange={(e) => setFile(e.target.files[0])}
-              />
-            </label>
-
+            <div className='center'>
+              <label htmlFor='file' className='shareOption'>
+                {/* <span className='shareText'>Upload</span> */}
+                <BiImage fontSize={26} color={file ? "green" : "red"} />
+                <input
+                  style={{ display: "none" }}
+                  type='file'
+                  id='file'
+                  accept='.png,.jpeg,.jpg,.jfif'
+                  onChange={(e) => setFile(e.target.files[0])}
+                />
+              </label>
+              {file && (
+                <div className='img-upload'>
+                  <ImageUpload file={file} setFile={setFile} />
+                </div>
+              )}
+            </div>
             <AsyncSelect
               loadOptions={loadOptions}
               components={animatedComponents}
               onChange={setRestaurantName}
-              className='select-post'
+              className='async-post'
               defaultOptions
               cacheOptions
               defaultValue={{ label: "Restaurant ", value: 0 }}
             />
-            <Select
-              options={dishTypeOptions}
-              components={animatedComponents}
-              isMulti
-              onChange={setSelectDishType}
-              className='select-post'
-            />
-            <Select
-              options={foodCategoryOptions}
-              components={animatedComponents}
-              isMulti
-              onChange={setSelectFoodCatgory}
-              className='select-post'
-            />
+            <div className='select-div'>
+              <Select
+                options={dishTypeOptions}
+                components={animatedComponents}
+                isMulti
+                onChange={setSelectDishType}
+                className='select-post'
+              />
+              <Select
+                options={foodCategoryOptions}
+                components={animatedComponents}
+                isMulti
+                onChange={setSelectFoodCatgory}
+                className='select-post'
+              />
+            </div>
           </div>
           <div>
             <button className='shareButton' type='submit'>
@@ -129,11 +137,6 @@ const SharePost = () => {
           </div>
         </form>
         {errorMsg && <p className='err-msg'>{errorMsg}</p>}
-        {file && (
-          <div className='img-upload'>
-            <ImageUpload file={file} setFile={setFile} className='center' />
-          </div>
-        )}
       </div>
     </div>
   );

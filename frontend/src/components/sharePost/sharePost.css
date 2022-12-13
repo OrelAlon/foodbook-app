@@ -9,6 +9,8 @@
   padding: 10px;
   background-color: rgb(243, 238, 238);
   border-radius: 10px;
+  max-width: 98%;
+  /* max-width: 28rem; */
 }
 
 .shareTop {
@@ -32,9 +34,15 @@
   margin: 20px;
 }
 .select-post {
-  margin-right: 5px;
-  min-width: 7rem;
   font-size: 0.8rem;
+  margin: 8px;
+  margin-left: 10px;
+}
+.async-post {
+  font-size: 0.8rem;
+  min-width: 5rem;
+
+  margin: auto;
 }
 
 .shareBottom {
@@ -45,7 +53,7 @@
 
 .shareOptions {
   display: flex;
-  margin-left: 20px;
+  margin-left: 10px;
 }
 
 .shareOption {
@@ -101,7 +109,7 @@
   min-width: 4rem;
 }
 .img-preview {
-  width: 5rem;
+  width: 4rem;
 }
 .remove-image {
   position: absolute;
@@ -121,7 +129,9 @@
   margin: 5px;
 }
 .img-upload {
-  margin: 7px;
-  margin-top: 14px;
-  text-align: center;
+  margin: auto;
+  margin-top: 5px;
+}
+.center {
+  margin: auto;
 }

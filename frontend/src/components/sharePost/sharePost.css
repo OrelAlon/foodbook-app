@@ -33,8 +33,8 @@
 }
 .select-post {
   margin-right: 5px;
-  width: 90px;
-  font-size: 12px;
+  min-width: 7rem;
+  font-size: 0.8rem;
 }
 
 .shareBottom {
@@ -98,7 +98,7 @@
   border: solid rgb(172, 170, 170) 1px;
   border-radius: 10px;
   margin: 3px;
-  min-width: 3rem;
+  min-width: 4rem;
 }
 .img-preview {
   width: 5rem;
@@ -119,4 +119,9 @@
   align-items: center;
   text-align: center;
   margin: 5px;
+}
+.img-upload {
+  margin: 7px;
+  margin-top: 14px;
+  text-align: center;
 }

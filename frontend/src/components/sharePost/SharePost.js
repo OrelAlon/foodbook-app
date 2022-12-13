@@ -35,7 +35,6 @@ const SharePost = () => {
       return setErrorMsg("Please choose a restaurant");
     }
     try {
-      console.log("restaurantName " + JSON.stringify(restaurantName.value));
       const data = new FormData();
       data.set("img", file);
       data.set("userId", user._id);
@@ -98,13 +97,15 @@ const SharePost = () => {
                 onChange={(e) => setFile(e.target.files[0])}
               />
             </label>
-            {file && <ImageUpload file={file} setFile={setFile} />}
 
             <AsyncSelect
               loadOptions={loadOptions}
               components={animatedComponents}
               onChange={setRestaurantName}
               className='select-post'
+              defaultOptions
+              cacheOptions
+              defaultValue={{ label: "Restaurant ", value: 0 }}
             />
             <Select
               options={dishTypeOptions}
@@ -115,10 +116,6 @@ const SharePost = () => {
             />
             <Select
               options={foodCategoryOptions}
-              defaultValue={"Food - Category"}
-              // closeMenuOnSelect={false}
-              // defaultValue={[colourOptions[4], colourOptions[5]]}
-
               components={animatedComponents}
               isMulti
               onChange={setSelectFoodCatgory}
@@ -132,6 +129,11 @@ const SharePost = () => {
           </div>
         </form>
         {errorMsg && <p className='err-msg'>{errorMsg}</p>}
+        {file && (
+          <div className='img-upload'>
+            <ImageUpload file={file} setFile={setFile} className='center' />
+          </div>
+        )}
       </div>
     </div>
   );

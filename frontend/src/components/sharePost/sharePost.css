@@ -112,3 +112,11 @@
   font-weight: bold;
   font-size: large;
 }
+.err-msg {
+  margin: auto;
+  color: red;
+  font-weight: bold;
+  align-items: center;
+  text-align: center;
+  margin: 5px;
+}

@@ -94,10 +94,10 @@ const Post = ({ post }) => {
           </div>
           <div className='postBottomRight'>
             {" "}
-            <ul className='tags'>
+            <ul className='tags '>
               {post.foodCategory.map((el) => (
                 <li key={el.label}>
-                  <a href='#' className='tag'>
+                  <a href='#' className='tag category'>
                     {el.value}
                   </a>
                 </li>
@@ -106,7 +106,7 @@ const Post = ({ post }) => {
             <ul className='tags'>
               {post.dishType.map((el) => (
                 <li key={el.label}>
-                  <a href='#' className='tag'>
+                  <a href='#' className='tag type'>
                     {el.value}
                   </a>
                 </li>

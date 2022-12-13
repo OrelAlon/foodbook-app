@@ -21,11 +21,19 @@ const SharePost = () => {
   const [selectDishType, setSelectDishType] = useState([]);
   const [restaurants, setRestaurants] = useState([]);
   const [restaurantsList, setRestaurantsList] = useState([]);
+  const [errorMsg, setErrorMsg] = useState("");
 
   const animatedComponents = makeAnimated();
 
   const submitHandler = async (e) => {
     e.preventDefault();
+
+    if (file == null) {
+      return setErrorMsg("Please upload a image");
+    }
+    if (restaurantName == null) {
+      return setErrorMsg("Please choose a restaurant");
+    }
     try {
       console.log("restaurantName " + JSON.stringify(restaurantName.value));
       const data = new FormData();
@@ -123,6 +131,7 @@ const SharePost = () => {
             </button>
           </div>
         </form>
+        {errorMsg && <p className='err-msg'>{errorMsg}</p>}
       </div>
     </div>
   );

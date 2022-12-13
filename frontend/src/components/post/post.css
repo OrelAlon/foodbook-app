@@ -166,11 +166,19 @@
   top: 0;
 }
 
-.tag:hover {
+.category:hover {
   background-color: crimson;
   color: white;
 }
 
-.tag:hover::after {
+.category:hover::after {
   border-left-color: crimson;
+}
+.type:hover {
+  background-color: rgb(20, 202, 68);
+  color: white;
+}
+
+.type:hover::after {
+  border-left-color: rgb(20, 202, 68);
 }

@@ -2,7 +2,7 @@ import { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import { AiOutlineLike } from "react-icons/ai";
-
+import noAvatar from "../../assets/noAvatar.png";
 import moment from "moment";
 import axios from "axios";
 
@@ -50,7 +50,7 @@ const Post = ({ post }) => {
             <Link to={`/profile/${user.username}`}>
               <img
                 className='postProfileImg'
-                src={user.profilePicture}
+                src={user.profilePicture ? user.profilePicture : noAvatar}
                 alt=''
               />
             </Link>

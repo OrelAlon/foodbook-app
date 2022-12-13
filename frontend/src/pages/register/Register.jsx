@@ -94,8 +94,8 @@ const Register = () => {
               minLength='6'
             ></input>
           </div>
-          <div className='shareOptions'>
-            <label htmlFor='file' className='shareOption'>
+          <div className='shareOptions '>
+            <label htmlFor='file' className='shareOption share-div'>
               <span className='shareText'>Upload</span>
               <BiImage fontSize={22} color={file ? "green" : "red"} />
               <input
@@ -116,7 +116,7 @@ const Register = () => {
             )}
           </div>
           <h1 className='errMsg'>{errorMsg}</h1>
-          <button className='signinBtn'>Sign Up</button>
+          <button className='signinRegister'>Sign Up</button>
           {/* <ToastContainer /> */}
         </form>
       </div>

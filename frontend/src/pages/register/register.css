@@ -154,3 +154,21 @@ input {
 .errMsg {
   background-color: #8dade4;
 }
+
+.share-div {
+  margin: auto;
+  margin-top: 15px;
+}
+.signinRegister {
+  background-color: #1161ed;
+  color: #fff;
+  width: 89%;
+  padding: 10px 20px;
+  display: block;
+  border-radius: 20px;
+  transition: all 0.5s ease-in-out;
+  border: none;
+  text-transform: uppercase;
+  margin: auto;
+  margin-top: 15px;
+}

@@ -85,7 +85,7 @@ const Post = ({ post }) => {
         <div className='postBottom'>
           <div className='postBottomLeft'>
             <AiOutlineLike
-              fontSize={22}
+              fontSize={18}
               className='likeIcon'
               onClick={likeHandler}
               color={"blue"}
@@ -96,6 +96,15 @@ const Post = ({ post }) => {
             {" "}
             <ul className='tags'>
               {post.foodCategory.map((el) => (
+                <li key={el.label}>
+                  <a href='#' className='tag'>
+                    {el.value}
+                  </a>
+                </li>
+              ))}
+            </ul>
+            <ul className='tags'>
+              {post.dishType.map((el) => (
                 <li key={el.label}>
                   <a href='#' className='tag'>
                     {el.value}

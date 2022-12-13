@@ -17,7 +17,7 @@ const createPost = async (req, res) => {
     userId: req.body.userId,
     restaurantId: req.body.restaurantId,
     foodCategory: JSON.parse(req.body.foodCategory),
-    dishType: req.body.dishType,
+    dishType: JSON.parse(req.body.dishType),
     desc: req.body.desc,
     img: result.secure_url,
   });

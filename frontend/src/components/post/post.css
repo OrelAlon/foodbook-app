@@ -68,8 +68,8 @@
   margin-left: auto;
   margin-right: auto;
   border: 1px solid rgb(138, 138, 138);
-  width: 80%;
-  height: 60%;
+  width: 50%;
+  height: 40%;
 }
 
 .postBottom {
@@ -90,7 +90,7 @@
 }
 
 .postLikeCounter {
-  font-size: 1rem;
+  font-size: 0.7rem;
 }
 
 .deleteIcon {
@@ -133,11 +133,12 @@
   border-radius: 3px 0 0 3px;
   color: #999;
   display: inline-block;
-  height: 26px;
-  line-height: 26px;
+  height: 18px;
+  line-height: 20px;
   padding: 0 20px 0 23px;
   position: relative;
   margin: 0 10px 10px 0;
+  font-size: 10px;
   text-decoration: none;
   -webkit-transition: color 0.2s;
 }
@@ -151,14 +152,14 @@
   left: 10px;
   position: absolute;
   width: 6px;
-  top: 10px;
+  top: 7px;
 }
 
 .tag::after {
-  background: #fff;
-  border-bottom: 13px solid transparent;
+  background: rgb(222, 222, 222);
+  border-bottom: 9px solid transparent;
   border-left: 10px solid #eee;
-  border-top: 13px solid transparent;
+  border-top: 9px solid transparent;
   content: "";
   position: absolute;
   right: 0;

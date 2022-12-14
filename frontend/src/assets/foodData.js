@@ -9,12 +9,12 @@ export const dishTypeOptions = [
 ];
 
 export const foodCategoryOptions = [
-  { value: "breakfast", label: "breakfasttt", group: "sksk" },
-  { value: "vegan", label: "vegan", group: "sksk" },
-  { value: "kosher", label: "kosher", group: "sksk" },
-  { value: "gluten-free", label: "gluten-free", group: "sksk" },
-  { value: "fish", label: "fish", group: "sksfffk" },
-  { value: "sharing", label: "sharing", group: "sfffksk" },
+  { value: "breakfast", label: "breakfast" },
+  { value: "vegan", label: "vegan" },
+  { value: "kosher", label: "kosher" },
+  { value: "gluten-free", label: "gluten-free" },
+  { value: "fish", label: "fish" },
+  { value: "sharing", label: "sharing" },
 ];
 
 export const Price = [

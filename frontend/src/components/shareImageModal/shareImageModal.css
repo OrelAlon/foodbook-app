@@ -4,6 +4,7 @@
 }
 .instagram {
   width: 2rem;
+  cursor: pointer;
 }
 
 .shareOption {
@@ -15,8 +16,8 @@
 .upload-image-div {
   display: flex;
   margin: auto;
-  margin-top: 15px;
-  justify-content: space-evenly;
+  margin-bottom: 15px;
+  justify-content: center;
 }
 .share-btn-div {
   margin-top: 15px;

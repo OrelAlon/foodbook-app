@@ -30,7 +30,12 @@ function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
 
   const [restaurants, setRestaurants] = useState([]);
   const [restaurantsList, setRestaurantsList] = useState([]);
+  const [restaurantName, setRestaurantName] = useState(null);
+  const [selectFoodCatgory, setSelectFoodCatgory] = useState([]);
+  const [selectDishType, setSelectDishType] = useState([]);
+
   const [file, setFile] = useState(null);
+  const [errorMsg, setErrorMsg] = useState("");
 
   useEffect(() => {
     const fetchRestaurants = async () => {
@@ -59,6 +64,28 @@ function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
     sortRestaurants(restaurants);
   }, [restaurants]);
 
+  const submitHandler = async (e) => {
+    e.preventDefault();
+    if (file == null) {
+      return setErrorMsg("Please upload a image");
+    }
+    if (restaurantName == null) {
+      return setErrorMsg("Please choose a restaurant");
+    }
+    try {
+      const data = new FormData();
+      data.set("img", file);
+      data.set("userId", user._id);
+      data.set("foodCategory", JSON.stringify(selectFoodCatgory));
+      data.set("dishType", JSON.stringify(selectDishType));
+      data.set("restaurantId", restaurantName);
+      await axios.post("/api/posts", data);
+      window.location.reload();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <Modal
       overlayColor={
@@ -73,10 +100,30 @@ function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
       onClose={() => setShareImageOpened(false)}
     >
       {/* Modal content */}
-      <form className='infoForm'>
+      <form className='infoForm' onSubmit={submitHandler}>
+        <div className='upload-image-div'>
+          <label htmlFor='file' className='shareOption'>
+            {/* <span className='shareText'>Upload</span> */}
+            <BiImage fontSize={26} color={file ? "green" : "red"} />
+            <input
+              style={{ display: "none" }}
+              type='file'
+              id='file'
+              accept='.png,.jpeg,.jpg,.jfif'
+              onChange={(e) => setFile(e.target.files[0])}
+            />
+          </label>
+          {file && (
+            <div className='img-upload'>
+              <ImageUpload file={file} setFile={setFile} />
+            </div>
+          )}
+        </div>
+
         <div>
           <Select
             data={restaurantsList}
+            onChange={setRestaurantName}
             label='Resraurant:'
             placeholder='Select Resraurant'
             searchable
@@ -85,15 +132,17 @@ function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
             style={{ width: "70%", margin: "auto" }}
           />
           <Space h='sm' />
-          <MultiSelect
+          <Select
             data={dishTypeOptions}
+            onChange={setSelectDishType}
             label='Dish Type 🏷️:'
-            placeholder='Pick all that you like'
+            placeholder='Pick one'
             style={{ width: "70%", margin: "auto" }}
           />
           <Space h='sm' />
           <MultiSelect
             data={foodCategoryOptions}
+            onChange={setSelectFoodCatgory}
             label='Food Category 🏷️:'
             placeholder='Pick all that you like'
             style={{ width: "70%", margin: "auto" }}
@@ -113,26 +162,8 @@ function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
           />
         </div>
 
-        <div className='upload-image-div'>
-          <label htmlFor='file' className='shareOption'>
-            {/* <span className='shareText'>Upload</span> */}
-            <BiImage fontSize={26} color={file ? "green" : "red"} />
-            <input
-              style={{ display: "none" }}
-              type='file'
-              id='file'
-              accept='.png,.jpeg,.jpg,.jfif'
-              onChange={(e) => setFile(e.target.files[0])}
-            />
-          </label>
-          {file && (
-            <div className='img-upload'>
-              <ImageUpload file={file} setFile={setFile} />
-            </div>
-          )}
-        </div>
         <div className='share-btn-div'>
-          <span>
+          <span onClick={submitHandler}>
             Share to
             <img src={food} alt='foodbook' className='instagram' />
           </span>{" "}

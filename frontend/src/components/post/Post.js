@@ -95,19 +95,19 @@ const Post = ({ post }) => {
           <div className='postBottomRight'>
             {" "}
             <ul className='tags '>
-              {post.foodCategory.map((el) => (
-                <li key={el.label}>
+              {post.foodCategory.map((el, i) => (
+                <li key={i}>
                   <a href='#' className='tag category'>
-                    {el.value}
+                    {el}
                   </a>
                 </li>
               ))}
             </ul>
             <ul className='tags'>
-              {post.dishType.map((el) => (
-                <li key={el.label}>
+              {post.dishType.map((el, i) => (
+                <li key={i}>
                   <a href='#' className='tag type'>
-                    {el.value}
+                    {el}
                   </a>
                 </li>
               ))}

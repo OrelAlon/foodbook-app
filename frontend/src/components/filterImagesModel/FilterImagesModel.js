@@ -20,7 +20,7 @@ const FilterImagesModel = () => {
         icon={<IconSearch size={16} />}
         onChange={setRestaurantUserPick}
         placeholder='What on your Search Mind ?'
-        style={{ width: "50%", margin: "auto" }}
+        style={{ width: "60%", margin: "auto" }}
       />
       <Space h='sm' />
       <Select

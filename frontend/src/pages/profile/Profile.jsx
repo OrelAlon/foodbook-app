@@ -1,15 +1,19 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router";
+import { Link } from "react-router-dom";
 
 import axios from "axios";
 
-import Navbar from "../../components/navbar/Navbar";
+import NavMenu from "../../components/navMenu/NavMenu";
+import ShareImageModal from "../../components/shareImageModal/ShareImageModal";
 import UserFeed from "../../components/feed/UserFeed";
 
 import "./profile.css";
 
 const Profile = () => {
   const [user, setUser] = useState({});
+  const [shareImageOpened, setShareImageOpened] = useState(false);
+
   const username = useParams().username;
 
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
@@ -24,12 +28,32 @@ const Profile = () => {
 
   return (
     <>
-      <Navbar />
+      <Link to='/' style={{ textDecoration: "none" }}>
+        <p className='logo'>Foodbook</p>
+      </Link>
+      <div className='menu-div'>
+        {" "}
+        <button
+          onClick={() => setShareImageOpened(true)}
+          className='add-image-btn'
+        >
+          📷
+        </button>
+        <NavMenu />
+        <ShareImageModal
+          shareImageOpened={shareImageOpened}
+          setShareImageOpened={setShareImageOpened}
+        />
+      </div>{" "}
       <div className='profile'>
         <div className='profileRight'>
           <div className='profileRightTop'>
             <div className='profileCover'>
-              <img className='profileCoverImg' src={PF + "noc.jpg"} alt='' />
+              <img
+                className='profileCoverImg'
+                src={PF + "noCover.jpg"}
+                alt=''
+              />
               <img
                 className='profileUserImg'
                 src={user.profilePicture}

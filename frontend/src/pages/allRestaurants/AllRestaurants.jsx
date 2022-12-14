@@ -3,14 +3,16 @@ import { Link } from "react-router-dom";
 
 import axios from "axios";
 
-import Navbar from "../../components/navbar/Navbar";
 import RestaurantCard from "../../components/restaurantCard/RestaurantCard";
+import NavMenu from "../../components/navMenu/NavMenu";
+import ShareImageModal from "../../components/shareImageModal/ShareImageModal";
 
 import "./allRestaurants.css";
 
 const AllRestaurants = () => {
   const [restaurants, setRestaurants] = useState([]);
   const [searchRestaurant, setSearchRestaurant] = useState("");
+  const [shareImageOpened, setShareImageOpened] = useState(false);
 
   useEffect(() => {
     const fetchRestaurants = async () => {
@@ -22,7 +24,23 @@ const AllRestaurants = () => {
 
   return (
     <>
-      <Navbar />
+      <Link to='/' style={{ textDecoration: "none" }}>
+        <p className='logo'>Foodbook</p>
+      </Link>
+      <div className='menu-div'>
+        {" "}
+        <button
+          onClick={() => setShareImageOpened(true)}
+          className='add-image-btn'
+        >
+          📷
+        </button>
+        <NavMenu />
+        <ShareImageModal
+          shareImageOpened={shareImageOpened}
+          setShareImageOpened={setShareImageOpened}
+        />
+      </div>
       <Link to='/addrestaurant' className='linkTimeLine'>
         <button className='addRestaurantBtn'>Add Restaurant</button>
       </Link>

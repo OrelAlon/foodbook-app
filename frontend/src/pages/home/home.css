@@ -10,3 +10,34 @@
   -o-background-size: cover;
   background-size: cover;
 }
+
+.menu-div {
+  position: fixed;
+  right: 10px;
+  top: 10px;
+  z-index: 100;
+}
+.add-image-btn {
+  padding: 8px;
+  margin: 4px;
+  border-style: none;
+  background-color: #e9ecef;
+  border-radius: 5px;
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+}
+.logo {
+  font-size: 20px;
+  padding: 8px;
+  margin-left: 10px;
+  margin-top: 10px;
+  font-weight: bold;
+  color: goldenrod;
+  cursor: pointer;
+  background-color: #e9ecef;
+  border-radius: 5px;
+
+  width: auto;
+  width: fit-content;
+}

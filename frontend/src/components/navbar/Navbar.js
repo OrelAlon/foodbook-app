@@ -12,6 +12,8 @@ const Navbar = () => {
   const [toggleMenu, setToggleMenu] = useState(false);
   const [leftTitle, setLeftTitle] = useState("my profile");
   const [middleTitle, setMiddleTitle] = useState("restaurants");
+  const [shareImageOpened, setShareImageOpened] = useState(false);
+
   const { user } = useContext(AuthContext);
 
   const navigate = useNavigate();
@@ -58,6 +60,7 @@ const Navbar = () => {
               className='overlay__close'
               onClick={() => setToggleMenu(false)}
             />
+            <button>kssk</button>
             <ul className='app__navbar-smallscreen_links'>
               <li>
                 <Link

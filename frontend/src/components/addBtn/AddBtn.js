@@ -3,7 +3,7 @@ import "./addBtn.css";
 
 function AddBtn() {
   return (
-    <div className='floating-button'>
+    <div className=''>
       <button>Add Image</button>
     </div>
   );

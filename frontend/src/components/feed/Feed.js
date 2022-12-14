@@ -7,6 +7,7 @@ import Post from "../post/Post";
 import AddBtn from "../addBtn/AddBtn";
 import FilterImagesModel from "../filterImagesModel/FilterImagesModel";
 import ShareImageModal from "../shareImageModal/ShareImageModal";
+import NavMenu from "../navMenu/NavMenu";
 import "./feed.css";
 
 const Feed = ({ username }) => {
@@ -30,16 +31,6 @@ const Feed = ({ username }) => {
   return (
     <div className='feed'>
       <div className='feedWrapper'>
-        <div
-          className='floating-button'
-          onClick={() => setShareImageOpened(true)}
-        >
-          <AddBtn />
-        </div>
-        <ShareImageModal
-          shareImageOpened={shareImageOpened}
-          setShareImageOpened={setShareImageOpened}
-        />
         <FilterImagesModel />
         {posts.map((p) => (
           <Post key={p._id} post={p} />

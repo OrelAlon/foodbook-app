@@ -95,7 +95,7 @@ function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
       }
       overlayOpacity={0.55}
       overlayBlur={3}
-      size='80%'
+      size='95%'
       opened={shareImageOpened}
       onClose={() => setShareImageOpened(false)}
     >

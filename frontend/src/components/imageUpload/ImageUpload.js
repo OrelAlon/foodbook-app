@@ -1,3 +1,5 @@
+import "./imageUpload.css";
+
 const ImageUpload = ({ file, setFile }) => {
   return (
     <div className=''>

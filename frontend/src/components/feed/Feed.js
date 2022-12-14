@@ -40,7 +40,7 @@ const Feed = ({ username }) => {
           shareImageOpened={shareImageOpened}
           setShareImageOpened={setShareImageOpened}
         />
-        <FilterImagesModel restaurantUserPick={restaurantUserPick} />
+        <FilterImagesModel />
         {posts.map((p) => (
           <Post key={p._id} post={p} />
         ))}

@@ -9,7 +9,7 @@ import {
   Prices,
 } from "../../assets/foodData";
 
-const FilterImagesModel = ({ restaurantUserPick }) => {
+const FilterImagesModel = () => {
   const [restaurantUserPick, setRestaurantUserPick] = useState(null);
   const [dishTypePick, setDishTypePick] = useState([]);
   const [foodCatgoryPick, setFoodCatgoryPick] = useState([]);

@@ -26,6 +26,7 @@
   width: 36px;
   height: 36px;
   cursor: pointer;
+  border: solid rgb(124, 124, 124) 1px;
 }
 .logo {
   font-size: 20px;
@@ -37,7 +38,12 @@
   cursor: pointer;
   background-color: #e9ecef;
   border-radius: 5px;
+  border: solid rgb(124, 124, 124) 1px;
 
   width: auto;
   width: fit-content;
+}
+.logo:hover,
+.add-image-btn:hover {
+  background-color: #dee2e6;
 }

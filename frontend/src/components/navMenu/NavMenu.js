@@ -16,7 +16,7 @@ import ShareImageModal from "../shareImageModal/ShareImageModal";
 import "./navMenu.css";
 
 const NavMenu = () => {
-  const [toggleMenu, setToggleMenu] = useState(false);
+  const [toggleMenu, setToggleMenu] = useState(true);
   const [shareImageOpened, setShareImageOpened] = useState(false);
 
   const { user } = useContext(AuthContext);
@@ -31,7 +31,7 @@ const NavMenu = () => {
 
   return (
     <>
-      <Menu shadow='md' width={200} color='gray.2' paddingRight={0}>
+      <Menu shadow='md' width={200} color='gray.2'>
         <Menu.Target>
           <Button width={20} className='ham-btn'>
             🍔

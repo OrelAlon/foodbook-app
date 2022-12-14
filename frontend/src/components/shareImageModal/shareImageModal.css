@@ -1,0 +1,26 @@
+.slide-div {
+  width: 70%;
+  margin: auto;
+}
+.instagram {
+  width: 2rem;
+}
+
+.shareOption {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  margin: auto;
+}
+.upload-image-div {
+  display: flex;
+  margin: auto;
+  margin-top: 15px;
+  justify-content: space-evenly;
+}
+.share-btn-div {
+  margin-top: 15px;
+
+  display: flex;
+  justify-content: space-evenly;
+}

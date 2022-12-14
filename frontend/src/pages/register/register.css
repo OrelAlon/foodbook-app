@@ -110,7 +110,7 @@ input[type="password"] {
   box-shadow: 8px 8px 35px -5px #e0ebe5;
   border: 2px solid gray;
 }
-input {
+.input-div input {
   display: inline-block;
   padding-top: 20px;
   font-size: 14px;

@@ -88,7 +88,7 @@ input[type="password"] {
   color: #fff;
 }
 
-input {
+.input-div input {
   display: inline-block;
   padding-top: 20px;
   font-size: 14px;

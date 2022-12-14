@@ -41,7 +41,7 @@ const NavMenu = () => {
         <Menu.Dropdown>
           <Menu.Label>Application</Menu.Label>
           <Link to='/' style={{ textDecoration: "none" }}>
-            <Menu.Item>🖼️ Feed</Menu.Item>
+            <Menu.Item>📰 Feed</Menu.Item>
           </Link>
           <Link to={`/restaurants`} style={{ textDecoration: "none" }}>
             <Menu.Item>🍽 Restaurants</Menu.Item>{" "}
@@ -51,7 +51,7 @@ const NavMenu = () => {
             to={`/profile/${user.username}`}
             style={{ textDecoration: "none" }}
           >
-            <Menu.Item>👑 My Profile</Menu.Item>{" "}
+            <Menu.Item>🖼️ My Profile</Menu.Item>{" "}
           </Link>
 
           <Menu.Divider />

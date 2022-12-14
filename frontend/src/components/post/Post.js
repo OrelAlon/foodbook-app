@@ -6,6 +6,8 @@ import noAvatar from "../../assets/noAvatar.png";
 import moment from "moment";
 import axios from "axios";
 
+import { Image } from "@mantine/core";
+
 import "./post.css";
 
 const Post = ({ post }) => {

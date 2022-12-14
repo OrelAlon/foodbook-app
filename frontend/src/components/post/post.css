@@ -1,5 +1,5 @@
 .post {
-  width: 70%;
+  width: 85%;
   border-radius: 10px;
   -webkit-box-shadow: 0px 0px 66px -8px rgba(0, 0, 0, 0.98);
   box-shadow: 0px 0px 46px -8px rgba(0, 0, 0, 0.68);
@@ -40,12 +40,12 @@
 }
 
 .postUsername {
-  font-size: 1rem;
+  font-size: 0.8rem;
   /* font-weight: 500; */
   margin: 0 10px;
 }
 .restaurantname {
-  font-size: 1rem;
+  font-size: 0.8rem;
 }
 .postDate {
   font-size: 18px;
@@ -61,16 +61,13 @@
 }
 
 .postImg {
-  margin-top: 20px;
-  /* width: 100%; */
-  object-fit: contain;
   border-radius: 10px;
   display: block;
-  margin-left: auto;
-  margin-right: auto;
+  margin: auto;
   border: 1px solid rgb(138, 138, 138);
-  width: 50%;
-  height: 40%;
+  width: 16rem;
+  height: 15.625rem;
+  object-fit: cover;
 }
 
 .postBottom {

@@ -5,6 +5,7 @@ import axios from "axios";
 
 import Post from "../post/Post";
 import AddBtn from "../addBtn/AddBtn";
+import SearchBar from "../searchBar/SearchBar";
 import ShareImageModal from "../shareImageModal/ShareImageModal";
 import "./feed.css";
 
@@ -29,19 +30,17 @@ const Feed = ({ username }) => {
   return (
     <div className='feed'>
       <div className='feedWrapper'>
-        {/* {user.username && <SharePost />} */}
         <div
           className='floating-button'
           onClick={() => setShareImageOpened(true)}
         >
-          {" "}
           <AddBtn />
         </div>
         <ShareImageModal
           shareImageOpened={shareImageOpened}
           setShareImageOpened={setShareImageOpened}
         />
-        <h1>Search Bar</h1>
+        <SearchBar />
         {posts.map((p) => (
           <Post key={p._id} post={p} />
         ))}

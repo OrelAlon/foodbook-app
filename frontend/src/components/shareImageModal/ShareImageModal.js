@@ -36,7 +36,7 @@ function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
 
   const [file, setFile] = useState(null);
   const [errorMsg, setErrorMsg] = useState("");
-  console.log(restaurants);
+
   useEffect(() => {
     const fetchRestaurants = async () => {
       const res = await axios.get(`/api/restaurants/restaurants`);

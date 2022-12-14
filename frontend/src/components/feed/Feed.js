@@ -5,7 +5,7 @@ import axios from "axios";
 
 import Post from "../post/Post";
 import AddBtn from "../addBtn/AddBtn";
-import SearchBar from "../searchBar/SearchBar";
+import FilterImagesModel from "../filterImagesModel/FilterImagesModel";
 import ShareImageModal from "../shareImageModal/ShareImageModal";
 import "./feed.css";
 
@@ -40,7 +40,7 @@ const Feed = ({ username }) => {
           shareImageOpened={shareImageOpened}
           setShareImageOpened={setShareImageOpened}
         />
-        <SearchBar />
+        <FilterImagesModel restaurantUserPick={restaurantUserPick} />
         {posts.map((p) => (
           <Post key={p._id} post={p} />
         ))}

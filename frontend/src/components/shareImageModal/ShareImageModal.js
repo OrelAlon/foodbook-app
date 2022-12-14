@@ -13,7 +13,7 @@ import {
 import {
   foodCategoryOptions,
   dishTypeOptions,
-  Price,
+  Prices,
 } from "../../assets/foodData";
 
 import axios from "axios";
@@ -30,13 +30,13 @@ function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
 
   const [restaurants, setRestaurants] = useState([]);
   const [restaurantsList, setRestaurantsList] = useState([]);
-  const [restaurantName, setRestaurantName] = useState(null);
+  const [restaurantUserPick, setRestaurantUserPick] = useState(null);
   const [selectFoodCatgory, setSelectFoodCatgory] = useState([]);
   const [selectDishType, setSelectDishType] = useState([]);
 
   const [file, setFile] = useState(null);
   const [errorMsg, setErrorMsg] = useState("");
-
+  console.log(restaurants);
   useEffect(() => {
     const fetchRestaurants = async () => {
       const res = await axios.get(`/api/restaurants/restaurants`);
@@ -49,7 +49,7 @@ function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
         arr.push({
           value: el._id,
           label: el.restaurantname,
-          group: "Tel-Aviv",
+          group: el.city,
         });
       });
       return setRestaurantsList(
@@ -69,7 +69,7 @@ function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
     if (file == null) {
       return setErrorMsg("Please upload a image");
     }
-    if (restaurantName == null) {
+    if (restaurantUserPick == null) {
       return setErrorMsg("Please choose a restaurant");
     }
     try {
@@ -78,7 +78,7 @@ function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
       data.set("userId", user._id);
       data.set("foodCategory", JSON.stringify(selectFoodCatgory));
       data.set("dishType", JSON.stringify(selectDishType));
-      data.set("restaurantId", restaurantName);
+      data.set("restaurantId", restaurantUserPick);
       await axios.post("/api/posts", data);
       window.location.reload();
     } catch (error) {
@@ -123,7 +123,7 @@ function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
         <div>
           <Select
             data={restaurantsList}
-            onChange={setRestaurantName}
+            onChange={setRestaurantUserPick}
             label='Resraurant:'
             placeholder='Select Resraurant'
             searchable
@@ -152,10 +152,10 @@ function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
 
         <div className='slide-div'>
           <Slider
-            label={(val) => Price.find((p) => p.value === val).label}
+            label={(val) => Prices.find((p) => p.value === val).label}
             defaultValue={50}
             step={25}
-            marks={Price}
+            marks={Prices}
             styles={{
               markLabel: { display: "none" },
             }}

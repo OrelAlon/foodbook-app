@@ -1,13 +1,16 @@
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import React from "react";
+import { Select, Space } from "@mantine/core";
+
 import axios from "axios";
 import "./addRestaurant.css";
 
+import { cities } from "../../assets/foodData";
+
 const AddRestaurant = () => {
   const [file, setFile] = useState(null);
+  const [city, setCity] = useState(null);
   const restaurantnameRef = useRef();
-  const cityRef = useRef();
 
   const navigate = useNavigate();
 
@@ -17,7 +20,7 @@ const AddRestaurant = () => {
       const data = new FormData();
       data.set("profilePicture", file);
       data.set("restaurantname", restaurantnameRef.current.value);
-      data.set("city", cityRef.current.value);
+      data.set("city", city);
       await axios.post("/api/restaurants/", data);
       navigate("/");
     } catch (error) {
@@ -37,8 +40,15 @@ const AddRestaurant = () => {
             required
             ref={restaurantnameRef}
           />
-          <label htmlFor='file'>City</label>
-          <input placeholder='City' type='string' ref={cityRef} />
+          <Select
+            data={cities}
+            onChange={setCity}
+            label='City:'
+            placeholder='Which City?'
+            searchable
+            style={{ width: "70%", margin: "auto" }}
+          />
+          <Space h='sm' />
 
           <div className='imgLog'>
             <label htmlFor='file' className='loginImg'>

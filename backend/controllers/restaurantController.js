@@ -16,9 +16,8 @@ const createRestaurant = async (req, res) => {
 
     const newRestaurant = new Restaurant({
       restaurantname: req.body.restaurantname,
-      desc: req.body.desc,
+      city: req.body.city,
       foodCategory: req.body.foodCategory,
-
       profilePicture: result.secure_url,
     });
 

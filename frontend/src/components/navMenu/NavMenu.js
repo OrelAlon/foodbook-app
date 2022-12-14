@@ -9,7 +9,7 @@ import {
   IconPhoto,
   IconMessageCircle,
   IconTrash,
-  IconArrowsLeftRight,
+  IconLogout,
 } from "@tabler/icons";
 
 import ShareImageModal from "../shareImageModal/ShareImageModal";
@@ -41,42 +41,25 @@ const NavMenu = () => {
         <Menu.Dropdown>
           <Menu.Label>Application</Menu.Label>
           <Link to='/' style={{ textDecoration: "none" }}>
-            <Menu.Item icon={<IconSettings size={14} />}>Feed</Menu.Item>
+            <Menu.Item>🖼️ Feed</Menu.Item>
           </Link>
           <Link to={`/restaurants`} style={{ textDecoration: "none" }}>
-            <Menu.Item icon={<IconMessageCircle size={14} />}>
-              Restaurants
-            </Menu.Item>{" "}
+            <Menu.Item>🍽 Restaurants</Menu.Item>{" "}
           </Link>
 
           <Link
             to={`/profile/${user.username}`}
             style={{ textDecoration: "none" }}
           >
-            <Menu.Item icon={<IconPhoto size={14} />}>My Profile</Menu.Item>{" "}
+            <Menu.Item>👑 My Profile</Menu.Item>{" "}
           </Link>
-
-          {/* <Menu.Item
-            icon={
-              <IconArrowsLeftRight
-                size={14}
-                onClick={() => setShareImageOpened(true)}
-              />
-            }
-          >
-            Add Image
-          </Menu.Item> */}
 
           <Menu.Divider />
 
           <Menu.Label>Danger zone</Menu.Label>
 
-          <Menu.Item
-            color='red'
-            icon={<IconTrash size={14} />}
-            onClick={handleLogout}
-          >
-            Log Out
+          <Menu.Item color='red' onClick={handleLogout}>
+            🚪 Log Out
           </Menu.Item>
         </Menu.Dropdown>
       </Menu>

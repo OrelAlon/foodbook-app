@@ -1,5 +1,3 @@
-import "../sharePost/sharePost.css";
-
 const ImageUpload = ({ file, setFile }) => {
   return (
     <div className=''>

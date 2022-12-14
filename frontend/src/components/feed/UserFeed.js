@@ -4,7 +4,6 @@ import { AuthContext } from "../../context/AuthContext";
 import axios from "axios";
 
 import UserPost from "../post/UserPost";
-import SharePost from "../sharePost/SharePost";
 
 import "./feed.css";
 
@@ -29,7 +28,6 @@ const UserFeed = ({ username }) => {
   return (
     <div className='feed'>
       <div className='feedWrapper'>
-        {(!username || username === user.username) && <SharePost />}
         {posts.map((p) => (
           <UserPost key={p._id} post={p} />
         ))}

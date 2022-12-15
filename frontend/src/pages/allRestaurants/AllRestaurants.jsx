@@ -6,6 +6,7 @@ import axios from "axios";
 import RestaurantCard from "../../components/restaurantCard/RestaurantCard";
 import NavMenu from "../../components/navMenu/NavMenu";
 import ShareImageModal from "../../components/shareImageModal/ShareImageModal";
+import AddRestaurantModal from "../../components/addRestaurantModal/AddRestaurantModal";
 
 import "./allRestaurants.css";
 
@@ -13,6 +14,7 @@ const AllRestaurants = () => {
   const [restaurants, setRestaurants] = useState([]);
   const [searchRestaurant, setSearchRestaurant] = useState("");
   const [shareImageOpened, setShareImageOpened] = useState(false);
+  const [addRestaurantOpend, setAddRestaurantOpend] = useState(false);
 
   useEffect(() => {
     const fetchRestaurants = async () => {
@@ -41,9 +43,18 @@ const AllRestaurants = () => {
           setShareImageOpened={setShareImageOpened}
         />
       </div>
-      <Link to='/addrestaurant' className='linkTimeLine'>
-        <button className='addRestaurantBtn'>Add Restaurant</button>
-      </Link>
+      <button
+        className='addRestaurantBtn'
+        onClick={() => setAddRestaurantOpend(true)}
+      >
+        Add Restaurant
+      </button>
+
+      <AddRestaurantModal
+        addRestaurantOpend={addRestaurantOpend}
+        setAddRestaurantOpend={setAddRestaurantOpend}
+      />
+
       <div className='restaurantSContainer'>
         <h1>All - Restaurants</h1>
         <input

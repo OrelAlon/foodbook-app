@@ -1,6 +1,6 @@
 import { useContext, useState, useEffect } from "react";
 
-import { Input, Space, Select, Button } from "@mantine/core";
+import { MultiSelect, Space, Select, Button } from "@mantine/core";
 import { IconSearch } from "@tabler/icons";
 
 import {
@@ -50,7 +50,11 @@ const FilterImagesModel = (props) => {
     e.preventDefault();
     props.onSubmit({ restaurantUserPick, dishTypePick, foodCatgoryPick });
   };
-
+  const handleClear = () => {
+    setRestaurantUserPick(null);
+    setDishTypePick(null);
+    setFoodCatgoryPick(null);
+  };
   return (
     <>
       <form onSubmit={handleSubmit}>
@@ -65,22 +69,34 @@ const FilterImagesModel = (props) => {
           searchable
         />
         <Space h='sm' />
-        <Select
+        <MultiSelect
+          icon={<IconSearch size={16} />}
           data={dishTypeOptions}
           onChange={setDishTypePick}
-          input='center'
+          label='If you want to be more specific:'
           placeholder='Whice Course ?'
           style={{ width: "40%", margin: "auto", textAlign: "center" }}
+          searchable
         />
         <Space h='sm' />
-        <Select
+        <MultiSelect
+          icon={<IconSearch size={16} />}
           data={foodCategoryOptions}
           onChange={setFoodCatgoryPick}
+          label='If you want to be EXTRA specific:'
           placeholder='Whice Catgory ?'
           style={{ width: "40%", margin: "auto" }}
+          searchable
         />{" "}
         <Space h='sm' />
         <div className='center-div'>
+          <Button
+            variant='default'
+            style={{ margin: "auto" }}
+            onClick={handleClear}
+          >
+            Clear <br /> <IconSearch size={16} />
+          </Button>
           <Button variant='default' style={{ margin: "auto" }} type={"submit"}>
             Search <br /> <IconSearch size={16} />
           </Button>

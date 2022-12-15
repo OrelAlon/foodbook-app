@@ -36,9 +36,17 @@ const RestaurantSchema = new mongoose.Schema(
       type: Array,
       default: [],
     },
+    price: {
+      type: Number,
+      default: "",
+    },
     city: {
       type: String,
       max: 50,
+    },
+    instgram: {
+      type: String,
+      default: "",
     },
   },
   { timestamps: true }

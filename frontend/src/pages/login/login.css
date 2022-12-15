@@ -81,9 +81,9 @@ h2:first-child {
   opacity: 0.6;
 }
 
-input[type="text"],
-input[type="email"],
-input[type="password"] {
+.input-div input[type="text"],
+.input-div input[type="email"],
+.input-div input[type="password"] {
   font-family: "Montserrat", sans-serif;
   color: #fff;
 }

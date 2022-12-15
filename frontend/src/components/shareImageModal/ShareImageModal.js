@@ -149,6 +149,7 @@ function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
           />{" "}
         </div>
         <Space h='sm' />
+        <Space h='sm' />
 
         <div className='slide-div'>
           <Slider

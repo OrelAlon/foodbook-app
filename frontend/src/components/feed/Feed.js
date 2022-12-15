@@ -10,7 +10,7 @@ import "./feed.css";
 
 const Feed = ({ username }) => {
   const [posts, setPosts] = useState([]);
-  const [userSearchPick, setUserSearchPick] = useState([]);
+  const [filterdPosts, setFilterdPosts] = useState([]);
   const { user } = useContext(AuthContext);
 
   useEffect(() => {
@@ -29,6 +29,15 @@ const Feed = ({ username }) => {
   };
 
   const showSearchPost = (data) => {
+    console.log(data);
+    if (data.foodCatgoryPick == null && data.dishTypePick == null) {
+      const filtered = posts.filter((val) =>
+        val.restaurantId.includes(data.restaurantUserPick)
+      );
+
+      return setFilterdPosts(filtered);
+    }
+
     const filtered = posts.filter(
       (val) =>
         val.foodCategory.includes(data.foodCatgoryPick) &&
@@ -43,9 +52,10 @@ const Feed = ({ username }) => {
     <div className='feed'>
       <div className='feedWrapper'>
         <FilterImagesModel onSubmit={getSearchData} />
-        {posts.map((p) => (
-          <Post key={p._id} post={p} />
-        ))}
+
+        {filterdPosts.length > 0
+          ? filterdPosts.map((p) => <Post key={p._id} post={p} />)
+          : posts.map((p) => <Post key={p._id} post={p} />)}
       </div>
     </div>
   );

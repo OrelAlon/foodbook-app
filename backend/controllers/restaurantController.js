@@ -17,8 +17,11 @@ const createRestaurant = async (req, res) => {
     const newRestaurant = new Restaurant({
       restaurantname: req.body.restaurantname,
       city: req.body.city,
-      foodCategory: req.body.foodCategory,
+      price: req.body.price,
+      instgram: req.body.instgram,
+      foodCategory: JSON.parse(req.body.foodCategory),
       profilePicture: result.secure_url,
+      desc: req.body.desc,
     });
 
     const savedRestaurant = await newRestaurant.save();

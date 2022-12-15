@@ -6,16 +6,13 @@ import axios from "axios";
 import Post from "../post/Post";
 import AddBtn from "../addBtn/AddBtn";
 import FilterImagesModel from "../filterImagesModel/FilterImagesModel";
-import ShareImageModal from "../shareImageModal/ShareImageModal";
-import NavMenu from "../navMenu/NavMenu";
 import "./feed.css";
 
 const Feed = ({ username }) => {
   const [posts, setPosts] = useState([]);
-  const [shareImageOpened, setShareImageOpened] = useState(false);
 
   const { user } = useContext(AuthContext);
-
+  console.log(posts);
   useEffect(() => {
     const fetchPosts = async () => {
       const res = await axios.get(`/api/posts/feed`);
@@ -26,7 +23,7 @@ const Feed = ({ username }) => {
       );
     };
     fetchPosts();
-  }, [user._id]);
+  }, []);
 
   return (
     <div className='feed'>

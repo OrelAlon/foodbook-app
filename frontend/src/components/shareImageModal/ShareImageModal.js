@@ -104,7 +104,7 @@ function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
         <div className='upload-image-div'>
           <label htmlFor='file' className='shareOption'>
             {/* <span className='shareText'>Upload</span> */}
-            <BiImage fontSize={26} color={file ? "green" : "red"} />
+            <BiImage fontSize={36} color={file ? "green" : "red"} />
             <input
               style={{ display: "none" }}
               type='file'

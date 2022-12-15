@@ -56,7 +56,7 @@ const AllRestaurants = () => {
       />
 
       <div className='restaurantSContainer'>
-        <h1>All - Restaurants</h1>
+        <h1 style={{ color: "rad" }}>All - Restaurants</h1>
         <input
           className='restaurantSearch'
           placeholder='Search restaurant'

@@ -8,9 +8,16 @@ import {
   Slider,
   Input,
   Space,
+  Button,
+  Select,
 } from "@mantine/core";
-import { IconBrandInstagram, IconHomePlus, IconWorld } from "@tabler/icons";
-import { foodCategoryOptions, Prices } from "../../assets/foodData";
+import {
+  IconBrandInstagram,
+  IconHomePlus,
+  IconWorld,
+  IconCategory,
+} from "@tabler/icons";
+import { foodCategoryOptions, Prices, cities } from "../../assets/foodData";
 
 import axios from "axios";
 import ImageUpload from "../imageUpload/ImageUpload";
@@ -27,8 +34,11 @@ function AddRestaurantModal({ addRestaurantOpend, setAddRestaurantOpend }) {
   const [selectFoodCatgory, setSelectFoodCatgory] = useState([]);
   const [city, setCity] = useState("");
   const [instagramLink, setInstagramLink] = useState("");
-  const [price, setPrice] = useState();
-
+  const [price, setPrice] = useState(75);
+  console.log(restaurantName);
+  console.log(selectFoodCatgory);
+  console.log(city);
+  console.log(price);
   const [file, setFile] = useState(null);
   const [errorMsg, setErrorMsg] = useState("");
 
@@ -44,6 +54,8 @@ function AddRestaurantModal({ addRestaurantOpend, setAddRestaurantOpend }) {
     // }
     try {
       const data = new FormData();
+      console.log(restaurantName);
+      console.log(JSON.stringify(restaurantName));
       data.set("profilePicture", file);
       data.set("restaurantname", restaurantName);
       data.set("city", city);
@@ -51,7 +63,7 @@ function AddRestaurantModal({ addRestaurantOpend, setAddRestaurantOpend }) {
       data.set("instgram", instagramLink);
       data.set("foodCategory", JSON.stringify(selectFoodCatgory));
 
-      await axios.post("/api/posts", data);
+      await axios.post("/api/restaurants/", data);
       window.location.reload();
     } catch (error) {
       console.log(error);
@@ -73,10 +85,11 @@ function AddRestaurantModal({ addRestaurantOpend, setAddRestaurantOpend }) {
     >
       {/* Modal content */}
       <form className='infoForm' onSubmit={submitHandler}>
+        <h1 style={{ margin: "auto" }}>Add Restaurant</h1>
         <div className='upload-image-div'>
           <label htmlFor='file' className='shareOption'>
             {/* <span className='shareText'>Upload</span> */}
-            <BiImage fontSize={26} color={file ? "green" : "red"} />
+            <BiImage fontSize={36} color={file ? "green" : "red"} />
             <input
               style={{ display: "none" }}
               type='file'
@@ -91,6 +104,7 @@ function AddRestaurantModal({ addRestaurantOpend, setAddRestaurantOpend }) {
             </div>
           )}
         </div>
+        <Space h='xl' />
 
         <div>
           <Input
@@ -98,40 +112,41 @@ function AddRestaurantModal({ addRestaurantOpend, setAddRestaurantOpend }) {
             style={{ width: "50%", margin: "auto", color: "dark.9" }}
             label='Restaurant Name:'
             placeholder='Name'
-            onChange={setRestaurantName}
+            onChange={(e) => setRestaurantName(e.target.value)}
+            value={restaurantName}
             type='text'
             required
           />
-          <Space h='sm' />
-          <Input
-            icon={<IconWorld size={16} />}
-            style={{ width: "50%", margin: "auto", color: "dark.9" }}
-            label='city:'
-            placeholder='city'
-            onChange={setCity}
-            type='text'
-            required
-          />
-          <Space h='sm' />
+          <Space h='xl' />
           <Input
             icon={<IconBrandInstagram size={16} />}
             style={{ width: "50%", margin: "auto", color: "dark.9" }}
             label='Instagram:'
             placeholder='Instagram'
-            onChange={setInstagramLink}
+            onChange={(e) => setInstagramLink(e.target.value)}
+            value={instagramLink}
             type='text'
             required
           />
-          <Space h='sm' />
-          <MultiSelect
-            data={foodCategoryOptions}
+          <Space h='xl' />
+          <Select
+            data={cities}
             onChange={setSelectFoodCatgory}
-            label='Food Category 🏷️:'
+            placeholder='city'
+            icon={<IconWorld size={16} />}
+            style={{ width: "50%", margin: "auto", color: "dark.9" }}
+            required
+          />{" "}
+          <Space h='xl' />
+          <MultiSelect
+            icon={<IconCategory size={16} />}
+            data={foodCategoryOptions}
+            onChange={setCity}
             placeholder='Pick what relevant'
             style={{ width: "50%", margin: "auto" }}
           />{" "}
         </div>
-        <Space h='sm' />
+        <Space h='xl' />
         <Space h='sm' />
 
         <div className='slide-div'>
@@ -145,16 +160,17 @@ function AddRestaurantModal({ addRestaurantOpend, setAddRestaurantOpend }) {
             }}
           />
         </div>
+        <Space h='xl' />
 
         <div className='share-btn-div'>
-          <span onClick={submitHandler}>
-            Share to
-            <img src={food} alt='foodbook' className='instagram' />
-          </span>{" "}
-          <span>
-            Share with
-            <img src={instagram} alt='instagram' className='instagram' />
-          </span>{" "}
+          <Button
+            color='teal'
+            style={{ margin: "auto" }}
+            type={"submit"}
+            size='md'
+          >
+            Save
+          </Button>
         </div>
       </form>
     </Modal>

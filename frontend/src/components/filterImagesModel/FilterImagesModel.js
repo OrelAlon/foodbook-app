@@ -11,17 +11,24 @@ import {
 
 import "./filterImagesModel.css";
 
-const FilterImagesModel = () => {
-  const [restaurantUserPick, setRestaurantUserPick] = useState(null);
-  const [dishTypePick, setDishTypePick] = useState([]);
-  const [foodCatgoryPick, setFoodCatgoryPick] = useState([]);
+const FilterImagesModel = (props) => {
+  const [restaurantUserPick, setRestaurantUserPick] = useState(
+    "638f6370b5ba4755ecbff413"
+  );
+  const [dishTypePick, setDishTypePick] = useState(null);
+  const [foodCatgoryPick, setFoodCatgoryPick] = useState(null);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    props.onSubmit({ restaurantUserPick, dishTypePick, foodCatgoryPick });
+  };
 
   return (
     <>
-      <form>
+      <form onSubmit={handleSubmit}>
         <Input
           icon={<IconSearch size={16} />}
-          onChange={setRestaurantUserPick}
+          // onChange={setRestaurantUserPick}
           placeholder='What on your Search Mind ?'
           style={{ width: "60%", margin: "auto" }}
         />
@@ -42,7 +49,7 @@ const FilterImagesModel = () => {
         />{" "}
         <Space h='sm' />
         <div className='center-div'>
-          <Button variant='default' style={{ margin: "auto" }}>
+          <Button variant='default' style={{ margin: "auto" }} type={"submit"}>
             Search <br /> <IconSearch size={16} />
           </Button>
         </div>

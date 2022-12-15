@@ -10,9 +10,9 @@ import "./feed.css";
 
 const Feed = ({ username }) => {
   const [posts, setPosts] = useState([]);
-
+  const [userSearchPick, setUserSearchPick] = useState([]);
   const { user } = useContext(AuthContext);
-  console.log(posts);
+
   useEffect(() => {
     const fetchPosts = async () => {
       const res = await axios.get(`/api/posts/feed`);
@@ -24,11 +24,25 @@ const Feed = ({ username }) => {
     };
     fetchPosts();
   }, []);
+  const getSearchData = (data) => {
+    showSearchPost(data);
+  };
+
+  const showSearchPost = (data) => {
+    const filtered = posts.filter(
+      (val) =>
+        val.foodCategory.includes(data.foodCatgoryPick) &&
+        val.dishType.includes(data.dishTypePick) &&
+        val.restaurantId.includes(data.restaurantUserPick)
+    );
+
+    return setPosts(filtered);
+  };
 
   return (
     <div className='feed'>
       <div className='feedWrapper'>
-        <FilterImagesModel />
+        <FilterImagesModel onSubmit={getSearchData} />
         {posts.map((p) => (
           <Post key={p._id} post={p} />
         ))}

@@ -14,7 +14,6 @@ import Profile from "./pages/profile/Profile.jsx";
 import EditProfile from "./pages/editProfile/EditProfile";
 import Restaurant from "./pages/restaurant/Restaurant";
 import AllRestaurants from "./pages/allRestaurants/AllRestaurants";
-import AddRestaurant from "./pages/addRestaurant/AddRestaurant.jsx";
 
 import "./App.css";
 
@@ -53,7 +52,6 @@ function App() {
                 path='/restaurant/:restaurantname'
                 element={<Restaurant />}
               />
-              <Route path='/addrestaurant' element={<AddRestaurant />} />
             </Route>
           </Routes>
         </Router>

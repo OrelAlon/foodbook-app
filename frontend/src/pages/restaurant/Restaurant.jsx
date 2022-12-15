@@ -3,7 +3,7 @@ import { useParams } from "react-router";
 
 import axios from "axios";
 
-import Navbar from "../../components/navbar/Navbar";
+import NavMenu from "../../components/navMenu/NavMenu";
 import RestaurantFeed from "../../components/feed/RestaurantFeed";
 
 import "./restaurant.css";
@@ -26,7 +26,7 @@ const Restaurant = () => {
 
   return (
     <>
-      <Navbar />
+      <NavMenu />
       <div className='restaurantPage'>
         <div></div>
         <div className='restaurantRight'>

@@ -9,14 +9,42 @@ import {
   Prices,
 } from "../../assets/foodData";
 
+import axios from "axios";
+
 import "./filterImagesModel.css";
 
 const FilterImagesModel = (props) => {
-  const [restaurantUserPick, setRestaurantUserPick] = useState(
-    "638f6370b5ba4755ecbff413"
-  );
+  const [restaurantsList, setRestaurantsList] = useState([]);
+  const [value, setValue] = useState(null);
+
+  const [restaurantUserPick, setRestaurantUserPick] = useState(null);
   const [dishTypePick, setDishTypePick] = useState(null);
   const [foodCatgoryPick, setFoodCatgoryPick] = useState(null);
+
+  useEffect(() => {
+    const fetchRestaurants = async () => {
+      const res = await axios.get(`/api/restaurants/restaurants`);
+      sortRestaurants(res.data);
+    };
+
+    const sortRestaurants = (res) => {
+      let arr = [];
+      res.map((el) => {
+        arr.push({
+          value: el._id,
+          label: el.restaurantname,
+          group: el.city,
+        });
+      });
+      return setRestaurantsList(
+        arr.sort((a, b) =>
+          a.label.toLowerCase() > b.label.toLowerCase() ? 1 : -1
+        )
+      );
+    };
+
+    fetchRestaurants();
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -26,11 +54,15 @@ const FilterImagesModel = (props) => {
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <Input
+        <Select
           icon={<IconSearch size={16} />}
-          // onChange={setRestaurantUserPick}
+          data={restaurantsList}
+          value={restaurantUserPick}
+          onChange={setRestaurantUserPick}
+          label='Resraurant:'
           placeholder='What on your Search Mind ?'
           style={{ width: "60%", margin: "auto" }}
+          searchable
         />
         <Space h='sm' />
         <Select

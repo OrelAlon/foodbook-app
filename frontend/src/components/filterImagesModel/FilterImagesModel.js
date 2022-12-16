@@ -70,18 +70,18 @@ const FilterImagesModel = ({ posts, setSearchResults }) => {
           value={restaurantUserPick}
           onChange={setRestaurantUserPick}
           label='Resraurant:'
-          placeholder='What on your Search Mind ?'
+          placeholder='Where ?'
           style={{ width: "60%", margin: "auto" }}
           searchable
         />
         <Space h='sm' />
-        <MultiSelect
+        {/* <MultiSelect
           icon={<IconSearch size={16} />}
           data={dishTypeOptions}
           onChange={setDishTypePick}
           // label='If you want to be more specific:'
           placeholder='Whice Course ?'
-          style={{ width: "40%", margin: "auto", textAlign: "center" }}
+          style={{ width: "60%", margin: "auto", textAlign: "center" }}
           searchable
         />
         <Space h='sm' />
@@ -91,9 +91,9 @@ const FilterImagesModel = ({ posts, setSearchResults }) => {
           onChange={setFoodCatgoryPick}
           // label='If you want to be EXTRA specific:'
           placeholder='Whice Catgory ?'
-          style={{ width: "40%", margin: "auto" }}
+          style={{ width: "60%", margin: "auto" }}
           searchable
-        />{" "}
+        />{" "} */}
         <Space h='sm' />
         <div className='center-div'>
           <Button

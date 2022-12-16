@@ -35,10 +35,7 @@ function AddRestaurantModal({ addRestaurantOpend, setAddRestaurantOpend }) {
   const [city, setCity] = useState("");
   const [instagramLink, setInstagramLink] = useState("");
   const [price, setPrice] = useState(75);
-  console.log(restaurantName);
-  console.log(selectFoodCatgory);
-  console.log(city);
-  console.log(price);
+
   const [file, setFile] = useState(null);
   const [errorMsg, setErrorMsg] = useState("");
 

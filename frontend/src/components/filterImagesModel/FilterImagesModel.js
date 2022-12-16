@@ -1,6 +1,6 @@
-import { useContext, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
-import { MultiSelect, Space, Select, Button } from "@mantine/core";
+import { MultiSelect, Space, Select, Slider } from "@mantine/core";
 import { IconSearch } from "@tabler/icons";
 
 import {
@@ -13,12 +13,12 @@ import axios from "axios";
 
 import "./filterImagesModel.css";
 
-const FilterImagesModel = ({ posts, setSearchResults }) => {
+const FilterImagesModel = ({
+  setFoodCatgoryPick,
+  setRestaurantUserPick,
+  setDishTypePick,
+}) => {
   const [restaurantsList, setRestaurantsList] = useState([]);
-
-  const [restaurantUserPick, setRestaurantUserPick] = useState(null);
-  const [dishTypePick, setDishTypePick] = useState(null);
-  const [foodCatgoryPick, setFoodCatgoryPick] = useState(null);
 
   useEffect(() => {
     const fetchRestaurants = async () => {
@@ -45,37 +45,21 @@ const FilterImagesModel = ({ posts, setSearchResults }) => {
     fetchRestaurants();
   }, []);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    if (!restaurantUserPick) return setSearchResults(posts);
-
-    const resultsArray = posts.filter((post) =>
-      post.restaurantId.includes(restaurantUserPick)
-    );
-
-    setSearchResults(resultsArray);
-  };
-
-  const handleClear = () => {
-    setSearchResults(posts);
-  };
-
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form>
         <Select
           icon={<IconSearch size={16} />}
           data={restaurantsList}
-          value={restaurantUserPick}
           onChange={setRestaurantUserPick}
           label='Resraurant:'
           placeholder='Where ?'
           style={{ width: "60%", margin: "auto" }}
           searchable
+          clearable
         />
         <Space h='sm' />
-        {/* <MultiSelect
+        <MultiSelect
           icon={<IconSearch size={16} />}
           data={dishTypeOptions}
           onChange={setDishTypePick}
@@ -93,19 +77,19 @@ const FilterImagesModel = ({ posts, setSearchResults }) => {
           placeholder='Whice Catgory ?'
           style={{ width: "60%", margin: "auto" }}
           searchable
-        />{" "} */}
+        />{" "}
         <Space h='sm' />
-        <div className='center-div'>
-          <Button
-            variant='default'
-            style={{ margin: "auto" }}
-            onClick={handleClear}
-          >
-            Clear <br /> <IconSearch size={16} />
-          </Button>
-          <Button variant='default' style={{ margin: "auto" }} type={"submit"}>
-            Search <br /> <IconSearch size={16} />
-          </Button>
+        <div className='slide-div'>
+          <Slider
+            label={(val) => Prices.find((p) => p.value === val).label}
+            defaultValue={50}
+            step={25}
+            // onChange={setPrice}
+            marks={Prices}
+            styles={{
+              markLabel: { display: "none" },
+            }}
+          />
         </div>
       </form>
     </>

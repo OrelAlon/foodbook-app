@@ -4,17 +4,17 @@ import { AuthContext } from "../../context/AuthContext";
 import axios from "axios";
 
 import Post from "../post/Post";
-import AddBtn from "../addBtn/AddBtn";
 import FilterImagesModel from "../filterImagesModel/FilterImagesModel";
 import "./feed.css";
 
 const Feed = ({ username }) => {
   const [posts, setPosts] = useState([]);
   const [searchResults, setSearchResults] = useState([]);
+  const [resultsFound, setResultsFound] = useState(true);
 
   const [filterdPosts, setFilterdPosts] = useState([]);
   const { user } = useContext(AuthContext);
-  console.log(searchResults);
+
   useEffect(() => {
     const fetchPosts = async () => {
       const res = await axios.get(`/api/posts/feed`);
@@ -47,7 +47,7 @@ const Feed = ({ username }) => {
       <div className='feedWrapper'>
         <FilterImagesModel posts={posts} setSearchResults={setSearchResults} />
 
-        {searchResults.length > 0 ? (
+        {resultsFound ? (
           searchResults.map((p) => <Post key={p._id} post={p} />)
         ) : (
           <article>

@@ -10,17 +10,20 @@ import "./feed.css";
 
 const Feed = ({ username }) => {
   const [posts, setPosts] = useState([]);
+  const [searchResults, setSearchResults] = useState([]);
+
   const [filterdPosts, setFilterdPosts] = useState([]);
   const { user } = useContext(AuthContext);
-
+  console.log(searchResults);
   useEffect(() => {
     const fetchPosts = async () => {
       const res = await axios.get(`/api/posts/feed`);
-      setPosts(
+      setSearchResults(
         res.data.sort(
           (p1, p2) => new Date(p2.createdAt) - new Date(p1.createdAt)
         )
       );
+      setPosts(res.data);
     };
     fetchPosts();
   }, []);
@@ -29,15 +32,6 @@ const Feed = ({ username }) => {
   };
 
   const showSearchPost = (data) => {
-    console.log(data);
-    if (data.foodCatgoryPick == null && data.dishTypePick == null) {
-      const filtered = posts.filter((val) =>
-        val.restaurantId.includes(data.restaurantUserPick)
-      );
-
-      return setFilterdPosts(filtered);
-    }
-
     const filtered = posts.filter(
       (val) =>
         val.foodCategory.includes(data.foodCatgoryPick) &&
@@ -51,11 +45,15 @@ const Feed = ({ username }) => {
   return (
     <div className='feed'>
       <div className='feedWrapper'>
-        <FilterImagesModel onSubmit={getSearchData} />
+        <FilterImagesModel posts={posts} setSearchResults={setSearchResults} />
 
-        {filterdPosts.length > 0
-          ? filterdPosts.map((p) => <Post key={p._id} post={p} />)
-          : posts.map((p) => <Post key={p._id} post={p} />)}
+        {searchResults.length > 0 ? (
+          searchResults.map((p) => <Post key={p._id} post={p} />)
+        ) : (
+          <article>
+            <p>No Matching Posts</p>
+          </article>
+        )}
       </div>
     </div>
   );

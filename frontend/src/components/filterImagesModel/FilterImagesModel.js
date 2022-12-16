@@ -13,9 +13,8 @@ import axios from "axios";
 
 import "./filterImagesModel.css";
 
-const FilterImagesModel = (props) => {
+const FilterImagesModel = ({ posts, setSearchResults }) => {
   const [restaurantsList, setRestaurantsList] = useState([]);
-  const [value, setValue] = useState(null);
 
   const [restaurantUserPick, setRestaurantUserPick] = useState(null);
   const [dishTypePick, setDishTypePick] = useState(null);
@@ -48,13 +47,20 @@ const FilterImagesModel = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    props.onSubmit({ restaurantUserPick, dishTypePick, foodCatgoryPick });
+
+    if (!restaurantUserPick) return setSearchResults(posts);
+
+    const resultsArray = posts.filter((post) =>
+      post.restaurantId.includes(restaurantUserPick)
+    );
+
+    setSearchResults(resultsArray);
   };
+
   const handleClear = () => {
-    setRestaurantUserPick(null);
-    setDishTypePick(null);
-    setFoodCatgoryPick(null);
+    setSearchResults(posts);
   };
+
   return (
     <>
       <form onSubmit={handleSubmit}>
@@ -73,7 +79,7 @@ const FilterImagesModel = (props) => {
           icon={<IconSearch size={16} />}
           data={dishTypeOptions}
           onChange={setDishTypePick}
-          label='If you want to be more specific:'
+          // label='If you want to be more specific:'
           placeholder='Whice Course ?'
           style={{ width: "40%", margin: "auto", textAlign: "center" }}
           searchable
@@ -83,7 +89,7 @@ const FilterImagesModel = (props) => {
           icon={<IconSearch size={16} />}
           data={foodCategoryOptions}
           onChange={setFoodCatgoryPick}
-          label='If you want to be EXTRA specific:'
+          // label='If you want to be EXTRA specific:'
           placeholder='Whice Catgory ?'
           style={{ width: "40%", margin: "auto" }}
           searchable

@@ -37,9 +37,12 @@ const Feed = ({ username }) => {
 
   const applyFilters = () => {
     let updatedShearch = data;
+    console.log(data);
+    console.log(updatedShearch);
 
     // Restaurant Filter
     if (restaurantUserPick) {
+      console.log("l");
       updatedShearch = updatedShearch.filter((item) =>
         item.restaurantId.includes(restaurantUserPick)
       );
@@ -47,41 +50,32 @@ const Feed = ({ username }) => {
 
     // foodCatgoryPick Filter
     if (foodCatgoryPick.length > 0) {
-      let res = [];
-      for (let i = 0; i < foodCatgoryPick.length; i++) {
-        const el = foodCatgoryPick[i];
+      console.log("l");
 
-        res.push(updatedShearch.filter((val) => val.foodCategory.includes(el)));
-      }
-
-      res = res.flat();
-      updatedShearch = res.filter(
-        (v, i, a) => a.findIndex((v2) => v._id === v2._id) === i
+      updatedShearch = updatedShearch.filter((el) =>
+        foodCatgoryPick.every((v) => el.foodCategory.includes(v))
       );
     }
+
     // dishTypePick Filter
     if (dishTypePick.length > 0) {
-      let res = [];
-      for (let i = 0; i < dishTypePick.length; i++) {
-        const el = dishTypePick[i];
+      console.log("l");
 
-        res.push(updatedShearch.filter((val) => val.dishType.includes(el)));
-      }
-
-      res = res.flat();
-      updatedShearch = res.filter(
-        (v, i, a) => a.findIndex((v2) => v._id === v2._id) === i
+      updatedShearch = updatedShearch.filter((el) =>
+        dishTypePick.every((v) => el.dishType.includes(v))
       );
     }
-    if (updatedShearch.length > 0) {
-      setPosts(updatedShearch);
 
-      updatedShearch.length > 0
-        ? setResultsFound(true)
-        : setResultsFound(false);
+    if (updatedShearch.length > 0) {
+      console.log("s");
+      setPosts(updatedShearch);
     }
+    console.log(updatedShearch);
+
+    updatedShearch.length > 0 ? setResultsFound(true) : setResultsFound(false);
   };
   useEffect(() => {
+    console.log("d");
     applyFilters();
   }, [
     restaurantUserPick,

@@ -131,7 +131,7 @@ function AddRestaurantModal({ addRestaurantOpend, setAddRestaurantOpend }) {
           <Space h='xl' />
           <Select
             data={cities}
-            onChange={setSelectFoodCatgory}
+            onChange={setCity}
             placeholder='city'
             icon={<IconWorld size={16} />}
             style={{ width: "50%", margin: "auto", color: "dark.9" }}
@@ -141,7 +141,7 @@ function AddRestaurantModal({ addRestaurantOpend, setAddRestaurantOpend }) {
           <MultiSelect
             icon={<IconCategory size={16} />}
             data={foodCategoryOptions}
-            onChange={setCity}
+            onChange={setSelectFoodCatgory}
             placeholder='Pick what relevant'
             style={{ width: "50%", margin: "auto" }}
           />{" "}
@@ -153,6 +153,7 @@ function AddRestaurantModal({ addRestaurantOpend, setAddRestaurantOpend }) {
           <Slider
             label={(val) => Prices.find((p) => p.value === val).label}
             defaultValue={50}
+            onChange={setPrice}
             step={25}
             marks={Prices}
             styles={{

@@ -44,7 +44,9 @@ const NavMenu = () => {
           >
             <Menu.Item>🖼️ My Profile</Menu.Item>{" "}
           </Link>
-
+          <Link to={`/editprofile`} style={{ textDecoration: "none" }}>
+            <Menu.Item>✏️ Edit Profile</Menu.Item>{" "}
+          </Link>
           <Menu.Divider />
 
           <Menu.Label>Danger zone</Menu.Label>

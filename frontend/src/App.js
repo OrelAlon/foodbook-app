@@ -13,6 +13,7 @@ import Home from "./pages/home/Home.jsx";
 import UserProfile from "./pages/userProfile/UserProfile";
 import RestaurantProfile from "./pages/restaurantProfile/RestaurantProfile";
 import AllRestaurants from "./pages/allRestaurants/AllRestaurants";
+import EditProfileUserPage from "./pages/editProfileUserPage/EditProfileUserPage";
 
 import "./App.css";
 
@@ -50,6 +51,10 @@ function App() {
                 path='/restaurant/:restaurantname'
                 element={<RestaurantProfile />}
               />
+              <Route
+                path='/editprofile'
+                element={<EditProfileUserPage />}
+              ></Route>
             </Route>
           </Routes>
         </Router>

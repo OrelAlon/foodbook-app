@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router";
-import { Link } from "react-router-dom";
 
 import axios from "axios";
 
 import NavMenu from "../../components/navMenu/NavMenu";
 import ShareImageModal from "../../components/shareImageModal/ShareImageModal";
 import RestaurantFeed from "../../components/feed/RestaurantFeed";
+import Logo from "../../components/logo/Logo";
 
 import classy from "../../assets/classy-rest.jpg";
 import "./restaurantProfile.css";
@@ -32,9 +32,7 @@ const RestaurantProfile = () => {
     <>
       {/* navbar */}
 
-      <Link to='/' style={{ textDecoration: "none" }}>
-        <p className='logo'>Foodbook</p>
-      </Link>
+      <Logo />
       <div className='menu-div'>
         {" "}
         <button

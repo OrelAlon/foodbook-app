@@ -4,19 +4,10 @@ import { Menu, Button } from "@mantine/core";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 
-import {
-  IconSettings,
-  IconPhoto,
-  IconMessageCircle,
-  IconTrash,
-  IconLogout,
-} from "@tabler/icons";
-
 import ShareImageModal from "../shareImageModal/ShareImageModal";
 import "./navMenu.css";
 
 const NavMenu = () => {
-  const [toggleMenu, setToggleMenu] = useState(true);
   const [shareImageOpened, setShareImageOpened] = useState(false);
 
   const { user } = useContext(AuthContext);

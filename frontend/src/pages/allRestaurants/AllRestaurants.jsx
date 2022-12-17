@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 
 import axios from "axios";
 
@@ -7,6 +6,7 @@ import RestaurantCard from "../../components/restaurantCard/RestaurantCard";
 import NavMenu from "../../components/navMenu/NavMenu";
 import ShareImageModal from "../../components/shareImageModal/ShareImageModal";
 import AddRestaurantModal from "../../components/addRestaurantModal/AddRestaurantModal";
+import Logo from "../../components/logo/Logo";
 
 import "./allRestaurants.css";
 
@@ -26,9 +26,7 @@ const AllRestaurants = () => {
 
   return (
     <>
-      <Link to='/' style={{ textDecoration: "none" }}>
-        <p className='logo'>Foodbook</p>
-      </Link>
+      <Logo />
       <div className='menu-div'>
         {" "}
         <button

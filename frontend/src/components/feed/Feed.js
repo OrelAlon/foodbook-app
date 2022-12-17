@@ -1,5 +1,4 @@
-import { useContext, useState, useEffect } from "react";
-import { AuthContext } from "../../context/AuthContext";
+import { useState, useEffect } from "react";
 
 import axios from "axios";
 
@@ -7,7 +6,7 @@ import Post from "../post/Post";
 import FilterImagesModel from "../filterImagesModel/FilterImagesModel";
 import "./feed.css";
 
-const Feed = ({ username }) => {
+const Feed = () => {
   const [posts, setPosts] = useState([]);
   const [data, setData] = useState([]);
   const [resultsFound, setResultsFound] = useState(true);
@@ -17,7 +16,6 @@ const Feed = ({ username }) => {
   const [foodCatgoryPick, setFoodCatgoryPick] = useState([]);
   const [pricePick, setPrice] = useState([0 - 100]);
 
-  const { user } = useContext(AuthContext);
   useEffect(() => {
     const fetchPosts = async () => {
       const res = await axios.get(`/api/posts/feed`);

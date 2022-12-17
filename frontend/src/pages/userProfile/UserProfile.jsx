@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router";
-import { Link } from "react-router-dom";
 
 import axios from "axios";
 
 import NavMenu from "../../components/navMenu/NavMenu";
 import ShareImageModal from "../../components/shareImageModal/ShareImageModal";
 import UserFeed from "../../components/feed/UserFeed";
+import Logo from "../../components/logo/Logo";
 
 import st from "../../assets/st.jpg";
 import "./userProfile.css";
@@ -16,8 +16,6 @@ const UserProfile = () => {
   const [shareImageOpened, setShareImageOpened] = useState(false);
 
   const username = useParams().username;
-
-  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -30,9 +28,7 @@ const UserProfile = () => {
   return (
     <>
       {/* navbar */}
-      <Link to='/' style={{ textDecoration: "none" }}>
-        <p className='logo'>Foodbook</p>
-      </Link>
+      <Logo />
       <div className='menu-div'>
         {" "}
         <button
@@ -53,7 +49,7 @@ const UserProfile = () => {
           <div className='content-profile-page'>
             <div className='profile-page card'>
               <div className='img-profile'>
-                <img className='profile-bgHome' src={st} />
+                <img className='profile-bgHome' src={st} alt='' />
                 <img
                   className='avatar'
                   src={user.profilePicture}

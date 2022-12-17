@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
 
 import NavMenu from "../../components/navMenu/NavMenu";
 import Feed from "../../components/feed/Feed";
 import ShareImageModal from "../../components/shareImageModal/ShareImageModal";
+import Logo from "../../components/logo/Logo";
 
 import "./home.css";
 
@@ -12,9 +12,7 @@ const Home = () => {
 
   return (
     <>
-      <Link to='/' style={{ textDecoration: "none" }}>
-        <p className='logo'>Foodbook</p>
-      </Link>
+      <Logo />
       <div className='menu-div'>
         {" "}
         <button

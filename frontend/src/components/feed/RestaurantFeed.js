@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 import axios from "axios";
 import { fetchRestaurantfetchPosts } from "../../api/ApiFatch";
-import RestaurantPost from "../post/RestaurantPost";
+import Post from "../post/Post";
 
 import "./feed.css";
 
@@ -29,7 +29,7 @@ const RestaurantFeed = ({ restaurant }) => {
     <div className='feed'>
       <div className='feedWrapper'>
         {posts.map((p) => (
-          <RestaurantPost key={p._id} post={p} />
+          <Post key={p._id} post={p} />
         ))}
       </div>
     </div>

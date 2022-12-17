@@ -1,4 +1,5 @@
 import { useState, useEffect, useContext } from "react";
+import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import { AiOutlineLike } from "react-icons/ai";
@@ -17,6 +18,8 @@ const Post = ({ post }) => {
   const [isLiked, setIsLiked] = useState(false);
 
   const { user: currentUser } = useContext(AuthContext);
+
+  const usernameParams = useParams().username;
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -43,7 +46,14 @@ const Post = ({ post }) => {
     setLike(isLiked ? like - 1 : like + 1);
     setIsLiked(!isLiked);
   };
-
+  const deleteHandler = async () => {
+    try {
+      await axios.delete(`/api/posts/${post._id}`);
+      window.location.reload();
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <div className='post'>
       <div className='postWrapper'>
@@ -71,8 +81,15 @@ const Post = ({ post }) => {
               </Link>
             </span>{" "}
           </div>
-
-          <p className='posttime'>{moment(post.updatedAt).fromNow()}</p>
+          <div style={{ display: "flex", alignitems: "center" }}>
+            {" "}
+            <p className='posttime'>{moment(post.updatedAt).fromNow()}</p>
+            {usernameParams === currentUser.username && (
+              <div className='postTopRight delete' onClick={deleteHandler}>
+                X{" "}
+              </div>
+            )}
+          </div>
         </div>
 
         <div className='postCenter'>

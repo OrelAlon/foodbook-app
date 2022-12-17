@@ -18,7 +18,7 @@ const Feed = ({ username }) => {
   const [pricePick, setPrice] = useState([0 - 100]);
 
   const { user } = useContext(AuthContext);
-
+  console.table(posts);
   useEffect(() => {
     const fetchPosts = async () => {
       const res = await axios.get(`/api/posts/feed`);

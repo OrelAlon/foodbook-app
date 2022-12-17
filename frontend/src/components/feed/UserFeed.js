@@ -3,7 +3,7 @@ import { AuthContext } from "../../context/AuthContext";
 
 import axios from "axios";
 
-import UserPost from "../post/UserPost";
+import Post from "../post/Post";
 
 import "./feed.css";
 
@@ -29,7 +29,7 @@ const UserFeed = ({ username }) => {
     <div className='feed'>
       <div className='feedWrapper'>
         {posts.map((p) => (
-          <UserPost key={p._id} post={p} />
+          <Post key={p._id} post={p} />
         ))}
       </div>
     </div>

@@ -16,13 +16,13 @@ export async function fetchRestaurantfetchPosts(restaurant) {
   const res = restaurant.restaurantname
     ? await axios.get(`/api/posts/restaurants/${restaurant.restaurantname}`)
     : await axios.get(`/api/posts/restaurants/${restaurant._id}`);
+  console.log(res);
   return res;
 }
+export async function fetchPosts() {
+  const res = await axios.get(`/api/posts/feed`);
+  console.log("res");
+  console.log(res.data);
 
-// export async function fetchRandomSearch() {
-//   const data = await axios.get(
-//     `https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_RANDOM_KEY}&number=1`
-//   );
-
-//   return data;
-// }
+  return res.data;
+}

@@ -18,28 +18,32 @@ const Post = ({ post }) => {
   const [isLiked, setIsLiked] = useState(false);
 
   const { user: currentUser } = useContext(AuthContext);
+  const { username, profilePicture } = user;
+  const { restaurantname } = restaurant;
+  const { userId, restaurantId, _id, img, updatedAt, foodCategory, dishType } =
+    post;
 
   const usernameParams = useParams().username;
 
   useEffect(() => {
     const fetchUser = async () => {
-      const res = await axios.get(`/api/users/?userId=${post.userId}`);
+      const res = await axios.get(`/api/users/?userId=${userId}`);
       setUser(res.data);
     };
     const fetchRestaurant = async () => {
       const res = await axios.get(
-        `/api/restaurants/?restaurantId=${post.restaurantId}`
+        `/api/restaurants/?restaurantId=${restaurantId}`
       );
 
       setRestaurant(res.data);
     };
     fetchRestaurant();
     fetchUser();
-  }, [post.userId, post.restaurantId]);
+  }, [userId, restaurantId]);
 
   const likeHandler = () => {
     try {
-      axios.put(`/api/posts/${post._id}/like`, { userId: currentUser._id });
+      axios.put(`/api/posts/${_id}/like`, { userId: currentUser._id });
     } catch (error) {
       console.log(error);
     }
@@ -48,7 +52,7 @@ const Post = ({ post }) => {
   };
   const deleteHandler = async () => {
     try {
-      await axios.delete(`/api/posts/${post._id}`);
+      await axios.delete(`/api/posts/${_id}`);
       window.location.reload();
     } catch (error) {
       console.log(error);
@@ -59,31 +63,29 @@ const Post = ({ post }) => {
       <div className='postWrapper'>
         <div className='postTop'>
           <div className='postTopLeft'>
-            <Link to={`/profile/${user.username}`}>
+            <Link to={`/profile/${username}`}>
               <img
                 className='postProfileImg'
-                src={user.profilePicture ? user.profilePicture : noAvatar}
+                src={profilePicture ? profilePicture : noAvatar}
                 alt=''
               />
             </Link>
             <span className='postUsername'>
-              <Link to={`/profile/${user.username}`} className='linkwithout'>
-                <span className='bold '> {user.username} </span>
+              <Link to={`/profile/${username}`} className='linkwithout'>
+                <span className='bold '> {username} </span>
               </Link>
               in{" "}
               <Link
                 className='linkwithout'
-                to={`/restaurant/${restaurant.restaurantname}`}
+                to={`/restaurant/${restaurantname}`}
               >
-                <span className='restaurantname bold'>
-                  {restaurant.restaurantname}
-                </span>
+                <span className='restaurantname bold'>{restaurantname}</span>
               </Link>
             </span>{" "}
           </div>
           <div style={{ display: "flex", alignitems: "center" }}>
             {" "}
-            <p className='posttime'>{moment(post.updatedAt).fromNow()}</p>
+            <p className='posttime'>{moment(updatedAt).fromNow()}</p>
             {usernameParams === currentUser.username && (
               <div className='postTopRight delete' onClick={deleteHandler}>
                 X{" "}
@@ -93,13 +95,7 @@ const Post = ({ post }) => {
         </div>
 
         <div className='postCenter'>
-          <img
-            className='postImg'
-            src={post.img}
-            alt=''
-            width='200'
-            height='100'
-          />
+          <img className='postImg' src={img} alt='' width='200' height='100' />
         </div>
         <div className='postBottom'>
           <div className='postBottomLeft'>
@@ -114,7 +110,7 @@ const Post = ({ post }) => {
           <div className='postBottomRight'>
             {" "}
             <ul className='tags '>
-              {post.foodCategory.map((el, i) => (
+              {foodCategory.map((el, i) => (
                 <li key={i}>
                   <a href='#' className='tag category'>
                     {el}
@@ -123,7 +119,7 @@ const Post = ({ post }) => {
               ))}
             </ul>
             <ul className='tags'>
-              {post.dishType.map((el, i) => (
+              {dishType.map((el, i) => (
                 <li key={i}>
                   <a href='#' className='tag type'>
                     {el}

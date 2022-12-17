@@ -18,7 +18,6 @@ const Feed = ({ username }) => {
   const [pricePick, setPrice] = useState([0 - 100]);
 
   const { user } = useContext(AuthContext);
-  console.table(posts);
   useEffect(() => {
     const fetchPosts = async () => {
       const res = await axios.get(`/api/posts/feed`);
@@ -34,10 +33,7 @@ const Feed = ({ username }) => {
 
   const applyFilters = () => {
     let updatedShearch = data;
-
-    // Restaurant Filter
     if (restaurantUserPick) {
-      console.log("l");
       updatedShearch = updatedShearch.filter((item) =>
         item.restaurantId.includes(restaurantUserPick)
       );
@@ -45,8 +41,6 @@ const Feed = ({ username }) => {
 
     // foodCatgoryPick Filter
     if (foodCatgoryPick.length > 0) {
-      console.log("l");
-
       updatedShearch = updatedShearch.filter((el) =>
         foodCatgoryPick.every((v) => el.foodCategory.includes(v))
       );
@@ -54,25 +48,21 @@ const Feed = ({ username }) => {
 
     // dishTypePick Filter
     if (dishTypePick.length > 0) {
-      console.log("l");
-
       updatedShearch = updatedShearch.filter((el) =>
         dishTypePick.every((v) => el.dishType.includes(v))
       );
     }
 
     if (updatedShearch.length > 0) {
-      console.log("s");
       setPosts(updatedShearch);
     }
-    console.log(updatedShearch);
 
     updatedShearch.length > 0 ? setResultsFound(true) : setResultsFound(false);
   };
+
   useEffect(() => {
-    console.log("d");
     applyFilters();
-  }, [restaurantUserPick, dishTypePick, foodCatgoryPick, pricePick]);
+  }, [restaurantUserPick, dishTypePick, foodCatgoryPick, pricePick, data]);
 
   return (
     <div className='feed'>

@@ -1,0 +1,70 @@
+.profile {
+  display: flex;
+}
+
+.profileRight {
+  flex: 9;
+}
+
+.profileCover {
+  height: 100%;
+  position: relative;
+  margin: 0;
+}
+
+.profileCoverImg {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  background: no-repeat center center #505050;
+}
+
+.profileUserImg {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  top: 175px;
+  border: 1px solid rgb(191, 186, 186);
+}
+
+.profileInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(206, 205, 203);
+}
+.profileInfo h1 {
+  margin-top: 50px;
+}
+.profileInfoDesc {
+  font-weight: 300;
+}
+
+.profileRightBottom {
+  display: flex;
+  width: 100%;
+  color: black;
+  /* background: url("../../assets/gold2.jpg") no-repeat center center fixed; */
+  height: 100%;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.margin-top {
+  height: 100px;
+  /* background: url("../../assets/gold2.jpg") no-repeat center center fixed; */
+  /* height: 100%; */
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  margin-top: 0;
+  margin: 0;
+}

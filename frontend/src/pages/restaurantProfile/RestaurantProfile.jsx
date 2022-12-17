@@ -17,15 +17,14 @@ const RestaurantProfile = () => {
 
   const restaurantname = useParams().restaurantname;
 
+  const fetchRestaurant = async () => {
+    const res = await axios.get(
+      `/api/restaurants/?restaurantname=${restaurantname}`
+    );
+    setRestaurant(res.data);
+  };
+
   useEffect(() => {
-    const fetchRestaurant = async () => {
-      const res = await axios.get(
-        `/api/restaurants/?restaurantname=${restaurantname}`
-      );
-      setRestaurant(res.data);
-      console.log(res.data);
-      console.log(restaurantname);
-    };
     fetchRestaurant();
   }, [restaurantname]);
 

@@ -8,6 +8,7 @@ import NavMenu from "../../components/navMenu/NavMenu";
 import ShareImageModal from "../../components/shareImageModal/ShareImageModal";
 import UserFeed from "../../components/feed/UserFeed";
 
+import st from "../../assets/st.jpg";
 import "./userProfile.css";
 
 const UserProfile = () => {
@@ -28,6 +29,7 @@ const UserProfile = () => {
 
   return (
     <>
+      {/* navbar */}
       <Link to='/' style={{ textDecoration: "none" }}>
         <p className='logo'>Foodbook</p>
       </Link>
@@ -45,27 +47,54 @@ const UserProfile = () => {
           setShareImageOpened={setShareImageOpened}
         />
       </div>{" "}
-      <div className='profile'>
-        <div className='profileRight'>
-          <div className='profileRightTop'>
-            <div className='profileCover'>
-              <img
-                className='profileCoverImg'
-                src={PF + "noCover.jpg"}
-                alt=''
-              />
-              <img
-                className='profileUserImg'
-                src={user.profilePicture}
-                alt=''
-              />
+      {/* feed */}
+      <div className='profile-page-container'>
+        <div>
+          <div className='content-profile-page'>
+            <div className='profile-page card'>
+              <div className='img-profile'>
+                <img className='profile-bgHome' src={st} />
+                <img
+                  className='avatar'
+                  src={user.profilePicture}
+                  alt='jofpin'
+                />
+              </div>
+              <button>Follow</button>
+              <div className='profile-data'>
+                <h3>{user.username}</h3>
+                {/* <p>github.com/jofpin</p> */}
+              </div>
+              <div className='description-profile'>{user.desc}</div>
+              <ul className='data'>
+                <li>
+                  <a>
+                    <strong>2</strong>
+                    <span>Posts</span>
+                  </a>
+                </li>
+                <li>
+                  <a>
+                    <strong>4</strong>
+                    <span>Followers</span>
+                  </a>
+                </li>
+                <li>
+                  <a>
+                    <strong>8</strong>
+                    <span>Following</span>
+                  </a>
+                </li>
+              </ul>
             </div>
           </div>
-          <div className='margin-top'></div>
-
-          <div className='profileRightBottom'>
-            <UserFeed username={username} />
-          </div>
+        </div>
+        <div>
+          <h3>search bar</h3>
+        </div>
+        <div>
+          {" "}
+          <UserFeed username={username} />
         </div>
       </div>
     </>

@@ -31,6 +31,8 @@ const RestaurantProfile = () => {
 
   return (
     <>
+      {/* navbar */}
+
       <Link to='/' style={{ textDecoration: "none" }}>
         <p className='logo'>Foodbook</p>
       </Link>
@@ -48,26 +50,27 @@ const RestaurantProfile = () => {
           setShareImageOpened={setShareImageOpened}
         />
       </div>
+      {/* feed */}
 
       <div className='profile-page-container'>
         <div>
-          <div class='content-profile-page'>
-            <div class='profile-page card'>
-              <div class='img-profile'>
-                <img class='profile-bgHome' src={classy} />
+          <div className='content-profile-page'>
+            <div className='profile-page card'>
+              <div className='img-profile'>
+                <img className='profile-bgHome' src={classy} />
                 <img
-                  class='avatar'
+                  className='avatar'
                   src={restaurant.profilePicture}
                   alt='jofpin'
                 />
               </div>
               <button>Follow</button>
-              <div class='profile-data'>
+              <div className='profile-data'>
                 <h3>{restaurant.restaurantname}</h3>
                 {/* <p>github.com/jofpin</p> */}
               </div>
-              <div class='description-profile'>{restaurant.desc}</div>
-              <ul class='data'>
+              <div className='description-profile'>{restaurant.desc}</div>
+              <ul className='data'>
                 <li>
                   <a>
                     <strong>3390</strong>

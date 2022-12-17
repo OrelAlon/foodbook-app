@@ -7,8 +7,6 @@ import Post from "../post/Post";
 import FilterImagesModel from "../filterImagesModel/FilterImagesModel";
 import "./feed.css";
 
-import { data } from "./data";
-
 const Feed = ({ username }) => {
   const [posts, setPosts] = useState([]);
   const [data, setData] = useState([]);
@@ -36,8 +34,6 @@ const Feed = ({ username }) => {
 
   const applyFilters = () => {
     let updatedShearch = data;
-    console.log(data);
-    console.log(updatedShearch);
 
     // Restaurant Filter
     if (restaurantUserPick) {

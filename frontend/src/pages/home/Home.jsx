@@ -12,7 +12,9 @@ const Home = () => {
 
   return (
     <>
-      <Logo />
+      <div onClick={() => window.location.reload(false)}>
+        <Logo />
+      </div>
       <div className='menu-div'>
         {" "}
         <button

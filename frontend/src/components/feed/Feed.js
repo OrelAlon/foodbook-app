@@ -18,7 +18,6 @@ const Feed = ({ username }) => {
   const [dishTypePick, setDishTypePick] = useState([]);
   const [foodCatgoryPick, setFoodCatgoryPick] = useState([]);
   const [pricePick, setPrice] = useState([0 - 100]);
-  const [clearSearch, setClearSearch] = useState(null);
 
   const { user } = useContext(AuthContext);
 
@@ -77,13 +76,7 @@ const Feed = ({ username }) => {
   useEffect(() => {
     console.log("d");
     applyFilters();
-  }, [
-    restaurantUserPick,
-    dishTypePick,
-    foodCatgoryPick,
-    pricePick,
-    clearSearch,
-  ]);
+  }, [restaurantUserPick, dishTypePick, foodCatgoryPick, pricePick]);
 
   return (
     <div className='feed'>

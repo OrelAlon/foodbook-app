@@ -52,7 +52,7 @@ function App() {
                 element={<RestaurantProfile />}
               />
               <Route
-                path='/editprofile'
+                path='/editprofile/:username'
                 element={<EditProfileUserPage />}
               ></Route>
             </Route>

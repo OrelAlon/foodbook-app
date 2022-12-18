@@ -1,5 +1,4 @@
-import { useContext, useState, useEffect } from "react";
-import { AuthContext } from "../../context/AuthContext";
+import { useState } from "react";
 
 import {
   Modal,
@@ -38,8 +37,6 @@ function AddRestaurantModal({ addRestaurantOpend, setAddRestaurantOpend }) {
 
   const [file, setFile] = useState(null);
   const [errorMsg, setErrorMsg] = useState("");
-
-  useEffect(() => {}, []);
 
   const submitHandler = async (e) => {
     e.preventDefault();

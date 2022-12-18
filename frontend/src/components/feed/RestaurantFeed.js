@@ -23,7 +23,7 @@ const RestaurantFeed = ({ restaurant }) => {
 
   useEffect(() => {
     fetchPosts();
-  }, [restaurant]);
+  }, []);
 
   return (
     <div className='feed'>

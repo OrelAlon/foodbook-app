@@ -44,7 +44,10 @@ const NavMenu = () => {
           >
             <Menu.Item>🖼️ My Profile</Menu.Item>{" "}
           </Link>
-          <Link to={`/editprofile`} style={{ textDecoration: "none" }}>
+          <Link
+            to={`/editprofile/${user.username}`}
+            style={{ textDecoration: "none" }}
+          >
             <Menu.Item>✏️ Edit Profile</Menu.Item>{" "}
           </Link>
           <Menu.Divider />

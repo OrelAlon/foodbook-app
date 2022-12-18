@@ -1,4 +1,7 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { AuthContext } from "../../context/AuthContext";
+
+import axios from "axios";
 
 import NavMenu from "../../components/navMenu/NavMenu";
 import ShareImageModal from "../../components/shareImageModal/ShareImageModal";
@@ -6,10 +9,12 @@ import Logo from "../../components/logo/Logo";
 
 import "./editProfileUserPage.css";
 
-// this page was build with ChatGPT :)
+// this page was partially built with ChatGPT :)
 const EditProfileUserPage = () => {
   const [shareImageOpened, setShareImageOpened] = useState(false);
 
+  const { user: currentUser } = useContext(AuthContext);
+  console.log(currentUser);
   // Declare state variables for storing form data
   const [UserName, setUserName] = useState("");
   const [userPhone, setUserPhone] = useState("");
@@ -18,14 +23,25 @@ const EditProfileUserPage = () => {
   const [file, setFile] = useState(null);
 
   // e handler for submitting the form
-  const handleSubmit = (e) => {
-    e.preDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     // Save the form data to the database here
-  };
+    try {
+      const data = new FormData();
+      data.set("profilePicture", file);
+      data.set("userId", currentUser._id);
 
-  // e handler for file input
-  const handleFileChange = (e) => {
-    setFile(e.target.files[0]);
+      await axios.put("/api/users/" + currentUser._id, data);
+      localStorage.setItem("user", JSON.stringify(currentUser));
+
+      try {
+        // window.location.reload(false);
+      } catch (error) {
+        console.log(error);
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   // Render the form
@@ -92,7 +108,8 @@ const EditProfileUserPage = () => {
           <input
             className='profile-edit-form__input'
             type='file'
-            onChange={handleFileChange}
+            accept='.png,.jpeg,.jpg,.jfif'
+            onChange={(e) => setFile(e.target.files[0])}
           />
         </label>
         <br />

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 
 import RestaurantsList from "../restaurantsList/RestaurantsList";

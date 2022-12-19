@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { AuthContext } from "../../context/AuthContext";
 
 import axios from "axios";
@@ -12,9 +12,15 @@ import "./editProfileUserPage.css";
 // this page was partially built with ChatGPT :)
 const EditProfileUserPage = () => {
   const [shareImageOpened, setShareImageOpened] = useState(false);
+  const [updateUser, setUpdateUser] = useState();
 
   const { user: currentUser } = useContext(AuthContext);
-  console.log(currentUser);
+
+  // useEffect(() => {
+  //   console.log(updateUser);
+  //   localStorage.setItem("user", JSON.stringify(updateUser));
+  // }, [updateUser]);
+
   // Declare state variables for storing form data
   const [UserName, setUserName] = useState("");
   const [userPhone, setUserPhone] = useState("");
@@ -29,12 +35,20 @@ const EditProfileUserPage = () => {
     try {
       const data = new FormData();
       data.set("profilePicture", file);
+      data.set("username", UserName);
+      data.set("email", userEmail);
+      data.set("instagram", userInstagram);
       data.set("userId", currentUser._id);
 
       await axios.put("/api/users/" + currentUser._id, data);
-      localStorage.setItem("user", JSON.stringify(currentUser));
 
       try {
+        const res = await axios.get(
+          `/api/users/?username=${currentUser.username}`
+        );
+
+        setUpdateUser(res.data);
+
         // window.location.reload(false);
       } catch (error) {
         console.log(error);

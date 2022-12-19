@@ -12,14 +12,8 @@ import "./editProfileUserPage.css";
 // this page was partially built with ChatGPT :)
 const EditProfileUserPage = () => {
   const [shareImageOpened, setShareImageOpened] = useState(false);
-  const [updateUser, setUpdateUser] = useState();
 
   const { user: currentUser } = useContext(AuthContext);
-
-  // useEffect(() => {
-  //   console.log(updateUser);
-  //   localStorage.setItem("user", JSON.stringify(updateUser));
-  // }, [updateUser]);
 
   // Declare state variables for storing form data
   const [UserName, setUserName] = useState("");
@@ -43,11 +37,12 @@ const EditProfileUserPage = () => {
       await axios.put("/api/users/" + currentUser._id, data);
 
       try {
-        const res = await axios.get(
-          `/api/users/?username=${currentUser.username}`
+        const existingUser = await axios.get(
+          `/api/users/?userId=${currentUser._id}`
         );
 
-        setUpdateUser(res.data);
+        // save the updated user back to the local storage
+        localStorage.setItem("user", JSON.stringify(existingUser.data));
 
         // window.location.reload(false);
       } catch (error) {

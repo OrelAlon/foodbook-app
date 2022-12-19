@@ -60,7 +60,7 @@ const Feed = () => {
 
   useEffect(() => {
     applyFilters();
-  }, [restaurantUserPick, dishTypePick, foodCatgoryPick, pricePick]);
+  }, [restaurantUserPick, dishTypePick, foodCatgoryPick, pricePick, data]);
 
   return (
     <div className='feed'>

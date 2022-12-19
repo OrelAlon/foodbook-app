@@ -63,7 +63,7 @@ function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
     fetchRestaurants();
 
     sortRestaurants(restaurants);
-  }, [restaurants]);
+  }, []);
 
   const submitHandler = async (e) => {
     e.preventDefault();

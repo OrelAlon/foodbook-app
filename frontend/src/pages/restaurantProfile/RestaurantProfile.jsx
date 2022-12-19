@@ -26,7 +26,7 @@ const RestaurantProfile = () => {
 
   useEffect(() => {
     fetchRestaurant();
-  }, []);
+  }, [restaurantname]);
 
   return (
     <>

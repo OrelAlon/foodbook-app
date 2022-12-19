@@ -42,18 +42,19 @@ const updateUser = async (req, res) => {
     try {
       const user = await User.findById({ _id: req.params.id });
 
-      const file = req.files.profilePicture;
-
-      // upload to cloudinary
-      const result = await cloudinary.v2.uploader.upload(file.tempFilePath, {
-        folder: "avatars",
-        width: 200,
-        crop: "scale",
-        effect: "sharpen",
-      });
-
-      user.profilePicture = result.secure_url;
-
+      user.username = req.body.username || user.username;
+      user.email = req.body.email || user.email;
+      if (req.body.image && req.body.image.trim()) {
+        const file = req.files.profilePicture;
+        // upload to cloudinary
+        const result = await cloudinary.v2.uploader.upload(file.tempFilePath, {
+          folder: "avatars",
+          width: 200,
+          crop: "scale",
+          effect: "sharpen",
+        });
+        user.profilePicture = result.secure_url;
+      }
       await user.save();
 
       res.status(200).json("User has been updated");

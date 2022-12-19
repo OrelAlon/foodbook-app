@@ -26,7 +26,7 @@ const EditProfileUserPage = () => {
   const [userPhone, setUserPhone] = useState("");
   const [userInstagram, setUserInstagram] = useState("");
   const [userEmail, setUserEmail] = useState("");
-  const [file, setFile] = useState(null);
+  const [file, setFile] = useState();
 
   // e handler for submitting the form
   const handleSubmit = async (e) => {
@@ -37,7 +37,7 @@ const EditProfileUserPage = () => {
       data.set("profilePicture", file);
       data.set("username", UserName);
       data.set("email", userEmail);
-      data.set("instagram", userInstagram);
+      // data.set("instagram", userInstagram);
       data.set("userId", currentUser._id);
 
       await axios.put("/api/users/" + currentUser._id, data);

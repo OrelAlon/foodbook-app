@@ -44,6 +44,9 @@ const updateUser = async (req, res) => {
 
       user.username = req.body.username || user.username;
       user.email = req.body.email || user.email;
+      user.instagram = req.body.instagram || user.instagram;
+
+      // Checking if the user has updated the image
       if (req.body.image && req.body.image.trim()) {
         const file = req.files.profilePicture;
         // upload to cloudinary

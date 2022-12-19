@@ -1,4 +1,4 @@
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 
 import axios from "axios";
@@ -17,7 +17,6 @@ const EditProfileUserPage = () => {
 
   // Declare state variables for storing form data
   const [UserName, setUserName] = useState("");
-  const [userPhone, setUserPhone] = useState("");
   const [userInstagram, setUserInstagram] = useState("");
   const [userEmail, setUserEmail] = useState("");
   const [file, setFile] = useState();
@@ -31,7 +30,8 @@ const EditProfileUserPage = () => {
       data.set("profilePicture", file);
       data.set("username", UserName);
       data.set("email", userEmail);
-      // data.set("instagram", userInstagram);
+      data.set("instagram", userInstagram);
+      data.set("instagram", userPhone);
       data.set("userId", currentUser._id);
 
       await axios.put("/api/users/" + currentUser._id, data);
@@ -82,16 +82,7 @@ const EditProfileUserPage = () => {
           />
         </label>
         <br />
-        <label className='profile-edit-form__label'>
-          Phone:
-          <input
-            className='profile-edit-form__input'
-            type='text'
-            value={userPhone}
-            onChange={(e) => setUserPhone(e.target.value)}
-          />
-        </label>
-        <br />
+
         <label className='profile-edit-form__label'>
           Instagram Link:
           <input

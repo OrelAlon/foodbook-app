@@ -49,7 +49,7 @@ const UserSchema = new mongoose.Schema(
       type: String,
       max: 50,
     },
-    instgram: {
+    instagram: {
       type: String,
       default: "",
     },

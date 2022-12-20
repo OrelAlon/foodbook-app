@@ -1,4 +1,6 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+
 import { AuthContext } from "../../context/AuthContext";
 
 import axios from "axios";
@@ -14,12 +16,13 @@ const EditProfileUserPage = () => {
   const [shareImageOpened, setShareImageOpened] = useState(false);
 
   const { user: currentUser } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   // Declare state variables for storing form data
   const [UserName, setUserName] = useState("");
   const [userInstagram, setUserInstagram] = useState("");
   const [userEmail, setUserEmail] = useState("");
-  const [file, setFile] = useState();
+  const [file, setFile] = useState("");
 
   // e handler for submitting the form
   const handleSubmit = async (e) => {
@@ -27,11 +30,14 @@ const EditProfileUserPage = () => {
     // Save the form data to the database here
     try {
       const data = new FormData();
-      data.set("profilePicture", file);
+      if (file) {
+        console.log("444");
+        data.set("profilePicture", file);
+      }
       data.set("username", UserName);
       data.set("email", userEmail);
       data.set("instagram", userInstagram);
-      data.set("instagram", userPhone);
+
       data.set("userId", currentUser._id);
 
       await axios.put("/api/users/" + currentUser._id, data);
@@ -40,11 +46,11 @@ const EditProfileUserPage = () => {
         const existingUser = await axios.get(
           `/api/users/?userId=${currentUser._id}`
         );
-
         // save the updated user back to the local storage
         localStorage.setItem("user", JSON.stringify(existingUser.data));
 
         // window.location.reload(false);
+        // navigate("/");
       } catch (error) {
         console.log(error);
       }

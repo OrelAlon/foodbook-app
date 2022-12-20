@@ -17,12 +17,25 @@ function ChangePasswordModel({ changePasswordModel, setChangePasswordOpened }) {
 
   const theme = useMantineTheme();
 
-  const [password, setPassword] = useState();
+  const [newPassword, setNewPassword] = useState();
   const [confirmPassword, setConfirmPassword] = useState();
+  const [errorMsg, setErrorMsg] = useState("");
+  const [success, setSuccess] = useState("");
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    console.log("dd");
+
+    if (newPassword !== confirmPassword) {
+      return setErrorMsg("Password don't match...");
+    }
+
+    try {
+      // Send a request to the server to update the password
+      const response = await axios.post("/updatepassword", { newPassword });
+      setSuccess(response.data.message);
+    } catch (error) {
+      setErrorMsg(error.response.data.error);
+    }
   };
 
   return (
@@ -34,22 +47,23 @@ function ChangePasswordModel({ changePasswordModel, setChangePasswordOpened }) {
       }
       overlayOpacity={0.55}
       overlayBlur={3}
-      size='75%'
+      size='85%'
       opened={changePasswordModel}
       onClose={() => setChangePasswordOpened(false)}
     >
       {/* Modal content */}
       <form className='infoForm' onSubmit={submitHandler}>
-        <Stack sx={{ maxWidth: 380 }} mx='auto'>
+        <Stack sx={{ maxWidth: 480 }} mx='auto'>
           <PasswordInput
             description='Password must be min 6 character'
             placeholder='Password'
             label='Password'
             size='md'
             withAsterisk
-            style={{ width: "50%", margin: "auto" }}
+            style={{ width: "80%", margin: "auto" }}
             visible={visible}
             onVisibilityChange={toggle}
+            onChange={(e) => setNewPassword(e.target.value)}
           />
 
           <PasswordInput
@@ -57,12 +71,13 @@ function ChangePasswordModel({ changePasswordModel, setChangePasswordOpened }) {
             label='Confirm Password'
             size='md'
             withAsterisk
-            style={{ width: "50%", margin: "auto" }}
+            style={{ width: "80%", margin: "auto" }}
             visible={visible}
             onVisibilityChange={toggle}
+            onChange={(e) => setConfirmPassword(e.target.value)}
           />
         </Stack>
-
+        {errorMsg && <div className='error-msg'>{errorMsg}</div>}
         <Space h='lg' />
         <div className='share-btn-div'>
           <Button

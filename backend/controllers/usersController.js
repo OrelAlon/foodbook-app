@@ -41,13 +41,13 @@ const updateUser = async (req, res) => {
     }
     try {
       const user = await User.findById({ _id: req.params.id });
-
       user.username = req.body.username || user.username;
       user.email = req.body.email || user.email;
       user.instagram = req.body.instagram || user.instagram;
+      user.profilePicture = user.profilePicture;
 
       // Checking if the user has updated the image
-      if (req.body.image && req.body.image.trim()) {
+      if (req.files && req.files.profilePicture) {
         const file = req.files.profilePicture;
         // upload to cloudinary
         const result = await cloudinary.v2.uploader.upload(file.tempFilePath, {
@@ -58,7 +58,8 @@ const updateUser = async (req, res) => {
         });
         user.profilePicture = result.secure_url;
       }
-      await user.save();
+
+      user.save();
 
       res.status(200).json("User has been updated");
     } catch (err) {

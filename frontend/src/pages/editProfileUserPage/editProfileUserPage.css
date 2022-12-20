@@ -36,3 +36,10 @@
 .profile-edit-form__button:hover {
   background-color: #45a049;
 }
+
+.change-password-div {
+  color: #2f5fe2;
+  text-decoration: underline;
+  text-align: center;
+  cursor: pointer;
+}

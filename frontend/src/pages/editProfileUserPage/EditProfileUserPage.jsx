@@ -7,6 +7,7 @@ import axios from "axios";
 
 import NavMenu from "../../components/navMenu/NavMenu";
 import ShareImageModal from "../../components/shareImageModal/ShareImageModal";
+import ChangePasswordModel from "../../components/changePasswordModel/ChangePasswordModel";
 import Logo from "../../components/logo/Logo";
 
 import "./editProfileUserPage.css";
@@ -14,6 +15,7 @@ import "./editProfileUserPage.css";
 // this page was partially built with ChatGPT :)
 const EditProfileUserPage = () => {
   const [shareImageOpened, setShareImageOpened] = useState(false);
+  const [changePasswordModel, setChangePasswordOpened] = useState(false);
 
   const { user: currentUser } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -123,7 +125,17 @@ const EditProfileUserPage = () => {
           Save
         </button>
       </form>
-      <p>Change password</p>
+      <div
+        className='change-password-div'
+        onClick={() => setChangePasswordOpened(true)}
+      >
+        {" "}
+        <a>Change password</a>
+        <ChangePasswordModel
+          changePasswordModel={changePasswordModel}
+          setChangePasswordOpened={setChangePasswordOpened}
+        />
+      </div>
     </>
   );
 };

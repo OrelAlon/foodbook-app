@@ -1,16 +1,20 @@
 import { useContext, useState, useEffect } from "react";
+import { useDisclosure } from "@mantine/hooks";
 
 import {
   Modal,
   useMantineTheme,
   Button,
-  TextInput,
+  PasswordInput,
   Space,
+  Stack,
 } from "@mantine/core";
 
 import axios from "axios";
 
 function ChangePasswordModel({ changePasswordModel, setChangePasswordOpened }) {
+  const [visible, { toggle }] = useDisclosure(false);
+
   const theme = useMantineTheme();
 
   const [password, setPassword] = useState();
@@ -36,22 +40,29 @@ function ChangePasswordModel({ changePasswordModel, setChangePasswordOpened }) {
     >
       {/* Modal content */}
       <form className='infoForm' onSubmit={submitHandler}>
-        <TextInput
-          placeholder='Password'
-          label='Password'
-          size='md'
-          withAsterisk
-          style={{ width: "40%", margin: "auto" }}
-        />
-        <Space h='lg' />
+        <Stack sx={{ maxWidth: 380 }} mx='auto'>
+          <PasswordInput
+            description='Password must be min 6 character'
+            placeholder='Password'
+            label='Password'
+            size='md'
+            withAsterisk
+            style={{ width: "50%", margin: "auto" }}
+            visible={visible}
+            onVisibilityChange={toggle}
+          />
 
-        <TextInput
-          placeholder='Password'
-          label='Confirm Password'
-          size='md'
-          withAsterisk
-          style={{ width: "40%", margin: "auto" }}
-        />
+          <PasswordInput
+            placeholder='Password'
+            label='Confirm Password'
+            size='md'
+            withAsterisk
+            style={{ width: "50%", margin: "auto" }}
+            visible={visible}
+            onVisibilityChange={toggle}
+          />
+        </Stack>
+
         <Space h='lg' />
         <div className='share-btn-div'>
           <Button

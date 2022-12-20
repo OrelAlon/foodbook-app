@@ -5,10 +5,12 @@ import { AuthContext } from "../../context/AuthContext";
 
 import axios from "axios";
 
+import ImageUpload from "../../components/imageUpload/ImageUpload";
 import NavMenu from "../../components/navMenu/NavMenu";
 import ShareImageModal from "../../components/shareImageModal/ShareImageModal";
 import ChangePasswordModel from "../../components/changePasswordModel/ChangePasswordModel";
 import Logo from "../../components/logo/Logo";
+import { BiImage } from "react-icons/bi";
 
 import "./editProfileUserPage.css";
 
@@ -56,6 +58,22 @@ const EditProfileUserPage = () => {
       } catch (error) {
         console.log(error);
       }
+      <div className='upload-image-div'>
+        {/* <span className='shareText'>Upload</span> */}
+        <BiImage fontSize={36} color={file ? "green" : "red"} />
+        <input
+          style={{ display: "none" }}
+          type='file'
+          id='file'
+          accept='.png,.jpeg,.jpg,.jfif'
+          onChange={(e) => setFile(e.target.files[0])}
+        />
+        {file && (
+          <div className='img-upload'>
+            <ImageUpload file={file} setFile={setFile} />
+          </div>
+        )}
+      </div>;
     } catch (error) {
       console.log(error);
     }
@@ -111,14 +129,29 @@ const EditProfileUserPage = () => {
           />
         </label>
         <br />
-        <label className='profile-edit-form__label'>
+        <label
+          className='profile-edit-form__label'
+          onChange={(e) => setFile(e.target.files[0])}
+        >
           Image:
-          <input
-            className='profile-edit-form__input'
-            type='file'
-            accept='.png,.jpeg,.jpg,.jfif'
-            onChange={(e) => setFile(e.target.files[0])}
-          />
+          <div className='upload-image-div'>
+            <label htmlFor='file' className='shareOption'>
+              {/* <span className='shareText'>Upload</span> */}
+              <BiImage fontSize={36} color={file ? "green" : "red"} />
+              <input
+                style={{ display: "none" }}
+                type='file'
+                id='file'
+                accept='.png,.jpeg,.jpg,.jfif'
+                onChange={(e) => setFile(e.target.files[0])}
+              />
+            </label>
+            {file && (
+              <div className='img-upload'>
+                <ImageUpload file={file} setFile={setFile} />
+              </div>
+            )}
+          </div>
         </label>
         <br />
         <button className='profile-edit-form__button' type='submit'>

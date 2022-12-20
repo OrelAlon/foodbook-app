@@ -1,7 +1,7 @@
 .profile-edit-form {
   display: flex;
   flex-direction: column;
-  width: 400px;
+  max-width: 400px;
   margin: 0 auto;
   padding: 20px;
   border: 1px solid #ccc;
@@ -42,4 +42,9 @@
   text-decoration: underline;
   text-align: center;
   cursor: pointer;
+}
+.margin-auto {
+  align-items: center;
+  align-content: center;
+  margin: auto;
 }

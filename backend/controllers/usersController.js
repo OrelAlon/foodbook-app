@@ -84,4 +84,31 @@ const deleteUser = async (req, res) => {
   }
 };
 
-module.exports = { getUser, getAllUsers, updateUser, deleteUser };
+//
+const updatePassword = async (req, res) => {
+  console.log("sss");
+  try {
+    const { newPassword } = req.body;
+    // Find the user in the database
+    user.username = req.body.username || user.username;
+
+    const user = await User.findById({ _id: req.params.id });
+    // Hash the new password
+    const salt = await bcrypt.genSalt();
+    const hashedPassword = await bcrypt.hash(newPassword, salt);
+    // Update the user's password in the database
+    await User.updateOne({ _id: req.params.id }, { password: hashedPassword });
+    res.send({ message: "Password updated successfully" });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send({ error: "Error updating password" });
+  }
+};
+
+module.exports = {
+  getUser,
+  getAllUsers,
+  updateUser,
+  deleteUser,
+  updatePassword,
+};

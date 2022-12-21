@@ -48,3 +48,9 @@
   align-content: center;
   margin: auto;
 }
+.error-msg {
+  color: red;
+  margin-top: 20px;
+  text-align: center;
+  font-weight: bold;
+}

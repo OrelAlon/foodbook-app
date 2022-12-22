@@ -39,9 +39,10 @@ function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
   const [errorMsg, setErrorMsg] = useState("");
 
   useEffect(() => {
+    console.log("count");
     const fetchRestaurants = async () => {
       const res = await axios.get(`/api/restaurants/restaurants`);
-      setRestaurants(res.data);
+      sortRestaurants(res.data);
     };
 
     const sortRestaurants = (res) => {
@@ -53,6 +54,7 @@ function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
           group: el.city,
         });
       });
+
       return setRestaurantsList(
         arr.sort((a, b) =>
           a.label.toLowerCase() > b.label.toLowerCase() ? 1 : -1
@@ -61,8 +63,6 @@ function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
     };
 
     fetchRestaurants();
-
-    sortRestaurants(restaurants);
   }, []);
 
   const submitHandler = async (e) => {

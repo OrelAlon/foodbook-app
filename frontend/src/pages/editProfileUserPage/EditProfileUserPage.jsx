@@ -54,7 +54,7 @@ const EditProfileUserPage = () => {
         localStorage.setItem("user", JSON.stringify(existingUser.data));
 
         // window.location.reload(false);
-        // navigate("/");
+        navigate("/");
       } catch (error) {
         console.log(error);
       }

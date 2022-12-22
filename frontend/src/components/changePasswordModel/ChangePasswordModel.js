@@ -1,5 +1,7 @@
-import { useContext, useState, useEffect } from "react";
+import { useContext, useState } from "react";
 import { useDisclosure } from "@mantine/hooks";
+import { AuthContext } from "../../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 import {
   Modal,
@@ -14,13 +16,16 @@ import axios from "axios";
 
 function ChangePasswordModel({ changePasswordModel, setChangePasswordOpened }) {
   const [visible, { toggle }] = useDisclosure(false);
+  const { user } = useContext(AuthContext);
 
   const theme = useMantineTheme();
+  const navigate = useNavigate();
 
   const [newPassword, setNewPassword] = useState();
   const [confirmPassword, setConfirmPassword] = useState();
   const [errorMsg, setErrorMsg] = useState("");
   const [success, setSuccess] = useState("");
+  const [userId, setUserId] = useState(user._id);
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -28,13 +33,17 @@ function ChangePasswordModel({ changePasswordModel, setChangePasswordOpened }) {
     if (newPassword !== confirmPassword) {
       return setErrorMsg("Password don't match...");
     }
-
     try {
       // Send a request to the server to update the password
-      const response = await axios.post("/updatepassword", { newPassword });
+      const response = await axios.post("/api/users/updatepassword", {
+        newPassword,
+        userId,
+      });
       setSuccess(response.data.message);
+      navigate("/");
     } catch (error) {
       setErrorMsg(error.response.data.error);
+      console.log(error.response.data.error);
     }
   };
 
@@ -77,7 +86,9 @@ function ChangePasswordModel({ changePasswordModel, setChangePasswordOpened }) {
             onChange={(e) => setConfirmPassword(e.target.value)}
           />
         </Stack>
-        {errorMsg && <div className='error-msg'>{errorMsg}</div>}
+        {errorMsg && <div className='error msg'>{errorMsg}</div>}
+        {success && <div className='success msg'>{success}</div>}
+
         <Space h='lg' />
         <div className='share-btn-div'>
           <Button

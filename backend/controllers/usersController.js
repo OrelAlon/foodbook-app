@@ -86,18 +86,16 @@ const deleteUser = async (req, res) => {
 
 //
 const updatePassword = async (req, res) => {
-  console.log("sss");
   try {
-    const { newPassword } = req.body;
+    const { newPassword, userId } = req.body;
     // Find the user in the database
-    user.username = req.body.username || user.username;
 
-    const user = await User.findById({ _id: req.params.id });
+    const user = await User.findById({ _id: userId });
     // Hash the new password
     const salt = await bcrypt.genSalt();
     const hashedPassword = await bcrypt.hash(newPassword, salt);
     // Update the user's password in the database
-    await User.updateOne({ _id: req.params.id }, { password: hashedPassword });
+    await User.updateOne({ _id: userId }, { password: hashedPassword });
     res.send({ message: "Password updated successfully" });
   } catch (error) {
     console.error(error);

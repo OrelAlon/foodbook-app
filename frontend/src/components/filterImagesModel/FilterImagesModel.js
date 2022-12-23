@@ -66,7 +66,6 @@ const FilterImagesModel = ({
           // label='If you want to be more specific:'
           placeholder='Whice Course ?'
           style={{ width: "60%", margin: "auto", textAlign: "center" }}
-          searchable
         />
         <Space h='sm' />
         <MultiSelect
@@ -76,7 +75,6 @@ const FilterImagesModel = ({
           // label='If you want to be EXTRA specific:'
           placeholder='Whice Catgory ?'
           style={{ width: "60%", margin: "auto" }}
-          searchable
         />{" "}
         <Space h='sm' />
         <div className='slide-div'>

@@ -171,10 +171,10 @@ function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
             Share to
             <img src={food} alt='foodbook' className='instagram' />
           </span>{" "}
-          <span>
+          {/* <span>
             Share with
             <img src={instagram} alt='instagram' className='instagram' />
-          </span>{" "}
+          </span>{" "} */}
         </div>
       </form>
     </Modal>

@@ -103,7 +103,7 @@ function AddRestaurantModal({ addRestaurantOpend, setAddRestaurantOpend }) {
         <div>
           <Input
             icon={<IconHomePlus size={16} />}
-            style={{ width: "50%", margin: "auto", color: "dark.9" }}
+            style={{ width: "80%", margin: "auto", color: "dark.9" }}
             label='Restaurant Name:'
             placeholder='Name'
             onChange={(e) => setRestaurantName(e.target.value)}
@@ -114,7 +114,7 @@ function AddRestaurantModal({ addRestaurantOpend, setAddRestaurantOpend }) {
           <Space h='xl' />
           <Input
             icon={<IconBrandInstagram size={16} />}
-            style={{ width: "50%", margin: "auto", color: "dark.9" }}
+            style={{ width: "80%", margin: "auto", color: "dark.9" }}
             label='Instagram:'
             placeholder='Instagram'
             onChange={(e) => setInstagramLink(e.target.value)}
@@ -128,7 +128,7 @@ function AddRestaurantModal({ addRestaurantOpend, setAddRestaurantOpend }) {
             onChange={setCity}
             placeholder='city'
             icon={<IconWorld size={16} />}
-            style={{ width: "50%", margin: "auto", color: "dark.9" }}
+            style={{ width: "80%", margin: "auto", color: "dark.9" }}
             required
           />{" "}
           <Space h='xl' />
@@ -137,7 +137,7 @@ function AddRestaurantModal({ addRestaurantOpend, setAddRestaurantOpend }) {
             data={foodCategoryOptions}
             onChange={setSelectFoodCatgory}
             placeholder='Pick what relevant'
-            style={{ width: "50%", margin: "auto" }}
+            style={{ width: "80%", margin: "auto" }}
           />{" "}
         </div>
         <Space h='xl' />

@@ -36,7 +36,7 @@ function AddRestaurantModal({ addRestaurantOpend, setAddRestaurantOpend }) {
   const [instagramLink, setInstagramLink] = useState("");
   const [price, setPrice] = useState(75);
 
-  const [file, setFile] = useState(null);
+  const [file, setFile] = useState(instagram);
   const [errorMsg, setErrorMsg] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -48,24 +48,27 @@ function AddRestaurantModal({ addRestaurantOpend, setAddRestaurantOpend }) {
     if (restaurantName == null) {
       return setErrorMsg("Please choose a restaurant");
     }
-    try {
-      setErrorMsg("");
-      setLoading(true);
-      const data = new FormData();
-      console.log(restaurantName);
-      console.log(JSON.stringify(restaurantName));
-      data.set("profilePicture", file);
-      data.set("restaurantname", restaurantName);
-      data.set("city", city);
-      data.set("price", price);
-      data.set("instgram", instagramLink);
-      data.set("foodCategory", JSON.stringify(selectFoodCatgory));
-
-      await axios.post("/api/restaurants/", data);
-      window.location.reload();
-    } catch (error) {
-      console.log(error);
+    if (city == null) {
+      return setErrorMsg("Please choose a city");
     }
+    console.log(file);
+    console.log(file[0]);
+    // try {
+    //   setErrorMsg("");
+    //   setLoading(true);
+    //   const data = new FormData();
+    //   data.set("profilePicture", file);
+    //   data.set("restaurantname", restaurantName);
+    //   data.set("city", city);
+    //   data.set("price", price);
+    //   data.set("instgram", instagramLink);
+    //   data.set("foodCategory", JSON.stringify(selectFoodCatgory));
+
+    //   await axios.post("/api/restaurants/", data);
+    //   window.location.reload();
+    // } catch (error) {
+    //   console.log(error);
+    // }
   };
 
   return (
@@ -96,11 +99,11 @@ function AddRestaurantModal({ addRestaurantOpend, setAddRestaurantOpend }) {
               onChange={(e) => setFile(e.target.files[0])}
             />
           </label>
-          {file && (
+          {/* {file && (
             <div className='img-upload'>
               <ImageUpload file={file} setFile={setFile} />
             </div>
-          )}
+          )} */}
         </div>
         <Space h='xl' />
 
@@ -124,7 +127,6 @@ function AddRestaurantModal({ addRestaurantOpend, setAddRestaurantOpend }) {
             onChange={(e) => setInstagramLink(e.target.value)}
             value={instagramLink}
             type='text'
-            required
           />
           <Space h='xl' />
           <Select

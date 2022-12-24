@@ -1,6 +1,5 @@
 export const dishTypeOptions = [
   { value: "Entree", label: "Entree" },
-  { value: "Appetizer", label: "Appetizer" },
   { value: "Soup", label: "Soup" },
   { value: "Main-Course", label: "Main-Course" },
   { value: "Salad", label: "Salad" },

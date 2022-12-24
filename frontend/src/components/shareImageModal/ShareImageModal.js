@@ -33,7 +33,6 @@ function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
   const [restaurantUserPick, setRestaurantUserPick] = useState(null);
   const [selectFoodCatgory, setSelectFoodCatgory] = useState([]);
   const [selectDishType, setSelectDishType] = useState([]);
-  const [price, setPrice] = useState(75);
 
   const [file, setFile] = useState(null);
   const [errorMsg, setErrorMsg] = useState("");
@@ -79,7 +78,6 @@ function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
       data.set("userId", user._id);
       data.set("foodCategory", JSON.stringify(selectFoodCatgory));
       data.set("dishType", JSON.stringify(selectDishType));
-      data.set("price", price);
       data.set("restaurantId", restaurantUserPick);
       await axios.post("/api/posts", data);
       window.location.reload();
@@ -152,19 +150,6 @@ function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
         </div>
         <Space h='sm' />
         <Space h='sm' />
-
-        <div className='slide-div'>
-          <Slider
-            label={(val) => Prices.find((p) => p.value === val).label}
-            defaultValue={50}
-            step={25}
-            onChange={setPrice}
-            marks={Prices}
-            styles={{
-              markLabel: { display: "none" },
-            }}
-          />
-        </div>
 
         <div className='share-btn-div'>
           <span onClick={submitHandler}>

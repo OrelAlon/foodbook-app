@@ -18,9 +18,12 @@
   margin-bottom: 15px;
   justify-content: center;
 }
-.share-btn-div {
-  margin-top: 15px;
-
+.center-div {
+  margin-top: 25px;
+  font-weight: bold;
   display: flex;
   justify-content: space-evenly;
+}
+.share {
+  cursor: pointer;
 }

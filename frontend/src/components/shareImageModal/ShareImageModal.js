@@ -5,7 +5,7 @@ import {
   Modal,
   useMantineTheme,
   MultiSelect,
-  Slider,
+  Loader,
   Select,
   Space,
 } from "@mantine/core";
@@ -28,17 +28,15 @@ function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
   const theme = useMantineTheme();
   const { user } = useContext(AuthContext);
 
-  const [restaurants, setRestaurants] = useState([]);
   const [restaurantsList, setRestaurantsList] = useState([]);
   const [restaurantUserPick, setRestaurantUserPick] = useState(null);
   const [selectFoodCatgory, setSelectFoodCatgory] = useState([]);
   const [selectDishType, setSelectDishType] = useState([]);
-
+  const [loading, setLoading] = useState(false);
   const [file, setFile] = useState(null);
   const [errorMsg, setErrorMsg] = useState("");
 
   useEffect(() => {
-    console.log("count");
     const fetchRestaurants = async () => {
       const res = await axios.get(`/api/restaurants/restaurants`);
       sortRestaurants(res.data);
@@ -73,6 +71,10 @@ function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
       return setErrorMsg("Please choose a restaurant");
     }
     try {
+      setErrorMsg("");
+
+      setLoading(true);
+
       const data = new FormData();
       data.set("img", file);
       data.set("userId", user._id);
@@ -150,10 +152,12 @@ function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
         </div>
         <Space h='sm' />
         <Space h='sm' />
+        <div className='center-div'>{loading && <Loader />}</div>
+        {errorMsg && <div className='error msg'>{errorMsg}</div>}
 
-        <div className='share-btn-div'>
-          <span onClick={submitHandler}>
-            Share to
+        <div className='center-div'>
+          <span className='share' onClick={submitHandler}>
+            Upload
             <img src={food} alt='foodbook' className='instagram' />
           </span>{" "}
           {/* <span>

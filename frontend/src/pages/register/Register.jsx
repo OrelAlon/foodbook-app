@@ -1,6 +1,7 @@
 import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
+import { Loader } from "@mantine/core";
 import ImageUpload from "../../components/imageUpload/ImageUpload";
 import { BiImage } from "react-icons/bi";
 import noAvatar from "../../assets/noAvatar.png";
@@ -15,6 +16,8 @@ const Register = () => {
   const confirmPasswordRef = useRef();
   const [file, setFile] = useState(null);
   const [errorMsg, setErrorMsg] = useState("");
+  const [loading, setLoading] = useState(false);
+
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -28,6 +31,8 @@ const Register = () => {
       return setErrorMsg("Password don't match...");
     } else {
       setErrorMsg("");
+      setLoading(true);
+
       try {
         const data = new FormData();
         data.set("profilePicture", file);
@@ -119,6 +124,8 @@ const Register = () => {
             )}
           </div>
           <h1 className='errMsg'>{errorMsg}</h1>
+          <div className='center-div'>{loading && <Loader />}</div>
+
           <button className='signinRegister'>Sign Up</button>
           {/* <ToastContainer /> */}
         </form>

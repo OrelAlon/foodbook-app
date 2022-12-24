@@ -9,6 +9,7 @@ import {
   Space,
   Button,
   Select,
+  Loader,
 } from "@mantine/core";
 import {
   IconBrandInstagram,
@@ -37,16 +38,19 @@ function AddRestaurantModal({ addRestaurantOpend, setAddRestaurantOpend }) {
 
   const [file, setFile] = useState(null);
   const [errorMsg, setErrorMsg] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    if (file == null) {
-      return setErrorMsg("Please upload a image");
-    }
-    // if (restaurantUserPick == null) {
-    //   return setErrorMsg("Please choose a restaurant");
+    // if (file == null) {
+    //   return setErrorMsg("Please upload a image");
     // }
+    if (restaurantName == null) {
+      return setErrorMsg("Please choose a restaurant");
+    }
     try {
+      setErrorMsg("");
+      setLoading(true);
       const data = new FormData();
       console.log(restaurantName);
       console.log(JSON.stringify(restaurantName));
@@ -156,6 +160,8 @@ function AddRestaurantModal({ addRestaurantOpend, setAddRestaurantOpend }) {
           />
         </div>
         <Space h='xl' />
+        <div className='center-div'>{loading && <Loader />}</div>
+        {errorMsg && <div className='error msg'>{errorMsg}</div>}
 
         <div className='share-btn-div'>
           <Button

@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 
 import axios from "axios";
 
+import { Loader } from "@mantine/core";
+
 import Post from "../post/Post";
 import FilterImagesModel from "../filterImagesModel/FilterImagesModel";
 import "./feed.css";
@@ -14,7 +16,7 @@ const Feed = () => {
   const [restaurantUserPick, setRestaurantUserPick] = useState(null);
   const [dishTypePick, setDishTypePick] = useState([]);
   const [foodCatgoryPick, setFoodCatgoryPick] = useState([]);
-  const [pricePick, setPrice] = useState([0 - 100]);
+  const [pricePick, setPricePick] = useState();
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -69,16 +71,19 @@ const Feed = () => {
           setFoodCatgoryPick={setFoodCatgoryPick}
           setRestaurantUserPick={setRestaurantUserPick}
           setDishTypePick={setDishTypePick}
+          setPricePick={setPricePick}
+          pricePick={pricePick}
         />
 
         {/* Results || Empty View */}
-
+        {pricePick}
         {resultsFound ? (
           posts.map((p) => <Post key={p._id} post={p} />)
         ) : (
-          <article>
-            <p>No Matching Posts</p>
-          </article>
+          <div className='center-div'>
+            {" "}
+            <Loader />
+          </div>
         )}
       </div>
     </div>

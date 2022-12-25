@@ -32,7 +32,7 @@ function AddRestaurantModal({ addRestaurantOpend, setAddRestaurantOpend }) {
   const [selectFoodCatgory, setSelectFoodCatgory] = useState([]);
   const [city, setCity] = useState("");
   const [instagramLink, setInstagramLink] = useState("");
-  const [price, setPrice] = useState(75);
+  const [price, setPrice] = useState(50);
 
   const [file, setFile] = useState();
   const [errorMsg, setErrorMsg] = useState("");

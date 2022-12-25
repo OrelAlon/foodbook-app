@@ -17,6 +17,8 @@ const FilterImagesModel = ({
   setFoodCatgoryPick,
   setRestaurantUserPick,
   setDishTypePick,
+  setPricePick,
+  pricePick,
 }) => {
   const [restaurantsList, setRestaurantsList] = useState([]);
 
@@ -77,18 +79,19 @@ const FilterImagesModel = ({
           style={{ width: "60%", margin: "auto" }}
         />{" "}
         <Space h='sm' />
-        <div className='slide-div'>
+        {/* <div className='slide-div'>
           <Slider
             label={(val) => Prices.find((p) => p.value === val).label}
             defaultValue={50}
             step={25}
-            // onChange={setPrice}
+            onChange={setPricePick}
+            value={pricePick}
             marks={Prices}
             styles={{
               markLabel: { display: "none" },
             }}
           />
-        </div>
+        </div> */}
       </form>
     </>
   );

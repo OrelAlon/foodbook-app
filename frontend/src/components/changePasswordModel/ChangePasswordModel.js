@@ -10,6 +10,7 @@ import {
   PasswordInput,
   Space,
   Stack,
+  Loader,
 } from "@mantine/core";
 
 import axios from "axios";
@@ -26,6 +27,7 @@ function ChangePasswordModel({ changePasswordModel, setChangePasswordOpened }) {
   const [errorMsg, setErrorMsg] = useState("");
   const [success, setSuccess] = useState("");
   const [userId, setUserId] = useState(user._id);
+  const [loading, setLoading] = useState(false);
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -34,6 +36,9 @@ function ChangePasswordModel({ changePasswordModel, setChangePasswordOpened }) {
       return setErrorMsg("Password don't match...");
     }
     try {
+      setErrorMsg("");
+      setLoading(true);
+
       // Send a request to the server to update the password
       const response = await axios.post("/api/users/updatepassword", {
         newPassword,
@@ -88,6 +93,7 @@ function ChangePasswordModel({ changePasswordModel, setChangePasswordOpened }) {
         </Stack>
         {errorMsg && <div className='error msg'>{errorMsg}</div>}
         {success && <div className='success msg'>{success}</div>}
+        <div className='center-div'>{loading && <Loader />}</div>
 
         <Space h='lg' />
         <div className='share-btn-div'>

@@ -11,6 +11,7 @@ import ShareImageModal from "../../components/shareImageModal/ShareImageModal";
 import ChangePasswordModel from "../../components/changePasswordModel/ChangePasswordModel";
 import Logo from "../../components/logo/Logo";
 import { BiImage } from "react-icons/bi";
+import { Loader } from "@mantine/core";
 
 import "./editProfileUserPage.css";
 
@@ -27,12 +28,16 @@ const EditProfileUserPage = () => {
   const [userInstagram, setUserInstagram] = useState("");
   const [userEmail, setUserEmail] = useState("");
   const [file, setFile] = useState("");
+  const [errorMsg, setErrorMsg] = useState("");
+  const [loading, setLoading] = useState(false);
 
   // e handler for submitting the form
   const handleSubmit = async (e) => {
     e.preventDefault();
     // Save the form data to the database here
     try {
+      setLoading(true);
+
       const data = new FormData();
       if (file) {
         console.log("444");
@@ -56,7 +61,7 @@ const EditProfileUserPage = () => {
         // window.location.reload(false);
         navigate("/");
       } catch (error) {
-        console.log(error);
+        setErrorMsg(error.response.data.error);
       }
       <div className='upload-image-div'>
         {/* <span className='shareText'>Upload</span> */}
@@ -154,6 +159,9 @@ const EditProfileUserPage = () => {
           </div>
         </label>
         <br />
+        {errorMsg && <div className='error msg'>{errorMsg}</div>}
+        <div className='center-div'>{loading && <Loader />}</div>
+
         <button className='profile-edit-form__button' type='submit'>
           Save
         </button>

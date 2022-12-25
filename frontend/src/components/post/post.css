@@ -162,20 +162,3 @@
   right: 0;
   top: 0;
 }
-
-.category:hover {
-  background-color: crimson;
-  color: white;
-}
-
-.category:hover::after {
-  border-left-color: crimson;
-}
-.type:hover {
-  background-color: rgb(20, 202, 68);
-  color: white;
-}
-
-.type:hover::after {
-  border-left-color: rgb(20, 202, 68);
-}

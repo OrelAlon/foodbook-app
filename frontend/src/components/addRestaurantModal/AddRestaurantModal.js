@@ -25,8 +25,6 @@ import instagram from "../../assets/instagram.png";
 import food from "../../assets/food.png";
 import { BiImage } from "react-icons/bi";
 
-// import "./addRestaurantModal.css";
-
 function AddRestaurantModal({ addRestaurantOpend, setAddRestaurantOpend }) {
   const theme = useMantineTheme();
 
@@ -42,33 +40,31 @@ function AddRestaurantModal({ addRestaurantOpend, setAddRestaurantOpend }) {
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    // if (file == null) {
-    //   return setErrorMsg("Please upload a image");
-    // }
+    if (file == null) {
+      return setErrorMsg("Please upload a image");
+    }
     if (restaurantName == null) {
       return setErrorMsg("Please choose a restaurant");
     }
     if (city == null) {
       return setErrorMsg("Please choose a city");
     }
-    console.log(file);
-    console.log(file[0]);
-    // try {
-    //   setErrorMsg("");
-    //   setLoading(true);
-    //   const data = new FormData();
-    //   data.set("profilePicture", file);
-    //   data.set("restaurantname", restaurantName);
-    //   data.set("city", city);
-    //   data.set("price", price);
-    //   data.set("instgram", instagramLink);
-    //   data.set("foodCategory", JSON.stringify(selectFoodCatgory));
+    try {
+      setErrorMsg("");
+      setLoading(true);
+      const data = new FormData();
+      data.set("profilePicture", file);
+      data.set("restaurantname", restaurantName);
+      data.set("city", city);
+      data.set("price", price);
+      data.set("instgram", instagramLink);
+      data.set("foodCategory", JSON.stringify(selectFoodCatgory));
 
-    //   await axios.post("/api/restaurants/", data);
-    //   window.location.reload();
-    // } catch (error) {
-    //   console.log(error);
-    // }
+      await axios.post("/api/restaurants/", data);
+      window.location.reload();
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (

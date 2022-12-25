@@ -17,6 +17,7 @@ import {
 } from "../../assets/foodData";
 
 import axios from "axios";
+import ShortcutAddRestaurant from "../ShortcutAddRestaurant/ShortcutAddRestaurant";
 import ImageUpload from "../imageUpload/ImageUpload";
 import instagram from "../../assets/instagram.png";
 import food from "../../assets/food.png";
@@ -35,6 +36,7 @@ function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
   const [loading, setLoading] = useState(false);
   const [file, setFile] = useState(null);
   const [errorMsg, setErrorMsg] = useState("");
+  const [addRestShortcut, setAddRestShortcut] = useState(false);
 
   useEffect(() => {
     const fetchRestaurants = async () => {
@@ -60,7 +62,7 @@ function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
     };
 
     fetchRestaurants();
-  }, []);
+  }, [addRestShortcut]);
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -131,15 +133,31 @@ function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
             searchable
             transitionDuration={80}
             transitionTimingFunction='ease'
-            style={{ width: "70%", margin: "auto" }}
+            style={{ width: "90%", margin: "auto" }}
           />
+          <div className=''>
+            {" "}
+            <a
+              className='share'
+              onClick={() => setAddRestShortcut(!addRestShortcut)}
+            >
+              {" "}
+              Add Restaurant +
+            </a>
+          </div>{" "}
+          {addRestShortcut && (
+            <ShortcutAddRestaurant
+              addRestShortcut={addRestShortcut}
+              setAddRestShortcut={setAddRestShortcut}
+            />
+          )}
           <Space h='sm' />
           <Select
             data={dishTypeOptions}
             onChange={setSelectDishType}
             label='Dish Type 🏷️:'
             placeholder='Pick one'
-            style={{ width: "70%", margin: "auto" }}
+            style={{ width: "90%", margin: "auto" }}
           />
           <Space h='sm' />
           <MultiSelect
@@ -147,7 +165,7 @@ function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
             onChange={setSelectFoodCatgory}
             label='Food Category 🏷️:'
             placeholder='Pick all that you like'
-            style={{ width: "70%", margin: "auto" }}
+            style={{ width: "90%", margin: "auto" }}
           />{" "}
         </div>
         <Space h='sm' />

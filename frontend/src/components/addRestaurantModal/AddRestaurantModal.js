@@ -34,14 +34,14 @@ function AddRestaurantModal({ addRestaurantOpend, setAddRestaurantOpend }) {
   const [instagramLink, setInstagramLink] = useState("");
   const [price, setPrice] = useState(75);
 
-  const [file, setFile] = useState(instagram);
+  const [file, setFile] = useState();
   const [errorMsg, setErrorMsg] = useState("");
   const [loading, setLoading] = useState(false);
 
   const submitHandler = async (e) => {
     e.preventDefault();
     if (file == null) {
-      return setErrorMsg("Please upload a image");
+      return setErrorMsg("Please upload an image");
     }
     if (restaurantName == null) {
       return setErrorMsg("Please choose a restaurant");
@@ -63,7 +63,7 @@ function AddRestaurantModal({ addRestaurantOpend, setAddRestaurantOpend }) {
       await axios.post("/api/restaurants/", data);
       window.location.reload();
     } catch (error) {
-      console.log(error);
+      setErrorMsg(error.response.data.error);
     }
   };
 

@@ -86,7 +86,7 @@ function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
       await axios.post("/api/posts", data);
       window.location.reload();
     } catch (error) {
-      console.log(error);
+      setErrorMsg(error.response.data.error);
     }
   };
 

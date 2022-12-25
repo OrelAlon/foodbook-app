@@ -2,13 +2,30 @@ import { useState } from "react";
 
 import { Input, Select, Space, Button } from "@mantine/core";
 import { cities } from "../../assets/foodData";
+import axios from "axios";
 
 function ShortcutAddRestaurant({ setAddRestShortcut, addRestShortcut }) {
   const [restaurantName, setRestaurantName] = useState("");
   const [city, setCity] = useState("");
+  const [errorMsg, setErrorMsg] = useState("");
 
-  const handleSaveRest = () => {
-    setAddRestShortcut(!addRestShortcut);
+  const handleSaveRest = async () => {
+    if (restaurantName == null) {
+      return setErrorMsg("Please choose a restaurant");
+    }
+    if (city == null) {
+      return setErrorMsg("Please choose a city");
+    }
+    try {
+      setErrorMsg("");
+      const data = new FormData();
+      data.set("restaurantname", restaurantName);
+      data.set("city", city);
+      await axios.post("/api/restaurants/", data);
+      setAddRestShortcut(!addRestShortcut);
+    } catch (error) {
+      setErrorMsg(error.response.data.error);
+    }
   };
 
   return (
@@ -30,6 +47,7 @@ function ShortcutAddRestaurant({ setAddRestShortcut, addRestShortcut }) {
         required
       />{" "}
       <Space h='xs' />
+      {errorMsg && <div className='error msg'>{errorMsg}</div>}
       <div className='share-btn-div'>
         <Button size='xs' style={{ margin: "auto" }} onClick={handleSaveRest}>
           Save

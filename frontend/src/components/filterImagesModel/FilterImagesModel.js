@@ -65,7 +65,6 @@ const FilterImagesModel = ({
           icon={<IconSearch size={16} />}
           data={dishTypeOptions}
           onChange={setDishTypePick}
-          // label='If you want to be more specific:'
           placeholder='Whice Course ?'
           style={{ width: "60%", margin: "auto", textAlign: "center" }}
         />

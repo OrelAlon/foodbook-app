@@ -21,7 +21,7 @@ function ShortcutAddRestaurant({ setAddRestShortcut, addRestShortcut }) {
       const data = new FormData();
       data.set("restaurantname", restaurantName);
       data.set("city", city);
-      await axios.post("/api/restaurants/", data);
+      await axios.post("/api/restaurants/temprest", data);
       setAddRestShortcut(!addRestShortcut);
     } catch (error) {
       setErrorMsg(error.response.data.error);

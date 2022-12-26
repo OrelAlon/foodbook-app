@@ -52,12 +52,11 @@ const Feed = () => {
         dishTypePick.every((v) => el.dishType.includes(v))
       );
     }
-
     if (updatedShearch.length > 0) {
       setPosts(updatedShearch);
     }
 
-    updatedShearch.length > 0 ? setResultsFound(true) : setResultsFound(false);
+    setResultsFound(updatedShearch.length > 0);
   };
 
   useEffect(() => {

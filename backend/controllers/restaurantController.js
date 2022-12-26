@@ -32,6 +32,34 @@ const createRestaurant = async (req, res) => {
 };
 
 //
+const createTempRestaurant = async (req, res) => {
+  try {
+    await cloudinary.api.resources_by_tag(
+      "default_image",
+      function (error, result) {
+        console.log("result");
+        console.log(result);
+        const defaultImagePublicId = result.resources[0].public_id;
+        imageUrl =
+          "https://res.cloudinary.com/your-cloud-name/image/upload/" +
+          defaultImagePublicId;
+        console.log("imageUrl");
+        console.log(imageUrl);
+        const newTempRestaurant = new Restaurant({
+          restaurantname: req.body.restaurantname,
+          city: req.body.city,
+          profilePicture: imageUrl,
+        });
+        const savedTempRestaurant = newTempRestaurant.save();
+        res.status(200).json(savedTempRestaurant);
+      }
+    );
+  } catch (error) {
+    res.status(500).json(error);
+  }
+};
+
+//
 const getRestaurant = async (req, res) => {
   const restaurantId = req.query.restaurantId;
   const restaurantname = req.query.restaurantname;
@@ -64,4 +92,5 @@ module.exports = {
   createRestaurant,
   getRestaurant,
   getAllRestaurants,
+  createTempRestaurant,
 };

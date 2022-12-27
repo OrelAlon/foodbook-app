@@ -1,6 +1,10 @@
 const User = require("../models/User");
 const bcrypt = require("bcrypt");
 const cloudinary = require("cloudinary");
+const { OAuth2Client } = require("google-auth-library");
+var crypto = require("crypto");
+
+const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
 
 //
 const register = async (req, res) => {
@@ -61,4 +65,33 @@ const login = async (req, res) => {
   }
 };
 
-module.exports = { register, login };
+const googleLogin = async (req, res) => {
+  try {
+    const { tokenId } = req.body;
+    const id = crypto.randomBytes(4).toString("hex");
+    const { payload } = await client.verifyIdToken({
+      idToken: tokenId,
+      audience: process.env.GOOGLE_CLIENT_ID,
+    });
+    const { email, email_verified, name } = payload;
+    if (email_verified) {
+      const user = await User.findOne({ email });
+      if (user) {
+        res.status(400).json({ msg: "User already exists" });
+      }
+      if (!user) {
+        const hashedPassword = await bcrypt.hash(id, 10);
+        const us = await User.create({
+          username: name,
+          password: hashedPassword,
+          email,
+        });
+        res.status(200).json(us);
+      }
+    }
+  } catch (error) {
+    res.status(500).json(error);
+  }
+};
+
+module.exports = { register, login, googleLogin };

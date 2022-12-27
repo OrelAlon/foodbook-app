@@ -1,29 +1,14 @@
+require("dotenv").config();
 const express = require("express");
 const cookieParser = require("cookie-parser");
 const fileupload = require("express-fileupload");
 const cors = require("cors");
 const cloudinary = require("cloudinary").v2;
-
-const mongoose = require("mongoose");
-const dotenv = require("dotenv").config();
 const path = require("path");
-
-const port = process.env.PORT || 5500;
-
-const MONGO_URL = process.env.MONGO_URL;
+const connect = require("./config/db");
 
 const app = express();
 
-// connect to mongoose
-const connect = async () => {
-  try {
-    await mongoose.connect(MONGO_URL, () => {
-      console.log("Connected to MongoDB !!");
-    });
-  } catch (error) {
-    throw error;
-  }
-};
 // Setting up cloudinary configuration
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_NAME,
@@ -64,10 +49,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 // end-point
-app.use("/api/auth", require("./routes/auth"));
-app.use("/api/users", require("./routes/users"));
-app.use("/api/posts", require("./routes/posts"));
-app.use("/api/restaurants", require("./routes/restaurants"));
+app.use("/api", require("./routes/index"));
 
 // Serve frontend for aws
 if (process.env.NODE_ENV === "production") {
@@ -85,6 +67,6 @@ if (process.env.NODE_ENV === "production") {
 // connect to backend
 // process env for aws
 app.listen(process.env.PORT || 5500, () => {
-  connect();
-  console.log(`Server running on port ${port}`);
+  connect(process.env.MONGO_URL);
+  console.log(`Server running on port ${process.env.PORT || 5500}`);
 });

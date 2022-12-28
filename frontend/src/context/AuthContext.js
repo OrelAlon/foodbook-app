@@ -13,6 +13,16 @@ export const AuthContextProvider = ({ children }) => {
     setCurrentUser(res.data);
   };
 
+  const googleLogin = async ({ response }) => {
+    console.log("2");
+    console.log(response);
+
+    const res = await axios.post("api/auth/googlelogin", {
+      tokenId: response.tokenId,
+    });
+    setCurrentUser(res.data);
+  };
+
   const logout = async () => {
     await axios.post("api/auth/logout");
     setCurrentUser(null);
@@ -23,7 +33,7 @@ export const AuthContextProvider = ({ children }) => {
   }, [user]);
 
   return (
-    <AuthContext.Provider value={{ user, login, logout }}>
+    <AuthContext.Provider value={{ user, login, logout, googleLogin }}>
       {children}
     </AuthContext.Provider>
   );

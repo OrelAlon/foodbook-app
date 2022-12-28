@@ -1,10 +1,8 @@
 import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-
 import { Loader } from "@mantine/core";
 import ImageUpload from "../../components/imageUpload/ImageUpload";
 import { BiImage } from "react-icons/bi";
-import noAvatar from "../../assets/noAvatar.png";
 
 import axios from "axios";
 

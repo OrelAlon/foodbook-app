@@ -12,7 +12,8 @@ import "./login.css";
 const Login = () => {
   const emailRef = useRef();
   const passwordRef = useRef();
-
+  console.log("process.env.GOOGLE_CLIENT_ID");
+  console.log(process.env.REACT_APP_GOOGLE_CLIENT_ID);
   const { login } = useContext(AuthContext);
 
   const navigate = useNavigate();
@@ -33,7 +34,7 @@ const Login = () => {
   const responseGoogle = async (response) => {
     gapi.load("client:auth2", () => {
       gapi.client.init({
-        clientId: process.env.cliend_id,
+        clientId: process.env.REACT_APP_GOOGLE_CLIENT_ID,
         plugin_name: "chat",
       });
     });
@@ -82,7 +83,7 @@ const Login = () => {
         </form>
         <div className='google-login'>
           <GoogleLogin
-            clientId={"your_cliend_id"}
+            clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
             buttonText='Login with Google'
             onSuccess={responseGoogle}
           />

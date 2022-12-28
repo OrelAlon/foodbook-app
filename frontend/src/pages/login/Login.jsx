@@ -1,4 +1,4 @@
-import { useRef, useContext } from "react";
+import { useRef, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import { ToastContainer, toast } from "react-toastify";
@@ -10,12 +10,17 @@ import { gapi } from "gapi-script";
 import "./login.css";
 
 const Login = () => {
+  const [user, setCurrentUser] = useState();
+
   const emailRef = useRef();
   const passwordRef = useRef();
 
-  const { login } = useContext(AuthContext);
+  const { login, googleLogin } = useContext(AuthContext);
 
   const navigate = useNavigate();
+  useEffect(() => {
+    localStorage.setItem("user", JSON.stringify(user));
+  }, [user]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -29,22 +34,28 @@ const Login = () => {
       toast.error(error.response.data);
     }
   };
+  const handleGoogleLogin = async (response) => {
+    try {
+      console.log("1");
+      console.log(response);
 
-  const responseGoogle = async (response) => {
+      await googleLogin({
+        response,
+      });
+      navigate("/");
+    } catch (error) {
+      toast.error(error.response.data);
+    }
+  };
+
+  const responseGoogle = (response) => {
     gapi.load("client:auth2", () => {
       gapi.client.init({
         clientId: process.env.REACT_APP_GOOGLE_CLIENT_ID,
         plugin_name: "chat",
       });
     });
-    const { status } = await axios({
-      method: "POST",
-      url: "http://localhost:5500/api/auth/googlelogin",
-      data: { tokenId: response.tokenId },
-    });
-    if (status === 200) {
-      navigate("/");
-    }
+    handleGoogleLogin(response);
   };
 
   return (

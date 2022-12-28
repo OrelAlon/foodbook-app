@@ -1,26 +1,20 @@
-import { useRef, useContext, useEffect, useState } from "react";
+import { useRef, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import GoogleLogin from "react-google-login";
-import axios from "axios";
 import { gapi } from "gapi-script";
 
 import "./login.css";
 
 const Login = () => {
-  const [user, setCurrentUser] = useState();
-
   const emailRef = useRef();
   const passwordRef = useRef();
 
   const { login, googleLogin } = useContext(AuthContext);
 
   const navigate = useNavigate();
-  useEffect(() => {
-    localStorage.setItem("user", JSON.stringify(user));
-  }, [user]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -36,9 +30,6 @@ const Login = () => {
   };
   const handleGoogleLogin = async (response) => {
     try {
-      console.log("1");
-      console.log(response);
-
       await googleLogin({
         response,
       });

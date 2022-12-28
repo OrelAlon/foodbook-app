@@ -76,17 +76,18 @@ const googleLogin = async (req, res) => {
     const { email, email_verified, name } = payload;
     if (email_verified) {
       const user = await User.findOne({ email });
+      console.log(user);
       if (user) {
-        res.status(400).json({ msg: "User already exists" });
+        res.status(200).json(user);
       }
       if (!user) {
         const hashedPassword = await bcrypt.hash(id, 10);
-        const us = await User.create({
+        const logUser = await User.create({
           username: name,
           password: hashedPassword,
           email,
         });
-        res.status(200).json(us);
+        res.status(200).json(logUser);
       }
     }
   } catch (error) {

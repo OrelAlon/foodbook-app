@@ -15,7 +15,7 @@ const NavMenu = () => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    localStorage.clear();
+    window.localStorage.clear();
 
     navigate("/login");
   };

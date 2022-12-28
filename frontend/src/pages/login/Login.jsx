@@ -12,8 +12,7 @@ import "./login.css";
 const Login = () => {
   const emailRef = useRef();
   const passwordRef = useRef();
-  console.log("process.env.GOOGLE_CLIENT_ID");
-  console.log(process.env.REACT_APP_GOOGLE_CLIENT_ID);
+
   const { login } = useContext(AuthContext);
 
   const navigate = useNavigate();

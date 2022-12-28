@@ -1,13 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-// import {
-//   Home,
-//   Login,
-//   UserProfile,
-//   AllRestaurants,
-//   RestaurantProfile,
-//   EditProfileUserPage,
-//   Register,
-// } from "../pages";
+
 import Home from "../pages/home/Home";
 import Login from "../pages/login/Login";
 import Register from "../pages/register/Register";

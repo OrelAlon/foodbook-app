@@ -24,8 +24,15 @@ const Post = ({ post }) => {
   const usernameParams = useParams().username;
 
   useEffect(() => {
+    console.log("post");
+
     const fetchUser = async () => {
+      console.log("fetch");
+      console.log(userId);
+
       const res = await axios.get(`/api/users/?userId=${userId}`);
+      console.log("res.data");
+      console.log(res.data);
       setUser(res.data);
     };
     const fetchRestaurant = async () => {

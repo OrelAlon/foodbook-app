@@ -7,6 +7,7 @@ const {
 } = require("../controllers/restaurantController");
 
 router.post("/", createRestaurant);
+
 router.post("/temprest", createTempRestaurant);
 
 router.get("/", getRestaurant);

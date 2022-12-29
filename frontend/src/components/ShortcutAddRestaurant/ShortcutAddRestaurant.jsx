@@ -4,7 +4,11 @@ import { Input, Select, Space, Button } from "@mantine/core";
 import { cities } from "../../assets/foodData";
 import axios from "axios";
 
-function ShortcutAddRestaurant({ setAddRestShortcut, addRestShortcut }) {
+function ShortcutAddRestaurant({
+  setAddRestShortcut,
+  addRestShortcut,
+  setRestaurantUserPick,
+}) {
   const [restaurantName, setRestaurantName] = useState("");
   const [city, setCity] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
@@ -22,6 +26,7 @@ function ShortcutAddRestaurant({ setAddRestShortcut, addRestShortcut }) {
       data.set("restaurantname", restaurantName);
       data.set("city", city);
       await axios.post("/api/restaurants/temprest", data);
+      setRestaurantUserPick(restaurantName);
       setAddRestShortcut(!addRestShortcut);
     } catch (error) {
       setErrorMsg(error.response.data.error);

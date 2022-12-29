@@ -30,7 +30,7 @@ function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
   const { user } = useContext(AuthContext);
 
   const [restaurantsList, setRestaurantsList] = useState([]);
-  const [restaurantUserPick, setRestaurantUserPick] = useState(null);
+  const [restaurantUserPick, setRestaurantUserPick] = useState("work");
   const [selectFoodCatgory, setSelectFoodCatgory] = useState([]);
   const [selectDishType, setSelectDishType] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -43,7 +43,7 @@ function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
       const res = await axios.get(`/api/restaurants/restaurants`);
       sortRestaurants(res.data);
     };
-
+    console.log(restaurantUserPick);
     const sortRestaurants = (res) => {
       let arr = [];
       res.map((el) => {
@@ -127,13 +127,15 @@ function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
         <div>
           <Select
             data={restaurantsList}
-            onChange={setRestaurantUserPick}
+            onSearchChange={setRestaurantUserPick}
+            // searchValue={restaurantUserPick}
             label='Resraurant:'
             placeholder='Select Resraurant'
             searchable
             transitionDuration={80}
             transitionTimingFunction='ease'
             style={{ width: "90%", margin: "auto" }}
+            nothingFound='You Can Add New One ⬇️'
           />
           <div className=''>
             {" "}
@@ -149,6 +151,7 @@ function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
             <ShortcutAddRestaurant
               addRestShortcut={addRestShortcut}
               setAddRestShortcut={setAddRestShortcut}
+              setRestaurantUserPick={setRestaurantUserPick}
             />
           )}
           <Space h='sm' />

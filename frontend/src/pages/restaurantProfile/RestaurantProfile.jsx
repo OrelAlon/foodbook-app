@@ -8,6 +8,7 @@ import ShareImageModal from "../../components/shareImageModal/ShareImageModal";
 import RestaurantFeed from "../../components/feed/RestaurantFeed";
 import Logo from "../../components/logo/Logo";
 
+import noImage from "../../assets/noImage2.jpg";
 import classy from "../../assets/classy-rest.jpg";
 import "./restaurantProfile.css";
 

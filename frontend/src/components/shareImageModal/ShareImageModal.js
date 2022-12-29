@@ -28,15 +28,15 @@ import "./shareImageModal.css";
 function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
   const theme = useMantineTheme();
   const { user } = useContext(AuthContext);
-  let test = "a";
   const [restaurantsList, setRestaurantsList] = useState([]);
-  const [restaurantUserPick, setRestaurantUserPick] = useState("a");
+  const [restaurantUserPick, setRestaurantUserPick] = useState(null);
   const [selectFoodCatgory, setSelectFoodCatgory] = useState([]);
   const [selectDishType, setSelectDishType] = useState([]);
   const [loading, setLoading] = useState(false);
   const [file, setFile] = useState(null);
   const [errorMsg, setErrorMsg] = useState("");
   const [addRestShortcut, setAddRestShortcut] = useState(false);
+  const [restNewData, setRestNewData] = useState([]);
 
   useEffect(() => {
     const fetchRestaurants = async () => {
@@ -63,6 +63,23 @@ function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
 
     fetchRestaurants();
   }, [addRestShortcut]);
+
+  const test = () => {
+    console.log("test");
+    const newRest = {
+      label: restNewData._id,
+      value: restNewData.restaurantname,
+    };
+    setRestaurantsList((current) => [...current, newRest]);
+    setRestaurantUserPick(restNewData._id);
+  };
+
+  useEffect(() => {
+    if (restNewData.length == undefined) {
+      test();
+    }
+    onSelectRestaurant(restaurantUserPick);
+  }, [restNewData]);
 
   const onSelectRestaurant = (value) => {
     const label = restaurantsList.find((o) => o.value === value);
@@ -134,7 +151,7 @@ function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
         <div>
           <Select
             data={restaurantsList}
-            onChange={onSelectRestaurant}
+            onChange={setRestaurantUserPick}
             value={restaurantUserPick}
             label='Resraurant:'
             placeholder='Select Resraurant'
@@ -156,6 +173,7 @@ function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
             <ShortcutAddRestaurant
               addRestShortcut={addRestShortcut}
               setAddRestShortcut={setAddRestShortcut}
+              setRestNewData={setRestNewData}
             />
           )}
           <Space h='sm' />

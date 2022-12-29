@@ -7,7 +7,7 @@ import axios from "axios";
 function ShortcutAddRestaurant({
   setAddRestShortcut,
   addRestShortcut,
-  setRestaurantUserPick,
+  setRestNewData,
 }) {
   const [restaurantName, setRestaurantName] = useState("");
   const [city, setCity] = useState("");
@@ -26,6 +26,10 @@ function ShortcutAddRestaurant({
       data.set("restaurantname", restaurantName);
       data.set("city", city);
       await axios.post("/api/restaurants/temprest", data);
+      const res = await axios.get(
+        `/api/restaurants/?restaurantname=${restaurantName}`
+      );
+      setRestNewData(res.data);
       setAddRestShortcut(!addRestShortcut);
     } catch (error) {
       setErrorMsg(error.response.data.error);

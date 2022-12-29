@@ -28,9 +28,9 @@ import "./shareImageModal.css";
 function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
   const theme = useMantineTheme();
   const { user } = useContext(AuthContext);
-
+  let test = "a";
   const [restaurantsList, setRestaurantsList] = useState([]);
-  const [restaurantUserPick, setRestaurantUserPick] = useState("");
+  const [restaurantUserPick, setRestaurantUserPick] = useState("a");
   const [selectFoodCatgory, setSelectFoodCatgory] = useState([]);
   const [selectDishType, setSelectDishType] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -113,7 +113,7 @@ function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
       <form className='infoForm' onSubmit={submitHandler}>
         <div className='upload-image-div'>
           <label htmlFor='file' className='shareOption'>
-            {/* <span className='shareText'>Upload</span> */}
+            <span className='shareText'>Upload Image</span>
             <BiImage fontSize={36} color={file ? "green" : "red"} />
             <input
               style={{ display: "none" }}
@@ -134,6 +134,7 @@ function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
           <Select
             data={restaurantsList}
             onChange={onSelectRestaurant}
+            value={restaurantUserPick}
             label='Resraurant:'
             placeholder='Select Resraurant'
             searchable
@@ -154,7 +155,6 @@ function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
             <ShortcutAddRestaurant
               addRestShortcut={addRestShortcut}
               setAddRestShortcut={setAddRestShortcut}
-              setRestaurantUserPick={setRestaurantUserPick}
             />
           )}
           <Space h='sm' />

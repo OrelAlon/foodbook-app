@@ -26,7 +26,6 @@ function ShortcutAddRestaurant({
       data.set("restaurantname", restaurantName);
       data.set("city", city);
       await axios.post("/api/restaurants/temprest", data);
-      setRestaurantUserPick(restaurantName);
       setAddRestShortcut(!addRestShortcut);
     } catch (error) {
       setErrorMsg(error.response.data.error);

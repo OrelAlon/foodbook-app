@@ -17,7 +17,6 @@ import {
 } from "../../assets/foodData";
 
 import axios from "axios";
-import ShortcutAddRestaurant from "../ShortcutAddRestaurant/ShortcutAddRestaurant";
 import ImageUpload from "../imageUpload/ImageUpload";
 import instagram from "../../assets/instagram.png";
 import food from "../../assets/food.png";
@@ -32,11 +31,11 @@ function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
   const [restaurantUserPick, setRestaurantUserPick] = useState(null);
   const [selectFoodCatgory, setSelectFoodCatgory] = useState([]);
   const [selectDishType, setSelectDishType] = useState([]);
+  const [selectRestaurant, setSelectRestaurant] = useState();
+
   const [loading, setLoading] = useState(false);
   const [file, setFile] = useState(null);
   const [errorMsg, setErrorMsg] = useState("");
-  const [addRestShortcut, setAddRestShortcut] = useState(false);
-  const [restNewData, setRestNewData] = useState([]);
 
   useEffect(() => {
     const fetchRestaurants = async () => {
@@ -62,29 +61,30 @@ function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
     };
 
     fetchRestaurants();
-  }, [addRestShortcut]);
+  }, []);
 
-  const test = () => {
-    console.log("test");
-    const newRest = {
-      label: restNewData._id,
-      value: restNewData.restaurantname,
-    };
-    setRestaurantsList((current) => [...current, newRest]);
-    setRestaurantUserPick(restNewData._id);
+  const createNewRest = async (query) => {
+    try {
+      await axios.post("/api/restaurants/temprest", { query });
+      const res = await axios.get(`/api/restaurants/?restaurantname=${query}`);
+
+      const item = { value: res.data._id, label: res.data.restaurantname };
+      console.log(restaurantsList);
+      setRestaurantsList((current) => [...current, item]);
+      return item;
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   useEffect(() => {
-    if (restNewData.length == undefined) {
-      test();
-    }
     onSelectRestaurant(restaurantUserPick);
-  }, [restNewData]);
+  }, [restaurantUserPick]);
 
   const onSelectRestaurant = (value) => {
     const label = restaurantsList.find((o) => o.value === value);
 
-    setRestaurantUserPick(label);
+    setSelectRestaurant(label);
   };
 
   const submitHandler = async (e) => {
@@ -105,7 +105,7 @@ function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
       data.set("userId", user._id);
       data.set("foodCategory", JSON.stringify(selectFoodCatgory));
       data.set("dishType", JSON.stringify(selectDishType));
-      data.set("restaurantId", restaurantUserPick.value);
+      data.set("restaurantId", selectRestaurant.value);
       await axios.post("/api/posts", data);
       window.location.reload();
     } catch (error) {
@@ -158,24 +158,10 @@ function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
             searchable
             style={{ width: "90%", margin: "auto" }}
             nothingFound='You Can Add New One ⬇️'
+            creatable
+            getCreateLabel={(query) => `+ Create ${query}`}
+            onCreate={(query) => createNewRest(query)}
           />
-          <div className=''>
-            {" "}
-            <a
-              className='share'
-              onClick={() => setAddRestShortcut(!addRestShortcut)}
-            >
-              {" "}
-              Add Restaurant +
-            </a>
-          </div>{" "}
-          {addRestShortcut && (
-            <ShortcutAddRestaurant
-              addRestShortcut={addRestShortcut}
-              setAddRestShortcut={setAddRestShortcut}
-              setRestNewData={setRestNewData}
-            />
-          )}
           <Space h='sm' />
           <Select
             data={dishTypeOptions}

@@ -34,8 +34,7 @@ const createRestaurant = async (req, res) => {
 const createTempRestaurant = async (req, res) => {
   try {
     const newTempRestaurant = new Restaurant({
-      restaurantname: req.body.restaurantname,
-      city: req.body.city,
+      restaurantname: req.body.query,
     });
     const savedTempRestaurant = newTempRestaurant.save();
     res.status(200).json(savedTempRestaurant);

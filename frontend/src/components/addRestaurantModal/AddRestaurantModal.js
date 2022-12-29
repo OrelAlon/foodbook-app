@@ -76,7 +76,8 @@ function AddRestaurantModal({ addRestaurantOpend, setAddRestaurantOpend }) {
       }
       overlayOpacity={0.55}
       overlayBlur={3}
-      size='95%'
+      // size='95%'
+      fullScreen
       opened={addRestaurantOpend}
       onClose={() => setAddRestaurantOpend(false)}
     >

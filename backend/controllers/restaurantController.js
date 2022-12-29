@@ -47,11 +47,11 @@ const createTempRestaurant = async (req, res) => {
 //
 const getRestaurant = async (req, res) => {
   const restaurantId = req.query.restaurantId;
-  // const restaurantname = req.query.restaurantname;
+  const restaurantname = req.query.restaurantname;
   try {
     const restaurant = restaurantId
-      ? await Restaurant.findOne({ restaurantname: restaurantId })
-      : await Restaurant.findById(restaurantId);
+      ? await Restaurant.findById(restaurantId)
+      : await Restaurant.findOne({ restaurantname: restaurantname });
     if (restaurant == null) {
       res.status(404).json("no data");
       return;

@@ -30,7 +30,7 @@ function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
   const { user } = useContext(AuthContext);
 
   const [restaurantsList, setRestaurantsList] = useState([]);
-  const [restaurantUserPick, setRestaurantUserPick] = useState("work");
+  const [restaurantUserPick, setRestaurantUserPick] = useState("");
   const [selectFoodCatgory, setSelectFoodCatgory] = useState([]);
   const [selectDishType, setSelectDishType] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -38,12 +38,15 @@ function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
   const [errorMsg, setErrorMsg] = useState("");
   const [addRestShortcut, setAddRestShortcut] = useState(false);
 
+  console.log("restaurantUserPick");
+  console.log(restaurantUserPick.value);
+
   useEffect(() => {
     const fetchRestaurants = async () => {
       const res = await axios.get(`/api/restaurants/restaurants`);
       sortRestaurants(res.data);
     };
-    console.log(restaurantUserPick);
+
     const sortRestaurants = (res) => {
       let arr = [];
       res.map((el) => {
@@ -64,6 +67,15 @@ function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
     fetchRestaurants();
   }, [addRestShortcut]);
 
+  const onSelectRestaurant = (value) => {
+    const label = restaurantsList.find((o) => o.value === value);
+
+    console.log({ label });
+    console.log(label);
+
+    setRestaurantUserPick(label);
+  };
+
   const submitHandler = async (e) => {
     e.preventDefault();
     if (file == null) {
@@ -82,7 +94,7 @@ function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
       data.set("userId", user._id);
       data.set("foodCategory", JSON.stringify(selectFoodCatgory));
       data.set("dishType", JSON.stringify(selectDishType));
-      data.set("restaurantId", restaurantUserPick);
+      data.set("restaurantId", restaurantUserPick.value);
       await axios.post("/api/posts", data);
       window.location.reload();
     } catch (error) {
@@ -127,13 +139,10 @@ function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
         <div>
           <Select
             data={restaurantsList}
-            onSearchChange={setRestaurantUserPick}
-            // searchValue={restaurantUserPick}
+            onChange={onSelectRestaurant}
             label='Resraurant:'
             placeholder='Select Resraurant'
             searchable
-            transitionDuration={80}
-            transitionTimingFunction='ease'
             style={{ width: "90%", margin: "auto" }}
             nothingFound='You Can Add New One ⬇️'
           />

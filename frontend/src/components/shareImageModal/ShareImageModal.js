@@ -10,11 +10,7 @@ import {
   Space,
 } from "@mantine/core";
 
-import {
-  foodCategoryOptions,
-  dishTypeOptions,
-  Prices,
-} from "../../assets/foodData";
+import { foodCategoryOptions, dishTypeOptions } from "../../assets/foodData";
 
 import axios from "axios";
 import ImageUpload from "../imageUpload/ImageUpload";

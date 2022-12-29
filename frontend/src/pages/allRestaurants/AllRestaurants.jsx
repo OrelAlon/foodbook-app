@@ -7,6 +7,7 @@ import NavMenu from "../../components/navMenu/NavMenu";
 import ShareImageModal from "../../components/shareImageModal/ShareImageModal";
 import AddRestaurantModal from "../../components/addRestaurantModal/AddRestaurantModal";
 import Logo from "../../components/logo/Logo";
+import noImage from "../../assets/noImage2.jpg";
 
 import "./allRestaurants.css";
 

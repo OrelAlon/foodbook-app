@@ -57,7 +57,7 @@ const RestaurantProfile = () => {
                 <img className='profile-bgHome' src={classy} />
                 <img
                   className='avatar'
-                  src={restaurant.profilePicture}
+                  src={restaurant.profilePicture || noImage}
                   alt='jofpin'
                 />
               </div>

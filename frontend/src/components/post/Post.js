@@ -20,7 +20,6 @@ const Post = ({ post }) => {
   const { restaurantname } = restaurant;
   const { userId, restaurantId, _id, img, updatedAt, foodCategory, dishType } =
     post;
-  console.log(post);
   const usernameParams = useParams().username;
 
   useEffect(() => {

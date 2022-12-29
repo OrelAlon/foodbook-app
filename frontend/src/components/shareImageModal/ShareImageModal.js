@@ -38,9 +38,6 @@ function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
   const [errorMsg, setErrorMsg] = useState("");
   const [addRestShortcut, setAddRestShortcut] = useState(false);
 
-  console.log("restaurantUserPick");
-  console.log(restaurantUserPick.value);
-
   useEffect(() => {
     const fetchRestaurants = async () => {
       const res = await axios.get(`/api/restaurants/restaurants`);
@@ -69,9 +66,6 @@ function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
 
   const onSelectRestaurant = (value) => {
     const label = restaurantsList.find((o) => o.value === value);
-
-    console.log({ label });
-    console.log(label);
 
     setRestaurantUserPick(label);
   };

@@ -71,9 +71,26 @@ const getAllRestaurants = async (req, res) => {
   }
 };
 
+//
+const followRestaurant = async (req, res) => {
+  try {
+    const restaurant = await Restaurant.findByIdAndUpdate(req.params.id);
+    if (!restaurant.followers.includes(req.body.userId)) {
+      await restaurant.updateOne({ $push: { followers: req.body.userId } });
+      res.status(200).json("The user has been follow");
+    } else {
+      await restaurant.updateOne({ $pull: { followers: req.body.userId } });
+      res.status(200).json("The user has been unfollow");
+    }
+  } catch (error) {
+    res.status(500).json(err);
+  }
+};
+
 module.exports = {
   createRestaurant,
   getRestaurant,
   getAllRestaurants,
   createTempRestaurant,
+  followRestaurant,
 };

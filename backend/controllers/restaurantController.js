@@ -88,15 +88,15 @@ const followRestaurant = async (req, res) => {
 };
 
 //
-const updateRestaurant = async () => {
+const updateRestaurant = async (req, res) => {
   console.log(req.body.restaurantId);
   console.log(req.params.id);
   if (req.body.restaurantId === req.params.id) {
     try {
       const restaurant = await Restaurant.findById({ _id: req.params.id });
+      console.log(restaurant);
       restaurant.restaurantname =
         req.body.restaurantname || restaurant.restaurantname;
-      restaurant.email = req.body.email || restaurant.email;
       restaurant.instagram = req.body.instagram || restaurant.instagram;
       restaurant.profilePicture = restaurant.profilePicture;
 

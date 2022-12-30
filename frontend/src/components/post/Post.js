@@ -3,6 +3,8 @@ import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import { AiOutlineLike } from "react-icons/ai";
+
+import TagPost from "../tagPost/TagPost";
 import noAvatar from "../../assets/noAvatar.png";
 import moment from "moment";
 import axios from "axios";
@@ -57,6 +59,7 @@ const Post = ({ post }) => {
       console.log(error);
     }
   };
+
   return (
     <div className='post'>
       <div className='postWrapper'>
@@ -110,20 +113,12 @@ const Post = ({ post }) => {
             {" "}
             <ul className='tags '>
               {foodCategory.map((el, i) => (
-                <li key={i}>
-                  <a href='#' className='tag category'>
-                    {el}
-                  </a>
-                </li>
+                <TagPost key={i} el={el} />
               ))}
             </ul>
             <ul className='tags'>
               {dishType.map((el, i) => (
-                <li key={i}>
-                  <a href='#' className='tag type'>
-                    {el}
-                  </a>
-                </li>
+                <TagPost key={i} el={el} />
               ))}
             </ul>
           </div>

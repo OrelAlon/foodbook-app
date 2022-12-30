@@ -6,7 +6,7 @@ import Post from "../post/Post";
 
 import "./feed.css";
 
-const RestaurantFeed = ({ restaurant }) => {
+const RestaurantFeed = ({ restaurant, setPostsLength }) => {
   const [posts, setPosts] = useState([]);
 
   const fetchPosts = async () => {
@@ -18,6 +18,8 @@ const RestaurantFeed = ({ restaurant }) => {
           (p1, p2) => new Date(p2.createdAt) - new Date(p1.createdAt)
         )
       );
+
+      setPostsLength(res.data.length);
     } catch (error) {}
   };
 

@@ -20,11 +20,11 @@ const RestaurantProfile = () => {
   const [shareImageOpened, setShareImageOpened] = useState(false);
   const [followers, setFollowers] = useState([]);
   const [isFollowed, setIsFollowed] = useState(false);
+  const [postsLength, setPostsLength] = useState([]);
 
   const restaurantname = useParams().restaurantname;
 
   const { user: currentUser } = useContext(AuthContext);
-
   useEffect(() => {
     if (Object.keys(restaurant).length !== 0) {
       setFollowers(restaurant.followers.length);
@@ -98,7 +98,7 @@ const RestaurantProfile = () => {
               <ul className='data'>
                 <li>
                   <a>
-                    <strong>3390</strong>
+                    <strong>{postsLength}</strong>
                     <span>Posts</span>
                   </a>
                 </li>
@@ -108,19 +108,16 @@ const RestaurantProfile = () => {
                     <span>Followers</span>
                   </a>
                 </li>
-                <li>
-                  <a>
-                    <strong>239</strong>
-                    <span>Following</span>
-                  </a>
-                </li>
               </ul>
             </div>
           </div>
         </div>
         <div>{/* <h3>search bar option</h3> */}</div>
         <div>
-          <RestaurantFeed restaurant={restaurant} />
+          <RestaurantFeed
+            restaurant={restaurant}
+            setPostsLength={setPostsLength}
+          />
         </div>
       </div>
     </>

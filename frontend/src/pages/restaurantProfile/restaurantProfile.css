@@ -35,7 +35,7 @@
   margin-top: -5em;
   box-shadow: 0 0 0.1em rgba(0, 0, 0, 0.35);
 }
-.profile-page button {
+.img-profile button {
   position: absolute;
   font-size: 10px;
   font-weight: bold;
@@ -49,7 +49,7 @@
   padding: 0.8em;
 }
 
-.profile-page button:hover {
+.img-profile button:hover {
   background: #51a7e0;
   transition: background 0.2s ease-in-out;
   border: 1px solid #2487c9;

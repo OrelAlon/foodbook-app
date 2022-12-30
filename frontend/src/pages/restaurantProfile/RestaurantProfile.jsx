@@ -1,11 +1,14 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router";
+
+import { AuthContext } from "../../context/AuthContext";
 
 import axios from "axios";
 
 import NavMenu from "../../components/navMenu/NavMenu";
 import ShareImageModal from "../../components/shareImageModal/ShareImageModal";
 import RestaurantFeed from "../../components/feed/RestaurantFeed";
+import FollowRestaurant from "../../components/followRestaurant/FollowRestaurant";
 import Logo from "../../components/logo/Logo";
 
 import noImage from "../../assets/noImage2.jpg";
@@ -15,8 +18,22 @@ import "./restaurantProfile.css";
 const RestaurantProfile = () => {
   const [restaurant, setRestaurant] = useState({});
   const [shareImageOpened, setShareImageOpened] = useState(false);
+  const [followers, setFollowers] = useState([]);
+  const [isFollowed, setIsFollowed] = useState(false);
 
   const restaurantname = useParams().restaurantname;
+
+  const { user: currentUser } = useContext(AuthContext);
+
+  useEffect(() => {
+    if (Object.keys(restaurant).length !== 0) {
+      setFollowers(restaurant.followers.length);
+    }
+  }, [restaurant]);
+
+  useEffect(() => {
+    fetchRestaurant();
+  }, [restaurantname]);
 
   const fetchRestaurant = async () => {
     const res = await axios.get(
@@ -25,9 +42,17 @@ const RestaurantProfile = () => {
     setRestaurant(res.data);
   };
 
-  useEffect(() => {
-    fetchRestaurant();
-  }, [restaurantname]);
+  const followRestaurantHandler = () => {
+    try {
+      axios.put(`/api/restaurants/${restaurant._id}/followrestaurant`, {
+        userId: currentUser._id,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+    setFollowers(isFollowed ? followers - 1 : followers + 1);
+    setIsFollowed(!isFollowed);
+  };
 
   return (
     <>
@@ -61,8 +86,10 @@ const RestaurantProfile = () => {
                   src={restaurant.profilePicture || noImage}
                   alt='jofpin'
                 />
+                <FollowRestaurant
+                  followRestaurantHandler={followRestaurantHandler}
+                />
               </div>
-              <button>Follow</button>
               <div className='profile-data'>
                 <h3>{restaurant.restaurantname}</h3>
                 {/* <p>github.com/jofpin</p> */}
@@ -77,7 +104,7 @@ const RestaurantProfile = () => {
                 </li>
                 <li>
                   <a>
-                    <strong>718</strong>
+                    <strong>{followers}</strong>
                     <span>Followers</span>
                   </a>
                 </li>
@@ -91,9 +118,7 @@ const RestaurantProfile = () => {
             </div>
           </div>
         </div>
-        <div>
-          <h3>search bar</h3>
-        </div>
+        <div>{/* <h3>search bar option</h3> */}</div>
         <div>
           <RestaurantFeed restaurant={restaurant} />
         </div>

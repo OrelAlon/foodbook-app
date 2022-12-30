@@ -1,7 +1,6 @@
-import { useState, useContext } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-
-import { AuthContext } from "../../context/AuthContext";
+import { useParams } from "react-router";
 
 import axios from "axios";
 
@@ -13,23 +12,28 @@ import Logo from "../../components/logo/Logo";
 import { BiImage } from "react-icons/bi";
 import { Loader } from "@mantine/core";
 
-import "./editProfileUserPage.css";
+import "../editProfileUserPage/editProfileUserPage.css";
 
-// this page was partially built with ChatGPT :)
-const EditProfileUserPage = () => {
+const EditRestaurantPage = () => {
   const [shareImageOpened, setShareImageOpened] = useState(false);
   const [changePasswordModel, setChangePasswordOpened] = useState(false);
 
-  const { user: currentUser } = useContext(AuthContext);
   const navigate = useNavigate();
-
+  const restaurantname = useParams().restaurantname;
   // Declare state variables for storing form data
-  const [userName, setUserName] = useState(currentUser.username);
-  const [userInstagram, setUserInstagram] = useState(currentUser.instagram);
-  const [userEmail, setUserEmail] = useState(currentUser.email);
+  const [restaurant, setRestaurant] = useState([]);
+
+  const [restaurantName, setRestaurantName] = useState(
+    restaurant.restaurantname
+  );
+  const [restaurantInstagram, setRestaurantInstagram] = useState(
+    restaurant.instagram
+  );
   const [file, setFile] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
   const [loading, setLoading] = useState(false);
+  console.log(restaurant.restaurantname);
+  console.log(restaurantName);
 
   // e handler for submitting the form
   const handleSubmit = async (e) => {
@@ -43,46 +47,34 @@ const EditProfileUserPage = () => {
         console.log("444");
         data.set("profilePicture", file);
       }
-      data.set("username", userName);
-      data.set("instagram", userInstagram);
-      data.set("email", userEmail);
+      data.set("restaurantname", restaurantName);
+      data.set("instagram", restaurantInstagram);
 
-      data.set("userId", currentUser._id);
+      data.set("restaurantId", restaurant._id);
 
-      await axios.put("/api/users/" + currentUser._id, data);
+      await axios.put("/api/restaurant/" + restaurant._id, data);
 
       try {
-        const existingUser = await axios.get(
-          `/api/users/?userId=${currentUser._id}`
-        );
-        // save the updated user back to the local storage
-        localStorage.setItem("user", JSON.stringify(existingUser.data));
-
         // window.location.reload(false);
-        navigate("/");
+        navigate("/restaurants");
       } catch (error) {
         setErrorMsg(error.response.data.error);
       }
-      <div className='upload-image-div'>
-        {/* <span className='shareText'>Upload</span> */}
-        <BiImage fontSize={36} color={file ? "green" : "red"} />
-        <input
-          style={{ display: "none" }}
-          type='file'
-          id='file'
-          accept='.png,.jpeg,.jpg,.jfif'
-          onChange={(e) => setFile(e.target.files[0])}
-        />
-        {file && (
-          <div className='img-upload'>
-            <ImageUpload file={file} setFile={setFile} />
-          </div>
-        )}
-      </div>;
     } catch (error) {
       console.log(error);
     }
   };
+
+  const fetchRestaurant = async () => {
+    const res = await axios.get(
+      `/api/restaurants/?restaurantname=${restaurantname}`
+    );
+    setRestaurant(res.data);
+  };
+
+  useEffect(() => {
+    fetchRestaurant();
+  }, [restaurantname]);
 
   // Render the form
   return (
@@ -108,8 +100,8 @@ const EditProfileUserPage = () => {
           <input
             className='profile-edit-form__input'
             type='text'
-            value={userName}
-            onChange={(e) => setUserName(e.target.value)}
+            value={restaurantName}
+            onChange={(e) => setRestaurantName(e.target.value)}
           />
         </label>
         <br />
@@ -119,20 +111,20 @@ const EditProfileUserPage = () => {
           <input
             className='profile-edit-form__input'
             type='text'
-            value={userInstagram}
-            onChange={(e) => setUserInstagram(e.target.value)}
+            value={restaurantInstagram}
+            onChange={(e) => setRestaurantInstagram(e.target.value)}
           />
         </label>
         <br />
-        <label className='profile-edit-form__label'>
+        {/* <label className='profile-edit-form__label'>
           Email:
           <input
             className='profile-edit-form__input'
             type='email'
-            value={userEmail}
-            onChange={(e) => setUserEmail(e.target.value)}
+            value={restaurantEmail}
+            onChange={(e) => setRestaurantEmail(e.target.value)}
           />
-        </label>
+        </label> */}
         <br />
         <label
           className='profile-edit-form__label'
@@ -181,4 +173,4 @@ const EditProfileUserPage = () => {
   );
 };
 
-export default EditProfileUserPage;
+export default EditRestaurantPage;

@@ -16,9 +16,14 @@ const RestaurantCard = ({ restaurant }) => {
         />
         <div className='restaurantName'>{restaurant.restaurantname}</div>
       </Link>
-      <span className='icon'>
-        <IconEdit />
-      </span>
+      <Link
+        to={`/editrestaurant/${restaurant.restaurantname}`}
+        style={{ textDecoration: "none" }}
+      >
+        <span className='icon'>
+          <IconEdit />
+        </span>
+      </Link>
     </div>
   );
 };

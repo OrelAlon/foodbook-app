@@ -6,6 +6,7 @@ import Register from "../pages/register/Register";
 import UserProfile from "../pages/userProfile/UserProfile";
 import AllRestaurants from "../pages/allRestaurants/AllRestaurants";
 import RestaurantProfile from "../pages/restaurantProfile/RestaurantProfile";
+import EditRestaurantPage from "../pages/editRestaurantPage/EditRestaurantPage";
 import EditProfileUserPage from "../pages/editProfileUserPage/EditProfileUserPage";
 import { ProtectedRoute } from "./ProtectedRoute";
 
@@ -31,6 +32,11 @@ const RouterConfig = () => {
             path='/restaurant/:restaurantname'
             element={<RestaurantProfile />}
           />
+          <Route
+            path='/editrestaurant/:restaurantname'
+            element={<EditRestaurantPage />}
+          />
+
           <Route
             path='/editprofile/:username'
             element={<EditProfileUserPage />}

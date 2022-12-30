@@ -1,9 +1,12 @@
 import { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router";
+import { Link } from "react-router-dom";
 
 import { AuthContext } from "../../context/AuthContext";
 
 import axios from "axios";
+
+import { IconEdit } from "@tabler/icons";
 
 import NavMenu from "../../components/navMenu/NavMenu";
 import ShareImageModal from "../../components/shareImageModal/ShareImageModal";
@@ -80,8 +83,18 @@ const UserProfile = () => {
                   src={user.profilePicture}
                   alt='jofpin'
                 />
+
                 <FollowBtn followHandler={followHandler} />
+                <Link
+                  to={`/editprofile/${user.username}`}
+                  style={{ textDecoration: "none" }}
+                >
+                  <span className='icon'>
+                    <IconEdit />
+                  </span>
+                </Link>
               </div>
+
               <div className='profile-data'>
                 <h3>{user.username}</h3>
                 {/* <p>github.com/jofpin</p> */}

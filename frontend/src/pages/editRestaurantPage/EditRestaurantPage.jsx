@@ -23,17 +23,11 @@ const EditRestaurantPage = () => {
   // Declare state variables for storing form data
   const [restaurant, setRestaurant] = useState([]);
 
-  const [restaurantName, setRestaurantName] = useState(
-    restaurant.restaurantname
-  );
-  const [restaurantInstagram, setRestaurantInstagram] = useState(
-    restaurant.instagram
-  );
+  const [restaurantName, setRestaurantName] = useState("");
+  const [restaurantInstagram, setRestaurantInstagram] = useState("");
   const [file, setFile] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
   const [loading, setLoading] = useState(false);
-  console.log(restaurant.restaurantname);
-  console.log(restaurantName);
 
   // e handler for submitting the form
   const handleSubmit = async (e) => {
@@ -52,7 +46,7 @@ const EditRestaurantPage = () => {
 
       data.set("restaurantId", restaurant._id);
 
-      await axios.put("/api/restaurant/" + restaurant._id, data);
+      await axios.put("/api/restaurants/" + restaurant._id, data);
 
       try {
         // window.location.reload(false);

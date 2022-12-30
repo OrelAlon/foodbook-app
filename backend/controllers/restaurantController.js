@@ -87,10 +87,48 @@ const followRestaurant = async (req, res) => {
   }
 };
 
+//
+const updateRestaurant = async () => {
+  console.log(req.body.restaurantId);
+  console.log(req.params.id);
+  if (req.body.restaurantId === req.params.id) {
+    try {
+      const restaurant = await Restaurant.findById({ _id: req.params.id });
+      restaurant.restaurantname =
+        req.body.restaurantname || restaurant.restaurantname;
+      restaurant.email = req.body.email || restaurant.email;
+      restaurant.instagram = req.body.instagram || restaurant.instagram;
+      restaurant.profilePicture = restaurant.profilePicture;
+
+      // Checking if the restaurant has updated the image
+      if (req.files && req.files.profilePicture) {
+        const file = req.files.profilePicture;
+        // upload to cloudinary
+        const result = await cloudinary.v2.uploader.upload(file.tempFilePath, {
+          folder: "avatars",
+          width: 200,
+          crop: "scale",
+          effect: "sharpen",
+        });
+        restaurant.profilePicture = result.secure_url;
+      }
+
+      restaurant.save();
+
+      res.status(200).json("Restaurant has been updated");
+    } catch (err) {
+      return res.status(500).json(err);
+    }
+  } else {
+    return res.status(403).json("ERROR!");
+  }
+};
+
 module.exports = {
   createRestaurant,
   getRestaurant,
   getAllRestaurants,
   createTempRestaurant,
   followRestaurant,
+  updateRestaurant,
 };

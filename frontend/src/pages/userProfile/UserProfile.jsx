@@ -1,11 +1,14 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router";
+
+import { AuthContext } from "../../context/AuthContext";
 
 import axios from "axios";
 
 import NavMenu from "../../components/navMenu/NavMenu";
 import ShareImageModal from "../../components/shareImageModal/ShareImageModal";
 import UserFeed from "../../components/feed/UserFeed";
+import FollowBtn from "../../components/followBtn/FollowBtn";
 import Logo from "../../components/logo/Logo";
 
 import st from "../../assets/st.jpg";
@@ -14,8 +17,12 @@ import "./userProfile.css";
 const UserProfile = () => {
   const [user, setUser] = useState({});
   const [shareImageOpened, setShareImageOpened] = useState(false);
+  const [followers, setFollowers] = useState([]);
+  const [isFollowed, setIsFollowed] = useState(false);
+  const [postsLength, setPostsLength] = useState([]);
 
   const username = useParams().username;
+  const { user: currentUser } = useContext(AuthContext);
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -24,6 +31,24 @@ const UserProfile = () => {
     };
     fetchUser();
   }, [username]);
+
+  useEffect(() => {
+    if (Object.keys(user).length !== 0) {
+      setFollowers(user.followers.length);
+    }
+  }, [user]);
+
+  const followHandler = () => {
+    try {
+      axios.put(`/api/users/${user._id}/followuser`, {
+        userId: currentUser._id,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+    setFollowers(isFollowed ? followers - 1 : followers + 1);
+    setIsFollowed(!isFollowed);
+  };
 
   return (
     <>
@@ -55,8 +80,8 @@ const UserProfile = () => {
                   src={user.profilePicture}
                   alt='jofpin'
                 />
+                <FollowBtn followHandler={followHandler} />
               </div>
-              <button>Follow</button>
               <div className='profile-data'>
                 <h3>{user.username}</h3>
                 {/* <p>github.com/jofpin</p> */}
@@ -65,19 +90,19 @@ const UserProfile = () => {
               <ul className='data'>
                 <li>
                   <a>
-                    <strong>2</strong>
+                    <strong>{postsLength}</strong>
                     <span>Posts</span>
                   </a>
                 </li>
                 <li>
                   <a>
-                    <strong>4</strong>
+                    <strong>{followers}</strong>
                     <span>Followers</span>
                   </a>
                 </li>
                 <li>
                   <a>
-                    <strong>8</strong>
+                    <strong>On Build</strong>
                     <span>Following</span>
                   </a>
                 </li>
@@ -86,11 +111,8 @@ const UserProfile = () => {
           </div>
         </div>
         <div>
-          <h3>search bar</h3>
-        </div>
-        <div>
           {" "}
-          <UserFeed username={username} />
+          <UserFeed username={username} setPostsLength={setPostsLength} />
         </div>
       </div>
     </>

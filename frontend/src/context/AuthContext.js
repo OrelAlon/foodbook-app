@@ -14,9 +14,6 @@ export const AuthContextProvider = ({ children }) => {
   };
 
   const googleLogin = async ({ response }) => {
-    console.log("2");
-    console.log(response);
-
     const res = await axios.post("api/auth/googlelogin", {
       tokenId: response.tokenId,
     });
@@ -24,7 +21,6 @@ export const AuthContextProvider = ({ children }) => {
   };
 
   const logout = async () => {
-    console.log("test logout");
     // await axios.post("api/auth/logout");
     setCurrentUser(null);
   };

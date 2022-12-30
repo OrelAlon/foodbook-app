@@ -7,7 +7,7 @@ import Post from "../post/Post";
 
 import "./feed.css";
 
-const UserFeed = ({ username }) => {
+const UserFeed = ({ username, setPostsLength }) => {
   const [posts, setPosts] = useState([]);
   const { user } = useContext(AuthContext);
 
@@ -21,6 +21,7 @@ const UserFeed = ({ username }) => {
           (p1, p2) => new Date(p2.createdAt) - new Date(p1.createdAt)
         )
       );
+      setPostsLength(res.data.length);
     };
     fetchPosts();
   }, [username, user._id]);

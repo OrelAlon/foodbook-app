@@ -8,7 +8,7 @@ import axios from "axios";
 import NavMenu from "../../components/navMenu/NavMenu";
 import ShareImageModal from "../../components/shareImageModal/ShareImageModal";
 import RestaurantFeed from "../../components/feed/RestaurantFeed";
-import FollowRestaurant from "../../components/followRestaurant/FollowRestaurant";
+import FollowBtn from "../../components/followBtn/FollowBtn";
 import Logo from "../../components/logo/Logo";
 
 import noImage from "../../assets/noImage2.jpg";
@@ -23,8 +23,8 @@ const RestaurantProfile = () => {
   const [postsLength, setPostsLength] = useState([]);
 
   const restaurantname = useParams().restaurantname;
-
   const { user: currentUser } = useContext(AuthContext);
+
   useEffect(() => {
     if (Object.keys(restaurant).length !== 0) {
       setFollowers(restaurant.followers.length);
@@ -42,7 +42,7 @@ const RestaurantProfile = () => {
     setRestaurant(res.data);
   };
 
-  const followRestaurantHandler = () => {
+  const followHandler = () => {
     try {
       axios.put(`/api/restaurants/${restaurant._id}/followrestaurant`, {
         userId: currentUser._id,
@@ -86,9 +86,7 @@ const RestaurantProfile = () => {
                   src={restaurant.profilePicture || noImage}
                   alt='jofpin'
                 />
-                <FollowRestaurant
-                  followRestaurantHandler={followRestaurantHandler}
-                />
+                <FollowBtn followHandler={followHandler} />
               </div>
               <div className='profile-data'>
                 <h3>{restaurant.restaurantname}</h3>

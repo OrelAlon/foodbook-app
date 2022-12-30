@@ -102,6 +102,21 @@ const updatePassword = async (req, res) => {
     res.status(500).send({ error: "Error updating password" });
   }
 };
+//
+const followUser = async () => {
+  try {
+    const user = await User.findByIdAndUpdate(req.params.id);
+    if (!user.followers.includes(req.body.userId)) {
+      await user.updateOne({ $push: { followers: req.body.userId } });
+      res.status(200).json("The user has been follow");
+    } else {
+      await user.updateOne({ $pull: { followers: req.body.userId } });
+      res.status(200).json("The user has been unfollow");
+    }
+  } catch (error) {
+    res.status(500).json(err);
+  }
+};
 
 module.exports = {
   getUser,
@@ -109,4 +124,5 @@ module.exports = {
   updateUser,
   deleteUser,
   updatePassword,
+  followUser,
 };

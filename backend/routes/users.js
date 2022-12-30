@@ -5,6 +5,7 @@ const {
   updateUser,
   deleteUser,
   updatePassword,
+  followUser,
 } = require("../controllers/usersController");
 
 router.get("/", getUser);
@@ -12,6 +13,8 @@ router.get("/", getUser);
 router.get("/users", getAllUsers);
 
 router.put("/:id", updateUser);
+
+router.put("/:id/followuser", followUser);
 
 router.post("/updatepassword", updatePassword);
 

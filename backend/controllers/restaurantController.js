@@ -77,10 +77,10 @@ const followRestaurant = async (req, res) => {
     const restaurant = await Restaurant.findByIdAndUpdate(req.params.id);
     if (!restaurant.followers.includes(req.body.userId)) {
       await restaurant.updateOne({ $push: { followers: req.body.userId } });
-      res.status(200).json("The user has been follow");
+      res.status(200).json("The restaurant has been follow");
     } else {
       await restaurant.updateOne({ $pull: { followers: req.body.userId } });
-      res.status(200).json("The user has been unfollow");
+      res.status(200).json("The restaurant has been unfollow");
     }
   } catch (error) {
     res.status(500).json(err);

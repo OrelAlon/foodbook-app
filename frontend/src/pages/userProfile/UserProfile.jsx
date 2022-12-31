@@ -29,7 +29,7 @@ const UserProfile = () => {
   const { user: currentUser } = useContext(AuthContext);
   console.log("here");
   console.log(usernameParams);
-  console.log(user.username);
+  console.log(currentUser.username);
   useEffect(() => {
     const fetchUser = async () => {
       const res = await axios.get(`/api/users/?username=${usernameParams}`);

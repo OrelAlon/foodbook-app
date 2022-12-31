@@ -2,3 +2,6 @@ body {
   background-color: #d3d3d3;
   font-family: "Montserrat", sans-serif;
 }
+.transform :active {
+  transform: translateY(2px);
+}

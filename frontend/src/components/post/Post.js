@@ -76,7 +76,7 @@ const Post = ({ post }) => {
               <Link to={`/profile/${username}`} className='linkwithout'>
                 <span className='bold '> {username} </span>
               </Link>
-              in{" "}
+              at{" "}
               <Link
                 className='linkwithout'
                 to={`/restaurant/${restaurantname}`}
@@ -100,7 +100,7 @@ const Post = ({ post }) => {
           <img className='postImg' src={img} alt='' width='200' height='100' />
         </div>
         <div className='postBottom'>
-          <div className='postBottomLeft'>
+          <div className='postBottomLeft transform'>
             <AiOutlineLike
               fontSize={18}
               className='likeIcon'

@@ -20,7 +20,7 @@ const RestaurantCard = ({ restaurant }) => {
         to={`/editrestaurant/${restaurant.restaurantname}`}
         style={{ textDecoration: "none" }}
       >
-        <span className='icon'>
+        <span className='icon transform'>
           <IconEdit />
         </span>
       </Link>

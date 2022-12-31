@@ -12,14 +12,14 @@ const Home = () => {
 
   return (
     <>
-      <div onClick={() => window.location.reload(false)}>
+      <div className='transform' onClick={() => window.location.reload(false)}>
         <Logo />
       </div>
-      <div className='menu-div'>
+      <div className='menu-div transform'>
         {" "}
         <button
           onClick={() => setShareImageOpened(true)}
-          className='add-image-btn'
+          className='add-image-btn transform'
         >
           📷
         </button>

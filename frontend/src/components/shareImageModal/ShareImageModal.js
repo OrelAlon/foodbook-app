@@ -180,7 +180,7 @@ function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
         <div className='center-div'>{loading && <Loader />}</div>
         {errorMsg && <div className='error msg'>{errorMsg}</div>}
 
-        <div className='center-div'>
+        <div className='center-div transform'>
           <span className='share' onClick={submitHandler}>
             Upload
             <img src={food} alt='foodbook' className='instagram' />

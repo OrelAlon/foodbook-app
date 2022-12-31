@@ -13,6 +13,7 @@ import ShareImageModal from "../../components/shareImageModal/ShareImageModal";
 import UserFeed from "../../components/feed/UserFeed";
 import FollowBtn from "../../components/followBtn/FollowBtn";
 import Logo from "../../components/logo/Logo";
+import noImage from "../../assets/noImage2.jpg";
 
 import st from "../../assets/st.jpg";
 import "./userProfile.css";
@@ -24,16 +25,18 @@ const UserProfile = () => {
   const [isFollowed, setIsFollowed] = useState(false);
   const [postsLength, setPostsLength] = useState([]);
 
-  const username = useParams().username;
+  const usernameParams = useParams().username;
   const { user: currentUser } = useContext(AuthContext);
-
+  console.log("here");
+  console.log(usernameParams);
+  console.log(user.username);
   useEffect(() => {
     const fetchUser = async () => {
-      const res = await axios.get(`/api/users/?username=${username}`);
+      const res = await axios.get(`/api/users/?username=${usernameParams}`);
       setUser(res.data);
     };
     fetchUser();
-  }, [username]);
+  }, [usernameParams]);
 
   useEffect(() => {
     if (Object.keys(user).length !== 0) {
@@ -80,19 +83,21 @@ const UserProfile = () => {
                 <img className='profile-bgHome' src={st} alt='' />
                 <img
                   className='avatar'
-                  src={user.profilePicture}
-                  alt='jofpin'
+                  src={user.profilePicture || noImage}
+                  alt='profile-image'
                 />
 
                 <FollowBtn followHandler={followHandler} />
-                <Link
-                  to={`/editprofile/${user.username}`}
-                  style={{ textDecoration: "none" }}
-                >
-                  <span className='icon'>
-                    <IconEdit />
-                  </span>
-                </Link>
+                {usernameParams === currentUser.username && (
+                  <Link
+                    to={`/editprofile/${user.username}`}
+                    style={{ textDecoration: "none" }}
+                  >
+                    <span className='icon'>
+                      <IconEdit />
+                    </span>
+                  </Link>
+                )}
               </div>
 
               <div className='profile-data'>
@@ -125,7 +130,7 @@ const UserProfile = () => {
         </div>
         <div>
           {" "}
-          <UserFeed username={username} setPostsLength={setPostsLength} />
+          <UserFeed username={usernameParams} setPostsLength={setPostsLength} />
         </div>
       </div>
     </>

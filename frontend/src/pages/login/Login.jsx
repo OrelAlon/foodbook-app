@@ -79,10 +79,10 @@ const Login = () => {
               name='password'
             ></input>
           </div>
-          <button className='signinBtn'>Sign In</button>
+          <button className='signinBtn transform'>Sign In</button>
           <ToastContainer />
         </form>
-        <div className='google-login'>
+        <div className='google-login transform'>
           <GoogleLogin
             clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
             buttonText='Login with Google'

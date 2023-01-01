@@ -34,32 +34,33 @@ function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
   const [errorMsg, setErrorMsg] = useState("");
 
   useEffect(() => {
-    const fetchRestaurants = async () => {
-      const res = await axios.get(`/api/restaurants/restaurants`);
-      sortRestaurants(res.data);
-    };
-
-    const sortRestaurants = (res) => {
-      let arr = [];
-      res.map((el) => {
-        arr.push({
-          value: el._id,
-          label: el.restaurantname,
-          group: el.city,
-        });
-      });
-
-      return setRestaurantsList(
-        arr.sort((a, b) =>
-          a.label.toLowerCase() > b.label.toLowerCase() ? 1 : -1
-        )
-      );
-    };
-
     fetchRestaurants();
   }, []);
 
+  const fetchRestaurants = async () => {
+    const res = await axios.get(`/api/restaurants/restaurants`);
+    sortRestaurants(res.data);
+  };
+
+  const sortRestaurants = (res) => {
+    let arr = [];
+    res.map((el) => {
+      arr.push({
+        value: el._id,
+        label: el.restaurantname,
+        group: el.city,
+      });
+    });
+
+    return setRestaurantsList(
+      arr.sort((a, b) =>
+        a.label.toLowerCase() > b.label.toLowerCase() ? 1 : -1
+      )
+    );
+  };
+
   const createNewRest = async (query) => {
+    log;
     try {
       await axios.post("/api/restaurants/temprest", { query });
       const res = await axios.get(`/api/restaurants/?restaurantname=${query}`);

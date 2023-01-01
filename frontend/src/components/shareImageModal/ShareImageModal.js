@@ -103,7 +103,6 @@ function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
       data.set("dishType", JSON.stringify(selectDishType));
       data.set("restaurantId", selectRestaurant.value);
       await axios.post("/api/posts", data);
-      window.location.reload();
     } catch (error) {
       setErrorMsg(error.response.data.error);
     }

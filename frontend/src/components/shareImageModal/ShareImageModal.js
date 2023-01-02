@@ -60,7 +60,6 @@ function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
   };
 
   const createNewRest = async (query) => {
-    log;
     try {
       await axios.post("/api/restaurants/temprest", { query });
       const res = await axios.get(`/api/restaurants/?restaurantname=${query}`);
@@ -104,6 +103,7 @@ function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
       data.set("dishType", JSON.stringify(selectDishType));
       data.set("restaurantId", selectRestaurant.value);
       await axios.post("/api/posts", data);
+      window.location.reload();
     } catch (error) {
       setErrorMsg(error.response.data.error);
     }

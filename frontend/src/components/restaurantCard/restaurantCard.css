@@ -1,5 +1,5 @@
 .restaurantCard {
-  background-color: gray;
+  background-color: rgb(202, 197, 197);
   display: flex;
   justify-content: center;
 
@@ -44,4 +44,8 @@ span.icon:hover {
 }
 .icon:active {
   transform: translateY(2px);
+}
+
+span.delete:hover {
+  color: red;
 }

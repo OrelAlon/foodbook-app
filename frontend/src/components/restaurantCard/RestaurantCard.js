@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import noImage from "../../assets/noImage2.jpg";
 
-import { IconEdit } from "@tabler/icons";
+import { IconEdit, IconEraser } from "@tabler/icons";
 
 import "./restaurantCard.css";
 
@@ -20,10 +20,14 @@ const RestaurantCard = ({ restaurant }) => {
         to={`/editrestaurant/${restaurant.restaurantname}`}
         style={{ textDecoration: "none" }}
       >
-        <span className='icon transform'>
+        <span className='icon transform '>
           <IconEdit />
         </span>
       </Link>
+
+      <span className='icon transform delete'>
+        <IconEraser />
+      </span>
     </div>
   );
 };

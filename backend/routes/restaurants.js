@@ -6,6 +6,7 @@ const {
   createTempRestaurant,
   followRestaurant,
   updateRestaurant,
+  deleteRestaurant,
 } = require("../controllers/restaurantController");
 
 router.post("/", createRestaurant);
@@ -19,5 +20,7 @@ router.get("/restaurants", getAllRestaurants);
 router.put("/:id", updateRestaurant);
 
 router.put("/:id/followrestaurant", followRestaurant);
+
+router.delete("/:id", deleteRestaurant);
 
 module.exports = router;

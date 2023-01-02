@@ -102,8 +102,9 @@ const updatePassword = async (req, res) => {
     res.status(500).send({ error: "Error updating password" });
   }
 };
+
 //
-const followUser = async () => {
+const followUser = async (req, res) => {
   try {
     const user = await User.findByIdAndUpdate(req.params.id);
     if (!user.followers.includes(req.body.userId)) {

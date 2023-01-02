@@ -51,6 +51,7 @@ const Post = ({ post }) => {
     setLike(isLiked ? like - 1 : like + 1);
     setIsLiked(!isLiked);
   };
+
   const deleteHandler = async () => {
     try {
       await axios.delete(`/api/posts/${_id}`);

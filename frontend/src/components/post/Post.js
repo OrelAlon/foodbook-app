@@ -53,11 +53,13 @@ const Post = ({ post }) => {
   };
 
   const deleteHandler = async () => {
-    try {
-      await axios.delete(`/api/posts/${_id}`);
-      window.location.reload();
-    } catch (error) {
-      console.log(error);
+    if (window.confirm(`Are you sure you want to delete this post??`)) {
+      try {
+        await axios.delete(`/api/posts/${_id}`);
+        window.location.reload();
+      } catch (error) {
+        console.log(error);
+      }
     }
   };
 

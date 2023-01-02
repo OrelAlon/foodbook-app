@@ -12,12 +12,19 @@ import "./restaurantCard.css";
 
 const RestaurantCard = ({ restaurant }) => {
   const { user: currentUser } = useContext(AuthContext);
+
   const deleteHandler = async () => {
-    try {
-      await axios.delete(`/api/restaurants/${restaurant._id}`);
-      window.location.reload();
-    } catch (error) {
-      console.log(error);
+    if (
+      window.confirm(
+        `Are you sure you want to delete ${restaurant.restaurantname}?`
+      )
+    ) {
+      try {
+        await axios.delete(`/api/restaurants/${restaurant._id}`);
+        window.location.reload();
+      } catch (error) {
+        console.log(error);
+      }
     }
   };
 

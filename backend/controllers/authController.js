@@ -76,7 +76,6 @@ const googleLogin = async (req, res) => {
     const { email, email_verified, name } = payload;
     if (email_verified) {
       const user = await User.findOne({ email });
-      console.log(user);
       if (user) {
         res.status(200).json(user);
       }

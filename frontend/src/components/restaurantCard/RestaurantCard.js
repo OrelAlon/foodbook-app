@@ -1,13 +1,17 @@
+import { useContext } from "react";
+import { AuthContext } from "../../context/AuthContext";
 import { Link } from "react-router-dom";
 
 import axios from "axios";
 
 import { IconEdit, IconEraser } from "@tabler/icons";
+
 import noImage from "../../assets/noImage2.jpg";
 
 import "./restaurantCard.css";
 
 const RestaurantCard = ({ restaurant }) => {
+  const { user: currentUser } = useContext(AuthContext);
   const deleteHandler = async () => {
     try {
       await axios.delete(`/api/restaurants/${restaurant._id}`);
@@ -35,10 +39,11 @@ const RestaurantCard = ({ restaurant }) => {
           <IconEdit />
         </span>
       </Link>
-
-      <span className='icon transform delete' onClick={deleteHandler}>
-        <IconEraser />
-      </span>
+      {currentUser.isAdmin && (
+        <span className='icon transform delete' onClick={deleteHandler}>
+          <IconEraser />
+        </span>
+      )}
     </div>
   );
 };

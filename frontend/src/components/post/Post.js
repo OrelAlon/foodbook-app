@@ -6,7 +6,10 @@ import { AiOutlineLike } from "react-icons/ai";
 
 import TagPost from "../tagPost/TagPost";
 import noAvatar from "../../assets/noAvatar.png";
-import moment from "moment";
+
+import dayjs from "dayjs";
+import relativeTime from "dayjs/plugin/relativeTime";
+
 import axios from "axios";
 
 import "./post.css";
@@ -23,7 +26,9 @@ const Post = ({ post }) => {
   const { userId, restaurantId, _id, img, updatedAt, foodCategory, dishType } =
     post;
   const usernameParams = useParams().username;
+  dayjs.extend(relativeTime);
 
+  const postTime = dayjs(updatedAt).fromNow();
   useEffect(() => {
     const fetchUser = async () => {
       const res = await axios.get(`/api/users/?userId=${userId}`);
@@ -39,8 +44,6 @@ const Post = ({ post }) => {
     fetchRestaurant();
     fetchUser();
   }, [userId, restaurantId]);
-
-  useEffect(() => {}, []);
 
   const likeHandler = () => {
     try {
@@ -90,7 +93,7 @@ const Post = ({ post }) => {
           </div>
           <div style={{ display: "flex", alignitems: "center" }}>
             {" "}
-            <p className='posttime'>{moment(updatedAt).fromNow()}</p>
+            <p className='posttime'>{postTime}</p>
             {usernameParams === currentUser.username && (
               <div className='postTopRight delete' onClick={deleteHandler}>
                 X{" "}

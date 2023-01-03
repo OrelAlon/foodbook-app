@@ -12,8 +12,7 @@ import { foodCategoryOptions, dishTypeOptions } from "../../assets/foodData";
 import axios from "axios";
 import ImageUpload from "../imageUpload/ImageUpload";
 import instagram from "../../assets/instagram.png";
-import food from "../../assets/food.png";
-import { BiImage } from "react-icons/bi";
+import { BiImage, BiCloudUpload } from "react-icons/bi";
 import "./shareImageModal.css";
 
 function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
@@ -192,7 +191,7 @@ function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
           <div className='center-div transform'>
             <span className='share' onClick={submitHandler}>
               Upload
-              <img src={food} alt='foodbook' className='instagram' />
+              <BiCloudUpload fontSize={40} color={"blue"} />
             </span>{" "}
             {/* <span>
             Share with

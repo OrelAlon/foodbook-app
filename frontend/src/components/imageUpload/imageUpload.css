@@ -5,6 +5,7 @@
 .remove-image {
   position: absolute;
   font-size: larger;
+  background-color: aliceblue;
 }
 .remove-image:hover {
   cursor: pointer;

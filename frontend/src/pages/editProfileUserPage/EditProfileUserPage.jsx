@@ -37,13 +37,11 @@ const EditProfileUserPage = () => {
 
       const data = new FormData();
       if (file) {
-        console.log("444");
         data.set("profilePicture", file);
       }
       data.set("username", userName);
       data.set("instagram", userInstagram);
       data.set("email", userEmail);
-
       data.set("userId", currentUser._id);
 
       await axios.put("/api/users/" + currentUser._id, data);

@@ -20,9 +20,8 @@ import {
 import { foodCategoryOptions, Prices, cities } from "../../assets/foodData";
 
 import axios from "axios";
-import ImageUpload from "../imageUpload/ImageUpload";
-import instagram from "../../assets/instagram.png";
-import { BiImage, BiShareAlt } from "react-icons/bi";
+
+import { BiImage } from "react-icons/bi";
 
 function AddRestaurantModal({ addRestaurantOpend, setAddRestaurantOpend }) {
   const theme = useMantineTheme();

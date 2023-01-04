@@ -11,7 +11,7 @@ This site is basically for people to see the dishes of the restaurant before the
 
 This is my Flow Chart of the project
 
-![foodbook-user-flow-Drawings](./frontend/src/assets/foodbook-user-flow-Drawings.png)
+![foodbook-user-flow-Drawings](./frontend/src/assets/foodbook-flow-Drawings.png)
 
 My motivation for this site came from the fact that when I'm in a restaurant I always try to look for pictures of the dishes before I order, and I don't always find
 

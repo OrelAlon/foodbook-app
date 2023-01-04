@@ -5,19 +5,17 @@ import { AuthContext } from "../../context/AuthContext";
 
 import axios from "axios";
 
-import NavMenu from "../../components/navMenu/NavMenu";
-import ShareImageModal from "../../components/shareImageModal/ShareImageModal";
+import NavBar from "../../components/navBar/NavBar";
 import RestaurantFeed from "../../components/feed/RestaurantFeed";
 import FollowBtn from "../../components/followBtn/FollowBtn";
-import Logo from "../../components/logo/Logo";
 
 import noImage from "../../assets/noImage2.jpg";
 import classy from "../../assets/classy-rest.jpg";
+
 import "./restaurantProfile.css";
 
 const RestaurantProfile = () => {
   const [restaurant, setRestaurant] = useState({});
-  const [shareImageOpened, setShareImageOpened] = useState(false);
   const [followers, setFollowers] = useState([]);
   const [isFollowed, setIsFollowed] = useState(false);
   const [postsLength, setPostsLength] = useState([]);
@@ -56,23 +54,8 @@ const RestaurantProfile = () => {
 
   return (
     <>
-      {/* navbar */}
+      <NavBar />
 
-      <Logo />
-      <div className='menu-div'>
-        {" "}
-        <button
-          onClick={() => setShareImageOpened(true)}
-          className='add-image-btn'
-        >
-          📷
-        </button>
-        <NavMenu />
-        <ShareImageModal
-          shareImageOpened={shareImageOpened}
-          setShareImageOpened={setShareImageOpened}
-        />
-      </div>
       {/* feed */}
 
       <div className='profile-page-container'>

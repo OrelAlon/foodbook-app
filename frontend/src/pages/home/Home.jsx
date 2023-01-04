@@ -6,8 +6,6 @@ import NavBar from "../../components/navBar/NavBar";
 import "./home.css";
 
 const Home = () => {
-  const [shareImageOpened, setShareImageOpened] = useState(false);
-
   return (
     <>
       <NavBar />

@@ -8,11 +8,9 @@ import axios from "axios";
 
 import { IconEdit } from "@tabler/icons";
 
-import NavMenu from "../../components/navMenu/NavMenu";
-import ShareImageModal from "../../components/shareImageModal/ShareImageModal";
+import NavBar from "../../components/navBar/NavBar";
 import UserFeed from "../../components/feed/UserFeed";
 import FollowBtn from "../../components/followBtn/FollowBtn";
-import Logo from "../../components/logo/Logo";
 import noImage from "../../assets/noImage2.jpg";
 
 import st from "../../assets/st.jpg";
@@ -20,7 +18,6 @@ import "./userProfile.css";
 
 const UserProfile = () => {
   const [user, setUser] = useState({});
-  const [shareImageOpened, setShareImageOpened] = useState(false);
   const [followers, setFollowers] = useState([]);
   const [isFollowed, setIsFollowed] = useState(false);
   const [postsLength, setPostsLength] = useState([]);
@@ -56,22 +53,8 @@ const UserProfile = () => {
 
   return (
     <>
-      {/* navbar */}
-      <Logo />
-      <div className='menu-div'>
-        {" "}
-        <button
-          onClick={() => setShareImageOpened(true)}
-          className='add-image-btn'
-        >
-          📷
-        </button>
-        <NavMenu />
-        <ShareImageModal
-          shareImageOpened={shareImageOpened}
-          setShareImageOpened={setShareImageOpened}
-        />
-      </div>{" "}
+      <NavBar />
+
       {/* feed */}
       <div className='profile-page-container'>
         <div>

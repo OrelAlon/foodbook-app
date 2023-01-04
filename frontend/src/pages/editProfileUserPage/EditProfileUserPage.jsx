@@ -1,15 +1,13 @@
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-
 import { AuthContext } from "../../context/AuthContext";
 
 import axios from "axios";
 
+import NavBar from "../../components/navBar/NavBar";
 import ImageUpload from "../../components/imageUpload/ImageUpload";
-import NavMenu from "../../components/navMenu/NavMenu";
-import ShareImageModal from "../../components/shareImageModal/ShareImageModal";
 import ChangePasswordModel from "../../components/changePasswordModel/ChangePasswordModel";
-import Logo from "../../components/logo/Logo";
+
 import { BiImage } from "react-icons/bi";
 import { Loader } from "@mantine/core";
 
@@ -17,7 +15,6 @@ import "./editProfileUserPage.css";
 
 // this page was partially built with ChatGPT :)
 const EditProfileUserPage = () => {
-  const [shareImageOpened, setShareImageOpened] = useState(false);
   const [changePasswordModel, setChangePasswordOpened] = useState(false);
 
   const { user: currentUser } = useContext(AuthContext);
@@ -87,21 +84,7 @@ const EditProfileUserPage = () => {
   // Render the form
   return (
     <>
-      <Logo />
-      <div className='menu-div'>
-        {" "}
-        <button
-          onClick={() => setShareImageOpened(true)}
-          className='add-image-btn'
-        >
-          📷
-        </button>
-        <NavMenu />
-        <ShareImageModal
-          shareImageOpened={shareImageOpened}
-          setShareImageOpened={setShareImageOpened}
-        />
-      </div>
+      <NavBar />
       <form className='profile-edit-form' onSubmit={handleSubmit}>
         <label className='profile-edit-form__label'>
           Name:

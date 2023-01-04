@@ -2,18 +2,15 @@ import { useEffect, useState } from "react";
 
 import axios from "axios";
 
+import NavBar from "../../components/navBar/NavBar";
 import RestaurantCard from "../../components/restaurantCard/RestaurantCard";
-import NavMenu from "../../components/navMenu/NavMenu";
-import ShareImageModal from "../../components/shareImageModal/ShareImageModal";
 import AddRestaurantModal from "../../components/addRestaurantModal/AddRestaurantModal";
-import Logo from "../../components/logo/Logo";
 
 import "./allRestaurants.css";
 
 const AllRestaurants = () => {
   const [restaurants, setRestaurants] = useState([]);
   const [searchRestaurant, setSearchRestaurant] = useState("");
-  const [shareImageOpened, setShareImageOpened] = useState(false);
   const [addRestaurantOpend, setAddRestaurantOpend] = useState(false);
 
   useEffect(() => {
@@ -26,21 +23,7 @@ const AllRestaurants = () => {
 
   return (
     <>
-      <Logo />
-      <div className='menu-div'>
-        {" "}
-        <button
-          onClick={() => setShareImageOpened(true)}
-          className='add-image-btn'
-        >
-          📷
-        </button>
-        <NavMenu />
-        <ShareImageModal
-          shareImageOpened={shareImageOpened}
-          setShareImageOpened={setShareImageOpened}
-        />
-      </div>
+      <NavBar />
       <button
         className='addRestaurantBtn'
         onClick={() => setAddRestaurantOpend(true)}

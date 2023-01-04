@@ -5,7 +5,11 @@ This app is for sharing images of dishes from restaurants
 <!-- ![](ezgif.com-gif-maker.gif)
 https://www.youtube.com/watch?v=sEdxyZksgM8 -->
 
+<<<<<<< HEAD
 You can try my project at [Foodbook](https://foodbook.onrender.com).
+=======
+You can try my project at [Foodbook](https://foodbook.onrender.com/).
+>>>>>>> ce8930de8ba812b566a819ee663d3f80e9f205dd
 
 This site is basically for people to see the dishes of the restaurant before they order it
 

@@ -22,6 +22,7 @@ const EditRestaurantPage = () => {
   const [restaurant, setRestaurant] = useState([]);
 
   const [restaurantName, setRestaurantName] = useState("");
+  const [restaurantCity, setRestaurantCity] = useState("");
   const [restaurantInstagram, setRestaurantInstagram] = useState("");
   const [file, setFile] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
@@ -39,6 +40,7 @@ const EditRestaurantPage = () => {
         data.set("profilePicture", file);
       }
       data.set("restaurantname", restaurantName);
+      data.set("city", restaurantCity);
       data.set("instagram", restaurantInstagram);
 
       data.set("restaurantId", restaurant._id);
@@ -82,6 +84,16 @@ const EditRestaurantPage = () => {
           />
         </label>
         <br />
+        <label className='profile-edit-form__label'>
+          City:
+          <input
+            className='profile-edit-form__input'
+            type='text'
+            value={restaurantCity}
+            onChange={(e) => setRestaurantCity(e.target.value)}
+          />
+        </label>
+        <br />
 
         <label className='profile-edit-form__label'>
           Instagram Link:
@@ -92,16 +104,7 @@ const EditRestaurantPage = () => {
             onChange={(e) => setRestaurantInstagram(e.target.value)}
           />
         </label>
-        <br />
-        {/* <label className='profile-edit-form__label'>
-          Email:
-          <input
-            className='profile-edit-form__input'
-            type='email'
-            value={restaurantEmail}
-            onChange={(e) => setRestaurantEmail(e.target.value)}
-          />
-        </label> */}
+
         <br />
         <label
           className='profile-edit-form__label'

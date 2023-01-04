@@ -94,11 +94,12 @@ const Post = ({ post }) => {
           <div style={{ display: "flex", alignitems: "center" }}>
             {" "}
             <p className='posttime'>{postTime}</p>
-            {usernameParams === currentUser.username && (
-              <div className='postTopRight delete' onClick={deleteHandler}>
-                X{" "}
-              </div>
-            )}
+            {usernameParams === currentUser.username ||
+              (currentUser.isAdmin && (
+                <div className='postTopRight delete' onClick={deleteHandler}>
+                  X{" "}
+                </div>
+              ))}
           </div>
         </div>
 

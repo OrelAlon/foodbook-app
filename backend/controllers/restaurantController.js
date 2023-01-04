@@ -94,6 +94,7 @@ const updateRestaurant = async (req, res) => {
       const restaurant = await Restaurant.findById({ _id: req.params.id });
       restaurant.restaurantname =
         req.body.restaurantname || restaurant.restaurantname;
+      restaurant.city = req.body.city || restaurant.city;
       restaurant.instagram = req.body.instagram || restaurant.instagram;
       restaurant.profilePicture = restaurant.profilePicture;
 

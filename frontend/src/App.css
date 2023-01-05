@@ -5,3 +5,7 @@ body {
 .transform :active {
   transform: translateY(2px);
 }
+
+.none {
+  text-decoration: "none";
+}

@@ -40,7 +40,7 @@ const RestaurantCard = ({ restaurant }) => {
       </Link>
       <Link
         to={`/editrestaurant/${restaurant.restaurantname}`}
-        style={{ textDecoration: "none" }}
+        className='none'
       >
         <span className='icon transform '>
           <IconEdit />

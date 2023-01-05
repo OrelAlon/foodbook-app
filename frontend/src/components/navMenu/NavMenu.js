@@ -31,23 +31,17 @@ const NavMenu = () => {
 
         <Menu.Dropdown>
           <Menu.Label>Application</Menu.Label>
-          <Link to='/' style={{ textDecoration: "none" }}>
+          <Link to='/' className='none'>
             <Menu.Item>📰 Feed</Menu.Item>
           </Link>
-          <Link to={`/restaurants`} style={{ textDecoration: "none" }}>
+          <Link to={`/restaurants`} className='none'>
             <Menu.Item>🍽 Restaurants</Menu.Item>{" "}
           </Link>
 
-          <Link
-            to={`/profile/${user.username}`}
-            style={{ textDecoration: "none" }}
-          >
+          <Link to={`/profile/${user.username}`} className='none'>
             <Menu.Item>🖼️ My Profile</Menu.Item>{" "}
           </Link>
-          <Link
-            to={`/editprofile/${user.username}`}
-            style={{ textDecoration: "none" }}
-          >
+          <Link to={`/editprofile/${user.username}`} className='none'>
             <Menu.Item>✏️ Edit Profile</Menu.Item>{" "}
           </Link>
           <Menu.Divider />

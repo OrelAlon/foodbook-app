@@ -70,10 +70,7 @@ const UserProfile = () => {
 
                 <FollowBtn followHandler={followHandler} />
                 {usernameParams === currentUser.username && (
-                  <Link
-                    to={`/editprofile/${user.username}`}
-                    style={{ textDecoration: "none" }}
-                  >
+                  <Link to={`/editprofile/${user.username}`} className='none'>
                     <span className='icon'>
                       <IconEdit />
                     </span>

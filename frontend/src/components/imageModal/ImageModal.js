@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Modal, useMantineTheme, Image } from "@mantine/core";
 
 const ImageModal = ({ openedImage, setOpenedImage, img }) => {
@@ -13,8 +12,8 @@ const ImageModal = ({ openedImage, setOpenedImage, img }) => {
       }
       overlayOpacity={0.55}
       overlayBlur={3}
-      // size='98%'
-      fullScreen
+      size='80%'
+      // fullScreen
       opened={openedImage}
       onClose={() => setOpenedImage(false)}
     >

@@ -21,6 +21,8 @@ const FilterImagesModel = ({
 }) => {
   const [restaurantsList, setRestaurantsList] = useState([]);
 
+  const styleSelect = { width: "60%", margin: "auto" };
+
   useEffect(() => {
     const fetchRestaurants = async () => {
       const res = await axios.get(`/api/restaurants/restaurants`);
@@ -54,7 +56,7 @@ const FilterImagesModel = ({
           data={restaurantsList}
           onChange={setRestaurantUserPick}
           placeholder='Search By Resraurant ...'
-          style={{ width: "60%", margin: "auto" }}
+          style={styleSelect}
           searchable
           clearable
         />
@@ -74,7 +76,7 @@ const FilterImagesModel = ({
           data={dishTypeOptions}
           onChange={setDishTypePick}
           placeholder='Whice Course ?'
-          style={{ width: "60%", margin: "auto", textAlign: "center" }}
+          style={styleSelect}
         />
         <Space h='sm' />
         <MultiSelect
@@ -83,22 +85,9 @@ const FilterImagesModel = ({
           onChange={setFoodCatgoryPick}
           // label='If you want to be EXTRA specific:'
           placeholder='Whice Catgory ?'
-          style={{ width: "60%", margin: "auto" }}
+          style={styleSelect}
         />{" "}
         <Space h='sm' />
-        {/* <div className='slide-div'>
-          <Slider
-            label={(val) => Prices.find((p) => p.value === val).label}
-            defaultValue={50}
-            step={25}
-            onChange={setPricePick}
-            value={pricePick}
-            marks={Prices}
-            styles={{
-              markLabel: { display: "none" },
-            }}
-          />
-        </div> */}
       </form>
     </>
   );

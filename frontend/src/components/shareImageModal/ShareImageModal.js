@@ -101,10 +101,10 @@ function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
 
     const item = { value: res.data._id, label: res.data.restaurantname };
     setRestaurantsList((current) => [...current, item]);
-    setit(item.value);
+    handleCreateRest(item.value);
     return item;
   };
-  const setit = (item) => {
+  const handleCreateRest = (item) => {
     setRestaurantUserPick(item);
   };
 
@@ -156,16 +156,6 @@ function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
               creatable
               getCreateLabel={(query) => `+ Create ${query}`}
               onCreate={(query) => createNewRest(query)}
-
-              // onCreate={(query) => {
-              //   const item = { value: query, label: query };
-              //   setRestaurantsList((current) => [...current, item]);
-
-              //   axios
-              //     .post("/api/restaurants/temprest", { query })
-              //     .then((res) => res);
-              //   return item;
-              // }}
             />
             <Space h='sm' />
             <Select

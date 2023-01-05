@@ -10,7 +10,6 @@ import ImageModal from "../imageModal/ImageModal";
 
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
-import { Modal } from "@mantine/core";
 
 import axios from "axios";
 
@@ -32,20 +31,22 @@ const Post = ({ post }) => {
   dayjs.extend(relativeTime);
 
   const postTime = dayjs(updatedAt).fromNow();
-  useEffect(() => {
-    const fetchUser = async () => {
-      const res = await axios.get(`/api/users/?userId=${userId}`);
-      setUser(res.data);
-    };
-    const fetchRestaurant = async () => {
-      const res = await axios.get(
-        `/api/restaurants/?restaurantId=${restaurantId}`
-      );
 
-      setRestaurant(res.data);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const [resUser, resRest] = await Promise.all([
+          axios.get(`/api/users/?userId=${userId}`),
+          axios.get(`/api/restaurants/?restaurantId=${restaurantId}`),
+        ]);
+        setUser(resUser.data);
+        setRestaurant(resRest.data);
+      } catch (error) {
+        console.error(error);
+      }
     };
-    fetchRestaurant();
-    fetchUser();
+
+    fetchData();
   }, [userId, restaurantId]);
 
   const likeHandler = () => {

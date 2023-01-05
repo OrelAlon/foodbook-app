@@ -4,6 +4,8 @@ import { AuthContext } from "../../context/AuthContext";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import GoogleLogin from "react-google-login";
+// import { GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google";
+
 import { gapi } from "gapi-script";
 
 import "./login.css";
@@ -83,11 +85,13 @@ const Login = () => {
           <ToastContainer />
         </form>
         <div className='google-login transform'>
+          {/* <GoogleOAuthProvider> */}
           <GoogleLogin
             clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
             buttonText='Login with Google'
             onSuccess={responseGoogle}
           />
+          {/* </GoogleOAuthProvider> */}
         </div>
       </div>
     </div>

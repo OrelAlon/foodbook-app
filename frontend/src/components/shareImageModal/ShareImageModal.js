@@ -10,8 +10,9 @@ import {
 } from "@mantine/core";
 import { foodCategoryOptions, dishTypeOptions } from "../../assets/foodData";
 import axios from "axios";
+
 import ImageUpload from "../imageUpload/ImageUpload";
-import instagram from "../../assets/instagram.png";
+
 import { BiImage, BiCloudUpload } from "react-icons/bi";
 import "./shareImageModal.css";
 
@@ -193,10 +194,6 @@ function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
               Upload
               <BiCloudUpload fontSize={40} color={"blue"} />
             </span>{" "}
-            {/* <span>
-            Share with
-            <img src={instagram} alt='instagram' className='instagram' />
-          </span>{" "} */}
           </div>
         </form>
       </Modal>

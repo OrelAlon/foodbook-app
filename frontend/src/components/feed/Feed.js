@@ -16,7 +16,7 @@ const Feed = () => {
   const [restaurantUserPick, setRestaurantUserPick] = useState(null);
   const [dishTypePick, setDishTypePick] = useState([]);
   const [foodCatgoryPick, setFoodCatgoryPick] = useState([]);
-  const [pricePick, setPricePick] = useState();
+  // const [cityPick, setCityPick] = useState(null);
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -61,7 +61,7 @@ const Feed = () => {
 
   useEffect(() => {
     applyFilters();
-  }, [restaurantUserPick, dishTypePick, foodCatgoryPick, pricePick, data]);
+  }, [restaurantUserPick, dishTypePick, foodCatgoryPick, data]);
 
   return (
     <div className='feed'>
@@ -70,12 +70,10 @@ const Feed = () => {
           setFoodCatgoryPick={setFoodCatgoryPick}
           setRestaurantUserPick={setRestaurantUserPick}
           setDishTypePick={setDishTypePick}
-          setPricePick={setPricePick}
-          pricePick={pricePick}
+          // setCityPick={setCityPick}
         />
 
         {/* Results || Empty View */}
-        {pricePick}
         {resultsFound ? (
           posts.map((p) => <Post key={p._id} post={p} />)
         ) : (

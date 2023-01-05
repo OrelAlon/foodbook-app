@@ -6,9 +6,11 @@ import { AiOutlineLike } from "react-icons/ai";
 
 import TagPost from "../tagPost/TagPost";
 import noAvatar from "../../assets/noAvatar.png";
+import ImageModal from "../imageModal/ImageModal";
 
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
+import { Modal } from "@mantine/core";
 
 import axios from "axios";
 
@@ -19,6 +21,7 @@ const Post = ({ post }) => {
   const [restaurant, setRestaurant] = useState({});
   const [like, setLike] = useState(post.likes.length);
   const [isLiked, setIsLiked] = useState(false);
+  const [openedImage, setOpenedImage] = useState(false);
 
   const { user: currentUser } = useContext(AuthContext);
   const { username, profilePicture } = user;
@@ -104,7 +107,20 @@ const Post = ({ post }) => {
         </div>
 
         <div className='postCenter'>
-          <img className='postImg' src={img} alt='' width='200' height='100' />
+          {" "}
+          <img
+            className='postImg'
+            src={img}
+            alt=''
+            width='200'
+            height='100'
+            onClick={() => setOpenedImage(true)}
+          />
+          <ImageModal
+            img={img}
+            openedImage={openedImage}
+            setOpenedImage={setOpenedImage}
+          ></ImageModal>
         </div>
         <div className='postBottom'>
           <div className='postBottomLeft transform'>

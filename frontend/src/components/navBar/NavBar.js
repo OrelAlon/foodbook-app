@@ -21,11 +21,11 @@ const NavBar = () => {
           📷
         </button>
         <NavMenu />
-        <ShareImageModal
-          shareImageOpened={shareImageOpened}
-          setShareImageOpened={setShareImageOpened}
-        />
       </div>
+      <ShareImageModal
+        shareImageOpened={shareImageOpened}
+        setShareImageOpened={setShareImageOpened}
+      />
     </>
   );
 };

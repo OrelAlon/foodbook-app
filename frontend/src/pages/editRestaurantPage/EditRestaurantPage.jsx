@@ -3,11 +3,11 @@ import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router";
 
 import axios from "axios";
-import { cities } from "../../assets/foodData";
 
 import NavBar from "../../components/navBar/NavBar";
 import ImageUpload from "../../components/imageUpload/ImageUpload";
 
+import { cities } from "../../assets/foodData";
 import { BiImage } from "react-icons/bi";
 import { Loader, Select } from "@mantine/core";
 
@@ -16,6 +16,7 @@ import "../editProfileUserPage/editProfileUserPage.css";
 const EditRestaurantPage = () => {
   const navigate = useNavigate();
   const restaurantnameParams = useParams().restaurantname;
+
   // Declare state variables for storing form data
   const [restaurant, setRestaurant] = useState([]);
   const [restaurantName, setRestaurantName] = useState(restaurantnameParams);

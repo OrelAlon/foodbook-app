@@ -15,26 +15,7 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-// file-upload - create a path to img folder
-app.use("/upload", express.static(path.join(__dirname, "/public/upload")));
-
 app.use(fileupload({ useTempFiles: true }));
-
-// file-upload - upload files
-app.post("/api/upload", (req, res) => {
-  if (req.files === null) {
-    return res.status(400).json({ msg: "no file!" });
-  }
-
-  const file = req.files.file;
-  file.mv(`${__dirname}/public/upload/${file.name}`, (err) => {
-    if (err) {
-      console.log(err);
-      return res.status(500).json(err);
-    }
-  });
-  res.json({ fileName: file.name, filePath: `/public/upload/${file.name}` });
-});
 
 // // middlewares
 app.use(
@@ -45,12 +26,10 @@ app.use(
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-// app.use(cookieParser());
-
 // end-point
 app.use("/api", require("./routes/index"));
 
-// Serve frontend for aws
+// Serve frontend
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "../frontend/build")));
 
@@ -64,7 +43,7 @@ if (process.env.NODE_ENV === "production") {
 }
 
 // connect to backend
-// process env for aws
+// process env
 app.listen(process.env.PORT || 5500, () => {
   connect(process.env.MONGO_URL);
   console.log(`Server running on port ${process.env.PORT || 5500}`);

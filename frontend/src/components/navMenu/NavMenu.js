@@ -19,7 +19,7 @@ const NavMenu = () => {
 
     navigate("/login");
   };
-
+  const style = { textDecoration: "none" };
   return (
     <>
       <Menu shadow='md' width={200} color='gray.2'>
@@ -31,17 +31,17 @@ const NavMenu = () => {
 
         <Menu.Dropdown>
           <Menu.Label>Application</Menu.Label>
-          <Link to='/' className='none'>
+          <Link to='/' style={style}>
             <Menu.Item>📰 Feed</Menu.Item>
           </Link>
-          <Link to={`/restaurants`} className='none'>
+          <Link to={`/restaurants`} style={style}>
             <Menu.Item>🍽 Restaurants</Menu.Item>{" "}
           </Link>
 
-          <Link to={`/profile/${user.username}`} className='none'>
+          <Link to={`/profile/${user.username}`} style={style}>
             <Menu.Item>🖼️ My Profile</Menu.Item>{" "}
           </Link>
-          <Link to={`/editprofile/${user.username}`} className='none'>
+          <Link to={`/editprofile/${user.username}`} style={style}>
             <Menu.Item>✏️ Edit Profile</Menu.Item>{" "}
           </Link>
           <Menu.Divider />

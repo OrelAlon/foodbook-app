@@ -63,7 +63,7 @@ const RestaurantProfile = () => {
           <div className='content-profile-page'>
             <div className='profile-page card'>
               <div className='img-profile'>
-                <img className='profile-bgHome' src={classy} />
+                <img className='profile-bgHome' src={classy} alt='classy' />
                 <img
                   className='avatar'
                   src={restaurant.profilePicture || noImage}

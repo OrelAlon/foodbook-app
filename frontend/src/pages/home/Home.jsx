@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 import Feed from "../../components/feed/Feed";
 import NavBar from "../../components/navBar/NavBar";
 

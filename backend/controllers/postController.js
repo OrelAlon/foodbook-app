@@ -58,7 +58,9 @@ const deletePost = async (req, res) => {
 //
 const getAllPosts = async (req, res) => {
   try {
-    const data = await Post.find();
+    const pageSize = req.query.size || 10;
+
+    const data = await Post.find().sort({ createdAt: -1 }).limit(pageSize);
     res.status(201).json(data);
   } catch (error) {
     console.log(error.message);

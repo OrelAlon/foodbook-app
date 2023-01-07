@@ -37,6 +37,11 @@ export const cities = [
   { value: "nazareth", label: "nazareth" },
   { value: "ramat-gan", label: "ramat-gan" },
   { value: "netanya", label: "netanya" },
+  { value: "givatayim", label: "givatayim" },
+  { value: "ashdod", label: "ashdod" },
+  { value: "holon", label: "holon" },
+  { value: "rehovot", label: "rehovot" },
+  { value: "rishon-leziyyon", label: "rishon-leziyyon" },
   { value: "zikhron-yaakov", label: "zikhron-yaakov" },
   { value: "restaurant-chain", label: "restaurant-chain" },
 ];

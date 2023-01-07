@@ -12,6 +12,7 @@ const Feed = () => {
   const [posts, setPosts] = useState([]);
   const [data, setData] = useState([]);
   const [resultsFound, setResultsFound] = useState(true);
+  const [pageSize, setPageSize] = useState(10);
 
   const [restaurantUserPick, setRestaurantUserPick] = useState(null);
   const [dishTypePick, setDishTypePick] = useState([]);
@@ -20,13 +21,9 @@ const Feed = () => {
 
   useEffect(() => {
     const fetchPosts = async () => {
-      const res = await axios.get(`/api/posts/feed`);
+      const res = await axios.get(`/api/posts/feed?size=${pageSize}`);
       setData(res.data);
-      setPosts(
-        res.data.sort(
-          (p1, p2) => new Date(p2.createdAt) - new Date(p1.createdAt)
-        )
-      );
+      setPosts(res.data);
     };
     fetchPosts();
   }, []);

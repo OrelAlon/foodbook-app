@@ -58,9 +58,9 @@ const deletePost = async (req, res) => {
 //
 const getAllPosts = async (req, res) => {
   try {
-    const pageSize = req.query.size || 10;
+    // const pageSize = req.query.size || 10;
 
-    const data = await Post.find().sort({ createdAt: -1 }).limit(pageSize);
+    const data = await Post.find().sort({ createdAt: -1 });
     res.status(201).json(data);
   } catch (error) {
     console.log(error.message);
@@ -69,8 +69,12 @@ const getAllPosts = async (req, res) => {
 //
 const getUserPost = async (req, res) => {
   try {
-    const currentUser = await Post.findById(req.params.userId);
-    const userPosts = await Post.find({ userId: currentUser._id });
+    const currentUser = await Post.findById(req.params.userId).sort({
+      createdAt: -1,
+    });
+    const userPosts = await Post.find({ userId: currentUser._id }).sort({
+      createdAt: -1,
+    });
     const friendPosts = await Promise.all(
       currentUser.followings.map((friendId) => {
         return console.log("working!!!");
@@ -85,8 +89,12 @@ const getUserPost = async (req, res) => {
 //
 const getUsernamePost = async (req, res) => {
   try {
-    const user = await User.findOne({ username: req.params.username });
-    const posts = await Post.find({ userId: user._id });
+    const user = await User.findOne({ username: req.params.username }).sort({
+      createdAt: -1,
+    });
+    const posts = await Post.find({ userId: user._id }).sort({
+      createdAt: -1,
+    });
     res.status(200).json(posts);
   } catch (err) {
     res.status(500).json("no!" + err);
@@ -99,7 +107,9 @@ const getRestaurantPosts = async (req, res) => {
     const restaurant = await Restaurant.findOne({
       restaurantname: req.params.restaurantname,
     });
-    const posts = await Post.find({ restaurantId: restaurant._id });
+    const posts = await Post.find({ restaurantId: restaurant._id }).sort({
+      createdAt: -1,
+    });
     res.status(200).json(posts);
   } catch (err) {
     res.status(500).json(err);

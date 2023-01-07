@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 
-import axios from "axios";
 import { fetchRestaurantfetchPosts } from "../../api/ApiFatch";
 import Post from "../post/Post";
 
@@ -13,11 +12,7 @@ const RestaurantFeed = ({ restaurant, setPostsLength }) => {
     try {
       const res = await fetchRestaurantfetchPosts(restaurant);
 
-      setPosts(
-        res.data.sort(
-          (p1, p2) => new Date(p2.createdAt) - new Date(p1.createdAt)
-        )
-      );
+      setPosts(res.data);
 
       setPostsLength(res.data.length);
     } catch (error) {}

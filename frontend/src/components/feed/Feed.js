@@ -12,7 +12,6 @@ const Feed = () => {
   const [posts, setPosts] = useState([]);
   const [data, setData] = useState([]);
   const [resultsFound, setResultsFound] = useState(true);
-  const [pageSize, setPageSize] = useState(10);
 
   const [restaurantUserPick, setRestaurantUserPick] = useState(null);
   const [dishTypePick, setDishTypePick] = useState([]);
@@ -21,7 +20,7 @@ const Feed = () => {
 
   useEffect(() => {
     const fetchPosts = async () => {
-      const res = await axios.get(`/api/posts/feed?size=${pageSize}`);
+      const res = await axios.get(`/api/posts/feed`);
       setData(res.data);
       setPosts(res.data);
     };

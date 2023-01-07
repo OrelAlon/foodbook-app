@@ -16,11 +16,7 @@ const UserFeed = ({ username, setPostsLength }) => {
       const res = username
         ? await axios.get(`/api/posts/profile/${username}`)
         : await axios.get(`/api/posts/timeline/${user._id}`);
-      setPosts(
-        res.data.sort(
-          (p1, p2) => new Date(p2.createdAt) - new Date(p1.createdAt)
-        )
-      );
+      setPosts(res.data);
       setPostsLength(res.data.length);
     };
     fetchPosts();

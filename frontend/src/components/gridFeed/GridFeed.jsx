@@ -1,9 +1,12 @@
 import { useState } from "react";
 
+import ImageModal from "../imageModal/ImageModal";
+
 import "./gridFeed.css";
 
 const GridFeed = ({ images }) => {
   const [hoveredImage, setHoveredImage] = useState(null);
+  const [openedImage, setOpenedImage] = useState(false);
 
   return (
     <div className='grid-container'>
@@ -14,9 +17,10 @@ const GridFeed = ({ images }) => {
             key={index}
             onMouseEnter={() => setHoveredImage(image)}
             onMouseLeave={() => setHoveredImage(null)}
+            onClick={() => setOpenedImage(true)}
           >
             {hoveredImage === image ? (
-              <a href='' className='image-grid'>
+              <div className='image-grid'>
                 <figure className='image-grid-img'>
                   <img src={image.img} alt={image.img} />
                 </figure>
@@ -26,13 +30,18 @@ const GridFeed = ({ images }) => {
                     <span className='image-grid-comments'>10</span>
                   </p>
                 </span>
-              </a>
+                <ImageModal
+                  img={image.img}
+                  openedImage={openedImage}
+                  setOpenedImage={setOpenedImage}
+                ></ImageModal>
+              </div>
             ) : (
-              <a href='' className='image-grid'>
+              <div className='image-grid'>
                 <figure className='image-grid-img'>
                   <img src={image.img} alt={image.img} />
                 </figure>
-              </a>
+              </div>
             )}
           </div>
         ))}

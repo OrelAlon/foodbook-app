@@ -13,7 +13,7 @@ const ImageModal = ({ openedImage, setOpenedImage, img }) => {
       overlayOpacity={0.55}
       overlayBlur={3}
       size='80%'
-      // fullScreen
+      fullScreen
       opened={openedImage}
       onClose={() => setOpenedImage(false)}
     >

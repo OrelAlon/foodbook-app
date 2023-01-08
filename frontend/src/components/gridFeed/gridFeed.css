@@ -1,8 +1,5 @@
 .grid-container {
   margin: auto;
-  /* border: 1px solid black; */
-  /* border-radius: 10px;
-  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3); */
 }
 .image-grid-list {
   display: grid;
@@ -54,11 +51,11 @@
   object-fit: cover; /* Resize and crop the image to fit the container */
 }
 
-.image-grid-img img {
+/* .image-grid-img img {
   border: 1px solid black;
   border-radius: 10px;
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
-}
+} */
 
 @media screen and (max-width: 768px) {
   .image-grid-list {
@@ -90,7 +87,7 @@
   transform: scale(1.05);
 } */
 .image-grid-item {
-  position: relative; /* Add a position value other than static */
+  position: relative;
   transition: all 0.2s ease-in-out;
 }
 

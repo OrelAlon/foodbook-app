@@ -77,7 +77,7 @@ const Feed = () => {
           </div>
         )} */}
       </div>
-      <GridFeed />
+      <GridFeed images={posts} />
     </div>
   );
 };

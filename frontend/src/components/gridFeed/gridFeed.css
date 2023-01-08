@@ -1,9 +1,8 @@
 .grid-container {
-  width: 95%;
   margin: auto;
-  border: 1px solid black;
-  border-radius: 10px;
-  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+  /* border: 1px solid black; */
+  /* border-radius: 10px;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3); */
 }
 .image-grid-list {
   display: grid;

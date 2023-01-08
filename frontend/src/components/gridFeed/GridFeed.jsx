@@ -1,23 +1,14 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
+import { useState } from "react";
+
 import "./gridFeed.css";
 
-const GridFeed = () => {
-  const [data, setData] = useState([]);
+const GridFeed = ({ images }) => {
   const [hoveredImage, setHoveredImage] = useState(null);
-
-  useEffect(() => {
-    const fetchPosts = async () => {
-      const res = await axios.get(`/api/posts/feed`);
-      setData(res.data);
-    };
-    fetchPosts();
-  }, []);
 
   return (
     <div className='grid-container'>
       <section className='image-grid-list'>
-        {data.map((image, index) => (
+        {images.map((image, index) => (
           <div
             className='image-grid-item'
             key={index}

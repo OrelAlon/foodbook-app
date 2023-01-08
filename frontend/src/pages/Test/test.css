@@ -55,7 +55,29 @@
   }
 }
 
-/* &:hover {
-    z-index: 1;
-    transform: scale(1.05);
-  } */
+/* .image-grid-item {
+  transition: all 0.2s ease-in-out;
+}
+
+.image-grid-item:hover {
+  z-index: 1;
+  transform: scale(1.05);
+} */
+/* 
+.image-grid-img {
+  transition: all 0.2s ease-in-out;
+}
+
+.image-grid-item:hover .image-grid-img {
+  z-index: 1;
+  transform: scale(1.05);
+} */
+.image-grid-item {
+  position: relative; /* Add a position value other than static */
+  transition: all 0.2s ease-in-out;
+}
+
+.image-grid-item:hover {
+  z-index: 1;
+  transform: scale(1.05);
+}

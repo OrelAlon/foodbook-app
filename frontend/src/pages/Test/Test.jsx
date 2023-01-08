@@ -4,7 +4,8 @@ import "./test.css";
 
 const Test = () => {
   const [data, setData] = useState([]);
-  console.log(data);
+  const [hoveredImage, setHoveredImage] = useState(null);
+
   useEffect(() => {
     const fetchPosts = async () => {
       const res = await axios.get(`/api/posts/feed`);
@@ -16,21 +17,34 @@ const Test = () => {
   return (
     <div className='image-grid'>
       <section className='image-grid-list'>
-        {data.map((image, index) => {
-          return (
-            <a href='' className='image-grid' key={index}>
-              <figure className='image-grid-img'>
-                <img src={image.img} alt={image.img} />
-              </figure>
-              <span className='image-grid-overlay'>
-                <p>
-                  <span className='image-grid-likes'>150</span>
-                  <span className='image-grid-comments'>10</span>
-                </p>
-              </span>
-            </a>
-          );
-        })}
+        {data.map((image, index) => (
+          <div
+            className='image-grid-item'
+            key={index}
+            onMouseEnter={() => setHoveredImage(image)}
+            onMouseLeave={() => setHoveredImage(null)}
+          >
+            {hoveredImage === image ? (
+              <a href='' className='image-grid'>
+                <figure className='image-grid-img'>
+                  <img src={image.img} alt={image.img} />
+                </figure>
+                <span className='image-grid-overlay'>
+                  <p>
+                    <span className='image-grid-likes'>150</span>
+                    <span className='image-grid-comments'>10</span>
+                  </p>
+                </span>
+              </a>
+            ) : (
+              <a href='' className='image-grid'>
+                <figure className='image-grid-img'>
+                  <img src={image.img} alt={image.img} />
+                </figure>
+              </a>
+            )}
+          </div>
+        ))}
       </section>
     </div>
   );

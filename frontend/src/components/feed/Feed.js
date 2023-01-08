@@ -5,6 +5,7 @@ import axios from "axios";
 import { Loader } from "@mantine/core";
 
 import Post from "../post/Post";
+import GridFeed from "../gridFeed/GridFeed";
 import FilterImagesModel from "../filterImagesModel/FilterImagesModel";
 import "./feed.css";
 
@@ -66,19 +67,17 @@ const Feed = () => {
           setFoodCatgoryPick={setFoodCatgoryPick}
           setRestaurantUserPick={setRestaurantUserPick}
           setDishTypePick={setDishTypePick}
-          // setCityPick={setCityPick}
         />
-
-        {/* Results || Empty View */}
-        {resultsFound ? (
+        {/* {resultsFound ? (
           posts.map((p) => <Post key={p._id} post={p} />)
         ) : (
           <div className='center-div'>
             {" "}
             <Loader />
           </div>
-        )}
+        )} */}
       </div>
+      <GridFeed />
     </div>
   );
 };

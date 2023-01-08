@@ -1,7 +1,5 @@
 # FoodBook App
 
-### => [Working Project](https://foodbook.onrender.com)
-
 Foodbook is a social networking platform specifically designed for sharing images of restaurant dishes. It was developed using the `MERN-STACK`.
 
 ### => [Working Project](https://foodbook.onrender.com)

@@ -1,0 +1,61 @@
+.image-grid-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(100px, 293px));
+  justify-content: center;
+}
+.image-grid {
+  cursor: pointer;
+  position: relative;
+  display: block;
+}
+.image-grid-img {
+  margin: 0;
+  margin: 2px;
+}
+.image-grid-img img {
+  width: 100%;
+  vertical-align: top;
+}
+.image-grid-overlay {
+  background: rgba(0, 0, 0, 0.4);
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+}
+.image-grid:hover .image-grid-overlay {
+  display: flex;
+}
+
+.image-grid-like,
+.image-grid-comments {
+  width: 80px;
+  margin: 5px;
+  font-weight: bold;
+  text-align: center;
+  display: inline-block;
+}
+.image-grid-img img {
+  width: 100%;
+  height: 230px; /* Set a fixed height for the image */
+  object-fit: cover; /* Resize and crop the image to fit the container */
+}
+@media screen and (max-width: 768px) {
+  .image-grid-list {
+    grid-gap: 2px;
+  }
+  .image-grid-img img {
+    height: 120px; /* Set a smaller height for the image on small screens */
+  }
+}
+
+/* &:hover {
+    z-index: 1;
+    transform: scale(1.05);
+  } */

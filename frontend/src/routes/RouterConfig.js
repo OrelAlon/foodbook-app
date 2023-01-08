@@ -8,7 +8,8 @@ import AllRestaurants from "../pages/allRestaurants/AllRestaurants";
 import RestaurantProfile from "../pages/restaurantProfile/RestaurantProfile";
 import EditRestaurantPage from "../pages/editRestaurantPage/EditRestaurantPage";
 import EditProfileUserPage from "../pages/editProfileUserPage/EditProfileUserPage";
-import Test from "../pages/Test/Test";
+import Test from "../pages/gridFeed/GridFeed";
+import GridFeed from "../pages/gridFeed/GridFeed";
 import { ProtectedRoute } from "./ProtectedRoute";
 
 const RouterConfig = () => {
@@ -42,7 +43,7 @@ const RouterConfig = () => {
             path='/editprofile/:username'
             element={<EditProfileUserPage />}
           ></Route>
-          <Route path='/test' element={<Test />}></Route>
+          <Route path='/gridfeed' element={<GridFeed />}></Route>
         </Route>
       </Routes>
     </Router>

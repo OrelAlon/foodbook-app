@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import "./test.css";
+import "./gridFeed.css";
 
-const Test = () => {
+const GridFeed = () => {
   const [data, setData] = useState([]);
   const [hoveredImage, setHoveredImage] = useState(null);
 
@@ -15,7 +15,7 @@ const Test = () => {
   }, []);
 
   return (
-    <div className='image-grid'>
+    <div className='grid-container'>
       <section className='image-grid-list'>
         {data.map((image, index) => (
           <div
@@ -50,4 +50,4 @@ const Test = () => {
   );
 };
 
-export default Test;
+export default GridFeed;

@@ -1,8 +1,16 @@
+.grid-container {
+  width: 80%;
+  margin: auto;
+  border: 1px solid black;
+  border-radius: 10px;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
 .image-grid-list {
   display: grid;
   grid-template-columns: repeat(3, minmax(100px, 293px));
   justify-content: center;
 }
+
 .image-grid {
   cursor: pointer;
   position: relative;
@@ -12,6 +20,7 @@
   margin: 0;
   margin: 2px;
 }
+
 .image-grid-img img {
   width: 100%;
   vertical-align: top;
@@ -46,6 +55,13 @@
   height: 230px; /* Set a fixed height for the image */
   object-fit: cover; /* Resize and crop the image to fit the container */
 }
+
+.image-grid-img img {
+  border: 1px solid black;
+  border-radius: 10px;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
 @media screen and (max-width: 768px) {
   .image-grid-list {
     grid-gap: 2px;

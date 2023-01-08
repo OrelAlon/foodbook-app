@@ -1,16 +1,28 @@
 # FoodBook App
 
-### => [Web](https://foodbook.onrender.com)
+### => [Working Project](https://foodbook.onrender.com)
+
+## Technology
+
+Foodbook is a social network type application, dedicated for restaurant dishes image sharing.
+Foodbook was created using the `MERN-STACK`
+
+Some main features:
+
+- Live filtering of visual images database, ensuring that users are presented with only relevant images in their feed.
+- Image handling and storage done using Cloudinary.
+- Crossing databases for searching and storing.
+- Using either Google OAuth or a dedicated FoodBook account for login.
+- Hashing and salting using Bcrypt for passwords.
+- Users profile management and editing.
+
+## Idea
 
 Are you tired of trying to decide what to order at a restaurant, but don't have any good photos to go off of? Look no further than Foodbook - the app for sharing and discovering dishes from restaurants. With Foodbook, you can browse through a variety of dishes from different restaurants, search for specific dishes or restaurants, and even share your own photos of restaurant dishes. Foodbook makes it easy to make informed decisions about what to eat, so you can focus on enjoying your meal.
 
 ## Motivation
 
 Are you tired of trying to decide what to order at a restaurant, but don't have any good photos to go off of? Look no further than Foodbook - the app for sharing and discovering dishes from restaurants. With Foodbook, you can browse through a variety of dishes from different restaurants, search for specific dishes or restaurants, and even share your own photos of restaurant dishes. Foodbook makes it easy to make informed decisions about what to eat, so you can focus on enjoying your meal.
-
-## Technology
-
-Foodbook is built with a combination of `Nodejs`, `React` and `Express`, and uses `MongoDB` as the database. These technologies allow for a smooth and efficient user experience, as well as robust data storage and retrieval.
 
 ## Features
 

@@ -113,8 +113,8 @@ const Post = ({ post }) => {
             className='postImg'
             src={img}
             alt=''
-            width='200'
-            height='100'
+            // width='200'
+            // height='100'
             onClick={() => setOpenedImage(true)}
           />
           <ImageModal

@@ -64,8 +64,8 @@
   display: block;
   margin: auto;
   border: 1px solid rgb(138, 138, 138);
-  width: 16rem;
-  height: 15.625rem;
+  width: 36.625rem;
+  height: 26.625rem;
   object-fit: cover;
 }
 
@@ -106,7 +106,11 @@
   text-decoration: none;
   color: black;
 }
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 780px) {
+  .postImg {
+    width: 90%;
+    height: 17.625rem;
+  }
 }
 .delete {
   cursor: pointer;

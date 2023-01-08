@@ -9,7 +9,7 @@ import GridFeed from "../gridFeed/GridFeed";
 import FilterImagesModel from "../filterImagesModel/FilterImagesModel";
 import "./feed.css";
 
-const Feed = () => {
+const Feed = ({ showGrid }) => {
   const [posts, setPosts] = useState([]);
   const [data, setData] = useState([]);
   const [resultsFound, setResultsFound] = useState(true);
@@ -26,7 +26,7 @@ const Feed = () => {
       setPosts(res.data);
     };
     fetchPosts();
-  }, []);
+  }, [restaurantUserPick]);
 
   const applyFilters = () => {
     let updatedShearch = data;
@@ -68,16 +68,19 @@ const Feed = () => {
           setRestaurantUserPick={setRestaurantUserPick}
           setDishTypePick={setDishTypePick}
         />
-        {/* {resultsFound ? (
+        {resultsFound && showGrid ? (
           posts.map((p) => <Post key={p._id} post={p} />)
+        ) : resultsFound && !showGrid ? (
+          <div>
+            <GridFeed images={posts} />
+          </div>
         ) : (
           <div className='center-div'>
             {" "}
             <Loader />
           </div>
-        )} */}
+        )}
       </div>
-      <GridFeed images={posts} />
     </div>
   );
 };

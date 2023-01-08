@@ -4,7 +4,7 @@ import ShareImageModal from "../shareImageModal/ShareImageModal";
 import NavMenu from "../navMenu/NavMenu";
 import Logo from "../logo/Logo";
 
-const NavBar = () => {
+const NavBar = ({ setShowGrid, showGrid }) => {
   const [shareImageOpened, setShareImageOpened] = useState(false);
 
   return (
@@ -13,7 +13,12 @@ const NavBar = () => {
         <Logo />
       </div>
       <div className='menu-div transform'>
-        {" "}
+        <button
+          onClick={() => setShowGrid(!showGrid)}
+          className='add-image-btn transform'
+        >
+          {showGrid ? "📲" : "💻"}
+        </button>
         <button
           onClick={() => setShareImageOpened(true)}
           className='add-image-btn transform'

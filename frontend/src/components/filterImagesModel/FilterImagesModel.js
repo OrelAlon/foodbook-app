@@ -24,6 +24,7 @@ const FilterImagesModel = ({
   const styleSelect = {
     width: "60%",
     margin: "auto",
+    input: { "&::placeholder": { textAlign: "center" } },
   };
 
   useEffect(() => {
@@ -62,6 +63,9 @@ const FilterImagesModel = ({
           style={styleSelect}
           searchable
           clearable
+          styles={{
+            input: { "&::placeholder": { textAlign: "center" } },
+          }}
         />
         {/* <Space h='sm' />
         <Select
@@ -81,7 +85,9 @@ const FilterImagesModel = ({
           placeholder='Whice Course ?'
           style={styleSelect}
           clearable
-          className='center-text'
+          styles={{
+            input: { "&::placeholder": { textAlign: "center" } },
+          }}
         />
         <Space h='sm' />
         <MultiSelect

@@ -152,7 +152,6 @@ function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
               onChange={setRestaurantUserPick}
               value={restaurantUserPick}
               label='Resraurant:'
-              placeholder='Select Resraurant'
               getCreateLabel={(query) => `+ Create ${query}`}
               onCreate={(query) => createNewRest(query)}
               searchable
@@ -164,7 +163,6 @@ function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
               data={dishTypeOptions}
               onChange={setSelectDishType}
               label='Dish Type 🏷️:'
-              placeholder='Pick one'
               style={styleSelect}
               clearable
             />
@@ -173,7 +171,6 @@ function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
               data={foodCategoryOptions}
               onChange={setSelectFoodCatgory}
               label='Food Category 🏷️:'
-              placeholder='Pick all that you like'
               style={styleSelect}
               clearable
             />{" "}

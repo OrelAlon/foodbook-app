@@ -21,7 +21,10 @@ const FilterImagesModel = ({
 }) => {
   const [restaurantsList, setRestaurantsList] = useState([]);
 
-  const styleSelect = { width: "60%", margin: "auto" };
+  const styleSelect = {
+    width: "60%",
+    margin: "auto",
+  };
 
   useEffect(() => {
     const fetchRestaurants = async () => {
@@ -78,6 +81,7 @@ const FilterImagesModel = ({
           placeholder='Whice Course ?'
           style={styleSelect}
           clearable
+          className='center-text'
         />
         <Space h='sm' />
         <MultiSelect

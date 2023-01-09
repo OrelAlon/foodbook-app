@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-import foodbook from "../../assets/foodbook.jpeg";
+import foodbook from "../../assets/foodbook.png";
 
 import "../../App.css";
 

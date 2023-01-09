@@ -71,7 +71,7 @@ const FilterImagesModel = ({
           clearable
         /> */}
         <Space h='sm' />
-        <MultiSelect
+        <Select
           icon={<IconSearch size={16} />}
           data={dishTypeOptions}
           onChange={setDishTypePick}

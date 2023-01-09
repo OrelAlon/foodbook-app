@@ -36,17 +36,17 @@ const Feed = ({ showGrid }) => {
       );
     }
 
+    // courseTypePick Filter
+    if (dishTypePick) {
+      updatedShearch = updatedShearch.filter((el) =>
+        el.dishType.includes(dishTypePick)
+      );
+    }
+
     // foodCatgoryPick Filter
     if (foodCatgoryPick.length > 0) {
       updatedShearch = updatedShearch.filter((el) =>
         foodCatgoryPick.every((v) => el.foodCategory.includes(v))
-      );
-    }
-
-    // dishTypePick Filter
-    if (dishTypePick.length > 0) {
-      updatedShearch = updatedShearch.filter((el) =>
-        dishTypePick.every((v) => el.dishType.includes(v))
       );
     }
     if (updatedShearch.length > 0) {

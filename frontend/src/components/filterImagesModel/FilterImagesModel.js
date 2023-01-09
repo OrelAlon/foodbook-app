@@ -21,12 +21,15 @@ const FilterImagesModel = ({
 }) => {
   const [restaurantsList, setRestaurantsList] = useState([]);
 
+  // const styleSelect = {
+  //   width: "60%",
+  //   margin: "auto",
+  //   input: { "&::placeholder": { textAlign: "center" } },
+  // };
   const styleSelect = {
-    width: "60%",
-    margin: "auto",
+    root: { width: "60%", margin: "auto" },
     input: { "&::placeholder": { textAlign: "center" } },
   };
-
   useEffect(() => {
     const fetchRestaurants = async () => {
       const res = await axios.get(`/api/restaurants/restaurants`);
@@ -60,12 +63,9 @@ const FilterImagesModel = ({
           data={restaurantsList}
           onChange={setRestaurantUserPick}
           placeholder='Search By Resraurant ...'
-          style={styleSelect}
           searchable
           clearable
-          styles={{
-            input: { "&::placeholder": { textAlign: "center" } },
-          }}
+          styles={styleSelect}
         />
         {/* <Space h='sm' />
         <Select
@@ -83,11 +83,8 @@ const FilterImagesModel = ({
           data={dishTypeOptions}
           onChange={setDishTypePick}
           placeholder='Whice Course ?'
-          style={styleSelect}
           clearable
-          styles={{
-            input: { "&::placeholder": { textAlign: "center" } },
-          }}
+          styles={styleSelect}
         />
         <Space h='sm' />
         <MultiSelect
@@ -95,7 +92,7 @@ const FilterImagesModel = ({
           data={foodCategoryOptions}
           onChange={setFoodCatgoryPick}
           placeholder='Whice Catgory ?'
-          style={styleSelect}
+          styles={styleSelect}
           clearable
         />{" "}
         <Space h='sm' />

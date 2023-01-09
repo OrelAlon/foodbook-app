@@ -14,7 +14,7 @@ const ImageModal = ({ openedImage, setOpenedImage, img }) => {
       size='80%'
       fullScreen
       opened={openedImage}
-      onClose={() => setOpenedImage(false)}
+      onClose={() => setOpenedImage("")}
     >
       <Image radius='md' src={img} alt='img'></Image>
     </Modal>

@@ -5,7 +5,6 @@ import ImageModal from "../imageModal/ImageModal";
 import "./gridFeed.css";
 
 const GridFeed = ({ images }) => {
-  const [hoveredImage, setHoveredImage] = useState("image");
   const [openedImage, setOpenedImage] = useState(false);
 
   return (
@@ -23,19 +22,19 @@ const GridFeed = ({ images }) => {
               </figure>
               <span className='image-grid-overlay'>
                 <p>
-                  <span className='image-grid-likes'>150</span>
-                  <span className='image-grid-comments'>10</span>
+                  {/* <span className='image-grid-likes'>150</span>
+                  <span className='image-grid-comments'>10</span> */}
                 </p>
               </span>
             </div>
           </div>
         ))}
-        <ImageModal
-          img={openedImage}
-          openedImage={openedImage}
-          setOpenedImage={setOpenedImage}
-        ></ImageModal>
       </section>
+      <ImageModal
+        img={openedImage}
+        openedImage={openedImage}
+        setOpenedImage={setOpenedImage}
+      ></ImageModal>
     </div>
   );
 };

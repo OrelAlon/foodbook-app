@@ -172,6 +172,7 @@ function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
               label='Food Category 🏷️:'
               placeholder='Pick all that you like'
               style={{ width: "90%", margin: "auto" }}
+              clearable
             />{" "}
           </div>
           <Space h='sm' />

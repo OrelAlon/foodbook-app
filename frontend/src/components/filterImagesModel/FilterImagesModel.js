@@ -83,9 +83,9 @@ const FilterImagesModel = ({
           icon={<IconSearch size={16} />}
           data={foodCategoryOptions}
           onChange={setFoodCatgoryPick}
-          // label='If you want to be EXTRA specific:'
           placeholder='Whice Catgory ?'
           style={styleSelect}
+          clearable
         />{" "}
         <Space h='sm' />
       </form>

@@ -12,10 +12,11 @@ import "./feed.css";
 const Feed = ({ showGrid }) => {
   const [posts, setPosts] = useState([]);
   const [data, setData] = useState([]);
-  const [resultsFound, setResultsFound] = useState(true);
+  const [resultsFound, setResultsFound] = useState(undefined);
+  const [msgResults, setMsgResults] = useState("");
 
   const [restaurantUserPick, setRestaurantUserPick] = useState(null);
-  const [dishTypePick, setDishTypePick] = useState([]);
+  const [dishTypePick, setDishTypePick] = useState(null);
   const [foodCatgoryPick, setFoodCatgoryPick] = useState([]);
   // const [cityPick, setCityPick] = useState(null);
 
@@ -51,6 +52,8 @@ const Feed = ({ showGrid }) => {
     }
     if (updatedShearch.length > 0) {
       setPosts(updatedShearch);
+    } else {
+      setMsgResults("No matching foods found, got out get us a picture!");
     }
 
     setResultsFound(updatedShearch.length > 0);
@@ -68,12 +71,14 @@ const Feed = ({ showGrid }) => {
           setRestaurantUserPick={setRestaurantUserPick}
           setDishTypePick={setDishTypePick}
         />
-        {resultsFound && showGrid ? (
+        {resultsFound !== undefined && resultsFound && showGrid ? (
           posts.map((p) => <Post key={p._id} post={p} />)
         ) : resultsFound && !showGrid ? (
           <div>
             <GridFeed images={posts} />
           </div>
+        ) : resultsFound === false ? (
+          <div className='center-div'>{msgResults}</div>
         ) : (
           <div className='center-div'>
             {" "}

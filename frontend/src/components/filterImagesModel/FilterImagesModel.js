@@ -77,6 +77,7 @@ const FilterImagesModel = ({
           onChange={setDishTypePick}
           placeholder='Whice Course ?'
           style={styleSelect}
+          clearable
         />
         <Space h='sm' />
         <MultiSelect

@@ -15,10 +15,15 @@ const GridFeed = ({ images }) => {
           <div
             className='image-grid-item'
             key={index}
-            onMouseEnter={() => setHoveredImage(image)}
-            onMouseLeave={() => setHoveredImage(null)}
+            // onMouseEnter={() => setHoveredImage(image)}
+            // onMouseLeave={() => setHoveredImage(null)}
             onClick={() => setOpenedImage(true)}
           >
+            <ImageModal
+              img={image.img}
+              openedImage={openedImage}
+              setOpenedImage={setOpenedImage}
+            ></ImageModal>
             {hoveredImage === image ? (
               <div className='image-grid'>
                 <figure className='image-grid-img'>
@@ -30,11 +35,6 @@ const GridFeed = ({ images }) => {
                     <span className='image-grid-comments'>10</span>
                   </p>
                 </span>
-                <ImageModal
-                  img={image.img}
-                  openedImage={openedImage}
-                  setOpenedImage={setOpenedImage}
-                ></ImageModal>
               </div>
             ) : (
               <div className='image-grid'>

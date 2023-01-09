@@ -30,6 +30,8 @@ function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
   const [file, setFile] = useState(null);
   const [errorMsg, setErrorMsg] = useState("");
 
+  const styleSelect = { width: "80%", margin: "auto" };
+
   const fetchRestaurants = useCallback(async () => {
     const res = await axios.get(`/api/restaurants/restaurants`);
     sortRestaurants(res.data);
@@ -151,11 +153,11 @@ function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
               value={restaurantUserPick}
               label='Resraurant:'
               placeholder='Select Resraurant'
-              searchable
-              style={{ width: "90%", margin: "auto" }}
-              creatable
               getCreateLabel={(query) => `+ Create ${query}`}
               onCreate={(query) => createNewRest(query)}
+              searchable
+              style={styleSelect}
+              clearable
             />
             <Space h='sm' />
             <Select
@@ -163,7 +165,8 @@ function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
               onChange={setSelectDishType}
               label='Dish Type 🏷️:'
               placeholder='Pick one'
-              style={{ width: "90%", margin: "auto" }}
+              style={styleSelect}
+              clearable
             />
             <Space h='sm' />
             <MultiSelect
@@ -171,7 +174,7 @@ function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
               onChange={setSelectFoodCatgory}
               label='Food Category 🏷️:'
               placeholder='Pick all that you like'
-              style={{ width: "90%", margin: "auto" }}
+              style={styleSelect}
               clearable
             />{" "}
           </div>

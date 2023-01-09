@@ -2,7 +2,6 @@ import { Modal, useMantineTheme, Image } from "@mantine/core";
 
 const ImageModal = ({ openedImage, setOpenedImage, img }) => {
   const theme = useMantineTheme();
-
   return (
     <Modal
       overlayColor={
@@ -17,7 +16,7 @@ const ImageModal = ({ openedImage, setOpenedImage, img }) => {
       opened={openedImage}
       onClose={() => setOpenedImage(false)}
     >
-      <Image radius='md' src={img} alt='img in big'></Image>
+      <Image radius='md' src={img} alt='img'></Image>
     </Modal>
   );
 };

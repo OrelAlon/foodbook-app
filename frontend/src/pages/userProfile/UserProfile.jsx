@@ -98,7 +98,7 @@ const UserProfile = () => {
                 </li>
                 <li>
                   <a>
-                    <strong>On Build</strong>
+                    <strong>TBD</strong>
                     <span>Following</span>
                   </a>
                 </li>

@@ -9,3 +9,23 @@ body {
 .none {
   text-decoration: "none";
 }
+
+.logo {
+  font-size: 20px;
+  padding: 8px;
+  margin-left: 10px;
+  margin-top: 10px;
+  font-weight: bold;
+  color: goldenrod;
+  cursor: pointer;
+  background-color: #e9ecef;
+  border-radius: 5px;
+  border: solid rgb(124, 124, 124) 1px;
+  max-width: 12vw; /* Set the maximum width to 100% of the viewport width */
+  width: 12vw;
+}
+
+.logo:hover,
+.add-image-btn:hover {
+  background-color: #dee2e6;
+}

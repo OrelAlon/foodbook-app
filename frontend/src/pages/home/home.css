@@ -27,22 +27,3 @@
   cursor: pointer;
   border: solid rgb(124, 124, 124) 1px;
 }
-.logo {
-  font-size: 20px;
-  padding: 8px;
-  margin-left: 10px;
-  margin-top: 10px;
-  font-weight: bold;
-  color: goldenrod;
-  cursor: pointer;
-  background-color: #e9ecef;
-  border-radius: 5px;
-  border: solid rgb(124, 124, 124) 1px;
-
-  width: auto;
-  width: fit-content;
-}
-.logo:hover,
-.add-image-btn:hover {
-  background-color: #dee2e6;
-}

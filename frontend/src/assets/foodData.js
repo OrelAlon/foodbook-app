@@ -17,6 +17,9 @@ export const foodCategoryOptions = [
   { value: "sharing", label: "sharing" },
   { value: "meat", label: "meat" },
   { value: "sea-food", label: "sea-food" },
+  { value: "dairy", label: "dairy" },
+  { value: "gluten", label: "gluten" },
+  { value: "vegetables", label: "vegetables" },
 ];
 
 export const Prices = [

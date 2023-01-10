@@ -7,6 +7,10 @@ import "./gridFeed.css";
 const GridFeed = ({ images }) => {
   const [openedImage, setOpenedImage] = useState(false);
 
+  const handleSelectedImage = (image) => {
+    console.log(image);
+  };
+
   return (
     <div className='grid-container'>
       <section className='image-grid-list'>
@@ -14,7 +18,7 @@ const GridFeed = ({ images }) => {
           <div
             className='image-grid-item'
             key={index}
-            onClick={() => setOpenedImage(image.img)}
+            onClick={() => handleSelectedImage(image)}
           >
             <div className='image-grid'>
               <figure className='image-grid-img'>
@@ -22,8 +26,10 @@ const GridFeed = ({ images }) => {
               </figure>
               <span className='image-grid-overlay'>
                 <p>
-                  {/* <span className='image-grid-likes'>150</span>
-                  <span className='image-grid-comments'>10</span> */}
+                  <span className='image-grid-likes'>
+                    🤤 {image.likes.length}
+                  </span>
+                  {/* <span className='image-grid-comments'>10</span> */}
                 </p>
               </span>
             </div>

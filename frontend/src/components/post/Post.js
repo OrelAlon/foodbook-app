@@ -125,12 +125,13 @@ const Post = ({ post }) => {
         </div>
         <div className='postBottom'>
           <div className='postBottomLeft transform'>
-            <AiOutlineLike
+            🤤
+            {/* <AiOutlineLike
               fontSize={18}
               className='likeIcon'
               onClick={likeHandler}
               color={"blue"}
-            />
+            /> */}
             <span className='postLikeCounter'>{like} people like it</span>
           </div>
           <div className='postBottomRight'>

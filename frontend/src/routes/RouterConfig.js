@@ -4,6 +4,7 @@ import Home from "../pages/home/Home";
 import Login from "../pages/login/Login";
 import Register from "../pages/register/Register";
 import UserProfile from "../pages/userProfile/UserProfile";
+import PostPage from "../pages/postPage/PostPage";
 import AllRestaurants from "../pages/allRestaurants/AllRestaurants";
 import RestaurantProfile from "../pages/restaurantProfile/RestaurantProfile";
 import EditRestaurantPage from "../pages/editRestaurantPage/EditRestaurantPage";
@@ -26,6 +27,7 @@ const RouterConfig = () => {
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
           <Route path='/profile/:username' element={<UserProfile />} />
+          <Route path='/post' element={<PostPage />} />
 
           <Route path='/restaurants' element={<AllRestaurants />} />
           <Route

@@ -6,13 +6,14 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   position: relative;
-
   margin: auto;
+  height: 90vh;
 }
 
 .login_div {
   max-width: 25rem;
-  height: 80vh;
+  height: 90vh;
+
   margin: auto;
 }
 .form_heading {

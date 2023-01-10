@@ -111,9 +111,6 @@ const Login = () => {
             </div>
           </div>
         </div>
-        <div className='footer'>
-          <p>&copy;2023 Orel Alon from Home</p>
-        </div>
       </div>
     </div>
   );

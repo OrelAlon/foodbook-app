@@ -87,7 +87,7 @@ const FilterImagesModel = ({
           styles={styleSelect}
         />
         <Space h='sm' />
-        <MultiSelect
+        {/* <MultiSelect
           icon={<IconSearch size={16} />}
           data={foodCategoryOptions}
           onChange={setFoodCatgoryPick}
@@ -95,7 +95,7 @@ const FilterImagesModel = ({
           styles={styleSelect}
           clearable
         />{" "}
-        <Space h='sm' />
+        <Space h='sm' /> */}
       </form>
     </>
   );

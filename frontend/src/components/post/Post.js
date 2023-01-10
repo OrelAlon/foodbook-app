@@ -109,32 +109,17 @@ const Post = ({ post }) => {
 
         <div className='postCenter'>
           {" "}
-          <img
-            className='postImg'
-            src={img}
-            alt=''
-            // width='200'
-            // height='100'
-            onClick={() => setOpenedImage(true)}
-          />
-          <ImageModal
-            img={img}
-            openedImage={openedImage}
-            setOpenedImage={setOpenedImage}
-          ></ImageModal>
+          <Link to={`/post/${_id}`}>
+            <img className='postImg' src={img} alt={img} />
+          </Link>
         </div>
-        <div className='postBottom'>
-          <div className='postBottomLeft transform'>
+        <div className='postBottom '>
+          <div
+            className='postBottomLeft cursor transform'
+            onClick={likeHandler}
+          >
             🤤
-            {/* <AiOutlineLike
-              fontSize={18}
-              className='likeIcon'
-              onClick={likeHandler}
-              color={"blue"}
-            /> */}
-            <span className='postLikeCounter' onClick={likeHandler}>
-              {like} people like it
-            </span>
+            <span className='postLikeCounter'>{like} people like it</span>
           </div>
           <div className='postBottomRight'>
             <AllTags foodCategory={foodCategory} dishType={dishType} />{" "}

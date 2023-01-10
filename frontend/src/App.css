@@ -32,11 +32,22 @@ body {
     width: 26vw;
   }
 }
-
+.image-page {
+  margin-top: 50px;
+}
 .open-image {
-  margin: auto;
+  height: 70%;
   width: 100%;
-  max-height: 70%;
-  object-fit: contain;
-  object-position: center;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.open-image img {
+  height: 50%;
+  width: 50%;
+  text-align: right;
+}
+.cursor {
+  cursor: pointer;
 }

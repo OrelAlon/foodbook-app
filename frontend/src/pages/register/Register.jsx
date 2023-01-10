@@ -42,7 +42,8 @@ const Register = () => {
 
         navigate("/login");
       } catch (error) {
-        console.log(error);
+        setLoading(false);
+        errorMsg(error.response.data);
       }
     }
   };
@@ -124,9 +125,11 @@ const Register = () => {
               <div id='divide_form'>
                 <span className='divide_line' id='left_divide_line'></span>
               </div>
-              <div className='lower_div'>
-                <h1 className='errMsg'>{errorMsg}</h1>
-                <div className='center-div'>{loading && <Loader />}</div>
+              <div className='lower_div '>
+                <h1 className='errMsg center-div'>{errorMsg}</h1>
+                <div className='center-div loading'>
+                  {loading && <Loader />}
+                </div>
               </div>
             </form>
           </div>

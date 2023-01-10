@@ -1,4 +1,4 @@
-import { useRef, useContext } from "react";
+import { useState, useRef, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import { Loader, Select } from "@mantine/core";
@@ -11,6 +11,9 @@ import { gapi } from "gapi-script";
 import "./login.css";
 
 const Login = () => {
+  const [errorMsg, setErrorMsg] = useState("");
+  const [loading, setLoading] = useState(false);
+
   const emailRef = useRef();
   const passwordRef = useRef();
 
@@ -21,23 +24,30 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      setErrorMsg("");
+      setLoading(true);
+
       await login({
         email: emailRef.current.value,
         password: passwordRef.current.value,
       });
       navigate("/");
     } catch (error) {
-      // toast.error(error.response.data);
+      setLoading(false);
+      setErrorMsg(error.response.data);
     }
   };
   const handleGoogleLogin = async (response) => {
     try {
+      setLoading(true);
+
       await googleLogin({
         response,
       });
       navigate("/");
     } catch (error) {
-      // toast.error(error.response.data);
+      setLoading(false);
+      setErrorMsg(error.response.data);
     }
   };
 
@@ -83,6 +93,10 @@ const Login = () => {
                 >
                   Log in
                 </button>
+                <h1 className='errMsg center-div'>{errorMsg}</h1>
+                <div className='center-div loading'>
+                  {loading && <Loader />}
+                </div>
               </div>
               <div id='divide_form'>
                 <span className='divide_line' id='left_divide_line'></span>

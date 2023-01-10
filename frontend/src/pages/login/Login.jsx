@@ -72,11 +72,15 @@ const Login = () => {
                   className='login-input'
                   placeholder='Password'
                   type='password'
-                  ref={emailRef}
+                  ref={passwordRef}
                 />
               </div>
               <div className='transform'>
-                <button className='login-btn' type='submit'>
+                <button
+                  className='login-btn'
+                  type='submit'
+                  onClick={handleSubmit}
+                >
                   Log in
                 </button>
               </div>

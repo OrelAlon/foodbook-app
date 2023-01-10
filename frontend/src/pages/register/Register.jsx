@@ -2,11 +2,14 @@ import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { Loader } from "@mantine/core";
 import ImageUpload from "../../components/imageUpload/ImageUpload";
-import { BiImage } from "react-icons/bi";
 
 import axios from "axios";
 
+import foodbook from "../../assets/foodbook.png";
+import { BiImage } from "react-icons/bi";
+
 import "./register.css";
+
 const Register = () => {
   const usernameRef = useRef();
   const emailRef = useRef();
@@ -48,85 +51,97 @@ const Register = () => {
 
   return (
     <div>
-      {" "}
-      <div className='register'>
-        <h2 className='nonactive' onClick={() => navigate("/login")}>
-          {" "}
-          sign in{" "}
-        </h2>
+      <div className='login-page'>
+        <div className='login_div'>
+          <div className='top_section'>
+            <div className='form_heading'>
+              <img width='170vw' height='50vh' src={foodbook} alt='' />{" "}
+            </div>
+            <form onSubmit={handleSubmit} encType='multipart/form-data'>
+              <div className='input-div'>
+                {" "}
+                <input
+                  className='login-input'
+                  placeholder='User Name'
+                  name='username'
+                  type='text'
+                  ref={usernameRef}
+                />
+                <br />
+                <input
+                  className='login-input'
+                  placeholder='Email'
+                  type='email'
+                  name='email'
+                  ref={emailRef}
+                  required
+                />
+                <br />
+                <input
+                  className='login-input'
+                  placeholder='Password'
+                  type='password'
+                  name='password'
+                  ref={passwordRef}
+                  required
+                  minLength='6'
+                />
+                <br />
+                <input
+                  className='login-input'
+                  placeholder='Password again'
+                  type='password'
+                  name='password'
+                  ref={confirmPasswordRef}
+                  required
+                  minLength='6'
+                />
+              </div>
+              <div className='shareOptions transform share-div center-div'>
+                <label htmlFor='file' className='shareOption '>
+                  <span className='shareText'>Upload</span>
+                  <BiImage fontSize={22} color={file ? "green" : "red"} />
+                  <input
+                    style={{ display: "none" }}
+                    type='file'
+                    id='file'
+                    accept='.png,.jpeg,.jpg,.jfif'
+                    onChange={(e) => setFile(e.target.files[0])}
+                  />
+                </label>
 
-        <h2 className='active'> sign up </h2>
-        <form onSubmit={handleSubmit} encType='multipart/form-data'>
-          <div className='input-div'>
-            <p>username:</p>
-            <input
-              type='text'
-              ref={usernameRef}
-              className='text'
-              name='username'
-              required
-            ></input>
+                {file && (
+                  <ImageUpload
+                    className={"register-image"}
+                    file={file}
+                    setFile={setFile}
+                  />
+                )}
+              </div>
+              <div className='transform'>
+                <button className='login-btn' type='submit'>
+                  Sign Up
+                </button>
+              </div>
+              <div id='divide_form'>
+                <span className='divide_line' id='left_divide_line'></span>
+              </div>
+              <div className='lower_div'>
+                <h1 className='errMsg'>{errorMsg}</h1>
+                <div className='center-div'>{loading && <Loader />}</div>
+              </div>
+            </form>
           </div>
-          <div className='input-div'>
-            <p>email:</p>
-            <input
-              type='email'
-              ref={emailRef}
-              className='text'
-              name='email'
-              required
-            ></input>
+          <div>
+            <div className='bottom_section transform'>
+              Already have an account?{" "}
+              <span onClick={() => navigate("/login")}>Sign In</span>
+            </div>
           </div>
-
-          <div className='input-div'>
-            <p>password:</p>
-            <input
-              type='password'
-              ref={passwordRef}
-              className='text'
-              name='password'
-              required
-              minLength='6'
-            ></input>
-          </div>
-          <div className='input-div'>
-            <p>Confirm Password:</p>
-            <input
-              type='password'
-              ref={confirmPasswordRef}
-              className='text'
-              name='password'
-              required
-              minLength='6'
-            ></input>
-          </div>
-          <div className='shareOptions transform share-div center-div'>
-            <label htmlFor='file' className='shareOption '>
-              <span className='shareText'>Upload</span>
-              <BiImage fontSize={22} color={file ? "green" : "red"} />
-              <input
-                style={{ display: "none" }}
-                type='file'
-                id='file'
-                accept='.png,.jpeg,.jpg,.jfif'
-                onChange={(e) => setFile(e.target.files[0])}
-              />
-            </label>
-
-            {file && (
-              <ImageUpload
-                className={"register-image"}
-                file={file}
-                setFile={setFile}
-              />
-            )}
-          </div>
-          <h1 className='errMsg'>{errorMsg}</h1>
-          <div className='center-div'>{loading && <Loader />}</div>
-
-          <button className='signinRegister transform'>Sign Up</button>
-          {/* <ToastContainer /> */}
-        </form>
+        </div>
+        <div className='footer'>
+          <p>&copy;2023 Orel Alon from Home</p>
+        </div>
       </div>
     </div>
   );

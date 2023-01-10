@@ -4,6 +4,18 @@ const Restaurant = require("../models/Restaurant");
 const cloudinary = require("cloudinary");
 
 //
+const getPost = async (req, res) => {
+  const postId = req.query.id;
+
+  try {
+    const post = await Post.findById(postId);
+    res.status(201).json(post);
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
+//
 const createPost = async (req, res) => {
   const file = req.files.img;
   // upload to cloudinary
@@ -66,6 +78,7 @@ const getAllPosts = async (req, res) => {
     console.log(error.message);
   }
 };
+
 //
 const getUserPost = async (req, res) => {
   try {
@@ -133,6 +146,7 @@ const likePost = async (req, res) => {
 };
 
 module.exports = {
+  getPost,
   createPost,
   updatePost,
   deletePost,

@@ -132,7 +132,9 @@ const Post = ({ post }) => {
               onClick={likeHandler}
               color={"blue"}
             /> */}
-            <span className='postLikeCounter'>{like} people like it</span>
+            <span className='postLikeCounter' onClick={likeHandler}>
+              {like} people like it
+            </span>
           </div>
           <div className='postBottomRight'>
             {" "}

@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const {
+  getPost,
   createPost,
   updatePost,
   deletePost,
@@ -9,6 +10,8 @@ const {
   getRestaurantPosts,
   likePost,
 } = require("../controllers/postController");
+
+router.get("/", getPost);
 
 router.post("/", createPost);
 

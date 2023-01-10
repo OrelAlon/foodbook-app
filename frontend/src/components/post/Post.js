@@ -4,12 +4,12 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import { AiOutlineLike } from "react-icons/ai";
 
-import TagPost from "../tagPost/TagPost";
 import noAvatar from "../../assets/noAvatar.png";
 import ImageModal from "../imageModal/ImageModal";
 
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
+import AllTags from "../allTags/AllTags";
 
 import axios from "axios";
 
@@ -137,17 +137,7 @@ const Post = ({ post }) => {
             </span>
           </div>
           <div className='postBottomRight'>
-            {" "}
-            <ul className='tags '>
-              {foodCategory.map((el, i) => (
-                <TagPost key={i} el={el} />
-              ))}
-            </ul>
-            <ul className='tags'>
-              {dishType.map((el, i) => (
-                <TagPost key={i} el={el} />
-              ))}
-            </ul>
+            <AllTags foodCategory={foodCategory} dishType={dishType} />{" "}
           </div>
         </div>
       </div>

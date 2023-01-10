@@ -1,0 +1,124 @@
+.login-page {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+#login_div {
+  margin-top: 10%;
+  width: 20rem;
+  height: 80vh;
+  margin-left: 10%;
+  float: left;
+}
+.form_heading {
+  text-align: center;
+}
+
+input[type="text"] {
+  font-size: 75%;
+  outline: none;
+  border: #dbdbdb 1px solid;
+  border-radius: 3px;
+  padding: 3%;
+  padding-left: 3%;
+  width: 75%;
+  margin-left: 10%;
+  margin-bottom: 1%;
+  background-color: #fafafa;
+  color: #8e8e8e;
+}
+input[type="text"]::placeholder {
+  color: #8e8e8e;
+  font-family: "Roboto", sans-serif;
+  /* font-weight: 600; */
+  letter-spacing: 1px;
+}
+
+input[type="submit"] {
+  margin-top: 4%;
+  padding: 2%;
+  color: white;
+  width: 82%;
+  background-color: #56abe4;
+  margin-left: 10%;
+  margin-bottom: 1%;
+  border: #ffffff 1px solid;
+  border-radius: 5px;
+  font-weight: 700;
+}
+
+.or_text {
+  margin-top: -2%;
+  color: #8e8eaa;
+  text-align: center;
+  font-size: 105%;
+  margin-left: 3%;
+  margin-right: 3%;
+  font-family: monospace;
+}
+
+#left_divide_line {
+  background-color: #dbdbdb;
+  height: 1px;
+  width: 41%;
+  margin-left: 4%;
+}
+#right_divide_line {
+  background-color: #dbdbdb;
+  height: 1px;
+  width: 41%;
+  margin-left: 2%;
+}
+#divide_form {
+  margin: 8%;
+  display: flex;
+}
+.lower_div {
+  text-align: center;
+  color: #385194;
+  font-size: 95%;
+  font-family: "Roboto", sans-serif;
+  letter-spacing: 0.5px;
+}
+.fab {
+  border-radius: none !important;
+}
+.fa-lg {
+  vertical-align: -20%;
+}
+.forgot_password {
+  text-align: center;
+  margin: 7%;
+  font-size: 75%;
+  color: #00376b;
+  font-family: "Roboto", sans-serif;
+  letter-spacing: 1px;
+}
+
+.top_section {
+  background-color: #ffffff;
+  padding-top: 8%;
+  border: #dbdbdb 1px solid;
+}
+
+.bottom_section {
+  background-color: #ffffff;
+  text-align: center;
+  padding: 7%;
+  border: #dbdbdb 1px solid;
+  margin-top: 2%;
+}
+.bottom_section {
+  color: #00376b;
+  font-family: "Roboto", sans-serif;
+  font-size: 85%;
+  /* font-weight: 600; */
+  letter-spacing: 1px;
+}
+.bottom_section span {
+  color: #3fa5f7;
+  font-weight: bolder;
+}

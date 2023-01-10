@@ -1,11 +1,11 @@
 import { useRef, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { Loader, Select } from "@mantine/core";
 import GoogleLogin from "react-google-login";
 // import { GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google";
 
+import foodbook from "../../assets/foodbook.png";
 import { gapi } from "gapi-script";
 
 import "./login.css";
@@ -27,7 +27,7 @@ const Login = () => {
       });
       navigate("/");
     } catch (error) {
-      toast.error(error.response.data);
+      // toast.error(error.response.data);
     }
   };
   const handleGoogleLogin = async (response) => {
@@ -37,7 +37,7 @@ const Login = () => {
       });
       navigate("/");
     } catch (error) {
-      toast.error(error.response.data);
+      // toast.error(error.response.data);
     }
   };
 
@@ -50,48 +50,64 @@ const Login = () => {
     });
     handleGoogleLogin(response);
   };
-
   return (
     <div>
-      {" "}
-      <div className='login'>
-        <h2 className='active'> sign in </h2>
+      <div className='login-page'>
+        <div className='login_div'>
+          <div className='top_section'>
+            <div className='form_heading'>
+              <img width='170vw' height='50vh' src={foodbook} alt='' />{" "}
+            </div>
+            <form onSubmit={handleSubmit}>
+              <div className='input-div'>
+                {" "}
+                <input
+                  className='login-input'
+                  placeholder='Email'
+                  type='email'
+                  ref={emailRef}
+                />
+                <br />
+                <input
+                  className='login-input'
+                  placeholder='Password'
+                  type='password'
+                  ref={emailRef}
+                />
+              </div>
 
-        <h2 className='nonactive' onClick={() => navigate("/register")}>
-          {" "}
-          sign up{" "}
-        </h2>
-        <form onSubmit={handleSubmit}>
-          <div className='input-div'>
-            <p>email:</p>
-            <input
-              type='email'
-              ref={emailRef}
-              className='text'
-              name='email'
-            ></input>
+              <button className='login-btn transform' type='submit'>
+                Log in
+              </button>
+              <div id='divide_form'>
+                <span className='divide_line' id='left_divide_line'></span>
+                <div className='or-text'>
+                  <span>OR</span>
+                </div>
+              </div>
+              <div className='lower_div'>
+                <div className='google-login transform'>
+                  {/* <GoogleOAuthProvider> */}
+                  <GoogleLogin
+                    clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
+                    buttonText='Login with Google'
+                    onSuccess={responseGoogle}
+                  />
+                  {/* </GoogleOAuthProvider> */}
+                </div>{" "}
+              </div>
+              <p className='forgot_password transform'>Forgot password?</p>
+            </form>
           </div>
-
-          <div className='input-div'>
-            <p>password:</p>
-            <input
-              type='password'
-              ref={passwordRef}
-              className='text'
-              name='password'
-            ></input>
+          <div>
+            <div className='bottom_section transform'>
+              Don't have an account?{" "}
+              <span onClick={() => navigate("/register")}>Sign up</span>
+            </div>
           </div>
-          <button className='signinBtn transform'>Sign In</button>
-          <ToastContainer />
-        </form>
-        <div className='google-login transform'>
-          {/* <GoogleOAuthProvider> */}
-          <GoogleLogin
-            clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
-            buttonText='Login with Google'
-            onSuccess={responseGoogle}
-          />
-          {/* </GoogleOAuthProvider> */}
+        </div>
+        <div className='footer'>
+          <p>&copy;2023 Orel Alon from Home</p>
         </div>
       </div>
     </div>

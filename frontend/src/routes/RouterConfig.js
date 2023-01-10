@@ -27,7 +27,7 @@ const RouterConfig = () => {
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
           <Route path='/profile/:username' element={<UserProfile />} />
-          <Route path='/post' element={<PostPage />} />
+          <Route path='/post/:id' element={<PostPage />} />
 
           <Route path='/restaurants' element={<AllRestaurants />} />
           <Route

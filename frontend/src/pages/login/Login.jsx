@@ -56,7 +56,7 @@ const Login = () => {
         <div className='login_div'>
           <div className='top_section'>
             <div className='form_heading'>
-              <img width='170vw' height='50vh' src={foodbook} alt='' />{" "}
+              <img className='foodbook-img' src={foodbook} alt='' />{" "}
             </div>
             <form onSubmit={handleSubmit}>
               <div className='input-div'>

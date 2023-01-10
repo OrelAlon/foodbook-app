@@ -14,6 +14,7 @@ const Feed = ({ showGrid }) => {
   const [data, setData] = useState([]);
   const [resultsFound, setResultsFound] = useState(undefined);
   const [msgResults, setMsgResults] = useState("");
+  const [loading, setLoading] = useState(true);
 
   const [restaurantUserPick, setRestaurantUserPick] = useState(null);
   const [dishTypePick, setDishTypePick] = useState(null);
@@ -21,10 +22,13 @@ const Feed = ({ showGrid }) => {
   // const [cityPick, setCityPick] = useState(null);
 
   useEffect(() => {
+    setLoading(true);
+
     const fetchPosts = async () => {
       const res = await axios.get(`/api/posts/feed`);
       setData(res.data);
       setPosts(res.data);
+      setLoading(false);
     };
     fetchPosts();
   }, [restaurantUserPick]);
@@ -71,19 +75,22 @@ const Feed = ({ showGrid }) => {
           setRestaurantUserPick={setRestaurantUserPick}
           setDishTypePick={setDishTypePick}
         />
-        {resultsFound !== undefined && resultsFound && showGrid ? (
-          posts.map((p) => <Post key={p._id} post={p} />)
-        ) : resultsFound && !showGrid ? (
-          <div>
-            <GridFeed images={posts} />
-          </div>
-        ) : resultsFound === false ? (
-          <div className='center-div'>{msgResults}</div>
-        ) : (
+        {loading ? (
           <div className='center-div'>
-            {" "}
             <Loader />
           </div>
+        ) : (
+          <>
+            {resultsFound !== undefined && resultsFound && showGrid ? (
+              posts.map((p) => <Post key={p._id} post={p} />)
+            ) : resultsFound && !showGrid ? (
+              <div>
+                <GridFeed images={posts} />
+              </div>
+            ) : resultsFound === false ? (
+              <div className='center-div'>{msgResults}</div>
+            ) : null}
+          </>
         )}
       </div>
     </div>

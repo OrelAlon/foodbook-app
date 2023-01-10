@@ -6,6 +6,7 @@ export const dishTypeOptions = [
   { value: "Dessert", label: "Dessert" },
   { value: "Cocktail", label: "Cocktail" },
   { value: "Drinks", label: "Drinks" },
+  { value: "Menu", label: "Menu" },
 ];
 
 export const foodCategoryOptions = [

@@ -8,8 +8,6 @@ import axios from "axios";
 import foodbook from "../../assets/foodbook.png";
 import { BiImage } from "react-icons/bi";
 
-import "./register.css";
-
 const Register = () => {
   const usernameRef = useRef();
   const emailRef = useRef();

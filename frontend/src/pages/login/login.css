@@ -42,19 +42,6 @@
 .input-div {
   margin-top: 5%;
 }
-input[type="submit"] {
-  margin-top: 4%;
-  padding: 2%;
-  color: white;
-  width: 82%;
-  background-color: #56abe4;
-  margin-left: 10%;
-  margin-bottom: 1%;
-  border: #ffffff 1px solid;
-  border-radius: 5px;
-  font-weight: 700;
-  cursor: pointer;
-}
 
 .or-text {
   width: 100%;
@@ -79,12 +66,7 @@ input[type="submit"] {
   font-family: "Roboto", sans-serif;
   letter-spacing: 0.5px;
 }
-.fab {
-  border-radius: none !important;
-}
-.fa-lg {
-  vertical-align: -20%;
-}
+
 .forgot_password {
   text-align: center;
   margin: 7%;

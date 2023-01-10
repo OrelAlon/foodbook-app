@@ -41,7 +41,7 @@ const PostPage = () => {
           <div className='postBottomLeft cursor transform '>
             🤤
             <span className='postLikeCounter'>
-              {post?.like?.length || "0"} people like it
+              {post?.likes?.length} people like it
             </span>
           </div>
           <div className='postBottomRight'>

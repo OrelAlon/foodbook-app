@@ -11,14 +11,13 @@ body {
 }
 
 .logo {
-  padding: 9px;
   margin-left: 10px;
   margin-top: 10px;
   cursor: pointer;
   /* background-color: #e9ecef;
   border-radius: 5px;
   border: solid rgb(124, 124, 124) 1px; */
-  width: 10vw;
+  width: 12vw;
 }
 
 .logo:hover,
@@ -27,8 +26,8 @@ body {
   border-radius: 5px;
   border: solid rgb(124, 124, 124) 1px;
 }
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 800px) {
   .logo {
-    width: 22vw;
+    width: 26vw;
   }
 }

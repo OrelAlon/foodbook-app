@@ -75,10 +75,11 @@ const Login = () => {
                   ref={emailRef}
                 />
               </div>
-
-              <button className='login-btn transform' type='submit'>
-                Log in
-              </button>
+              <div className='transform'>
+                <button className='login-btn' type='submit'>
+                  Log in
+                </button>
+              </div>
               <div id='divide_form'>
                 <span className='divide_line' id='left_divide_line'></span>
                 <div className='or-text'>

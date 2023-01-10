@@ -118,9 +118,7 @@ input[type="submit"] {
   font-weight: bolder;
   cursor: pointer;
 }
-.bottom_section span:active {
-  transform: translateY(2px);
-}
+
 .forgot_password {
   cursor: pointer;
 }

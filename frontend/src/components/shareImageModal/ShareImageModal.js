@@ -156,6 +156,7 @@ function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
               onCreate={(query) => createNewRest(query)}
               searchable
               style={styleSelect}
+              creatable
               clearable
             />
             <Space h='sm' />

@@ -19,11 +19,6 @@
   box-shadow: 0px 30px 60px -5px #000;
 }
 
-form,
-.input-div {
-  margin-top: 10px;
-}
-
 .active {
   border-bottom: 2px solid #1161ed;
   font-weight: bold;

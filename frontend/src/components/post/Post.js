@@ -119,7 +119,7 @@ const Post = ({ post }) => {
             onClick={likeHandler}
           >
             🤤
-            <span className='postLikeCounter'>{like} people like it</span>
+            <span className='postLikeCounter'>{like} people want it to...</span>
           </div>
           <div className='postBottomRight'>
             <AllTags foodCategory={foodCategory} dishType={dishType} />{" "}

@@ -8,12 +8,21 @@ import { Image } from "@mantine/core";
 import NavBar from "../../components/navBar/NavBar";
 import AllTags from "../../components/allTags/AllTags";
 
+import { jokes } from "../../assets/foodData";
+
 import "../../App.css";
 
 const PostPage = () => {
   const [post, setPost] = useState({});
+  const [joke, setJoke] = useState("");
 
   const postId = useParams().id;
+
+  useEffect(() => {
+    let randomIndex = Math.floor(Math.random() * jokes.length);
+    let randomJoke = jokes[randomIndex];
+    setJoke(randomJoke);
+  }, []);
 
   useEffect(() => {
     const fetchPost = async () => {
@@ -30,18 +39,13 @@ const PostPage = () => {
       <div className='image-page'>
         {" "}
         <div style={{ width: 240, marginLeft: "auto", marginRight: "auto" }}>
-          <Image
-            radius='md'
-            src={post.img}
-            alt={post.img}
-            caption='My dog begging for treats'
-          />
+          <Image radius='md' src={post.img} alt={post.img} caption={joke} />
         </div>
-        <div className='postBottom'>
+        <div className='postBottomPage'>
           <div className='postBottomLeft cursor transform '>
             🤤
             <span className='postLikeCounter'>
-              {post?.likes?.length} people like it
+              {post?.likes?.length} people want it to...
             </span>
           </div>
           <div className='postBottomRight'>

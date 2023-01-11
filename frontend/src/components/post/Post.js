@@ -2,10 +2,8 @@ import { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
-import { AiOutlineLike } from "react-icons/ai";
 
 import noAvatar from "../../assets/noAvatar.png";
-import ImageModal from "../imageModal/ImageModal";
 
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
@@ -20,7 +18,6 @@ const Post = ({ post }) => {
   const [restaurant, setRestaurant] = useState({});
   const [like, setLike] = useState(post.likes.length);
   const [isLiked, setIsLiked] = useState(false);
-  const [openedImage, setOpenedImage] = useState(false);
 
   const { user: currentUser } = useContext(AuthContext);
   const { username, profilePicture } = user;
@@ -49,16 +46,49 @@ const Post = ({ post }) => {
     fetchData();
   }, [userId, restaurantId]);
 
-  const likeHandler = () => {
+  // const likeHandler =async () => {
+  //   try {
+  //     const response = await axios.put(`/api/posts/${_id}/like`, {
+  //       userId: currentUser._id,
+  //     });    }
+  //     catch (error) {
+  //     console.log(error);
+  //   }
+  //   setLike(isLiked ? like - 1 : like + 1);
+  //   setIsLiked(!isLiked);
+  // };
+
+  //
+  const likeHandler = async () => {
     try {
-      axios.put(`/api/posts/${_id}/like`, { userId: currentUser._id });
+      const response = await axios.put(`/api/posts/${_id}/like`, {
+        userId: currentUser._id,
+      });
+      console.log(response.data);
+      if (response.data === "The post has been liked") {
+        setLike((prevLike) => prevLike + 1);
+        setIsLiked(true);
+      } else if (response.data === "The post has been disliked") {
+        setLike((prevLike) => prevLike - 1);
+        setIsLiked(false);
+      }
     } catch (error) {
       console.log(error);
     }
-    setLike(isLiked ? like - 1 : like + 1);
-    setIsLiked(!isLiked);
   };
-
+  // const likeHandler = async () => {
+  //   try {
+  //     const response = await axios.put(`/api/posts/${_id}/like`, {
+  //       userId: currentUser._id,
+  //     });
+  //     if (response.status === 200) {
+  //       setLike(response.data.like);
+  //       setIsLiked(response.data.isLiked);
+  //     }
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
   const deleteHandler = async () => {
     if (window.confirm(`Are you sure you want to delete this post??`)) {
       try {
@@ -119,7 +149,7 @@ const Post = ({ post }) => {
             onClick={likeHandler}
           >
             🤤
-            <span className='postLikeCounter'>{like} people want it to...</span>
+            <span className='postLikeCounter'>{like} want...</span>
           </div>
           <div className='postBottomRight'>
             <AllTags foodCategory={foodCategory} dishType={dishType} />{" "}

@@ -2,13 +2,13 @@ import { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
+import { Loader } from "@mantine/core";
 
 import noAvatar from "../../assets/noAvatar.png";
-
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import AllTags from "../allTags/AllTags";
-
+import LikePost from "../likePost/LikePost";
 import axios from "axios";
 
 import "./post.css";
@@ -18,6 +18,7 @@ const Post = ({ post }) => {
   const [restaurant, setRestaurant] = useState({});
   const [like, setLike] = useState(post.likes.length);
   const [isLiked, setIsLiked] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const { user: currentUser } = useContext(AuthContext);
   const { username, profilePicture } = user;
@@ -47,6 +48,8 @@ const Post = ({ post }) => {
   }, [userId, restaurantId]);
 
   const likeHandler = async () => {
+    setLoading(true);
+
     try {
       const response = await axios.put(`/api/posts/${_id}/like`, {
         userId: currentUser._id,
@@ -59,6 +62,7 @@ const Post = ({ post }) => {
         setLike((prevLike) => prevLike - 1);
         setIsLiked(false);
       }
+      setLoading(false);
     } catch (error) {
       console.log(error);
     }
@@ -119,13 +123,11 @@ const Post = ({ post }) => {
           </Link>
         </div>
         <div className='postBottom '>
-          <div
-            className='postBottomLeft cursor transform'
-            onClick={likeHandler}
-          >
-            🤤
-            <span className='postLikeCounter'>{like} want...</span>
-          </div>
+          {loading ? (
+            <Loader />
+          ) : (
+            <LikePost likeHandler={likeHandler} like={like} />
+          )}
           <div className='postBottomRight'>
             <AllTags foodCategory={foodCategory} dishType={dishType} />{" "}
           </div>

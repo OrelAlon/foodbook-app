@@ -27,9 +27,7 @@ const createPost = async (req, res) => {
   });
   const newPost = new Post({
     userId: req.body.userId,
-    usernamepost: req.body.username,
     restaurantId: req.body.restaurantId,
-    restaurantnamepost: req.body.restaurantname,
     foodCategory: JSON.parse(req.body.foodCategory),
     dishType: JSON.parse(req.body.dishType),
     price: req.body.price,
@@ -74,7 +72,9 @@ const getAllPosts = async (req, res) => {
   try {
     // const pageSize = req.query.size || 10;
 
-    const data = await Post.find().sort({ createdAt: -1 });
+    const data = await Post.find()
+    .sort({ createdAt: -1 });
+
     res.status(201).json(data);
   } catch (error) {
     console.log(error.message);

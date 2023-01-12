@@ -6,15 +6,10 @@ const PostSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    usernamepost: {
-      type: String,
-    },
+
     restaurantId: {
       type: String,
       required: true,
-    },
-    restaurantnamepost: {
-      type: String,
     },
     foodCategory: {
       type: Array,

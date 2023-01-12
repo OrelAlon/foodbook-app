@@ -27,6 +27,8 @@ const Feed = ({ showGrid }) => {
 
     const fetchPosts = async () => {
       const res = await axios.get(`/api/posts/feed`);
+      console.log("res.data");
+      console.log(res.data);
       setData(res.data);
       setPosts(res.data);
       setLoading(false);

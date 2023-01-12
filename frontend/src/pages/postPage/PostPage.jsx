@@ -7,7 +7,7 @@ import { Image } from "@mantine/core";
 
 import NavBar from "../../components/navBar/NavBar";
 import AllTags from "../../components/allTags/AllTags";
-
+import LikePost from "../../components/likePost/LikePost";
 import { jokes } from "../../assets/foodData";
 
 import "../../App.css";
@@ -15,6 +15,7 @@ import "../../App.css";
 const PostPage = () => {
   const [post, setPost] = useState({});
   const [joke, setJoke] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const postId = useParams().id;
 

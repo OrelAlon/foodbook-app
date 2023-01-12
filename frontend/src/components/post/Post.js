@@ -23,8 +23,17 @@ const Post = ({ post }) => {
   const { user: currentUser } = useContext(AuthContext);
   const { username, profilePicture } = user;
   const { restaurantname } = restaurant;
-  const { userId, restaurantId, _id, img, updatedAt, foodCategory, dishType } =
-    post;
+  const {
+    userId,
+    usernamepost,
+    restaurantId,
+    restaurantnamepost,
+    _id,
+    img,
+    updatedAt,
+    foodCategory,
+    dishType,
+  } = post;
   const usernameParams = useParams().username;
   dayjs.extend(relativeTime);
 
@@ -84,7 +93,7 @@ const Post = ({ post }) => {
       <div className='postWrapper'>
         <div className='postTop'>
           <div className='postTopLeft'>
-            <Link to={`/profile/${username}`}>
+            <Link to={`/profile/${usernamepost}`}>
               <img
                 className='postProfileImg'
                 src={profilePicture ? profilePicture : noAvatar}
@@ -92,15 +101,17 @@ const Post = ({ post }) => {
               />
             </Link>
             <span className='postUsername'>
-              <Link to={`/profile/${username}`} className='linkwithout'>
-                <span className='bold '> {username} </span>
+              <Link to={`/profile/${usernamepost}`} className='linkwithout'>
+                <span className='bold '> {usernamepost} </span>
               </Link>
               at{" "}
               <Link
                 className='linkwithout'
-                to={`/restaurant/${restaurantname}`}
+                to={`/restaurant/${restaurantnamepost}`}
               >
-                <span className='restaurantname bold'>{restaurantname}</span>
+                <span className='restaurantname bold'>
+                  {restaurantnamepost}
+                </span>
               </Link>
             </span>{" "}
           </div>

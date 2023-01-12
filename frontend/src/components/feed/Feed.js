@@ -5,6 +5,7 @@ import axios from "axios";
 import { Loader } from "@mantine/core";
 
 import Post from "../post/Post";
+import PostsFeed from "../postsFeed/PostsFeed";
 import GridFeed from "../gridFeed/GridFeed";
 import FilterImagesModel from "../filterImagesModel/FilterImagesModel";
 import "./feed.css";
@@ -82,7 +83,7 @@ const Feed = ({ showGrid }) => {
         ) : (
           <>
             {resultsFound !== undefined && resultsFound && showGrid ? (
-              posts.map((p) => <Post key={p._id} post={p} />)
+              <PostsFeed posts={posts} />
             ) : resultsFound && !showGrid ? (
               <div>
                 <GridFeed images={posts} />

@@ -130,35 +130,17 @@ const getRestaurantPosts = async (req, res) => {
 };
 
 //
-// const likePost = async (req, res) => {
-//   try {
-//     const post = await Post.findByIdAndUpdate(req.params.id);
-
-//     if (!post.likes.includes(req.body.userId)) {
-//       await post.updateOne({ $push: { likes: req.body.userId } });
-//       res.status(200).json("The post has been liked");
-//     } else {
-//       await post.updateOne({ $pull: { likes: req.body.userId } });
-//       res.status(200).json("The post has been disliked");
-//     }
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// };
-
 const likePost = async (req, res) => {
   try {
-    const post = await Post.findById(req.params.id);
-    let isLiked = post.likes.includes(req.body.userId);
-    if (!isLiked) {
-      post.likes.push(req.body.userId);
-      isLiked = true;
+    const post = await Post.findByIdAndUpdate(req.params.id);
+
+    if (!post.likes.includes(req.body.userId)) {
+      await post.updateOne({ $push: { likes: req.body.userId } });
+      res.status(200).json("The post has been liked");
     } else {
-      post.likes = post.likes.filter((like) => like !== req.body.userId);
-      isLiked = false;
+      await post.updateOne({ $pull: { likes: req.body.userId } });
+      res.status(200).json("The post has been disliked");
     }
-    await post.save();
-    res.status(200).json({ like: post.likes.length, isLiked: isLiked });
   } catch (err) {
     res.status(500).json(err);
   }

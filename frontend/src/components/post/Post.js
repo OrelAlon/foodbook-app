@@ -46,27 +46,14 @@ const Post = ({ post }) => {
     fetchData();
   }, [userId, restaurantId]);
 
-  // const likeHandler =async () => {
-  //   try {
-  //     const response = await axios.put(`/api/posts/${_id}/like`, {
-  //       userId: currentUser._id,
-  //     });    }
-  //     catch (error) {
-  //     console.log(error);
-  //   }
-  //   setLike(isLiked ? like - 1 : like + 1);
-  //   setIsLiked(!isLiked);
-  // };
-
-  //
   const likeHandler = async () => {
     try {
       const response = await axios.put(`/api/posts/${_id}/like`, {
         userId: currentUser._id,
       });
-      console.log(response.data);
       if (response.data === "The post has been liked") {
         setLike((prevLike) => prevLike + 1);
+
         setIsLiked(true);
       } else if (response.data === "The post has been disliked") {
         setLike((prevLike) => prevLike - 1);
@@ -76,19 +63,7 @@ const Post = ({ post }) => {
       console.log(error);
     }
   };
-  // const likeHandler = async () => {
-  //   try {
-  //     const response = await axios.put(`/api/posts/${_id}/like`, {
-  //       userId: currentUser._id,
-  //     });
-  //     if (response.status === 200) {
-  //       setLike(response.data.like);
-  //       setIsLiked(response.data.isLiked);
-  //     }
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
+
   const deleteHandler = async () => {
     if (window.confirm(`Are you sure you want to delete this post??`)) {
       try {

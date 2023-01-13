@@ -23,15 +23,8 @@ const Post = ({ post }) => {
   const { user: currentUser } = useContext(AuthContext);
   const { username, profilePicture } = user;
   const { restaurantname } = restaurant;
-  const {
-    userId,
-    restaurantId,
-    _id,
-    img,
-    updatedAt,
-    foodCategory,
-    dishType,
-  } = post;
+  const { userId, restaurantId, _id, img, updatedAt, foodCategory, dishType } =
+    post;
   const usernameParams = useParams().username;
   dayjs.extend(relativeTime);
 

@@ -98,7 +98,7 @@ const Register = () => {
               </div>
               <div className='shareOptions transform share-div center-div'>
                 <label htmlFor='file' className='shareOption '>
-                  <span className='shareText'>Upload</span>
+                  <span className='shareText'>Add Image </span>
                   <BiImage fontSize={22} color={file ? "green" : "red"} />
                   <input
                     style={{ display: "none" }}

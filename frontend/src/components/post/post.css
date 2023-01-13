@@ -78,6 +78,7 @@
 .postBottomLeft {
   display: flex;
   align-items: center;
+  width: 6rem;
 }
 
 .likeIcon {

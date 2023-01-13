@@ -2,7 +2,6 @@ import React, { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
-import { Loader } from "@mantine/core";
 
 import noAvatar from "../../assets/noAvatar.png";
 import dayjs from "dayjs";
@@ -16,9 +15,6 @@ import "./post.css";
 const Post = ({ post }) => {
   const [user, setUser] = useState({});
   const [restaurant, setRestaurant] = useState({});
-  const [like, setLike] = useState(post.likes.length);
-  const [isLiked, setIsLiked] = useState(false);
-  const [loading, setLoading] = useState(false);
 
   const { user: currentUser } = useContext(AuthContext);
   const { username, profilePicture } = user;
@@ -46,27 +42,6 @@ const Post = ({ post }) => {
 
     fetchData();
   }, [userId, restaurantId]);
-
-  const likeHandler = async () => {
-    setLoading(true);
-
-    try {
-      const response = await axios.put(`/api/posts/${_id}/like`, {
-        userId: currentUser._id,
-      });
-      if (response.data === "The post has been liked") {
-        setLike((prevLike) => prevLike + 1);
-
-        setIsLiked(true);
-      } else if (response.data === "The post has been disliked") {
-        setLike((prevLike) => prevLike - 1);
-        setIsLiked(false);
-      }
-      setLoading(false);
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   const deleteHandler = async () => {
     if (window.confirm(`Are you sure you want to delete this post??`)) {
@@ -123,7 +98,7 @@ const Post = ({ post }) => {
           </Link>
         </div>
         <div className='postBottom '>
-          <LikePost likeHandler={likeHandler} like={like} loading={loading} />
+          <LikePost id={_id} likes={post.likes} />
 
           <div className='postBottomRight'>
             <AllTags foodCategory={foodCategory} dishType={dishType} />{" "}

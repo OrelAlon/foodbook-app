@@ -4,7 +4,6 @@ import axios from "axios";
 
 import { Loader } from "@mantine/core";
 
-import Post from "../post/Post";
 import PostsFeed from "../postsFeed/PostsFeed";
 import GridFeed from "../gridFeed/GridFeed";
 import FilterImagesModel from "../filterImagesModel/FilterImagesModel";

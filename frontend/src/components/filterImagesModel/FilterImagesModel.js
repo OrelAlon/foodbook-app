@@ -1,13 +1,9 @@
 import { useState, useEffect } from "react";
 
-import { MultiSelect, Space, Select } from "@mantine/core";
+import { Space, Select } from "@mantine/core";
 import { IconSearch } from "@tabler/icons";
 
-import {
-  foodCategoryOptions,
-  dishTypeOptions,
-  cities,
-} from "../../assets/foodData";
+import { dishTypeOptions } from "../../assets/foodData";
 
 import axios from "axios";
 
@@ -21,11 +17,6 @@ const FilterImagesModel = ({
 }) => {
   const [restaurantsList, setRestaurantsList] = useState([]);
 
-  // const styleSelect = {
-  //   width: "60%",
-  //   margin: "auto",
-  //   input: { "&::placeholder": { textAlign: "center" } },
-  // };
   const styleSelect = {
     root: { width: "60%", margin: "auto" },
     input: { "&::placeholder": { textAlign: "center" } },
@@ -67,16 +58,7 @@ const FilterImagesModel = ({
           clearable
           styles={styleSelect}
         />
-        {/* <Space h='sm' />
-        <Select
-          icon={<IconSearch size={16} />}
-          data={cities}
-          onChange={setCityPick}
-          placeholder='Search By City ...'
-          style={{ width: "60%", margin: "auto" }}
-          searchable
-          clearable
-        /> */}
+
         <Space h='sm' />
         <Select
           icon={<IconSearch size={16} />}

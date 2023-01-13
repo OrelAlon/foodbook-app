@@ -61,7 +61,7 @@ function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
   const onSelectRestaurant = useCallback(
     (value) => {
       const label =
-        restaurantsList && restaurantsList?.find((o) => o.value === value);
+        restaurantsList && restaurantsList.find((o) => o.value === value);
       setSelectRestaurant(label);
     },
     [restaurantsList]
@@ -87,9 +87,7 @@ function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
       const data = new FormData();
       data.set("img", file);
       data.set("userId", user._id);
-      data.set("username", user.username);
       data.set("restaurantId", selectRestaurant.value);
-      data.set("restaurantname", selectRestaurant.label);
       data.set("foodCategory", JSON.stringify(selectFoodCatgory));
       data.set("dishType", JSON.stringify(selectDishType));
       await axios.post("/api/posts", data);

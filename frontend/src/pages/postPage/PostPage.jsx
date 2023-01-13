@@ -45,14 +45,14 @@ const PostPage = () => {
         <div className='postBottomPage'>
           <div className='postBottomLeft cursor transform '>
             🤤
-            <span className='postLikeCounter'>
+            {/* <span className='postLikeCounter'>
               {post?.likes?.length} people want it to...
-            </span>
+            </span> */}
           </div>
           <div className='postBottomRight'>
             <AllTags
-              foodCategory={post?.foodCategory}
-              dishType={post?.dishType}
+              foodCategory={post.foodCategory}
+              dishType={post.dishType}
             />{" "}
           </div>
         </div>

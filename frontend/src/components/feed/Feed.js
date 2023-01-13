@@ -91,7 +91,7 @@ const Feed = ({ showGrid }) => {
                 <GridFeed images={posts} />
               </div>
             ) : resultsFound === false ? (
-              <div className='center-div'>{msgResults}</div>
+              <div className='center-div msg-results'>{msgResults}</div>
             ) : null}
           </>
         )}

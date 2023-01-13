@@ -8,3 +8,6 @@
 .center-text::placeholder {
   text-align: center;
 }
+.msg-results {
+  padding: 5px;
+}

@@ -18,12 +18,7 @@
   margin-bottom: 15px;
   justify-content: center;
 }
-.center-div {
-  margin-top: 25px;
-  font-weight: bold;
-  display: flex;
-  justify-content: space-evenly;
-}
+
 .share {
   cursor: pointer;
 }

@@ -1,13 +1,9 @@
-.center-div {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
 
 .center-text::placeholder {
   text-align: center;
 }
+
 .msg-results {
-  padding: 5px;
+  padding: 65px;
 }
+

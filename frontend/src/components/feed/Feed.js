@@ -59,7 +59,7 @@ const Feed = ({ showGrid }) => {
     if (updatedShearch.length > 0) {
       setPosts(updatedShearch);
     } else {
-      setMsgResults("No matching foods found, go out and get us a picture 😜");
+      setMsgResults("No pictures found, go eat there and upload a picture 😜");
     }
 
     setResultsFound(updatedShearch.length > 0);

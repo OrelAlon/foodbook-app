@@ -73,9 +73,8 @@ const getAllPosts = async (req, res) => {
     // const pageSize = req.query.size || 10;
     // const test = await Post.find().populate("user").populate("restaurant");
     // console.log(test);
-    const data = await Post.find().sort({ createdAt: -1 }).populate("user");
+    const data = await Post.find().sort({ createdAt: -1 });
 
-    console.log(data);
     res.status(201).json(data);
   } catch (error) {
     console.log(error.message);

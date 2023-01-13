@@ -8,6 +8,7 @@ import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import AllTags from "../allTags/AllTags";
 import LikePost from "../likePost/LikePost";
+import DeletePost from "../deletePost/DeletePost";
 import axios from "axios";
 
 import "./post.css";
@@ -25,7 +26,6 @@ const Post = ({ post }) => {
   dayjs.extend(relativeTime);
 
   const postTime = dayjs(updatedAt).fromNow();
-
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -42,17 +42,6 @@ const Post = ({ post }) => {
 
     fetchData();
   }, [userId, restaurantId]);
-
-  const deleteHandler = async () => {
-    if (window.confirm(`Are you sure you want to delete this post??`)) {
-      try {
-        await axios.delete(`/api/posts/${_id}`);
-        window.location.reload();
-      } catch (error) {
-        console.log(error);
-      }
-    }
-  };
 
   return (
     <div className='post'>
@@ -82,12 +71,10 @@ const Post = ({ post }) => {
           <div style={{ display: "flex", alignitems: "center" }}>
             {" "}
             <p className='posttime'>{postTime}</p>
-            {usernameParams === currentUser.username ||
-              (currentUser.isAdmin && (
-                <div className='postTopRight delete' onClick={deleteHandler}>
-                  X{" "}
-                </div>
-              ))}
+            {currentUser.isAdmin && usernameParams !== currentUser.username && (
+              <DeletePost id={_id} />
+            )}
+            {usernameParams === currentUser.username && <DeletePost id={_id} />}
           </div>
         </div>
 

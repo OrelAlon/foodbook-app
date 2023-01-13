@@ -123,11 +123,8 @@ const Post = ({ post }) => {
           </Link>
         </div>
         <div className='postBottom '>
-          {loading ? (
-            <Loader />
-          ) : (
-            <LikePost likeHandler={likeHandler} like={like} />
-          )}
+          <LikePost likeHandler={likeHandler} like={like} loading={loading} />
+
           <div className='postBottomRight'>
             <AllTags foodCategory={foodCategory} dishType={dishType} />{" "}
           </div>

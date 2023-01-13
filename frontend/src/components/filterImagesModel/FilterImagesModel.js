@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 import { Space, Select } from "@mantine/core";
 import { IconSearch } from "@tabler/icons";

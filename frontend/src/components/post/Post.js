@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
@@ -23,8 +23,15 @@ const Post = ({ post }) => {
   const { user: currentUser } = useContext(AuthContext);
   const { username, profilePicture } = user;
   const { restaurantname } = restaurant;
-  const { userId, restaurantId, _id, img, updatedAt, foodCategory, dishType } =
-    post;
+  const {
+    userId,
+    restaurantId,
+    _id,
+    img,
+    updatedAt,
+    foodCategory,
+    dishType,
+  } = post;
   const usernameParams = useParams().username;
   dayjs.extend(relativeTime);
 

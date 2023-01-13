@@ -1,3 +1,5 @@
+import React from "react";
+
 import "./imageUpload.css";
 
 const ImageUpload = ({ file, setFile }) => {

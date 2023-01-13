@@ -58,22 +58,6 @@ const EditProfileUserPage = () => {
       } catch (error) {
         setErrorMsg(error.response.data.error);
       }
-      <div className='upload-image-div'>
-        {/* <span className='shareText'>Upload</span> */}
-        <BiImage fontSize={36} color={file ? "green" : "red"} />
-        <input
-          style={{ display: "none" }}
-          type='file'
-          id='file'
-          accept='.png,.jpeg,.jpg,.jfif'
-          onChange={(e) => setFile(e.target.files[0])}
-        />
-        {file && (
-          <div className='img-upload'>
-            <ImageUpload file={file} setFile={setFile} />
-          </div>
-        )}
-      </div>;
     } catch (error) {
       console.log(error);
     }

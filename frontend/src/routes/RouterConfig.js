@@ -10,6 +10,7 @@ import RestaurantProfile from "../pages/restaurantProfile/RestaurantProfile";
 import EditRestaurantPage from "../pages/editRestaurantPage/EditRestaurantPage";
 import EditProfileUserPage from "../pages/editProfileUserPage/EditProfileUserPage";
 import { ProtectedRoute } from "./ProtectedRoute";
+import React from "react";
 
 const RouterConfig = () => {
   return (

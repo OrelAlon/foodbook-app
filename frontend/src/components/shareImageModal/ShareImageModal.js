@@ -39,7 +39,7 @@ function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
 
   const sortRestaurants = (res) => {
     let arr = [];
-    res?.map((el) => {
+    res.map((el) => {
       arr.push({
         value: el._id,
         label: el.restaurantname,

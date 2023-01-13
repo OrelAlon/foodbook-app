@@ -1,3 +1,5 @@
+import React from "react";
+
 import { Modal, useMantineTheme, Image } from "@mantine/core";
 
 const ImageModal = ({ openedImage, setOpenedImage, img }) => {

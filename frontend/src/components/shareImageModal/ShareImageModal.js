@@ -131,7 +131,7 @@ function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
         <form className='infoForm' onSubmit={submitHandler}>
           <div className='upload-image-div'>
             <label htmlFor='file' className='shareOption'>
-              <span className='shareText'>Upload Image</span>
+              <span className='shareText'>Add Image</span>
               <BiImage fontSize={36} color={file ? "green" : "red"} />
               <input
                 style={{ display: "none" }}
@@ -165,7 +165,7 @@ function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
             <Select
               data={dishTypeOptions}
               onChange={setSelectDishType}
-              label='Dish Type 🏷️:'
+              label='Dish Type:'
               style={styleSelect}
               clearable
             />
@@ -173,7 +173,7 @@ function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
             <MultiSelect
               data={foodCategoryOptions}
               onChange={setSelectFoodCatgory}
-              label='Food Category 🏷️:'
+              label='Food Category:'
               style={styleSelect}
               clearable
             />{" "}

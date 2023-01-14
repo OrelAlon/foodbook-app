@@ -27,4 +27,8 @@
   height: 36px;
   cursor: pointer;
   border: solid rgb(124, 124, 124) 1px;
+  align-items: center;
+}
+.add-image-btn img {
+  margin: 0 auto; /* centers the image horizontally within the button */
 }

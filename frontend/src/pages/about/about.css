@@ -1,0 +1,40 @@
+.about-div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 55px;
+}
+
+.about-logo {
+  width: 15%;
+  margin-right: 20px;
+}
+
+.about-text {
+  text-align: center;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.social-links a {
+  margin: 0 10px;
+}
+
+.linkedin {
+  color: blue;
+}
+
+.github {
+  color: black;
+}
+@media only screen and (max-width: 800px) {
+  .about-logo {
+    width: 25%;
+    margin-right: 20px;
+  }
+}

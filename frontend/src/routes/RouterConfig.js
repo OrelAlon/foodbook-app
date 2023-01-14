@@ -1,15 +1,16 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import Home from "../pages/home/Home";
-import Login from "../pages/login/Login";
-import Register from "../pages/register/Register";
-import UserProfile from "../pages/userProfile/UserProfile";
-import PostPage from "../pages/postPage/PostPage";
-import AllRestaurants from "../pages/allRestaurants/AllRestaurants";
-import RestaurantProfile from "../pages/restaurantProfile/RestaurantProfile";
-import EditRestaurantPage from "../pages/editRestaurantPage/EditRestaurantPage";
-import EditProfileUserPage from "../pages/editProfileUserPage/EditProfileUserPage";
-import { ProtectedRoute } from "./ProtectedRoute";
+import Home									from "../pages/home/Home";
+import Login								from "../pages/login/Login";
+import Register							from "../pages/register/Register";
+import UserProfile					from "../pages/userProfile/UserProfile";
+import PostPage							from "../pages/postPage/PostPage";
+import AllRestaurants				from "../pages/allRestaurants/AllRestaurants";
+import About								from "../pages/about/About";
+import RestaurantProfile		from "../pages/restaurantProfile/RestaurantProfile";
+import EditRestaurantPage 	from "../pages/editRestaurantPage/EditRestaurantPage";
+import EditProfileUserPage	from "../pages/editProfileUserPage/EditProfileUserPage";
+import { ProtectedRoute }		from "./ProtectedRoute";
 import React from "react";
 
 const RouterConfig = () => {
@@ -31,6 +32,7 @@ const RouterConfig = () => {
           <Route path='/post/:id' element={<PostPage />} />
 
           <Route path='/restaurants' element={<AllRestaurants />} />
+          <Route path='/about'			 element={<About />} />
           <Route
             path='/restaurant/:restaurantname'
             element={<RestaurantProfile />}

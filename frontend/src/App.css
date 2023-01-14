@@ -84,3 +84,14 @@ body {
     transform: rotate(360deg);
   }
 }
+
+.linkedin,
+.github {
+  text-decoration: none;
+}
+.linkedin {
+  color: blue;
+}
+.github {
+  color: black;
+}

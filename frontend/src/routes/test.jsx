@@ -1,32 +1,3 @@
-// //PostsFeed
-// import React from "react";
-
-// import Post from "../post/Post";
-
-// const PostsFeed = React.forwardRef((props, ref) => {
-//   const { posts } = props;
-//   return (
-//     <div>
-//       {posts.map((p, index) => {
-//         if (posts.length === index + 1) {
-//           return (
-//             <div ref={ref} key={p._id}>
-//               <Post post={p} />
-//             </div>
-//           );
-//         }
-//         return <Post key={p._id} post={p} />;
-//       })}
-//     </div>
-//   );
-// });
-
-// export default PostsFeed;
-
-// //
-// //
-// //Feed
-
 // import { useState, useEffect, useRef, useCallback } from "react";
 
 // import axios from "axios";
@@ -40,7 +11,7 @@
 // import "./feed.css";
 
 // const Feed = ({ showGrid }) => {
-//   const [postss, setPostss] = useState([]);
+//   const [updatePosts, setUpdatePosts] = useState([]);
 //   const [data, setData] = useState([]);
 //   const [resultsFound, setResultsFound] = useState(undefined);
 //   const [msgResults, setMsgResults] = useState("");
@@ -50,16 +21,12 @@
 //   const [dishTypePick, setDishTypePick] = useState(null);
 //   const [foodCatgoryPick, setFoodCatgoryPick] = useState([]);
 
-//   //
-//   // const [query, setQuery] = useState("");
 //   const [pageNumber, setPageNumber] = useState(1);
 
 //   const { posts, hasMore, loadingFetch, error } = useFetchPosts(4, pageNumber);
-//   console.log(posts);
 //   //
 //   useEffect(() => {
-//     setData(posts);
-//     setPostss(posts);
+//     setUpdatePosts(posts);
 //   }, [posts]);
 
 //   const observer = useRef();
@@ -79,28 +46,120 @@
 //   );
 
 //   function handleSearch(e) {
-//     // setQuery(e.target.value);
 //     setPageNumber(1);
 //   }
 
-//   // useEffect(() => {
-//   //   setLoading(true);
+//   const handleUpdateSearch = (updatedSearch) => {
+//     console.log("fron handleUpdateSearch");
+//     console.log(updatedSearch);
+//   };
 
-//   //   const fetchPosts = async () => {
-//   //     const res = await axios.get(
-//   //       `/api/posts/feed?page=${page}&size=${pageSize}`
-//   //     );
-//   //     console.log("res.data");
-//   //     console.log(res.data);
-//   //     setData(res.data);
-//   //     setPosts(res.data);
-//   //     setLoading(false);
-//   //   };
-//   //   fetchPosts();
-//   // }, [restaurantUserPick]);
+//   return (
+//     <div className='feed'>
+//       <div className='feedWrapper'>
+//         <FilterImagesModel
+//           setFoodCatgoryPick={setFoodCatgoryPick}
+//           setRestaurantUserPick={setRestaurantUserPick}
+//           setDishTypePick={setDishTypePick}
+//           // setData={setDataCallback}
+//           handleUpdateSearch={handleUpdateSearch}
+//           posts={updatePosts}
+//         />
 
-//   const applyFilters = () => {
-//     let updatedShearch = data;
+//         <>
+//           {showGrid ? (
+//             <div>
+//               <PostsFeed posts={updatePosts} ref={lastPostElementRef} />
+//             </div>
+//           ) : (
+//             <div>
+//               <GridFeed posts={updatePosts} ref={lastPostElementRef} />
+//             </div>
+//           )}
+//         </>
+
+//         <div>
+//           {loadingFetch && (
+//             <div className='center-div'>
+//               <Loader />
+//             </div>
+//           )}
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default Feed;
+
+// //
+// //
+// //
+// import React from "react";
+
+// import Post from "../post/Post";
+
+// const PostsFeed = React.forwardRef((props, ref) => {
+//   const { posts } = props;
+//   return (
+//     <div>
+//       {posts.map((p, index) => {
+//         if (posts.length === index + 1) {
+//           return (
+//             <div key={p._id}>
+//               <Post post={p} />
+//             </div>
+//           );
+//         }
+//         return <Post key={p._id} post={p} />;
+//       })}
+//     </div>
+//   );
+// });
+
+// export default PostsFeed;
+// //
+// //
+// //
+// import React, { useState, useEffect } from "react";
+
+// import { Space, Select } from "@mantine/core";
+// import { IconSearch } from "@tabler/icons";
+
+// import { dishTypeOptions } from "../../assets/foodData";
+
+// import axios from "axios";
+
+// import "./filterImagesModel.css";
+
+// const FilterImagesModel = ({ posts, handleUpdateSearch }) => {
+//   const [restaurantsList, setRestaurantsList] = useState([]);
+//   const [data, setData] = useState([]);
+//   const [resultsFound, setResultsFound] = useState(undefined);
+//   const [msgResults, setMsgResults] = useState("");
+//   const [loading, setLoading] = useState(true);
+//   const [restaurantUserPick, setRestaurantUserPick] = useState(null);
+//   const [dishTypePick, setDishTypePick] = useState(null);
+//   const [foodCatgoryPick, setFoodCatgoryPick] = useState([]);
+//   const [filteredData, setFilteredData] = useState(posts);
+
+//   const styleSelect = {
+//     root: { width: "60%", margin: "auto" },
+//     input: { "&::placeholder": { textAlign: "center" } },
+//   };
+//   useEffect(() => {
+//     const filters = {
+//       restaurantUserPick,
+//       dishTypePick,
+//       foodCatgoryPick,
+//     };
+//     setFilteredData(filterData(posts, filters));
+//   }, [restaurantUserPick, dishTypePick, foodCatgoryPick, posts]);
+
+//   const filterData = (data, filters) => {
+//     let updatedShearch = posts;
+//     console.log("pppppppposts");
+//     console.log(posts);
 //     if (restaurantUserPick) {
 //       updatedShearch = updatedShearch.filter((item) =>
 //         item.restaurantId.includes(restaurantUserPick)
@@ -113,15 +172,11 @@
 //         el.dishType.includes(dishTypePick)
 //       );
 //     }
+//     return handleUpdateSearch(updatedShearch);
 
-//     // foodCatgoryPick Filter
-//     if (foodCatgoryPick.length > 0) {
-//       updatedShearch = updatedShearch.filter((el) =>
-//         foodCatgoryPick.every((v) => el.foodCategory.includes(v))
-//       );
-//     }
 //     if (updatedShearch.length > 0) {
-//       setPostss(updatedShearch);
+//       console.log("here");
+//       handleUpdateSearch(updatedShearch);
 //     } else {
 //       setMsgResults("No matching foods found, go out and get us a picture 😜");
 //     }
@@ -130,46 +185,119 @@
 //   };
 
 //   useEffect(() => {
-//     applyFilters();
-//   }, [restaurantUserPick, dishTypePick, foodCatgoryPick, data]);
+//     const fetchRestaurants = async () => {
+//       const res = await axios.get(`/api/restaurants/restaurants`);
+//       sortRestaurants(res.data);
+//     };
+
+//     const sortRestaurants = (res) => {
+//       let arr = [];
+//       res.map((el) => {
+//         arr.push({
+//           value: el._id,
+//           label: el.restaurantname,
+//           group: el.city,
+//         });
+//       });
+//       return setRestaurantsList(
+//         arr.sort((a, b) =>
+//           a.label.toLowerCase() > b.label.toLowerCase() ? 1 : -1
+//         )
+//       );
+//     };
+
+//     fetchRestaurants();
+//   }, []);
 
 //   return (
-//     <div className='feed'>
-//       <div className='feedWrapper'>
-//         <FilterImagesModel
-//           setFoodCatgoryPick={setFoodCatgoryPick}
-//           setRestaurantUserPick={setRestaurantUserPick}
-//           setDishTypePick={setDishTypePick}
+//     <>
+//       <form>
+//         <Select
+//           icon={<IconSearch size={16} />}
+//           data={restaurantsList}
+//           onChange={setRestaurantUserPick}
+//           placeholder='Search By Resraurant ...'
+//           searchable
+//           clearable
+//           styles={styleSelect}
 //         />
-//         <PostsFeed posts={posts} ref={lastPostElementRef} />
 
-//         {/* {loadingFetch ? (
-//           <div className='center-div'>
-//             <Loader />
-//           </div>
-//         ) : (
-//           <>
-//             {resultsFound !== undefined && resultsFound && showGrid ? (
-//             ) : resultsFound && !showGrid ? (
-//               <div>
-//                 <GridFeed images={posts} />
-//               </div>
-//             ) : resultsFound === false ? (
-//               <div className='center-div msg-results'>{msgResults}</div>
-//             ) : null}
-//           </>
-//         )} */}
-//       </div>
-//     </div>
+//         <Space h='sm' />
+//         <Select
+//           icon={<IconSearch size={16} />}
+//           data={dishTypeOptions}
+//           onChange={setDishTypePick}
+//           placeholder='Whice Course ?'
+//           clearable
+//           styles={styleSelect}
+//         />
+//         <Space h='sm' />
+//         {/* <MultiSelect
+//           icon={<IconSearch size={16} />}
+//           data={foodCategoryOptions}
+//           onChange={setFoodCatgoryPick}
+//           placeholder='Whice Catgory ?'
+//           styles={styleSelect}
+//           clearable
+//         />{" "}
+//         <Space h='sm' /> */}
+//       </form>
+//     </>
 //   );
 // };
-
-// export default Feed;
+// export default FilterImagesModel;
 
 // //
 // //
-// //postcontroll
+// //
+// import React, { useState, useEffect } from "react";
 
+// import { Link } from "react-router-dom";
+
+// import ImageModal from "../imageModal/ImageModal";
+
+// import "./gridFeed.css";
+
+// const GridFeed = React.forwardRef((props, ref) => {
+//   const { posts } = props;
+//   const [openedImage, setOpenedImage] = useState(false);
+//   // useEffect(() => {}, [posts]);
+
+//   return (
+//     <div className='grid-container'>
+//       <section className='image-grid-list'>
+//         {posts?.map((image, index) => (
+//           <Link key={index} to={`/post/${image._id}`} ref={ref}>
+//             <div className='image-grid-item'>
+//               <div className='image-grid'>
+//                 <figure className='image-grid-img'>
+//                   <img src={image.img} alt={image.img} />
+//                 </figure>
+//                 <span className='image-grid-overlay'>
+//                   <p>
+//                     <span className='image-grid-likes'>
+//                       🤤 {image.likes.length}
+//                     </span>
+//                     {/* <span className='image-grid-comments'>10</span> */}
+//                   </p>
+//                 </span>
+//               </div>
+//             </div>
+//           </Link>
+//         ))}
+//       </section>
+//       <ImageModal
+//         img={openedImage}
+//         openedImage={openedImage}
+//         setOpenedImage={setOpenedImage}
+//       ></ImageModal>
+//     </div>
+//   );
+// });
+// export default GridFeed;
+// //
+// //
+// //
 // const Post = require("../models/Post");
 // const User = require("../models/User");
 // const Restaurant = require("../models/Restaurant");
@@ -337,71 +465,3 @@
 //   getRestaurantPosts,
 //   likePost,
 // };
-
-// //PostsFeed
-// import React from "react";
-
-// import Post from "../post/Post";
-
-// const PostsFeed = React.forwardRef((props, ref) => {
-//   const { posts } = props;
-//   return (
-//     <div>
-//       {posts.map((p, index) => {
-//         if (posts.length === index + 1) {
-//           return (
-//             <div ref={ref} key={p._id}>
-//               <Post post={p} />
-//             </div>
-//           );
-//         }
-//         return <Post key={p._id} post={p} />;
-//       })}
-//     </div>
-//   );
-// });
-
-// export default PostsFeed;
-
-// //
-// //
-// //
-// import { useEffect, useState } from "react";
-// import axios from "axios";
-
-// export default function useFetchPosts(query = 4, pageNumber) {
-//   const [loadingFetch, setLoadingFetch] = useState(true);
-//   const [error, setError] = useState(false);
-//   const [posts, setPosts] = useState([]);
-//   const [hasMore, setHasMore] = useState(false);
-
-//   useEffect(() => {
-//     setPosts([]);
-//   }, [query]);
-
-//   useEffect(() => {
-//     setLoadingFetch(true);
-//     setError(false);
-//     let cancel;
-//     axios({
-//       method: "GET",
-//       url: `/api/posts/feed`,
-//       params: { q: query, page: pageNumber },
-//       cancelToken: new axios.CancelToken((c) => (cancel = c)),
-//     })
-//       .then((res) => {
-//         setPosts((prevPosts) => {
-//           return [...new Set([...prevPosts, ...res.data])];
-//         });
-//         setHasMore(res.data.length > 0);
-//         setLoadingFetch(false);
-//       })
-//       .catch((e) => {
-//         if (axios.isCancel(e)) return;
-//         setError(true);
-//       });
-//     return () => cancel();
-//   }, [query, pageNumber]);
-
-//   return { loadingFetch, error, posts, hasMore };
-// }

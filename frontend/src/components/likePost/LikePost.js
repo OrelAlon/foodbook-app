@@ -35,9 +35,9 @@ const LikePost = ({ id, likes }) => {
     <>
       <div className='postBottomLeft cursor transform' onClick={likeHandler}>
         {loading ? (
-          <span className='loading-emoji'>🤤</span>
+          <span className='postLikeCounter loading-emoji'>🤤</span>
         ) : (
-          <span className='postLikeCounter'>🤤 {like} want it...</span>
+          <span className={"postLikeCounter " + (isLiked ? "" : "grayscaleText ")}>🤤 {like} want it...</span>
         )}
       </div>
     </>

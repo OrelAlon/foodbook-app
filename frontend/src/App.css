@@ -95,3 +95,6 @@ body {
 .github {
   color: black;
 }
+.grayscaleText {
+  filter: grayscale(100%);
+}

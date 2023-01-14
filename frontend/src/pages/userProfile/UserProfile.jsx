@@ -98,7 +98,7 @@ const UserProfile = () => {
                 </li>
                 <li>
                   <a>
-                    <strong>TBD</strong>
+                    <strong>4</strong>
                     <span>Following</span>
                   </a>
                 </li>

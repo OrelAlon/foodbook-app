@@ -11,6 +11,16 @@ const register = async (req, res) => {
   try {
     const file = req.files.profilePicture;
 
+    // Check if the user already exists
+    const existingUser = await User.findOne({
+      $or: [{ email: req.body.email }, { username: req.body.username }],
+    });
+    if (existingUser) {
+      return res
+        .status(400)
+        .json({ message: "User with this email or username already exists." });
+    }
+
     // upload to cloudinary
     const result = await cloudinary.v2.uploader.upload(file.tempFilePath, {
       folder: "avatars",

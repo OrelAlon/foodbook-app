@@ -43,7 +43,8 @@ const Register = () => {
         navigate("/login");
       } catch (error) {
         setLoading(false);
-        errorMsg(error.response.data);
+
+        setErrorMsg(error.response.data.message);
       }
     }
   };
@@ -88,7 +89,7 @@ const Register = () => {
                 <br />
                 <input
                   className='login-input'
-                  placeholder='Password again'
+                  placeholder='Confirm Password'
                   type='password'
                   name='password'
                   ref={confirmPasswordRef}
@@ -118,6 +119,10 @@ const Register = () => {
                 )}
               </div>
               <div className='transform'>
+                <h1 className='center-div errMsg'>{errorMsg}</h1>
+                <div className='center-div loading'>
+                  {loading && <Loader />}
+                </div>
                 <button className='login-btn' type='submit'>
                   Sign Up
                 </button>
@@ -125,12 +130,7 @@ const Register = () => {
               <div id='divide_form'>
                 <span className='divide_line' id='left_divide_line'></span>
               </div>
-              <div className='lower_div '>
-                <h1 className='errMsg center-div'>{errorMsg}</h1>
-                <div className='center-div loading'>
-                  {loading && <Loader />}
-                </div>
-              </div>
+              <div className='lower_div '></div>
             </form>
           </div>
           <div>

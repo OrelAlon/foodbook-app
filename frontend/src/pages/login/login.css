@@ -135,3 +135,7 @@
 .loading {
   margin: 6px;
 }
+.errMsg {
+  color: red;
+  font-size: smaller;
+}

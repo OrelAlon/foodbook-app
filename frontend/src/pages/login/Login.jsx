@@ -1,7 +1,7 @@
 import React, { useState, useRef, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
-import { Loader, Select } from "@mantine/core";
+import { Loader } from "@mantine/core";
 import GoogleLogin from "react-google-login";
 // import { GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google";
 

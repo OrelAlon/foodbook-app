@@ -69,7 +69,7 @@ function ChangePasswordModel({ changePasswordModel, setChangePasswordOpened }) {
       <form className='infoForm' onSubmit={submitHandler}>
         <Stack sx={{ maxWidth: 480 }} mx='auto'>
           <PasswordInput
-            description='Password must be min 6 character'
+            description='Password must be at least 6 character'
             placeholder='Password'
             label='Password'
             size='md'

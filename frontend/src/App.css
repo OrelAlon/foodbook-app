@@ -98,3 +98,8 @@ body {
 .grayscaleText {
   filter: grayscale(100%);
 }
+.infoForm h1 {
+  align-content: center;
+  align-items: center;
+  margin: auto;
+}

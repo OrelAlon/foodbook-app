@@ -4,6 +4,8 @@ import axios from "axios";
 
 import NavBar from "../../components/navBar/NavBar";
 import UserCard from "../../components/userCard/UserCard";
+import { IconSquarePlus, IconSearch } from "@tabler/icons";
+import { Input } from "@mantine/core";
 
 const AllUsers = () => {
   const [users, setUsers] = useState([]);
@@ -26,12 +28,13 @@ const AllUsers = () => {
           <h1 style={{ display: "inline-block" }}>Users</h1>
         </div>
 
-        <input
-          className='restaurantSearch'
-          placeholder='Search User'
-          type={"search"}
-          onChange={(e) => setSearchUser(e.target.value)}
-        ></input>
+        <Input
+          icon={<IconSearch size={16} />}
+          onChange={setSearchUser}
+          placeholder='Search By user...'
+          clearable
+          style={{ width: "80%", margin: "auto" }}
+        />
         <div className='restaurantsCards'>
           {users
             .filter((user) => {

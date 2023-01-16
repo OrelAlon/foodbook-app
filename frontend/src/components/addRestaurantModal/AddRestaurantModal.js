@@ -85,6 +85,7 @@ function AddRestaurantModal({ addRestaurantOpend, setAddRestaurantOpend }) {
         <div className='upload-image-div'>
           <label htmlFor='file' className='shareOption'>
             {/* <span className='shareText'>Upload</span> */}
+            Add Image
             <BiImage fontSize={36} color={file ? "green" : "red"} />
             <input
               style={{ display: "none" }}

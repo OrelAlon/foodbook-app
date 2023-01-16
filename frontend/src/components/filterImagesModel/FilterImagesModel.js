@@ -18,7 +18,7 @@ const FilterImagesModel = ({
   const [restaurantsList, setRestaurantsList] = useState([]);
 
   const styleSelect = {
-    root: { width: "60%", margin: "auto" },
+    root: { width: "80%", margin: "auto" },
     input: { "&::placeholder": { textAlign: "center" } },
   };
   useEffect(() => {

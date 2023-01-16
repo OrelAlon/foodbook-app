@@ -34,7 +34,7 @@ const AllRestaurants = () => {
       <div className='restaurantSContainer'>
         <div className='center-div'>
           <h1 style={{ display: "inline-block" }}>
-            All - Restaurants{" "}
+            Restaurants{" "}
             <span className='transform'>
               {" "}
               <IconSquarePlus

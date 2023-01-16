@@ -6,6 +6,7 @@ import About from "../pages/about/About";
 import Register from "../pages/register/Register";
 import UserProfile from "../pages/userProfile/UserProfile";
 import PostPage from "../pages/postPage/PostPage";
+import AllUsers from "../pages/allUsers/AllUsers";
 import AllRestaurants from "../pages/allRestaurants/AllRestaurants";
 import RestaurantProfile from "../pages/restaurantProfile/RestaurantProfile";
 import EditRestaurantPage from "../pages/editRestaurantPage/EditRestaurantPage";
@@ -31,6 +32,7 @@ const RouterConfig = () => {
           <Route path='/register' element={<Register />} />
           <Route path='/profile/:username' element={<UserProfile />} />
           <Route path='/post/:id' element={<PostPage />} />
+          <Route path='/users' element={<AllUsers />} />
           <Route path='/restaurants' element={<AllRestaurants />} />
           <Route
             path='/restaurant/:restaurantname'

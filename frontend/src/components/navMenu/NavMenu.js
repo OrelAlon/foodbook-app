@@ -34,6 +34,9 @@ const NavMenu = () => {
           <Link to='/' style={style}>
             <Menu.Item>📰 Feed</Menu.Item>
           </Link>
+          <Link to={`/users`} style={style}>
+            <Menu.Item>👩‍👧‍👦 Users</Menu.Item>{" "}
+          </Link>
           <Link to={`/restaurants`} style={style}>
             <Menu.Item>🍽 Restaurants</Menu.Item>{" "}
           </Link>

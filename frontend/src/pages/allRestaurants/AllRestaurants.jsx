@@ -5,6 +5,7 @@ import axios from "axios";
 import NavBar from "../../components/navBar/NavBar";
 import RestaurantCard from "../../components/restaurantCard/RestaurantCard";
 import AddRestaurantModal from "../../components/addRestaurantModal/AddRestaurantModal";
+import { IconSquarePlus } from "@tabler/icons";
 
 import "./allRestaurants.css";
 
@@ -24,12 +25,6 @@ const AllRestaurants = () => {
   return (
     <>
       <NavBar />
-      <button
-        className='addRestaurantBtn'
-        onClick={() => setAddRestaurantOpend(true)}
-      >
-        Add Restaurant
-      </button>
 
       <AddRestaurantModal
         addRestaurantOpend={addRestaurantOpend}
@@ -37,7 +32,19 @@ const AllRestaurants = () => {
       />
 
       <div className='restaurantSContainer'>
-        <h1 style={{ color: "rad" }}>All - Restaurants</h1>
+        <div className='center-div'>
+          <h1 style={{ display: "inline-block" }}>
+            All - Restaurants{" "}
+            <span className='transform'>
+              {" "}
+              <IconSquarePlus
+                className='add-btn'
+                onClick={() => setAddRestaurantOpend(true)}
+              />
+            </span>
+          </h1>
+        </div>
+
         <input
           className='restaurantSearch'
           placeholder='Search restaurant'

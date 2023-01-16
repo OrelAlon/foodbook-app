@@ -29,3 +29,12 @@
 
   right: 0;
 }
+.head-div {
+  margin: auto;
+}
+.add-btn {
+  display: inline-block;
+}
+.add-btn:hover {
+  color: rgb(48, 85, 232);
+}

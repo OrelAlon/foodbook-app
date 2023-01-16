@@ -127,7 +127,7 @@ const deleteRestaurant = async (req, res) => {
   try {
     const restaurant = await Restaurant.findById(req.params.id);
     await restaurant.deleteOne();
-    res.status(200).json("the restaurant has been deleted");
+    res.status(200).json("Restaurant has been deleted");
   } catch (err) {
     res.status(500).json(err);
   }

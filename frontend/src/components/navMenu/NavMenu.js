@@ -22,15 +22,19 @@ const NavMenu = () => {
   };
 
   const handleDeleteAccount = async () => {
-    try {
-      const userDelete = await axios.delete(`/api/users/${user._id}`);
-      alert("Your account has been successfully deleted.");
-    } catch (error) {
-      console.error(error);
-      alert(
-        "An error occurred while deleting your account. Please try again later."
-      );
-      navigate("/login");
+    if (window.confirm(`Are you sure you want to delete your account?!?!`)) {
+      if (window.confirm(`REALY?!?!`)) {
+        try {
+          const userDelete = await axios.delete(`/api/users/${user._id}`);
+          alert("Your account has been successfully deleted.");
+          navigate("/login");
+        } catch (error) {
+          console.error(error);
+          alert(
+            "An error occurred while deleting your account. Please try again later."
+          );
+        }
+      }
     }
   };
 

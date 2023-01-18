@@ -1,4 +1,5 @@
 const User = require("../models/User");
+const Post = require("../models/Post");
 const bcrypt = require("bcrypt");
 const cloudinary = require("cloudinary");
 
@@ -71,10 +72,21 @@ const updateUser = async (req, res) => {
 };
 
 //
+// const deleteUser = async (req, res) => {
+//   try {
+//     await User.findByIdAndDelete(req.params.id);
+//     res.status(200).json("User has been deleted");
+//   } catch (err) {
+//     return res.status(500).json(err);
+//   }
+// };
 const deleteUser = async (req, res) => {
+  console.log("deleteUser");
+  console.log(req.params.id);
   try {
+    await Post.deleteMany({ userId: req.params.id });
     await User.findByIdAndDelete(req.params.id);
-    res.status(200).json("User has been deleted");
+    res.status(200).json("User and their posts have been deleted");
   } catch (err) {
     return res.status(500).json(err);
   }

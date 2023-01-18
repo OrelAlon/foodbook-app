@@ -81,12 +81,8 @@ const Feed = ({ showGrid }) => {
           </div>
         ) : (
           <>
-            {resultsFound !== undefined && resultsFound && showGrid ? (
-              <PostsFeed posts={posts} />
-            ) : resultsFound && !showGrid ? (
-              <div>
-                <GridFeed images={posts} />
-              </div>
+            {resultsFound !== undefined && resultsFound ? (
+              <PostsFeed posts={posts} showGrid={showGrid} />
             ) : resultsFound === false ? (
               <div className='center-div msg-results'>{msgResults}</div>
             ) : null}

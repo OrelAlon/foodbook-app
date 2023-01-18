@@ -103,3 +103,6 @@ body {
   align-items: center;
   margin: auto;
 }
+.display-none {
+  display: none;
+}

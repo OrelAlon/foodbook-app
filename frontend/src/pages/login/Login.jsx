@@ -34,7 +34,7 @@ const Login = () => {
       navigate("/");
     } catch (error) {
       setLoading(false);
-      setErrorMsg(error.response.data.message);
+      setErrorMsg(error.response.data);
     }
   };
   const handleGoogleLogin = async (response) => {
@@ -47,7 +47,7 @@ const Login = () => {
       navigate("/");
     } catch (error) {
       setLoading(false);
-      setErrorMsg(error.response.data.message);
+      setErrorMsg(error.response.data);
     }
   };
 

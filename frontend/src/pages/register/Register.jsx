@@ -45,6 +45,7 @@ const Register = () => {
         setLoading(false);
 
         setErrorMsg(error.response.data.message);
+        console.log(error.response.data.message);
       }
     }
   };

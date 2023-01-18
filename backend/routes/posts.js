@@ -9,6 +9,7 @@ const {
   getUsernamePost,
   getRestaurantPosts,
   likePost,
+  disLikePost,
 } = require("../controllers/postController");
 
 router.get("/", getPost);
@@ -28,5 +29,7 @@ router.get("/profile/:username", getUsernamePost);
 router.get("/restaurants/:restaurantname", getRestaurantPosts);
 
 router.put("/:id/like", likePost);
+
+router.put("/:id/dislike", disLikePost);
 
 module.exports = router;

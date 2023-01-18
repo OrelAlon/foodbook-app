@@ -9,6 +9,10 @@ const getPost = async (req, res) => {
 
   try {
     const post = await Post.findById(postId);
+    const user = await User.findById(post.userId);
+    post.username = user.username;
+
+    console.log(post);
     res.status(201).json(post);
   } catch (error) {
     console.log(error.message);
@@ -24,6 +28,7 @@ const createPost = async (req, res) => {
     width: 500,
     crop: "scale",
     effect: "sharpen",
+    // quality: 30,
   });
   const newPost = new Post({
     userId: req.body.userId,

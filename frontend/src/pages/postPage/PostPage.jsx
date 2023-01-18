@@ -24,6 +24,7 @@ const PostPage = () => {
 
       const res = await axios.get(`/api/posts/?id=${postId}`);
       setPost(res.data);
+      console.log(res.data);
       setIsLoading(false);
     };
     fetchPost();

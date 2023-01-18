@@ -8,6 +8,7 @@ import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import AllTags from "../allTags/AllTags";
 import LikePost from "../likePost/LikePost";
+import DisLikePost from "../disLikePost/DisLikePost";
 import DeletePost from "../deletePost/DeletePost";
 import axios from "axios";
 
@@ -86,6 +87,7 @@ const Post = ({ post }) => {
         </div>
         <div className='postBottom '>
           <LikePost id={_id} likes={post.likes} />
+          <DisLikePost id={_id} disLikes={post.disLikes} />
 
           <div className='postBottomRight'>
             <AllTags foodCategory={foodCategory} dishType={dishType} />{" "}

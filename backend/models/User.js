@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const Post = require("./Post");
 
 const UserSchema = new mongoose.Schema(
   {
@@ -56,5 +57,9 @@ const UserSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
-
+UserSchema.pre("remove", async function (next) {
+  // Delete all the posts associated with this user
+  await Post.deleteMany({ userId: this._id });
+  next();
+});
 module.exports = mongoose.model("User", UserSchema);

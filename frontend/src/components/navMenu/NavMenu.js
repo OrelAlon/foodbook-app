@@ -6,6 +6,7 @@ import { AuthContext } from "../../context/AuthContext";
 
 import ShareImageModal from "../shareImageModal/ShareImageModal";
 import "./navMenu.css";
+import axios from "axios";
 
 const NavMenu = () => {
   const [shareImageOpened, setShareImageOpened] = useState(false);
@@ -19,6 +20,20 @@ const NavMenu = () => {
 
     navigate("/login");
   };
+
+  const handleDeleteAccount = async () => {
+    try {
+      const userDelete = await axios.delete(`/api/users/${user._id}`);
+      alert("Your account has been successfully deleted.");
+    } catch (error) {
+      console.error(error);
+      alert(
+        "An error occurred while deleting your account. Please try again later."
+      );
+      navigate("/login");
+    }
+  };
+
   const style = { textDecoration: "none" };
   return (
     <>
@@ -40,7 +55,6 @@ const NavMenu = () => {
           <Link to={`/restaurants`} style={style}>
             <Menu.Item>🍽 Restaurants</Menu.Item>{" "}
           </Link>
-
           <Link to={`/profile/${user.username}`} style={style}>
             <Menu.Item>🖼️ My Profile</Menu.Item>{" "}
           </Link>
@@ -51,11 +65,13 @@ const NavMenu = () => {
             <Menu.Item>🍔 About</Menu.Item>{" "}
           </Link>
           <Menu.Divider />
-
           <Menu.Label>Danger zone</Menu.Label>
 
           <Menu.Item color='red' onClick={handleLogout}>
             🚪 Log Out
+          </Menu.Item>
+          <Menu.Item color='red' onClick={handleDeleteAccount}>
+            ❌ Delete My Account
           </Menu.Item>
         </Menu.Dropdown>
       </Menu>

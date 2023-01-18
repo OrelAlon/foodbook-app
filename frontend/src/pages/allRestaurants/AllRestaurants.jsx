@@ -6,7 +6,7 @@ import NavBar from "../../components/navBar/NavBar";
 import RestaurantCard from "../../components/restaurantCard/RestaurantCard";
 import AddRestaurantModal from "../../components/addRestaurantModal/AddRestaurantModal";
 import { IconSquarePlus, IconSearch } from "@tabler/icons";
-import { Input } from "@mantine/core";
+import { Select } from "@mantine/core";
 
 import "./allRestaurants.css";
 
@@ -51,13 +51,12 @@ const AllRestaurants = () => {
           </h1>
         </div>
 
-        <Input
-          icon={<IconSearch size={16} />}
-          onChange={setSearchRestaurant}
-          placeholder='Search By Resraurant...'
-          clearable
-          style={{ width: "80%", margin: "auto" }}
-        />
+        <input
+          className='restaurantSearch'
+          placeholder='Search restaurant'
+          type={"search"}
+          onChange={(e) => setSearchRestaurant(e.target.value)}
+        ></input>
         <div className='restaurantsCards'>
           {restaurants
             .filter((rest) => {

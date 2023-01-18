@@ -1,6 +1,5 @@
 .post {
   width: 85%;
-  border-radius: 10px;
   align-items: center;
   margin: auto;
   margin-top: 35px;
@@ -16,7 +15,6 @@
 .postWrapper {
   padding: 10px;
   background-color: rgb(243, 238, 238);
-  border-radius: 10px;
 }
 
 .postTop {

@@ -8,7 +8,7 @@ import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import AllTags from "../allTags/AllTags";
 import LikePost from "../likePost/LikePost";
-import DisLikePost from "../disLikePost/DisLikePost";
+import DisLikePost from "../unLikePost/DisLikePost";
 import DeletePost from "../deletePost/DeletePost";
 import axios from "axios";
 

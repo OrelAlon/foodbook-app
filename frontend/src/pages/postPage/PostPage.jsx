@@ -8,7 +8,7 @@ import { Image } from "@mantine/core";
 import NavBar from "../../components/navBar/NavBar";
 import AllTags from "../../components/allTags/AllTags";
 import LikePost from "../../components/likePost/LikePost";
-import DisLikePost from "../../components/disLikePost/DisLikePost";
+import DisLikePost from "../../components/unLikePost/DisLikePost";
 import "../../App.css";
 
 const PostPage = () => {

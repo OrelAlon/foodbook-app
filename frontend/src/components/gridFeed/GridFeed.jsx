@@ -24,7 +24,9 @@ const GridFeed = ({ images }) => {
                     <span className='image-grid-likes'>
                       🤤 {image.likes.length}
                     </span>
-                    {/* <span className='image-grid-comments'>10</span> */}
+                    <span className='image-grid-comments'>
+                      🤢 {image.disLikes.length}
+                    </span>
                   </p>
                 </span>
               </div>

@@ -8,7 +8,7 @@ import { Image } from "@mantine/core";
 import NavBar from "../../components/navBar/NavBar";
 import AllTags from "../../components/allTags/AllTags";
 import LikePost from "../../components/likePost/LikePost";
-
+import DisLikePost from "../../components/disLikePost/DisLikePost";
 import "../../App.css";
 
 const PostPage = () => {
@@ -52,6 +52,7 @@ const PostPage = () => {
             <div className='postBottomLeft'>
               {" "}
               <LikePost id={post?._id} likes={post?.likes} />
+              <DisLikePost id={post?._id} disLikes={post?.disLikes} />
             </div>
 
             <div className='postBottomRight'>

@@ -3,33 +3,33 @@ import { AuthContext } from "../../context/AuthContext";
 
 import axios from "axios";
 
-const DisLikePost = ({ id, likes }) => {
-  const [like, setLike] = useState(likes.length);
+const DisLikePost = ({ id, disLikes }) => {
+  const [disLike, setDisLike] = useState(disLikes.length);
   const [loading, setLoading] = useState(false);
 
   const { user: currentUser } = useContext(AuthContext);
 
-  const [isLiked, setIsLiked] = useState();
-  const checkIfLike = likes.includes(currentUser._id);
+  const [isDisLiked, setIsDisLiked] = useState();
+  const checkIfDisLike = disLikes.includes(currentUser._id);
 
   useEffect(() => {
-    setIsLiked(checkIfLike);
+    setIsDisLiked(checkIfDisLike);
   }, []);
 
   const likeHandler = async () => {
     setLoading(true);
 
     try {
-      const response = await axios.put(`/api/posts/${id}/like`, {
+      const response = await axios.put(`/api/posts/${id}/dislike`, {
         userId: currentUser._id,
       });
-      if (!isLiked) {
-        setLike((prevLike) => prevLike + 1);
+      if (!isDisLiked) {
+        setDisLike((prevLike) => prevLike + 1);
 
-        setIsLiked(true);
-      } else if (isLiked) {
-        setLike((prevLike) => prevLike - 1);
-        setIsLiked(false);
+        setIsDisLiked(true);
+      } else if (isDisLiked) {
+        setDisLike((prevLike) => prevLike - 1);
+        setIsDisLiked(false);
       }
       setLoading(false);
     } catch (error) {
@@ -44,9 +44,11 @@ const DisLikePost = ({ id, likes }) => {
           <span className='postLikeCounter loading-emoji'>🤤</span>
         ) : (
           <span
-            className={"postLikeCounter " + (isLiked ? "" : "grayscaleText ")}
+            className={
+              "postLikeCounter " + (isDisLiked ? "" : "grayscaleText ")
+            }
           >
-            🤢 {like} want to remove it...
+            🤢 {disLike} want to remove it...
           </span>
         )}
       </div>

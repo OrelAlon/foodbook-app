@@ -13,6 +13,8 @@ import "../../App.css";
 
 const PostPage = () => {
   const [post, setPost] = useState({});
+  const [username, setUsername] = useState("");
+  const [restaurantname, setRestaurantname] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   console.log(post);
 
@@ -23,8 +25,10 @@ const PostPage = () => {
       setIsLoading(true);
 
       const res = await axios.get(`/api/posts/?id=${postId}`);
-      setPost(res.data);
-      console.log(res.data);
+      setPost(res.data.post);
+      setUsername(res.data.username);
+      setRestaurantname(res.data.restaurantname);
+
       setIsLoading(false);
     };
     fetchPost();
@@ -38,6 +42,9 @@ const PostPage = () => {
       ) : (
         <div className='image-page'>
           {" "}
+          <p>
+            from {username} in {restaurantname}
+          </p>
           <div style={{ width: 240, marginLeft: "auto", marginRight: "auto" }}>
             <Image radius='md' src={post.img} alt={post.img} />
           </div>

@@ -1,14 +1,20 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { AuthContext } from "../../context/AuthContext";
 
 import axios from "axios";
 
 const LikePost = ({ id, likes }) => {
   const [like, setLike] = useState(likes.length);
-  const [isLiked, setIsLiked] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const { user: currentUser } = useContext(AuthContext);
+
+  const [isLiked, setIsLiked] = useState();
+  const checkIfLike = likes.includes(currentUser._id);
+
+  useEffect(() => {
+    setIsLiked(checkIfLike);
+  }, []);
 
   const likeHandler = async () => {
     setLoading(true);
@@ -17,11 +23,11 @@ const LikePost = ({ id, likes }) => {
       const response = await axios.put(`/api/posts/${id}/like`, {
         userId: currentUser._id,
       });
-      if (response.data === "The post has been liked") {
+      if (!isLiked) {
         setLike((prevLike) => prevLike + 1);
 
         setIsLiked(true);
-      } else if (response.data === "The post has been disliked") {
+      } else if (isLiked) {
         setLike((prevLike) => prevLike - 1);
         setIsLiked(false);
       }
@@ -37,7 +43,11 @@ const LikePost = ({ id, likes }) => {
         {loading ? (
           <span className='postLikeCounter loading-emoji'>🤤</span>
         ) : (
-          <span className={"postLikeCounter " + (isLiked ? "" : "grayscaleText ")}>🤤 {like} want it...</span>
+          <span
+            className={"postLikeCounter " + (isLiked ? "" : "grayscaleText ")}
+          >
+            🤤 {like} want it...
+          </span>
         )}
       </div>
     </>

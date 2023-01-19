@@ -10,6 +10,7 @@ import NavBar from "../../components/navBar/NavBar";
 import AllTags from "../../components/allTags/AllTags";
 import LikePost from "../../components/likePost/LikePost";
 import TimePost from "../../components/timePost/TimePost";
+import Loading from "../../components/loading/Loading";
 import GoBackButton from "../../components/goBackButton/GoBackButton";
 import "../../App.css";
 
@@ -22,15 +23,18 @@ const PostPage = () => {
   const postId = useParams().id;
 
   useEffect(() => {
+    setIsLoading(true);
+
     const fetchPost = async () => {
-      setIsLoading(true);
-
-      const res = await axios.get(`/api/posts/?id=${postId}`);
-      setPost(res.data.post);
-      setUsername(res.data.username);
-      setRestaurantname(res.data.restaurantname);
-
-      setIsLoading(false);
+      try {
+        const res = await axios.get(`/api/posts/?id=${postId}`);
+        setPost(res.data.post);
+        setUsername(res.data.username);
+        setRestaurantname(res.data.restaurantname);
+        setIsLoading(false);
+      } catch (error) {
+        console.log(error);
+      }
     };
     fetchPost();
   }, [postId]);
@@ -39,7 +43,9 @@ const PostPage = () => {
     <>
       <NavBar />
       {isLoading ? (
-        <div>Loading...</div>
+        <div className='center-div'>
+          <Loading />
+        </div>
       ) : (
         <div className='image-page '>
           {" "}

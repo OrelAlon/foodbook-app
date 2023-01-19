@@ -5,6 +5,8 @@ import axios from "axios";
 import NavBar from "../../components/navBar/NavBar";
 import RestaurantCard from "../../components/restaurantCard/RestaurantCard";
 import AddRestaurantModal from "../../components/addRestaurantModal/AddRestaurantModal";
+import Loading from "../../components/loading/Loading";
+
 import { IconSquarePlus, IconSearch } from "@tabler/icons";
 import { Input } from "@mantine/core";
 

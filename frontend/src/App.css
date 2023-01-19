@@ -32,9 +32,10 @@ body {
     width: 26vw;
   }
   .loading {
-    width: 60;
+    width: 260px;
   }
 }
+
 .image-page {
   margin-top: 50px;
 }

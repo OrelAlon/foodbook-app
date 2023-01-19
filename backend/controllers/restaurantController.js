@@ -1,4 +1,5 @@
 const Restaurant = require("../models/Restaurant");
+const Post = require("../models/Post");
 const cloudinary = require("cloudinary");
 //
 //
@@ -125,9 +126,10 @@ const updateRestaurant = async (req, res) => {
 //
 const deleteRestaurant = async (req, res) => {
   try {
-    const restaurant = await Restaurant.findById(req.params.id);
-    await restaurant.deleteOne();
-    res.status(200).json("Restaurant has been deleted");
+    await Post.deleteMany({ restaurantId: req.params.id });
+    await Restaurant.findByIdAndDelete(req.params.id);
+
+    res.status(200).json("Restaurant and their posts have been deleted");
   } catch (err) {
     res.status(500).json(err);
   }

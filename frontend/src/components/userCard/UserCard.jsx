@@ -32,11 +32,13 @@ const UserCard = ({ user }) => {
         />
         <div className='restaurantName'>{user.username}</div>
       </Link>
-      <Link to={`/editprofile/${user.username}`}>
-        <span className='icon transform '>
-          <IconEdit />
-        </span>
-      </Link>
+      {currentUser.isAdmin && (
+        <Link to={`/editprofile/${user.username}`}>
+          <span className='icon transform '>
+            <IconEdit />
+          </span>
+        </Link>
+      )}
       {currentUser.isAdmin && (
         <span className='icon transform delete' onClick={deleteHandler}>
           <IconEraser />

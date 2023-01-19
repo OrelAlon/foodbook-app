@@ -1,5 +1,6 @@
-import React, { useState, useRef } from "react";
+import { useState, useRef, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
 import { Loader } from "@mantine/core";
 import ImageUpload from "../../components/imageUpload/ImageUpload";
 
@@ -9,44 +10,50 @@ import foodbook from "../../assets/foodbook.png";
 import { BiImage } from "react-icons/bi";
 
 const Register = () => {
-  const usernameRef = useRef();
-  const emailRef = useRef();
-  const passwordRef = useRef();
-  const confirmPasswordRef = useRef();
   const [file, setFile] = useState(null);
   const [errorMsg, setErrorMsg] = useState("");
   const [loading, setLoading] = useState(false);
 
+  const usernameRef = useRef();
+  const emailRef = useRef();
+  const passwordRef = useRef();
+  const confirmPasswordRef = useRef();
+
+  const { login } = useContext(AuthContext);
+
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
+  const handleSubmitRegister = async (e) => {
     e.preventDefault();
+    setErrorMsg("");
+    setLoading(true);
+
     if (file == null) {
+      setLoading(false);
       setErrorMsg("Please upload a profile image");
       return;
     }
 
     if (passwordRef.current.value !== confirmPasswordRef.current.value) {
+      setLoading(false);
+
       return setErrorMsg("Password don't match...");
-    } else {
-      setErrorMsg("");
-      setLoading(true);
-
-      try {
-        const data = new FormData();
-        data.set("profilePicture", file);
-        data.set("username", usernameRef.current.value);
-        data.set("email", emailRef.current.value);
-        data.set("password", passwordRef.current.value);
-        await axios.post("/api/auth/register", data);
-
-        navigate("/login");
-      } catch (error) {
-        setLoading(false);
-
-        setErrorMsg(error.response.data.message);
-        console.log(error.response.data.message);
-      }
+    }
+    try {
+      const data = new FormData();
+      data.set("profilePicture", file);
+      data.set("username", usernameRef.current.value);
+      data.set("email", emailRef.current.value);
+      data.set("password", passwordRef.current.value);
+      await axios.post("/api/auth/register", data);
+      await login({
+        email: emailRef.current.value,
+        password: passwordRef.current.value,
+      });
+      navigate("/");
+    } catch (error) {
+      setLoading(false);
+      setErrorMsg(error.response.data.message);
     }
   };
 
@@ -58,7 +65,7 @@ const Register = () => {
             <div className='form_heading'>
               <img className='foodbook-img' src={foodbook} alt='' />{" "}
             </div>
-            <form onSubmit={handleSubmit} encType='multipart/form-data'>
+            <form onSubmit={handleSubmitRegister} encType='multipart/form-data'>
               <div className='input-div'>
                 {" "}
                 <input

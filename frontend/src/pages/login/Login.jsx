@@ -1,4 +1,4 @@
-import React, { useState, useRef, useContext } from "react";
+import { useState, useRef, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import { Loader } from "@mantine/core";
@@ -21,7 +21,7 @@ const Login = () => {
 
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
+  const handleSubmitLogin = async (e) => {
     e.preventDefault();
     try {
       setErrorMsg("");
@@ -68,7 +68,7 @@ const Login = () => {
             <div className='form_heading'>
               <img className='foodbook-img' src={foodbook} alt='' />{" "}
             </div>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmitLogin}>
               <div className='input-div'>
                 {" "}
                 <input
@@ -89,7 +89,7 @@ const Login = () => {
                 <button
                   className='login-btn'
                   type='submit'
-                  onClick={handleSubmit}
+                  onClick={handleSubmitLogin}
                 >
                   Log in
                 </button>

@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "react-router";
+import { Link } from "react-router-dom";
 
 import axios from "axios";
 
@@ -16,7 +17,6 @@ const PostPage = () => {
   const [username, setUsername] = useState("");
   const [restaurantname, setRestaurantname] = useState("");
   const [isLoading, setIsLoading] = useState(true);
-  console.log(post);
 
   const postId = useParams().id;
 
@@ -40,15 +40,28 @@ const PostPage = () => {
       {isLoading ? (
         <div>Loading...</div>
       ) : (
-        <div className='image-page'>
+        <div className='image-page '>
           {" "}
-          <p>
-            from {username} in {restaurantname}
-          </p>
-          <div style={{ width: 240, marginLeft: "auto", marginRight: "auto" }}>
+          {/*  */}
+          <div className='headline-post-img'>
+            <span className=''>
+              <Link to={`/profile/${username}`} className='linkwithout'>
+                <span className='bold'> {username} </span>
+              </Link>
+              at{" "}
+              <Link
+                className='linkwithout'
+                to={`/restaurant/${restaurantname}`}
+              >
+                <span className='bold'>{restaurantname}</span>
+              </Link>
+            </span>{" "}
+          </div>
+          {/*  */}
+          <div style={{ width: 440, marginLeft: "auto", marginRight: "auto" }}>
             <Image radius='md' src={post.img} alt={post.img} />
           </div>
-          <div className='postBottomPage'>
+          <div className='post-page-bottom'>
             <div className='postBottomLeft'>
               {" "}
               <LikePost id={post?._id} likes={post?.likes} />

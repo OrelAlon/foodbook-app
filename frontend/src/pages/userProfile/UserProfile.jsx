@@ -19,12 +19,13 @@ import "./userProfile.css";
 const UserProfile = () => {
   const [user, setUser] = useState({});
   const [followers, setFollowers] = useState([]);
+  const [isFollowing, setIsFollowing] = useState([]);
   const [isFollowed, setIsFollowed] = useState(false);
   const [postsLength, setPostsLength] = useState([]);
 
   const usernameParams = useParams().username;
   const { user: currentUser } = useContext(AuthContext);
-
+  console.log(user);
   useEffect(() => {
     const fetchUser = async () => {
       const res = await axios.get(`/api/users/?username=${usernameParams}`);
@@ -36,6 +37,7 @@ const UserProfile = () => {
   useEffect(() => {
     if (Object.keys(user).length !== 0) {
       setFollowers(user.followers.length);
+      setIsFollowing(user.followings.length);
     }
   }, [user]);
 
@@ -98,7 +100,7 @@ const UserProfile = () => {
                 </li>
                 <li>
                   <a>
-                    <strong>4</strong>
+                    <strong>{isFollowing}</strong>
                     <span>Following</span>
                   </a>
                 </li>

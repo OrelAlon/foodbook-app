@@ -4,11 +4,11 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 
 import noAvatar from "../../assets/noAvatar.png";
-import dayjs from "dayjs";
-import relativeTime from "dayjs/plugin/relativeTime";
 import AllTags from "../allTags/AllTags";
 import LikePost from "../likePost/LikePost";
 import DeletePost from "../deletePost/DeletePost";
+import TimePost from "../timePost/TimePost";
+
 import axios from "axios";
 
 import "./post.css";
@@ -23,8 +23,6 @@ const Post = ({ post }) => {
   const { userId, restaurantId, _id, img, updatedAt, foodCategory, dishType } =
     post;
   const usernameParams = useParams().username;
-  dayjs.extend(relativeTime);
-  const postTime = dayjs(updatedAt).fromNow();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -70,7 +68,9 @@ const Post = ({ post }) => {
           </div>
           <div style={{ display: "flex", alignitems: "center" }}>
             {" "}
-            <p className='posttime'>{postTime}</p>
+            <p className='posttime'>
+              <TimePost updatedAt={updatedAt} />
+            </p>
             {currentUser.isAdmin && usernameParams !== currentUser.username && (
               <DeletePost id={_id} />
             )}

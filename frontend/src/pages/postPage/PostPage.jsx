@@ -9,7 +9,8 @@ import { Image } from "@mantine/core";
 import NavBar from "../../components/navBar/NavBar";
 import AllTags from "../../components/allTags/AllTags";
 import LikePost from "../../components/likePost/LikePost";
-import DisLikePost from "../../components/unLikePost/DisLikePost";
+import TimePost from "../../components/timePost/TimePost";
+import GoBackButton from "../../components/goBackButton/GoBackButton";
 import "../../App.css";
 
 const PostPage = () => {
@@ -56,7 +57,11 @@ const PostPage = () => {
                 <span className='bold'>{restaurantname}</span>
               </Link>
             </span>{" "}
+            <GoBackButton />
           </div>
+          <p className='center-div'>
+            <TimePost updatedAt={post.updatedAt} />
+          </p>
           {/*  */}
           <div style={{ width: 440, marginLeft: "auto", marginRight: "auto" }}>
             <Image radius='md' src={post.img} alt={post.img} />

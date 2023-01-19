@@ -4,12 +4,14 @@ import axios from "axios";
 
 import NavBar from "../../components/navBar/NavBar";
 import UserCard from "../../components/userCard/UserCard";
-import { IconSquarePlus, IconSearch } from "@tabler/icons";
+import { IconSearch } from "@tabler/icons";
 import { Input } from "@mantine/core";
 
 const AllUsers = () => {
   const [users, setUsers] = useState([]);
   const [searchUser, setSearchUser] = useState("");
+
+  const searchLowerCase = searchUser.toLowerCase();
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -30,17 +32,17 @@ const AllUsers = () => {
 
         <Input
           icon={<IconSearch size={16} />}
-          onChange={setSearchUser}
-          placeholder='Search By user...'
-          clearable
+          onChange={(e) => setSearchUser(e.target.value)}
+          placeholder='Search By User...'
           style={{ width: "80%", margin: "auto" }}
+          styles={{ input: { "&::placeholder": { textAlign: "center" } } }}
         />
         <div className='restaurantsCards'>
           {users
             .filter((user) => {
-              return searchUser.toLowerCase() === ""
+              return searchLowerCase === ""
                 ? user
-                : user.username.toLowerCase().includes(searchUser);
+                : user.username.toLowerCase().includes(searchLowerCase);
             })
             .map((user) => (
               <UserCard key={user._id} user={user} />

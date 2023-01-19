@@ -6,7 +6,7 @@ import NavBar from "../../components/navBar/NavBar";
 import RestaurantCard from "../../components/restaurantCard/RestaurantCard";
 import AddRestaurantModal from "../../components/addRestaurantModal/AddRestaurantModal";
 import { IconSquarePlus, IconSearch } from "@tabler/icons";
-import { Select } from "@mantine/core";
+import { Input } from "@mantine/core";
 
 import "./allRestaurants.css";
 
@@ -15,10 +15,7 @@ const AllRestaurants = () => {
   const [searchRestaurant, setSearchRestaurant] = useState("");
   const [addRestaurantOpend, setAddRestaurantOpend] = useState(false);
 
-  const styleSelect = {
-    root: { width: "60%", margin: "auto" },
-    input: { "&::placeholder": { textAlign: "center" } },
-  };
+  const searchLowerCase = searchRestaurant.toLowerCase();
 
   useEffect(() => {
     const fetchRestaurants = async () => {
@@ -51,18 +48,19 @@ const AllRestaurants = () => {
           </h1>
         </div>
 
-        <input
-          className='restaurantSearch'
-          placeholder='Search restaurant'
-          type={"search"}
+        <Input
+          icon={<IconSearch size={16} />}
           onChange={(e) => setSearchRestaurant(e.target.value)}
-        ></input>
+          placeholder='Search By Restaurant...'
+          style={{ width: "80%", margin: "auto" }}
+          styles={{ input: { "&::placeholder": { textAlign: "center" } } }}
+        />
         <div className='restaurantsCards'>
           {restaurants
             .filter((rest) => {
-              return searchRestaurant.toLowerCase() === ""
+              return searchLowerCase === ""
                 ? rest
-                : rest.restaurantname.toLowerCase().includes(searchRestaurant);
+                : rest.restaurantname.toLowerCase().includes(searchLowerCase);
             })
             .map((restaurant) => (
               <RestaurantCard key={restaurant._id} restaurant={restaurant} />

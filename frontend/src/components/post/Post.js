@@ -25,8 +25,8 @@ const Post = ({ post }) => {
     post;
   const usernameParams = useParams().username;
   dayjs.extend(relativeTime);
-
   const postTime = dayjs(updatedAt).fromNow();
+
   useEffect(() => {
     const fetchData = async () => {
       try {

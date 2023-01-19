@@ -31,6 +31,9 @@ body {
   .logo {
     width: 26vw;
   }
+  .loading {
+    width: 60;
+  }
 }
 .image-page {
   margin-top: 50px;

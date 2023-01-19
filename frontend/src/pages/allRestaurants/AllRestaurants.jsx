@@ -25,7 +25,10 @@ const AllRestaurants = () => {
       try {
         const res = await axios.get(`/api/restaurants/restaurants`);
         setRestaurants(res.data);
-      } catch (error) {}
+        setLoading(false);
+      } catch (error) {
+        console.log(error.response.data);
+      }
     };
     fetchRestaurants();
   }, []);

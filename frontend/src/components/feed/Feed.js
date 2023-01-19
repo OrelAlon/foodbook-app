@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 import axios from "axios";
 
 import { Loader } from "@mantine/core";
 
 import PostsFeed from "../postsFeed/PostsFeed";
+import Loading from "../loading/Loading";
 import GridFeed from "../gridFeed/GridFeed";
 import FilterImagesModel from "../filterImagesModel/FilterImagesModel";
 import "./feed.css";
@@ -77,7 +78,7 @@ const Feed = ({ showGrid }) => {
         />
         {loading ? (
           <div className='center-div'>
-            <Loader />
+            <Loading />
           </div>
         ) : (
           <>

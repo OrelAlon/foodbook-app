@@ -5,7 +5,7 @@ const TimePost = ({ updatedAt }) => {
   dayjs.extend(relativeTime);
   const postTime = dayjs(updatedAt).fromNow();
 
-  return <div>Before {postTime}</div>;
+  return <div>{postTime}</div>;
 };
 
 export default TimePost;

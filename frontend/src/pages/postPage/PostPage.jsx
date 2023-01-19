@@ -52,7 +52,7 @@ const PostPage = () => {
             <div className='postBottomLeft'>
               {" "}
               <LikePost id={post?._id} likes={post?.likes} />
-              <DisLikePost id={post?._id} disLikes={post?.disLikes} />
+              {/* <DisLikePost id={post?._id} disLikes={post?.disLikes} /> */}
             </div>
 
             <div className='postBottomRight'>

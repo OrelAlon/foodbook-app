@@ -31,6 +31,9 @@
 .github {
   color: black;
 }
+.cv {
+  color: green;
+}
 @media only screen and (max-width: 800px) {
   .about-logo {
     width: 25%;

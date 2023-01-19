@@ -16,13 +16,16 @@ const AllRestaurants = () => {
   const [restaurants, setRestaurants] = useState([]);
   const [searchRestaurant, setSearchRestaurant] = useState("");
   const [addRestaurantOpend, setAddRestaurantOpend] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const searchLowerCase = searchRestaurant.toLowerCase();
 
   useEffect(() => {
     const fetchRestaurants = async () => {
-      const res = await axios.get(`/api/restaurants/restaurants`);
-      setRestaurants(res.data);
+      try {
+        const res = await axios.get(`/api/restaurants/restaurants`);
+        setRestaurants(res.data);
+      } catch (error) {}
     };
     fetchRestaurants();
   }, []);
@@ -57,17 +60,21 @@ const AllRestaurants = () => {
           style={{ width: "80%", margin: "auto" }}
           styles={{ input: { "&::placeholder": { textAlign: "center" } } }}
         />
-        <div className='restaurantsCards'>
-          {restaurants
-            .filter((rest) => {
-              return searchLowerCase === ""
-                ? rest
-                : rest.restaurantname.toLowerCase().includes(searchLowerCase);
-            })
-            .map((restaurant) => (
-              <RestaurantCard key={restaurant._id} restaurant={restaurant} />
-            ))}
-        </div>
+        {loading ? (
+          <Loading />
+        ) : (
+          <div className='restaurantsCards'>
+            {restaurants
+              .filter((rest) => {
+                return searchLowerCase === ""
+                  ? rest
+                  : rest.restaurantname.toLowerCase().includes(searchLowerCase);
+              })
+              .map((restaurant) => (
+                <RestaurantCard key={restaurant._id} restaurant={restaurant} />
+              ))}
+          </div>
+        )}
       </div>
     </>
   );

@@ -11,6 +11,8 @@ import AllRestaurants from "../pages/allRestaurants/AllRestaurants";
 import RestaurantProfile from "../pages/restaurantProfile/RestaurantProfile";
 import EditRestaurantPage from "../pages/editRestaurantPage/EditRestaurantPage";
 import EditProfileUserPage from "../pages/editProfileUserPage/EditProfileUserPage";
+import EditPostPage from "../pages/editPostPage/EditPostPage";
+
 import { ProtectedRoute } from "./ProtectedRoute";
 import React from "react";
 
@@ -46,6 +48,7 @@ const RouterConfig = () => {
             path='/editprofile/:username'
             element={<EditProfileUserPage />}
           ></Route>
+          <Route path='/editpost/:id' element={<EditPostPage />}></Route>
         </Route>
       </Routes>
     </Router>

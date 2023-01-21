@@ -1,0 +1,148 @@
+import { useState, useEffect } from "react";
+import { useParams } from "react-router";
+
+import axios from "axios";
+
+import NavBar from "../../components/navBar/NavBar";
+import ImageUpload from "../../components/imageUpload/ImageUpload";
+
+import { cities } from "../../assets/foodData";
+import { BiImage } from "react-icons/bi";
+
+import { Select } from "@mantine/core";
+
+const EditPostPage = () => {
+  const [post, setPost] = useState({});
+
+  const [file, setFile] = useState("");
+  const [userName, setUsertName] = useState();
+  const [restaurantName, setRestaurantName] = useState();
+  const [postCity, setPostCity] = useState();
+  const [isLoading, setIsLoading] = useState(true);
+
+  const postId = useParams().id;
+
+  useEffect(() => {
+    setIsLoading(true);
+
+    const fetchPost = async () => {
+      try {
+        const res = await axios.get(`/api/posts/?id=${postId}`);
+        setPost(res.data.post);
+        console.log(res.data);
+        console.log(post);
+        setUsertName(res.data.username);
+        setRestaurantName(res.data.restaurantname);
+
+        setIsLoading(false);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchPost();
+  }, [postId]);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      setIsLoading(true);
+
+      const data = new FormData();
+      if (file) {
+        data.set("img", file);
+      }
+      data.set("username", userName);
+      data.set("restaurantname", restaurantName);
+      data.set("city", postCity);
+
+      await axios.put("/api/posts/" + post._id, data);
+
+      try {
+        // window.location.reload(false);
+        // navigate("/restaurants");
+      } catch (error) {
+        // setErrorMsg(error.response.data.error);
+        console.log(error.response.data);
+      }
+    } catch (error) {
+      console.log(error.response.data);
+    }
+  };
+
+  return (
+    <>
+      <NavBar />
+      <form className='profile-edit-form' onSubmit={handleSubmit}>
+        <label className='profile-edit-form__label'>
+          userName:
+          <input
+            className='profile-edit-form__input'
+            type='text'
+            value={userName}
+            onChange={(e) => setUsertName(e.target.value)}
+          />
+        </label>
+        <br />
+        <label className='profile-edit-form__label'>
+          restaurantName:
+          <input
+            className='profile-edit-form__input'
+            type='text'
+            value={restaurantName}
+            onChange={(e) => setRestaurantName(e.target.value)}
+          />
+        </label>
+        <br />
+        <label className='profile-edit-form__label'>City:</label>
+        <Select
+          data={cities}
+          onChange={setPostCity}
+          style={{ width: "100%", margin: "auto", color: "dark.9" }}
+          searchable
+        />{" "}
+        <br />
+        {/* <label className='profile-edit-form__label'>
+          Instagram Link:
+          <input
+            className='profile-edit-form__input'
+            type='text'
+            value={restaurantInstagram}
+            onChange={(e) => setRestaurantInstagram(e.target.value)}
+          />
+        </label> */}
+        <br />
+        <label
+          className='profile-edit-form__label'
+          onChange={(e) => setFile(e.target.files[0])}
+        >
+          Image:
+          <div className='upload-image-div'>
+            <label htmlFor='file' className='shareOption'>
+              <BiImage fontSize={36} color={file ? "green" : "red"} />
+              <input
+                style={{ display: "none" }}
+                type='file'
+                id='file'
+                accept='.png,.jpeg,.jpg,.jfif'
+                onChange={(e) => setFile(e.target.files[0])}
+              />
+            </label>
+            {file && (
+              <div className='img-upload'>
+                <ImageUpload file={file} setFile={setFile} />
+              </div>
+            )}
+          </div>
+        </label>
+        <br />
+        {/* {errorMsg && <div className='error msg'>{errorMsg}</div>}
+      <div className='center-div'>{loading && <Loader />}</div> */}
+        <button className='profile-edit-form__button' type='submit'>
+          Save
+        </button>
+      </form>
+    </>
+  );
+};
+
+export default EditPostPage;

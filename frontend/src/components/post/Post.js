@@ -72,7 +72,10 @@ const Post = ({ post }) => {
               <TimePost updatedAt={updatedAt} />
             </div>
             {currentUser.isAdmin && usernameParams !== currentUser.username && (
-              <DeletePost id={_id} />
+              <>
+                <button onClick={() => console.log("yes")}>edit</button>
+                <DeletePost id={_id} />{" "}
+              </>
             )}
             {usernameParams === currentUser.username && <DeletePost id={_id} />}
           </div>

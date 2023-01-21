@@ -14,6 +14,7 @@ import axios from "axios";
 import ImageUpload from "../imageUpload/ImageUpload";
 
 import { BiImage, BiCloudUpload } from "react-icons/bi";
+
 import "./shareImageModal.css";
 
 function ShareImageModal({ shareImageOpened, setShareImageOpened }) {

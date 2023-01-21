@@ -47,11 +47,12 @@ const PostPage = () => {
           <Loading />
         </div>
       ) : (
-        <div className='image-page '>
+        <div>
           {" "}
           {/*  */}
           <div className='headline-post-img'>
-            <span className=''>
+            <GoBackButton />
+            <div className=''>
               <Link to={`/profile/${username}`} className='linkwithout'>
                 <span className='bold'> {username} </span>
               </Link>
@@ -62,12 +63,8 @@ const PostPage = () => {
               >
                 <span className='bold'>{restaurantname}</span>
               </Link>
-            </span>{" "}
-            <GoBackButton />
+            </div>{" "}
           </div>
-          <p className='center-div'>
-            <TimePost updatedAt={post.updatedAt} />
-          </p>
           {/*  */}
           <div style={{ width: 440, marginLeft: "auto", marginRight: "auto" }}>
             <Image radius='md' src={post.img} alt={post.img} />
@@ -80,6 +77,7 @@ const PostPage = () => {
             </div>
 
             <div className='postBottomRight'>
+							<TimePost updatedAt={post.updatedAt} />
               <AllTags
                 foodCategory={post.foodCategory}
                 dishType={post.dishType}

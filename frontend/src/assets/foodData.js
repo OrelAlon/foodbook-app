@@ -47,8 +47,8 @@ export const cities = [
   { value: "holon", label: "holon" },
   { value: "rehovot", label: "rehovot" },
   { value: "rishon-leziyyon", label: "rishon-leziyyon" },
-  { value: "zikhron-yaakov", label: "zikhron-yaakov" },
   { value: "givat-shmuel", label: "givat-shmuel" },
+  { value: "kiryat-ono", label: "kiryat-ono" },
   { value: "zikhron-yaakov", label: "zikhron-yaakov" },
   { value: "restaurant-chain", label: "restaurant-chain" },
 ];

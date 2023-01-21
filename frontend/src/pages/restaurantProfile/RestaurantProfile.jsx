@@ -73,6 +73,7 @@ const RestaurantProfile = () => {
               </div>
               <div className='profile-data'>
                 <h3>{restaurant.restaurantname}</h3>
+                <p>{restaurant.city}</p>
                 {/* <p>github.com/jofpin</p> */}
               </div>
               <div className='description-profile'>{restaurant.desc}</div>

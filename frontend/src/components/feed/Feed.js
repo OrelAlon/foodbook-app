@@ -36,6 +36,8 @@ const Feed = ({ showGrid }) => {
 
   const applyFilters = () => {
     let updatedShearch = data;
+    setLoading(true);
+
     if (restaurantUserPick) {
       updatedShearch = updatedShearch.filter((item) =>
         item.restaurantId.includes(restaurantUserPick)
@@ -60,6 +62,7 @@ const Feed = ({ showGrid }) => {
     } else {
       setMsgResults("No pictures found, go eat there and upload a picture 😜");
     }
+    setLoading(false);
 
     setResultsFound(updatedShearch.length > 0);
   };

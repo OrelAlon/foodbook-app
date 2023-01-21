@@ -6,10 +6,21 @@ const PostSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-
+    username: {
+      type: String,
+      required: true,
+    },
     restaurantId: {
       type: String,
       required: true,
+    },
+    restaurantname: {
+      type: String,
+      required: true,
+    },
+    city: {
+      type: String,
+      max: 50,
     },
     foodCategory: {
       type: Array,

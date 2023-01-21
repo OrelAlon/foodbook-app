@@ -68,9 +68,9 @@ const Post = ({ post }) => {
           </div>
           <div style={{ display: "flex", alignitems: "center" }}>
             {" "}
-            <p className='posttime'>
+            <div className='posttime'>
               <TimePost updatedAt={updatedAt} />
-            </p>
+            </div>
             {currentUser.isAdmin && usernameParams !== currentUser.username && (
               <DeletePost id={_id} />
             )}

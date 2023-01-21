@@ -19,7 +19,6 @@ import "./shareImageModal.css";
 function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
   const theme = useMantineTheme();
   const { user } = useContext(AuthContext);
-
   const [restaurantsList, setRestaurantsList] = useState();
   const [restaurantUserPick, setRestaurantUserPick] = useState(null);
   const [selectFoodCatgory, setSelectFoodCatgory] = useState([]);
@@ -87,7 +86,10 @@ function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
       const data = new FormData();
       data.set("img", file);
       data.set("userId", user._id);
+      data.set("username", user.username);
       data.set("restaurantId", selectRestaurant.value);
+      data.set("restaurantname", selectRestaurant.label);
+      data.set("city", selectRestaurant.group);
       data.set("foodCategory", JSON.stringify(selectFoodCatgory));
       data.set("dishType", JSON.stringify(selectDishType));
       await axios.post("/api/posts", data);

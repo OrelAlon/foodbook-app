@@ -65,9 +65,9 @@ const PostPage = () => {
             </span>{" "}
             <GoBackButton />
           </div>
-          <p className='center-div'>
+          <div className='center-div'>
             <TimePost updatedAt={post.updatedAt} />
-          </p>
+          </div>
           {/*  */}
           <div style={{ width: 440, marginLeft: "auto", marginRight: "auto" }}>
             <Image radius='md' src={post.img} alt={post.img} />

@@ -38,7 +38,10 @@ const createPost = async (req, res) => {
   });
   const newPost = new Post({
     userId: req.body.userId,
+    username: req.body.username,
     restaurantId: req.body.restaurantId,
+    restaurantname: req.body.restaurantname,
+    city: req.body.city || "",
     foodCategory: JSON.parse(req.body.foodCategory),
     dishType: JSON.parse(req.body.dishType),
     price: req.body.price,

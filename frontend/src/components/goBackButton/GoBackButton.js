@@ -6,11 +6,9 @@ const GoBackButton = () => {
 
   return (
     <div>
-      <i onClick={goBack} className="fa fa-angle-left"></i>
+      <button onClick={goBack}>Go Back</button>
     </div>
   );
 };
 
 export default GoBackButton;
-
-// test

@@ -18,3 +18,17 @@
   z-index: 100;
 }
 
+.add-image-btn {
+  margin-left: 2px;
+  border-style: none;
+  background-color: #e9ecef;
+  border-radius: 5px;
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+  border: solid rgb(124, 124, 124) 1px;
+  align-items: center;
+}
+.add-image-btn img {
+  margin: 0 auto; /* centers the image horizontally within the button */
+}

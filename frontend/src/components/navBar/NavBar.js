@@ -19,16 +19,16 @@ const NavBar = ({ setShowGrid, showGrid }) => {
         {location.pathname === "/" && (
           <button
             onClick={() => setShowGrid(!showGrid)}
-            className='top-right-btn transform'
+            className='add-image-btn transform'
           >
-            {showGrid ? <i className="fa fa-th"></i> : <i className="fa fa-list"></i>}
+            {showGrid ? "📲" : "💻"}
           </button>
         )}
         <button
           onClick={() => setShareImageOpened(true)}
-          className='top-right-btn transform'
+          className='add-image-btn transform'
         >
-        <i className="fa fa-camera-retro"></i>
+          📷
         </button>
         <NavMenu />
       </div>

@@ -6,7 +6,7 @@ const GoBackButton = () => {
 
   return (
     <div>
-      <button onClick={goBack}>Go Back</button>
+      <i onClick={goBack} className="fa fa-angle-left"></i>
     </div>
   );
 };

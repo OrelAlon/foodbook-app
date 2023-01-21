@@ -43,8 +43,8 @@ const NavMenu = () => {
     <>
       <Menu shadow='md' width={200} color='gray.2'>
         <Menu.Target>
-          <Button width={20} className='ham-btn' style={{ lineHeight: "0" }}>
-            🍔
+          <Button width={20} className='top-right-btn'>
+						<i className="fa fa-bars"></i>
           </Button>
         </Menu.Target>
 

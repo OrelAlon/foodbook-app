@@ -16,8 +16,6 @@ import "../../App.css";
 
 const PostPage = () => {
   const [post, setPost] = useState({});
-  const [username, setUsername] = useState("");
-  const [restaurantname, setRestaurantname] = useState("");
   const [isLoading, setIsLoading] = useState(true);
 
   const postId = useParams().id;
@@ -28,9 +26,7 @@ const PostPage = () => {
     const fetchPost = async () => {
       try {
         const res = await axios.get(`/api/posts/?id=${postId}`);
-        setPost(res.data.post);
-        setUsername(res.data.username);
-        setRestaurantname(res.data.restaurantname);
+        setPost(res.data);
         setIsLoading(false);
       } catch (error) {
         console.log(error);
@@ -52,15 +48,15 @@ const PostPage = () => {
           {/*  */}
           <div className='headline-post-img'>
             <span className=''>
-              <Link to={`/profile/${username}`} className='linkwithout'>
-                <span className='bold'> {username} </span>
+              <Link to={`/profile/${post.username}`} className='linkwithout'>
+                <span className='bold'> {post.username} </span>
               </Link>
               at{" "}
               <Link
                 className='linkwithout'
-                to={`/restaurant/${restaurantname}`}
+                to={`/restaurant/${post.restaurantname}`}
               >
-                <span className='bold'>{restaurantname}</span>
+                <span className='bold'>{post.restaurantname}</span>
               </Link>
             </span>{" "}
             <GoBackButton />

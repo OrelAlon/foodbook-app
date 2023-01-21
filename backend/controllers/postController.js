@@ -76,17 +76,51 @@ const deletePost = async (req, res) => {
 //
 const getAllPosts = async (req, res) => {
   try {
-    // const pageSize = req.query.size || 10;
-    // const test = await Post.find().populate("user").populate("restaurant");
-    // console.log(test);
-    const data = await Post.find().sort({ createdAt: -1 });
+    const page = parseInt(req.query.page) - 1 || 0;
+    const pageSize = req.query.pageSize || 100;
+    const search = req.query.search || "";
+    const city = req.query.city || "";
+    console.log("search");
+    console.log(search);
+    console.log("city");
+    console.log(city);
+
+    if (search == null) {
+      console.log("ddddddddddd");
+      search = "";
+    }
+    if (req.query.city == null) {
+      console.log("ddddddddddd");
+      city = "";
+    }
+    let query = {};
+    if (search.length > 0) {
+      query.restaurantId = { $regex: search, $options: "i" };
+    }
+    if (city.length > 0) {
+      query.city = { $eq: city };
+    }
+    if (!Object.keys(query).length) query = {};
+
+    const posts = await Post.find(query)
+      .sort({ createdAt: -1 })
+      .skip(page * pageSize)
+      .limit(pageSize);
+    const total = await Post.countDocuments(query);
+
+    const data = {
+      error: false,
+      total,
+      page: page + 1,
+      pageSize,
+      posts,
+    };
 
     res.status(201).json(data);
   } catch (error) {
     console.log(error.message);
   }
 };
-
 //
 const getUserPost = async (req, res) => {
   try {

@@ -3,14 +3,13 @@ import React, { useState, useEffect } from "react";
 import { Space, Select } from "@mantine/core";
 import { IconSearch } from "@tabler/icons";
 
-import { dishTypeOptions } from "../../assets/foodData";
+import { dishTypeOptions, cities } from "../../assets/foodData";
 
 import axios from "axios";
 
 import "./filterImagesModel.css";
 
 const FilterImagesModel = ({
-  setFoodCatgoryPick,
   setRestaurantUserPick,
   setDishTypePick,
   setCityPick,
@@ -62,21 +61,21 @@ const FilterImagesModel = ({
         <Space h='sm' />
         <Select
           icon={<IconSearch size={16} />}
+          data={cities}
+          onChange={setCityPick}
+          placeholder='Whice City ?'
+          clearable
+          styles={styleSelect}
+        />
+        <Space h='sm' />
+        {/* <Select
+          icon={<IconSearch size={16} />}
           data={dishTypeOptions}
           onChange={setDishTypePick}
           placeholder='Whice Course ?'
           clearable
           styles={styleSelect}
         />
-        <Space h='sm' />
-        {/* <MultiSelect
-          icon={<IconSearch size={16} />}
-          data={foodCategoryOptions}
-          onChange={setFoodCatgoryPick}
-          placeholder='Whice Catgory ?'
-          styles={styleSelect}
-          clearable
-        />{" "}
         <Space h='sm' /> */}
       </form>
     </>

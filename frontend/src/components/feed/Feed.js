@@ -2,8 +2,6 @@ import { useState, useEffect } from "react";
 
 import axios from "axios";
 
-import { Loader } from "@mantine/core";
-
 import PostsFeed from "../postsFeed/PostsFeed";
 import Loading from "../loading/Loading";
 import GridFeed from "../gridFeed/GridFeed";
@@ -12,72 +10,40 @@ import "./feed.css";
 
 const Feed = ({ showGrid }) => {
   const [posts, setPosts] = useState([]);
-  const [data, setData] = useState([]);
   const [resultsFound, setResultsFound] = useState(undefined);
   const [msgResults, setMsgResults] = useState("");
   const [loading, setLoading] = useState(true);
 
-  const [restaurantUserPick, setRestaurantUserPick] = useState(null);
-  const [dishTypePick, setDishTypePick] = useState(null);
-  const [foodCatgoryPick, setFoodCatgoryPick] = useState([]);
-  // const [cityPick, setCityPick] = useState(null);
+  const [restaurantUserPick, setRestaurantUserPick] = useState("");
+  const [dishTypePick, setDishTypePick] = useState("");
+  const [page, setPage] = useState(1);
+  const [cityPick, setCityPick] = useState("");
+
+  console.log(resultsFound);
+  console.log(cityPick);
 
   useEffect(() => {
-    setLoading(true);
-
     const fetchPosts = async () => {
-      const res = await axios.get(`/api/posts/feed`);
-      setData(res.data);
-      setPosts(res.data);
+      setLoading(true);
+
+      const res = await axios.get(
+        `/api/posts/feed?page=${page}&search=${restaurantUserPick}&city=${cityPick}`
+      );
+      console.log(res.data);
+      setResultsFound(res.data.total);
+      setPosts(res.data.posts);
       setLoading(false);
     };
     fetchPosts();
-  }, [restaurantUserPick]);
-
-  const applyFilters = () => {
-    let updatedShearch = data;
-    setLoading(true);
-
-    if (restaurantUserPick) {
-      updatedShearch = updatedShearch.filter((item) =>
-        item.restaurantId.includes(restaurantUserPick)
-      );
-    }
-
-    // courseTypePick Filter
-    if (dishTypePick) {
-      updatedShearch = updatedShearch.filter((el) =>
-        el.dishType.includes(dishTypePick)
-      );
-    }
-
-    // foodCatgoryPick Filter
-    if (foodCatgoryPick.length > 0) {
-      updatedShearch = updatedShearch.filter((el) =>
-        foodCatgoryPick.every((v) => el.foodCategory.includes(v))
-      );
-    }
-    if (updatedShearch.length > 0) {
-      setPosts(updatedShearch);
-    } else {
-      setMsgResults("No pictures found, go eat there and upload a picture 😜");
-    }
-    setLoading(false);
-
-    setResultsFound(updatedShearch.length > 0);
-  };
-
-  useEffect(() => {
-    applyFilters();
-  }, [restaurantUserPick, dishTypePick, foodCatgoryPick, data]);
+  }, [restaurantUserPick, cityPick]);
 
   return (
     <div className='feed'>
       <div className='feedWrapper'>
         <FilterImagesModel
-          setFoodCatgoryPick={setFoodCatgoryPick}
           setRestaurantUserPick={setRestaurantUserPick}
           setDishTypePick={setDishTypePick}
+          setCityPick={setCityPick}
         />
         {loading ? (
           <div className='center-div'>
@@ -85,9 +51,9 @@ const Feed = ({ showGrid }) => {
           </div>
         ) : (
           <>
-            {resultsFound !== undefined && resultsFound ? (
+            {posts ? (
               <PostsFeed posts={posts} showGrid={showGrid} />
-            ) : resultsFound === false ? (
+            ) : resultsFound == 0 ? (
               <div className='center-div msg-results'>{msgResults}</div>
             ) : null}
           </>

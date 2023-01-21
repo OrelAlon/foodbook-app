@@ -15,31 +15,34 @@ import "./post.css";
 
 const Post = ({ post }) => {
   const [user, setUser] = useState({});
-  const [restaurant, setRestaurant] = useState({});
 
   const { user: currentUser } = useContext(AuthContext);
-  const { username, profilePicture } = user;
-  const { restaurantname } = restaurant;
-  const { userId, restaurantId, _id, img, updatedAt, foodCategory, dishType } =
-    post;
+  const { profilePicture } = user;
+
+  const {
+    userId,
+    username,
+    restaurantname,
+    _id,
+    img,
+    updatedAt,
+    foodCategory,
+    dishType,
+  } = post;
   const usernameParams = useParams().username;
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchUser = async () => {
       try {
-        const [resUser, resRest] = await Promise.all([
-          axios.get(`/api/users/?userId=${userId}`),
-          axios.get(`/api/restaurants/?restaurantId=${restaurantId}`),
-        ]);
+        const resUser = await axios.get(`/api/users/?userId=${userId}`);
         setUser(resUser.data);
-        setRestaurant(resRest.data);
       } catch (error) {
         console.error(error);
       }
     };
 
-    fetchData();
-  }, [userId, restaurantId]);
+    fetchUser();
+  }, [userId]);
 
   return (
     <div className='post'>
@@ -73,7 +76,6 @@ const Post = ({ post }) => {
             </div>
             {currentUser.isAdmin && usernameParams !== currentUser.username && (
               <>
-                <button onClick={() => console.log("yes")}>edit</button>
                 <DeletePost id={_id} />{" "}
               </>
             )}

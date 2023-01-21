@@ -9,15 +9,7 @@ const getPost = async (req, res) => {
 
   try {
     const post = await Post.findById(postId);
-    const user = await User.findById(post.userId);
-    const restaurant = await Restaurant.findById(post.restaurantId);
-    post.username = user.username;
-    post.restaurantname = restaurant.restaurantname;
-    res.status(201).json({
-      post,
-      username: post.username,
-      restaurantname: post.restaurantname,
-    });
+    res.status(201).json(post);
 
     // res.status(201).json(post);
   } catch (error) {

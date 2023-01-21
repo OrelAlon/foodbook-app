@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { TiArrowBack } from "react-icons/ti";
 
 const GoBackButton = () => {
   const navigate = useNavigate();
@@ -6,7 +7,7 @@ const GoBackButton = () => {
 
   return (
     <div>
-      <button onClick={goBack}>Go Back</button>
+      <TiArrowBack onClick={goBack} fontSize={40} />
     </div>
   );
 };

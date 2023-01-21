@@ -59,14 +59,13 @@ const PostPage = () => {
                 <span className='bold'>{post.restaurantname}</span>
               </Link>
             </span>{" "}
-            <GoBackButton />
-          </div>
-          <div className='center-div'>
-            <TimePost updatedAt={post.updatedAt} />
           </div>
           {/*  */}
           <div style={{ width: 440, marginLeft: "auto", marginRight: "auto" }}>
             <Image radius='md' src={post.img} alt={post.img} />
+          </div>
+          <div className='center-div'>
+            <TimePost updatedAt={post.updatedAt} />
           </div>
           <div className='post-page-bottom'>
             <div className='postBottomLeft'>
@@ -84,6 +83,10 @@ const PostPage = () => {
           </div>
         </div>
       )}
+      <div className='go-back-div transform cursor'>
+        {" "}
+        <GoBackButton />
+      </div>
     </>
   );
 };

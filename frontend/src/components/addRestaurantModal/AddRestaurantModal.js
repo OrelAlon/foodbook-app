@@ -17,7 +17,7 @@ import {
   IconWorld,
   IconCategory,
 } from "@tabler/icons";
-import { foodCategoryOptions, Prices, cities } from "../../assets/foodData";
+import { foodCategoryOptions, Prices, cities } from "../../api/foodData";
 
 import axios from "axios";
 

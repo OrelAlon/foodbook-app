@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { Space, Select } from "@mantine/core";
 import { IconSearch } from "@tabler/icons";
 
-import { dishTypeOptions, cities } from "../../assets/foodData";
+import { dishTypeOptions, cities } from "../../api/foodData";
 
 import axios from "axios";
 

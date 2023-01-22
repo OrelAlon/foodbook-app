@@ -8,7 +8,7 @@ import NavBar from "../../components/navBar/NavBar";
 import Loading from "../../components/loading/Loading";
 import ImageUpload from "../../components/imageUpload/ImageUpload";
 
-import { cities } from "../../assets/foodData";
+import { cities } from "../../api/foodData";
 import { BiImage } from "react-icons/bi";
 
 import { Select } from "@mantine/core";

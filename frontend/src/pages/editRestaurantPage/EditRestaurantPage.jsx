@@ -7,7 +7,7 @@ import axios from "axios";
 import NavBar from "../../components/navBar/NavBar";
 import ImageUpload from "../../components/imageUpload/ImageUpload";
 
-import { cities } from "../../assets/foodData";
+import { cities } from "../../api/foodData";
 import { BiImage } from "react-icons/bi";
 import { Loader, Select } from "@mantine/core";
 

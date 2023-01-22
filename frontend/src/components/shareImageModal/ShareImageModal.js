@@ -79,7 +79,7 @@ function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
   const submitHandler = async (e) => {
     e.preventDefault();
     if (file == null) {
-      return setErrorMsg("Please upload a image");
+      return setErrorMsg("Please add an image");
     }
     if (restaurantUserPick == null) {
       return setErrorMsg("Please choose a restaurant");
@@ -141,7 +141,7 @@ function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
           </div>
           <div className='upload-image-div'>
             <label htmlFor='file' className='shareOption'>
-              <span className='shareText'>Please add an image</span>
+              <span className='shareText'>Add Your Image</span>
               <BiImage fontSize={36} color={file ? "green" : "red"} />
               <input
                 style={{ display: "none" }}

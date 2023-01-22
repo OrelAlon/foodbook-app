@@ -132,7 +132,7 @@ function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
         <form className='infoForm' onSubmit={submitHandler}>
           <div className='upload-image-div'>
             <label htmlFor='file' className='shareOption'>
-              <span className='shareText'>Add Image</span>
+              <span className='shareText'>Please add an image</span>
               <BiImage fontSize={36} color={file ? "green" : "red"} />
               <input
                 style={{ display: "none" }}

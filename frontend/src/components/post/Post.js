@@ -25,7 +25,7 @@ const Post = ({ post }) => {
     restaurantname,
     _id,
     img,
-    updatedAt,
+    createdAt,
     foodCategory,
     dishType,
   } = post;
@@ -72,7 +72,7 @@ const Post = ({ post }) => {
           <div style={{ display: "flex", alignitems: "center" }}>
             {" "}
             <div className='posttime'>
-              <TimePost updatedAt={updatedAt} />
+              <TimePost createdAt={createdAt} />
             </div>
             {currentUser.isAdmin && usernameParams !== currentUser.username && (
               <>

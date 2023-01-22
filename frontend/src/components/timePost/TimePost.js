@@ -1,9 +1,12 @@
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
+var utc = require("dayjs/plugin/utc");
 
-const TimePost = ({ updatedAt }) => {
+const TimePost = ({ createdAt }) => {
   dayjs.extend(relativeTime);
-  const postTime = dayjs(updatedAt).fromNow();
+  dayjs.extend(utc);
+
+  const postTime = dayjs.utc(createdAt).fromNow();
 
   return <div>{postTime}</div>;
 };

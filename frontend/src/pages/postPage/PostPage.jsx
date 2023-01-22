@@ -65,7 +65,7 @@ const PostPage = () => {
             <Image radius='md' src={post.img} alt={post.img} />
           </div>
           <div className='center-div'>
-            <TimePost updatedAt={post.updatedAt} />
+            <TimePost createdAt={post.createdAt} />
           </div>
           <div className='post-page-bottom'>
             <div className='postBottomLeft'>

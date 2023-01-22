@@ -19,9 +19,6 @@ const Feed = ({ showGrid }) => {
   const [page, setPage] = useState(1);
   const [cityPick, setCityPick] = useState("");
 
-  console.log(resultsFound);
-  console.log(cityPick);
-
   useEffect(() => {
     const fetchPosts = async () => {
       setLoading(true);
@@ -29,7 +26,6 @@ const Feed = ({ showGrid }) => {
       const res = await axios.get(
         `/api/posts/feed?page=${page}&search=${restaurantUserPick}&city=${cityPick}`
       );
-      console.log(res.data);
       setResultsFound(res.data.total);
       setPosts(res.data.posts);
       setLoading(false);

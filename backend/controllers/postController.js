@@ -80,19 +80,7 @@ const getAllPosts = async (req, res) => {
     const pageSize = req.query.pageSize || 100;
     const search = req.query.search || "";
     const city = req.query.city || "";
-    console.log("search");
-    console.log(search);
-    console.log("city");
-    console.log(city);
 
-    if (search == null) {
-      console.log("ddddddddddd");
-      search = "";
-    }
-    if (req.query.city == null) {
-      console.log("ddddddddddd");
-      city = "";
-    }
     let query = {};
     if (search.length > 0) {
       query.restaurantId = { $regex: search, $options: "i" };

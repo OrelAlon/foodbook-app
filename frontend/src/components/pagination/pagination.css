@@ -1,5 +1,5 @@
 .container {
-  position: absolute;
+  /* position: absolute; */
   bottom: 0;
   left: 0;
   width: calc(100% - 20px);
@@ -23,13 +23,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 5px;
-  box-shadow: var(--box-shadow);
+  margin: 0px 5px;
+  box-shadow: 0px 3px 3px -2px rgb(0 0 0 / 20%),
+    0px 3px 4px 0px rgb(0 0 0 / 14%), 0px 1px 8px 0px rgb(0 0 0 / 12%);
   cursor: pointer;
   background-color: white;
 }
 
 .active {
-  background-color: var(--blue);
+  background-color: rgb(147, 147, 147);
   color: white;
 }

@@ -1,4 +1,4 @@
-import pagination from "./pagination.css";
+import "./pagination.css";
 
 const Pagination = ({ page, limit, total, setPage }) => {
   const totalPages = Math.ceil(total / limit);
@@ -8,20 +8,24 @@ const Pagination = ({ page, limit, total, setPage }) => {
   };
 
   return (
-    <div className={pagination.container}>
+    <div className='container'>
       {totalPages > 0 &&
         [...Array(totalPages)].map((val, index) => (
-          <button
-            onClick={() => onClick(index)}
-            className={
-              page === index + 1
-                ? `${pagination.page_btn} ${pagination.active}`
-                : pagination.page_btn
-            }
-            key={index}
-          >
-            {index + 1}
-          </button>
+          <div className='transform'>
+            {" "}
+            <button
+              onClick={() => onClick(index)}
+              className={
+                page === index + 1
+                  ? `page_btn active
+                `
+                  : "page_btn"
+              }
+              key={index}
+            >
+              {index + 1}
+            </button>
+          </div>
         ))}
     </div>
   );

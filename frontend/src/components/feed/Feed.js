@@ -11,18 +11,15 @@ import "./feed.css";
 const Feed = ({ showGrid }) => {
   const [posts, setPosts] = useState([]);
   const [data, setData] = useState({});
-  const [resultsFound, setResultsFound] = useState(data.total);
-  const [msgResults, setMsgResults] = useState("");
+  const [msgResults, setMsgResults] = useState(
+    "No pictures found, go eat there and upload a picture 😜"
+  );
   const [loading, setLoading] = useState(true);
 
   const [restaurantUserPick, setRestaurantUserPick] = useState("");
   const [dishTypePick, setDishTypePick] = useState("");
   const [page, setPage] = useState(1);
   const [cityPick, setCityPick] = useState("");
-
-  console.log(data);
-  console.log(data.total);
-  console.log(resultsFound);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -53,20 +50,22 @@ const Feed = ({ showGrid }) => {
           </div>
         ) : (
           <>
-            {posts ? (
+            {posts.length > 0 ? (
               <PostsFeed posts={posts} showGrid={showGrid} />
-            ) : resultsFound == 0 ? (
+            ) : (
               <div className='center-div msg-results'>{msgResults}</div>
-            ) : null}
+            )}
           </>
         )}
       </div>
-      <Pagination
-        page={page}
-        limit={data.pageSize ? data.pageSize : 0}
-        total={data.total ? data.total : 0}
-        setPage={(page) => setPage(page)}
-      />
+      <div className='center-div'>
+        <Pagination
+          page={page}
+          limit={data.pageSize ? data.pageSize : 0}
+          total={data.total ? data.total : 0}
+          setPage={(page) => setPage(page)}
+        />
+      </div>
     </div>
   );
 };

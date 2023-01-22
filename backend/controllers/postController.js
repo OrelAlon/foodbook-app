@@ -77,7 +77,7 @@ const deletePost = async (req, res) => {
 const getAllPosts = async (req, res) => {
   try {
     const page = parseInt(req.query.page) - 1 || 0;
-    const pageSize = req.query.pageSize || 100;
+    const pageSize = req.query.pageSize || 18;
     const search = req.query.search || "";
     const city = req.query.city || "";
 

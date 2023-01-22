@@ -3,13 +3,15 @@ import { useState, useEffect } from "react";
 import { fetchPostsWithFilters } from "../../api/ApiFetch";
 
 import PostsFeed from "../postsFeed/PostsFeed";
+import Pagination from "../pagination/Pagination";
 import Loading from "../loading/Loading";
 import FilterImagesModel from "../filterImagesModel/FilterImagesModel";
 import "./feed.css";
 
 const Feed = ({ showGrid }) => {
   const [posts, setPosts] = useState([]);
-  const [resultsFound, setResultsFound] = useState(undefined);
+  const [data, setData] = useState({});
+  const [resultsFound, setResultsFound] = useState(data.total);
   const [msgResults, setMsgResults] = useState("");
   const [loading, setLoading] = useState(true);
 
@@ -17,6 +19,10 @@ const Feed = ({ showGrid }) => {
   const [dishTypePick, setDishTypePick] = useState("");
   const [page, setPage] = useState(1);
   const [cityPick, setCityPick] = useState("");
+
+  console.log(data);
+  console.log(data.total);
+  console.log(resultsFound);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -26,16 +32,12 @@ const Feed = ({ showGrid }) => {
         restaurantUserPick,
         cityPick
       );
-
-      console.log(data.total);
-      console.log(data);
-
-      setResultsFound(data.total);
+      setData(data);
       setPosts(data.posts);
       setLoading(false);
     };
     fetchData();
-  }, [restaurantUserPick, cityPick]);
+  }, [restaurantUserPick, cityPick, page]);
 
   return (
     <div className='feed'>
@@ -59,6 +61,12 @@ const Feed = ({ showGrid }) => {
           </>
         )}
       </div>
+      <Pagination
+        page={page}
+        limit={data.pageSize ? data.pageSize : 0}
+        total={data.total ? data.total : 0}
+        setPage={(page) => setPage(page)}
+      />
     </div>
   );
 };

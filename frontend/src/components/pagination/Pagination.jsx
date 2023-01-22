@@ -11,7 +11,7 @@ const Pagination = ({ page, limit, total, setPage }) => {
     <div className='container'>
       {totalPages > 0 &&
         [...Array(totalPages)].map((val, index) => (
-          <div className='transform'>
+          <div className='transform' key={index}>
             {" "}
             <button
               onClick={() => onClick(index)}
@@ -21,7 +21,6 @@ const Pagination = ({ page, limit, total, setPage }) => {
                 `
                   : "page_btn"
               }
-              key={index}
             >
               {index + 1}
             </button>

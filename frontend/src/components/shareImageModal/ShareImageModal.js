@@ -8,7 +8,11 @@ import {
   Select,
   Space,
 } from "@mantine/core";
-import { foodCategoryOptions, dishTypeOptions } from "../../api/foodData";
+import {
+  foodCategoryOptions,
+  dishTypeOptions,
+  cities,
+} from "../../api/foodData";
 import axios from "axios";
 
 import ImageUpload from "../imageUpload/ImageUpload";
@@ -24,14 +28,15 @@ function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
   const [restaurantUserPick, setRestaurantUserPick] = useState(null);
   const [selectFoodCatgory, setSelectFoodCatgory] = useState([]);
   const [selectDishType, setSelectDishType] = useState([]);
+  const [selectCity, setSelectCity] = useState();
   const [selectRestaurant, setSelectRestaurant] = useState();
+  const [addInputCities, setAddInputCities] = useState(false);
 
   const [loading, setLoading] = useState(false);
   const [file, setFile] = useState(null);
   const [errorMsg, setErrorMsg] = useState("");
 
   const styleSelect = { width: "80%", margin: "auto" };
-
   const fetchRestaurants = useCallback(async () => {
     const res = await axios.get(`/api/restaurants/restaurants`);
     sortRestaurants(res.data);
@@ -90,7 +95,7 @@ function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
       data.set("username", user.username);
       data.set("restaurantId", selectRestaurant.value);
       data.set("restaurantname", selectRestaurant.label);
-      data.set("city", selectRestaurant.group);
+      data.set("city", selectCity || selectRestaurant.group);
       data.set("foodCategory", JSON.stringify(selectFoodCatgory));
       data.set("dishType", JSON.stringify(selectDishType));
       await axios.post("/api/posts", data);
@@ -101,6 +106,7 @@ function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
   };
 
   const createNewRest = async (query) => {
+    setAddInputCities(true);
     await axios.post("/api/restaurants/temprest", { query });
     const res = await axios.get(`/api/restaurants/?restaurantname=${query}`);
 
@@ -166,6 +172,16 @@ function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
               clearable
             />
             <Space h='sm' />
+            {addInputCities && (
+              <Select
+                data={cities}
+                onChange={setSelectCity}
+                value={selectCity}
+                label='City:'
+                style={styleSelect}
+                clearable
+              />
+            )}
             <Select
               data={dishTypeOptions}
               onChange={setSelectDishType}

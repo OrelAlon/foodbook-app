@@ -22,3 +22,6 @@
 .share {
   cursor: pointer;
 }
+.display-none {
+  display: none;
+}

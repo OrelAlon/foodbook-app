@@ -15,8 +15,8 @@ const EditPostPage = () => {
   const [post, setPost] = useState({});
 
   const [file, setFile] = useState("");
-  const [userName, setUsertName] = useState();
-  const [restaurantName, setRestaurantName] = useState();
+  const [userName, setUsertName] = useState("");
+  const [restaurantName, setRestaurantName] = useState("");
   const [postCity, setPostCity] = useState();
   const [isLoading, setIsLoading] = useState(true);
 
@@ -29,10 +29,6 @@ const EditPostPage = () => {
       try {
         const res = await axios.get(`/api/posts/?id=${postId}`);
         setPost(res.data.post);
-        console.log(res.data);
-        console.log(post);
-        setUsertName(res.data.username);
-        setRestaurantName(res.data.restaurantname);
 
         setIsLoading(false);
       } catch (error) {
@@ -46,7 +42,7 @@ const EditPostPage = () => {
     e.preventDefault();
     try {
       setIsLoading(true);
-
+      console.log(userName);
       const data = new FormData();
       if (file) {
         data.set("img", file);
@@ -55,17 +51,17 @@ const EditPostPage = () => {
       data.set("restaurantname", restaurantName);
       data.set("city", postCity);
 
-      await axios.put("/api/posts/" + post._id, data);
+      await axios.put("/api/posts/" + postId, data);
 
       try {
         // window.location.reload(false);
         // navigate("/restaurants");
       } catch (error) {
         // setErrorMsg(error.response.data.error);
-        console.log(error.response.data);
+        console.log(error.response);
       }
     } catch (error) {
-      console.log(error.response.data);
+      console.log(error.response);
     }
   };
 

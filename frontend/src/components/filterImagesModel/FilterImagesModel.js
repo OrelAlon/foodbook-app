@@ -64,6 +64,7 @@ const FilterImagesModel = ({
           data={cities}
           onChange={setCityPick}
           placeholder='Whice City ?'
+          searchable
           clearable
           styles={styleSelect}
         />

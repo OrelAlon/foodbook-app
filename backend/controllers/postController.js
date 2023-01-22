@@ -82,6 +82,7 @@ const getAllPosts = async (req, res) => {
     const city = req.query.city || "";
 
     let query = {};
+
     if (search.length > 0) {
       query.restaurantId = { $regex: search, $options: "i" };
     }
@@ -109,6 +110,7 @@ const getAllPosts = async (req, res) => {
     console.log(error.message);
   }
 };
+
 //
 const getUserPost = async (req, res) => {
   try {

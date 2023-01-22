@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react";
 
-import axios from "axios";
+import { fetchPostsWithFilters } from "../../api/ApiFetch";
 
 import PostsFeed from "../postsFeed/PostsFeed";
 import Loading from "../loading/Loading";
-import GridFeed from "../gridFeed/GridFeed";
 import FilterImagesModel from "../filterImagesModel/FilterImagesModel";
 import "./feed.css";
 
@@ -20,17 +19,22 @@ const Feed = ({ showGrid }) => {
   const [cityPick, setCityPick] = useState("");
 
   useEffect(() => {
-    const fetchPosts = async () => {
+    const fetchData = async () => {
       setLoading(true);
-
-      const res = await axios.get(
-        `/api/posts/feed?page=${page}&search=${restaurantUserPick}&city=${cityPick}`
+      const data = await fetchPostsWithFilters(
+        page,
+        restaurantUserPick,
+        cityPick
       );
-      setResultsFound(res.data.total);
-      setPosts(res.data.posts);
+
+      console.log(data.total);
+      console.log(data);
+
+      setResultsFound(data.total);
+      setPosts(data.posts);
       setLoading(false);
     };
-    fetchPosts();
+    fetchData();
   }, [restaurantUserPick, cityPick]);
 
   return (

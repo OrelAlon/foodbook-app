@@ -19,8 +19,15 @@ export async function fetchPostsUser(username) {
   return res;
 }
 
-export async function fetchPostsWithFilters() {
-  const res = await axios.get(`/api/posts/feed`);
-
+export async function fetchPostsWithFilters(
+  page,
+  restaurantUserPick,
+  cityPick
+) {
+  const res = await axios.get(
+    `/api/posts/feed?page=${page}${
+      restaurantUserPick !== null ? `&search=${restaurantUserPick}` : ""
+    }${cityPick !== null ? `&city=${cityPick}` : ""}`
+  );
   return res.data;
 }

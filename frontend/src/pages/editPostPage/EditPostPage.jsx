@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router";
+import { useNavigate } from "react-router-dom";
 
 import axios from "axios";
 
 import NavBar from "../../components/navBar/NavBar";
+import Loading from "../../components/loading/Loading";
 import ImageUpload from "../../components/imageUpload/ImageUpload";
 
 import { cities } from "../../assets/foodData";
@@ -17,10 +19,11 @@ const EditPostPage = () => {
   const [file, setFile] = useState("");
   const [userName, setUsertName] = useState("");
   const [restaurantName, setRestaurantName] = useState("");
-  const [postCity, setPostCity] = useState();
+  const [postCity, setPostCity] = useState("");
   const [isLoading, setIsLoading] = useState(true);
 
   const postId = useParams().id;
+  const navigate = useNavigate();
 
   useEffect(() => {
     setIsLoading(true);
@@ -28,8 +31,10 @@ const EditPostPage = () => {
     const fetchPost = async () => {
       try {
         const res = await axios.get(`/api/posts/?id=${postId}`);
-        setPost(res.data.post);
-
+        setPost(res.data);
+        setUsertName(res.data.username);
+        setRestaurantName(res.data.restaurantname);
+        setPostCity(res.data.city);
         setIsLoading(false);
       } catch (error) {
         console.log(error);
@@ -42,7 +47,6 @@ const EditPostPage = () => {
     e.preventDefault();
     try {
       setIsLoading(true);
-      console.log(userName);
       const data = new FormData();
       if (file) {
         data.set("img", file);
@@ -54,10 +58,9 @@ const EditPostPage = () => {
       await axios.put("/api/posts/" + postId, data);
 
       try {
-        // window.location.reload(false);
-        // navigate("/restaurants");
+        window.location.reload(false);
+        navigate("/");
       } catch (error) {
-        // setErrorMsg(error.response.data.error);
         console.log(error.response);
       }
     } catch (error) {
@@ -68,75 +71,72 @@ const EditPostPage = () => {
   return (
     <>
       <NavBar />
-      <form className='profile-edit-form' onSubmit={handleSubmit}>
-        <label className='profile-edit-form__label'>
-          userName:
-          <input
-            className='profile-edit-form__input'
-            type='text'
-            value={userName}
-            onChange={(e) => setUsertName(e.target.value)}
-          />
-        </label>
-        <br />
-        <label className='profile-edit-form__label'>
-          restaurantName:
-          <input
-            className='profile-edit-form__input'
-            type='text'
-            value={restaurantName}
-            onChange={(e) => setRestaurantName(e.target.value)}
-          />
-        </label>
-        <br />
-        <label className='profile-edit-form__label'>City:</label>
-        <Select
-          data={cities}
-          onChange={setPostCity}
-          style={{ width: "100%", margin: "auto", color: "dark.9" }}
-          searchable
-        />{" "}
-        <br />
-        {/* <label className='profile-edit-form__label'>
-          Instagram Link:
-          <input
-            className='profile-edit-form__input'
-            type='text'
-            value={restaurantInstagram}
-            onChange={(e) => setRestaurantInstagram(e.target.value)}
-          />
-        </label> */}
-        <br />
-        <label
-          className='profile-edit-form__label'
-          onChange={(e) => setFile(e.target.files[0])}
-        >
-          Image:
-          <div className='upload-image-div'>
-            <label htmlFor='file' className='shareOption'>
-              <BiImage fontSize={36} color={file ? "green" : "red"} />
-              <input
-                style={{ display: "none" }}
-                type='file'
-                id='file'
-                accept='.png,.jpeg,.jpg,.jfif'
-                onChange={(e) => setFile(e.target.files[0])}
-              />
-            </label>
-            {file && (
-              <div className='img-upload'>
-                <ImageUpload file={file} setFile={setFile} />
-              </div>
-            )}
-          </div>
-        </label>
-        <br />
-        {/* {errorMsg && <div className='error msg'>{errorMsg}</div>}
+
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <form className='profile-edit-form' onSubmit={handleSubmit}>
+          <label className='profile-edit-form__label'>
+            user name:
+            <input
+              className='profile-edit-form__input'
+              type='text'
+              value={userName}
+              onChange={(e) => setUsertName(e.target.value)}
+            />
+          </label>
+          <br />
+          <label className='profile-edit-form__label'>
+            restaurant name:
+            <input
+              className='profile-edit-form__input'
+              type='text'
+              value={restaurantName}
+              onChange={(e) => setRestaurantName(e.target.value)}
+            />
+          </label>
+          <br />
+          <label className='profile-edit-form__label'>City:</label>
+          <Select
+            data={cities}
+            onChange={setPostCity}
+            value={postCity}
+            style={{ width: "100%", margin: "auto", color: "dark.9" }}
+            searchable
+          />{" "}
+          <br />
+          <br />
+          <label
+            className='profile-edit-form__label'
+            onChange={(e) => setFile(e.target.files[0])}
+          >
+            Image:
+            <div className='upload-image-div'>
+              <label htmlFor='file' className='shareOption'>
+                <BiImage fontSize={36} color={file ? "green" : "red"} />
+                <input
+                  style={{ display: "none" }}
+                  type='file'
+                  id='file'
+                  accept='.png,.jpeg,.jpg,.jfif'
+                  onChange={(e) => setFile(e.target.files[0])}
+                />
+              </label>
+              {file && (
+                <div className='img-upload'>
+                  <ImageUpload file={file} setFile={setFile} />
+                </div>
+              )}
+            </div>
+          </label>
+          <br />
+          {/* {errorMsg && <div className='error msg'>{errorMsg}</div>}
       <div className='center-div'>{loading && <Loader />}</div> */}
-        <button className='profile-edit-form__button' type='submit'>
-          Save
-        </button>
-      </form>
+          <button className='profile-edit-form__button' type='submit'>
+            Save
+          </button>
+        </form>
+      )}
     </>
   );
 };

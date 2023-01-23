@@ -21,7 +21,7 @@ import {
 
 import { foodCategoryOptions, Prices, cities } from "../../api/foodData";
 
-import { submitHandlerPost } from "../../api/ApiPostHandle";
+import { submitHandlerAddRestaurant } from "../../api/ApiPostHandle";
 
 import { BiImage } from "react-icons/bi";
 
@@ -55,7 +55,7 @@ function AddRestaurantModal({ addRestaurantOpend, setAddRestaurantOpend }) {
       {/* Modal content */}
       <form
         onSubmit={(e) =>
-          submitHandlerPost(
+          submitHandlerAddRestaurant(
             e,
             restaurantName,
             city,
@@ -83,11 +83,6 @@ function AddRestaurantModal({ addRestaurantOpend, setAddRestaurantOpend }) {
               onChange={(e) => setFile(e.target.files[0])}
             />
           </label>
-          {/* {file && (
-            <div className='img-upload'>
-              <ImageUpload file={file} setFile={setFile} />
-            </div>
-          )} */}
         </div>
         <Space h='xl' />
         <div>

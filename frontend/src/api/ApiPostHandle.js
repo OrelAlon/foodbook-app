@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const submitHandlerPost = async (
+export const submitHandlerAddRestaurant = async (
   e,
   restaurantName,
   city,

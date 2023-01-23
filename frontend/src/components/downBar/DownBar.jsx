@@ -1,6 +1,8 @@
 import { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 
+import ShareImageModal from "../shareImageModal/ShareImageModal";
+
 import { AuthContext } from "../../context/AuthContext";
 import noAvatar from "../../assets/noAvatar.png";
 import {
@@ -8,10 +10,12 @@ import {
   IconToolsKitchen2,
   IconGridDots,
   IconInfoSquare,
-  IconPhoto,
+  IconPhotoPlus,
 } from "@tabler/icons";
 
 const DownBar = () => {
+  const [shareImageOpened, setShareImageOpened] = useState(false);
+
   const { user: currentUser } = useContext(AuthContext);
   const { username = "default", profilePicture = noAvatar } = currentUser;
 
@@ -23,6 +27,7 @@ const DownBar = () => {
         <div className='btn-downbar transform'>
           <Link to={`/`} style={{ textDecoration: "none" }}>
             <IconHome />
+            {/* <IconGridDots /> */}
           </Link>
         </div>
         <div className='btn-downbar transform'>
@@ -30,10 +35,13 @@ const DownBar = () => {
             <IconToolsKitchen2 />
           </Link>
         </div>
-        <div className='btn-downbar transform'>
-          {/* <IconGridDots /> */}
-          <IconPhoto />
+        <div
+          className='btn-downbar transform'
+          onClick={() => setShareImageOpened(true)}
+        >
+          <IconPhotoPlus />
         </div>
+
         <div className='btn-downbar transform'>
           <Link to={`/about`} style={style}>
             <IconInfoSquare />
@@ -44,7 +52,11 @@ const DownBar = () => {
             <img className='profile-img-downbar' src={profilePicture} alt='' />
           </Link>
         </div>
-      </div>
+      </div>{" "}
+      <ShareImageModal
+        shareImageOpened={shareImageOpened}
+        setShareImageOpened={setShareImageOpened}
+      />
     </>
   );
 };

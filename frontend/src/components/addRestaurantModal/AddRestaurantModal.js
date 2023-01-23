@@ -11,15 +11,17 @@ import {
   Select,
   Loader,
 } from "@mantine/core";
+
 import {
   IconBrandInstagram,
   IconHomePlus,
   IconWorld,
   IconCategory,
 } from "@tabler/icons";
+
 import { foodCategoryOptions, Prices, cities } from "../../api/foodData";
 
-import axios from "axios";
+import { submitHandlerPost } from "../../api/ApiPostHandle";
 
 import { BiImage } from "react-icons/bi";
 
@@ -36,35 +38,6 @@ function AddRestaurantModal({ addRestaurantOpend, setAddRestaurantOpend }) {
   const [errorMsg, setErrorMsg] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const submitHandler = async (e) => {
-    e.preventDefault();
-    if (file == null) {
-      return setErrorMsg("Please upload an image");
-    }
-    if (restaurantName == null) {
-      return setErrorMsg("Please choose a restaurant");
-    }
-    if (city == null) {
-      return setErrorMsg("Please choose a city");
-    }
-    try {
-      setErrorMsg("");
-      setLoading(true);
-      const data = new FormData();
-      data.set("profilePicture", file);
-      data.set("restaurantname", restaurantName);
-      data.set("city", city);
-      data.set("price", price);
-      data.set("instgram", instagramLink);
-      data.set("foodCategory", JSON.stringify(selectFoodCatgory));
-
-      await axios.post("/api/restaurants/", data);
-      window.location.reload();
-    } catch (error) {
-      setErrorMsg(error.response.data.error);
-    }
-  };
-
   return (
     <Modal
       overlayColor={
@@ -80,7 +53,22 @@ function AddRestaurantModal({ addRestaurantOpend, setAddRestaurantOpend }) {
       onClose={() => setAddRestaurantOpend(false)}
     >
       {/* Modal content */}
-      <form className='infoForm' onSubmit={submitHandler}>
+      <form
+        onSubmit={(e) =>
+          submitHandlerPost(
+            e,
+            restaurantName,
+            city,
+            price,
+            instagramLink,
+            selectFoodCatgory,
+            file,
+            setErrorMsg,
+            setLoading
+          )
+        }
+      >
+        {" "}
         <h1 style={{ margin: "auto" }}>Add Restaurant</h1>
         <div className='upload-image-div'>
           <label htmlFor='file' className='shareOption'>
@@ -102,7 +90,6 @@ function AddRestaurantModal({ addRestaurantOpend, setAddRestaurantOpend }) {
           )} */}
         </div>
         <Space h='xl' />
-
         <div>
           <Input
             icon={<IconHomePlus size={16} />}
@@ -144,7 +131,6 @@ function AddRestaurantModal({ addRestaurantOpend, setAddRestaurantOpend }) {
         </div>
         <Space h='xl' />
         <Space h='sm' />
-
         <div className='slide-div'>
           <Slider
             label={(val) => Prices.find((p) => p.value === val).label}
@@ -160,7 +146,6 @@ function AddRestaurantModal({ addRestaurantOpend, setAddRestaurantOpend }) {
         <Space h='xl' />
         <div className='center-div'>{loading && <Loader />}</div>
         {errorMsg && <div className='error msg'>{errorMsg}</div>}
-
         <div className='share-btn-div'>
           <Button
             color='teal'

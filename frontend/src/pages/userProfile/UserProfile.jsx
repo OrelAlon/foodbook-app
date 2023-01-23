@@ -4,8 +4,7 @@ import { Link } from "react-router-dom";
 
 import { AuthContext } from "../../context/AuthContext";
 
-import axios from "axios";
-
+import { fetchUserData } from "../../api/ApiFetch";
 import { IconEdit } from "@tabler/icons";
 
 import NavBar from "../../components/navBar/NavBar";
@@ -18,9 +17,6 @@ import "./userProfile.css";
 
 const UserProfile = () => {
   const [user, setUser] = useState({});
-  const [followers, setFollowers] = useState([]);
-  const [isFollowing, setIsFollowing] = useState([]);
-  const [isFollowed, setIsFollowed] = useState(false);
   const [postsLength, setPostsLength] = useState([]);
 
   const usernameParams = useParams().username;
@@ -28,30 +24,30 @@ const UserProfile = () => {
 
   useEffect(() => {
     const fetchUser = async () => {
-      const res = await axios.get(`/api/users/?username=${usernameParams}`);
+      const res = await fetchUserData(usernameParams);
       setUser(res.data);
     };
     fetchUser();
   }, [usernameParams]);
 
-  useEffect(() => {
-    if (Object.keys(user).length !== 0) {
-      setFollowers(user.followers.length);
-      setIsFollowing(user.followings.length);
-    }
-  }, [user]);
+  // useEffect(() => {
+  //   if (Object.keys(user).length !== 0) {
+  //     setFollowers(user.followers.length);
+  //     setIsFollowing(user.followings.length);
+  //   }
+  // }, [user]);
 
-  const followHandler = () => {
-    try {
-      axios.put(`/api/users/${user._id}/followuser`, {
-        userId: currentUser._id,
-      });
-    } catch (error) {
-      console.log(error);
-    }
-    setFollowers(isFollowed ? followers - 1 : followers + 1);
-    setIsFollowed(!isFollowed);
-  };
+  // const followHandler = () => {
+  //   try {
+  //     axios.put(`/api/users/${user._id}/followuser`, {
+  //       userId: currentUser._id,
+  //     });
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  //   setFollowers(isFollowed ? followers - 1 : followers + 1);
+  //   setIsFollowed(!isFollowed);
+  // };
 
   return (
     <>
@@ -70,7 +66,7 @@ const UserProfile = () => {
                   alt='profile-image'
                 />
 
-                <FollowBtn followHandler={followHandler} />
+                <FollowBtn />
                 {usernameParams === currentUser.username && (
                   <Link to={`/editprofile/${user.username}`} className='none'>
                     <span className='icon'>
@@ -92,16 +88,11 @@ const UserProfile = () => {
                     <span>Posts</span>
                   </a>
                 </li>
+
                 <li>
                   <a>
-                    <strong>{followers}</strong>
-                    <span>Followers</span>
-                  </a>
-                </li>
-                <li>
-                  <a>
-                    <strong>{isFollowing}</strong>
-                    <span>Following</span>
+                    <strong>3</strong>
+                    <span>Stars</span>
                   </a>
                 </li>
               </ul>

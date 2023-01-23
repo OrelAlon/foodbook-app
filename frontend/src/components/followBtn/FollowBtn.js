@@ -3,7 +3,7 @@ import React from "react";
 const FollowBtn = ({ followHandler }) => {
   return (
     <>
-      <button onClick={followHandler}>Follow</button>
+      <button onClick={followHandler}>⭐</button>
     </>
   );
 };

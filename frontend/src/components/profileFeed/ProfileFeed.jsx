@@ -7,20 +7,20 @@ import Loading from "../loading/Loading";
 
 // import "./feed.css";
 
-const ProfileFeed = ({ username, restaurant, setPostsLength }) => {
+const ProfileFeed = ({ username, restaurantname, setPostsLength }) => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const fetchPosts = async () => {
     try {
       setLoading(true);
-      if (username) {
+      if (username && username !== undefined) {
         const res = await fetchPostsUser(username);
+
         setPosts(res.data);
         setPostsLength(res.data.length);
-      }
-      if (restaurant) {
-        const res = await fetchPostsRestaurant(restaurant);
+      } else if (restaurantname && restaurantname !== undefined) {
+        const res = await fetchPostsRestaurant(restaurantname);
         setPosts(res.data);
         setPostsLength(res.data.length);
       }
@@ -32,7 +32,7 @@ const ProfileFeed = ({ username, restaurant, setPostsLength }) => {
 
   useEffect(() => {
     fetchPosts();
-  }, [username, restaurant]);
+  }, [username, restaurantname]);
 
   return (
     <div className='feed'>

@@ -1,7 +1,13 @@
 import axios from "axios";
 
+//  users fetch
+export async function fetchUserData(username) {
+  const res = await axios.get(`/api/users/?username=${username}`);
+  return res;
+}
+
 //  restaurants fetch
-export async function fetchRestaurant(restaurantname) {
+export async function fetchRestaurantData(restaurantname) {
   const res = await axios.get(
     `/api/restaurants/?restaurantname=${restaurantname}`
   );
@@ -13,10 +19,10 @@ export async function fetchAllRestaurants() {
   return res;
 }
 
-export async function fetchPostsRestaurant(restaurant) {
-  const res = restaurant.restaurantname
-    ? await axios.get(`/api/posts/restaurants/${restaurant.restaurantname}`)
-    : await axios.get(`/api/posts/restaurants/${restaurant._id}`);
+//  posts fetch
+
+export async function fetchPostsRestaurant(restaurantname) {
+  const res = await axios.get(`/api/posts/restaurants/${restaurantname}`);
   return res;
 }
 

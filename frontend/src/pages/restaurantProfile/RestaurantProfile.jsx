@@ -2,8 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router";
 
 import { AuthContext } from "../../context/AuthContext";
-
-import axios from "axios";
+import { fetchRestaurantData } from "../../api/ApiFetch";
 
 import NavBar from "../../components/navBar/NavBar";
 import ProfileFeed from "../../components/profileFeed/ProfileFeed";
@@ -16,41 +15,36 @@ import "./restaurantProfile.css";
 
 const RestaurantProfile = () => {
   const [restaurant, setRestaurant] = useState({});
-  const [followers, setFollowers] = useState([]);
-  const [isFollowed, setIsFollowed] = useState(false);
   const [postsLength, setPostsLength] = useState([]);
 
-  const restaurantname = useParams().restaurantname;
-  const { user: currentUser } = useContext(AuthContext);
+  const restaurantnameParams = useParams().restaurantname;
+
+  // useEffect(() => {
+  //   if (Object.keys(restaurant).length !== 0) {
+  //     setFollowers(restaurant.followers.length);
+  //   }
+  // }, [restaurant]);
 
   useEffect(() => {
-    if (Object.keys(restaurant).length !== 0) {
-      setFollowers(restaurant.followers.length);
-    }
-  }, [restaurant]);
+    const fetchRestaurant = async () => {
+      const res = await fetchRestaurantData(restaurantnameParams);
 
-  useEffect(() => {
+      setRestaurant(res.data);
+    };
     fetchRestaurant();
-  }, [restaurantname]);
+  }, [restaurantnameParams]);
 
-  const fetchRestaurant = async () => {
-    const res = await axios.get(
-      `/api/restaurants/?restaurantname=${restaurantname}`
-    );
-    setRestaurant(res.data);
-  };
-
-  const followHandler = () => {
-    try {
-      axios.put(`/api/restaurants/${restaurant._id}/followrestaurant`, {
-        userId: currentUser._id,
-      });
-    } catch (error) {
-      console.log(error);
-    }
-    setFollowers(isFollowed ? followers - 1 : followers + 1);
-    setIsFollowed(!isFollowed);
-  };
+  // const followHandler = () => {
+  //   try {
+  //     axios.put(`/api/restaurants/${restaurant._id}/followrestaurant`, {
+  //       userId: currentUser._id,
+  //     });
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  //   setFollowers(isFollowed ? followers - 1 : followers + 1);
+  //   setIsFollowed(!isFollowed);
+  // };
 
   return (
     <>
@@ -69,12 +63,11 @@ const RestaurantProfile = () => {
                   src={restaurant.profilePicture || noImage}
                   alt='jofpin'
                 />
-                <FollowBtn followHandler={followHandler} />
+                <FollowBtn />
               </div>
               <div className='profile-data'>
                 <h3>{restaurant.restaurantname}</h3>
                 <p>{restaurant.city}</p>
-                {/* <p>github.com/jofpin</p> */}
               </div>
               <div className='description-profile'>{restaurant.desc}</div>
               <ul className='data'>
@@ -86,8 +79,8 @@ const RestaurantProfile = () => {
                 </li>
                 <li>
                   <a>
-                    <strong>{followers}</strong>
-                    <span>Followers</span>
+                    <strong>5</strong>
+                    <span>Stars</span>
                   </a>
                 </li>
               </ul>
@@ -96,7 +89,7 @@ const RestaurantProfile = () => {
         </div>
         <div>
           <ProfileFeed
-            restaurant={restaurant}
+            restaurantname={restaurantnameParams}
             setPostsLength={setPostsLength}
           />
         </div>

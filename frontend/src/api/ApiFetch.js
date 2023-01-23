@@ -22,12 +22,15 @@ export async function fetchPostsUser(username) {
 export async function fetchPostsWithFilters(
   page,
   restaurantUserPick,
-  cityPick
+  cityPick,
+  dishTypePick
 ) {
   const res = await axios.get(
     `/api/posts/feed?page=${page}${
       restaurantUserPick !== null ? `&search=${restaurantUserPick}` : ""
-    }${cityPick !== null ? `&city=${cityPick}` : ""}`
+    }${cityPick !== null ? `&city=${cityPick}` : ""}${
+      dishTypePick !== null ? `&dishType=${dishTypePick}` : ""
+    }`
   );
   return res.data;
 }

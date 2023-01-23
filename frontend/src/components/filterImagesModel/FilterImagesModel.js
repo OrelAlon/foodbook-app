@@ -69,7 +69,7 @@ const FilterImagesModel = ({
           styles={styleSelect}
         />
         <Space h='sm' />
-        {/* <Select
+        <Select
           icon={<IconSearch size={16} />}
           data={dishTypeOptions}
           onChange={setDishTypePick}
@@ -77,7 +77,7 @@ const FilterImagesModel = ({
           clearable
           styles={styleSelect}
         />
-        <Space h='sm' /> */}
+        <Space h='sm' />
       </form>
     </>
   );

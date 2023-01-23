@@ -10,8 +10,6 @@ const getPost = async (req, res) => {
   try {
     const post = await Post.findById(postId);
     res.status(201).json(post);
-
-    // res.status(201).json(post);
   } catch (error) {
     console.log(error.message);
   }
@@ -80,6 +78,7 @@ const getAllPosts = async (req, res) => {
     const pageSize = req.query.pageSize || 18;
     const search = req.query.search || "";
     const city = req.query.city || "";
+    const dishType = req.query.dishType || "";
 
     let query = {};
 
@@ -88,6 +87,9 @@ const getAllPosts = async (req, res) => {
     }
     if (city.length > 0) {
       query.city = { $eq: city };
+    }
+    if (dishType.length > 0) {
+      query.dishType = { $eq: dishType };
     }
     if (!Object.keys(query).length) query = {};
 

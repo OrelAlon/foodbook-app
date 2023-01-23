@@ -17,9 +17,9 @@ const Feed = ({ showGrid }) => {
   const [loading, setLoading] = useState(true);
 
   const [restaurantUserPick, setRestaurantUserPick] = useState("");
+  const [cityPick, setCityPick] = useState("");
   const [dishTypePick, setDishTypePick] = useState("");
   const [page, setPage] = useState(1);
-  const [cityPick, setCityPick] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -27,14 +27,15 @@ const Feed = ({ showGrid }) => {
       const data = await fetchPostsWithFilters(
         page,
         restaurantUserPick,
-        cityPick
+        cityPick,
+        dishTypePick
       );
       setData(data);
       setPosts(data.posts);
       setLoading(false);
     };
     fetchData();
-  }, [restaurantUserPick, cityPick, page]);
+  }, [restaurantUserPick, cityPick, dishTypePick, page]);
 
   return (
     <div className='feed'>

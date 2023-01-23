@@ -19,20 +19,18 @@ const DownBar = () => {
   const { user: currentUser } = useContext(AuthContext);
   const { username = "default", profilePicture = noAvatar } = currentUser;
 
-  const style = { textDecoration: "none" };
-
   return (
     <>
       <div className='menu-div-down transform'>
         <div className='btn-downbar transform'>
-          <Link to={`/`} style={{ textDecoration: "none" }}>
-            <IconHome />
+          <Link to={`/`}>
+            <IconHome className='black-link' />
             {/* <IconGridDots /> */}
           </Link>
         </div>
         <div className='btn-downbar transform'>
-          <Link to={`/restaurants`} style={style}>
-            <IconToolsKitchen2 />
+          <Link to={`/restaurants`}>
+            <IconToolsKitchen2 className='black-link' />
           </Link>
         </div>
         <div
@@ -43,8 +41,8 @@ const DownBar = () => {
         </div>
 
         <div className='btn-downbar transform'>
-          <Link to={`/about`} style={style}>
-            <IconInfoSquare />
+          <Link to={`/about`}>
+            <IconInfoSquare className='black-link' />
           </Link>
         </div>
         <div className='btn-downbar transform'>

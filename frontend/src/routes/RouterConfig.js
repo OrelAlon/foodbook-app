@@ -13,6 +13,8 @@ import EditRestaurantPage from "../pages/editRestaurantPage/EditRestaurantPage";
 import EditProfileUserPage from "../pages/editProfileUserPage/EditProfileUserPage";
 import EditPostPage from "../pages/editPostPage/EditPostPage";
 
+import DownBar from "../components/downBar/DownBar";
+
 import { ProtectedRoute } from "./ProtectedRoute";
 import React from "react";
 
@@ -51,6 +53,7 @@ const RouterConfig = () => {
           <Route path='/editpost/:id' element={<EditPostPage />}></Route>
         </Route>
       </Routes>
+      <DownBar />
     </Router>
   );
 };

@@ -130,3 +130,27 @@ body {
 .go-back-div:hover {
   color: rgb(48, 85, 232);
 }
+.menu-div-down {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  z-index: 100;
+  margin: auto;
+  background-color: whitesmoke;
+  justify-content: space-between;
+}
+
+.btn-downbar {
+  margin: 3px 16px;
+  cursor: pointer;
+}
+
+.profile-img-downbar {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  object-fit: cover;
+}

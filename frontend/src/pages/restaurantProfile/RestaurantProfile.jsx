@@ -6,7 +6,7 @@ import { AuthContext } from "../../context/AuthContext";
 import axios from "axios";
 
 import NavBar from "../../components/navBar/NavBar";
-import RestaurantFeed from "../../components/feed/RestaurantFeed";
+import ProfileFeed from "../../components/profileFeed/ProfileFeed";
 import FollowBtn from "../../components/followBtn/FollowBtn";
 
 import noImage from "../../assets/noImage2.jpg";
@@ -94,9 +94,8 @@ const RestaurantProfile = () => {
             </div>
           </div>
         </div>
-        <div>{/* <h3>search bar option</h3> */}</div>
         <div>
-          <RestaurantFeed
+          <ProfileFeed
             restaurant={restaurant}
             setPostsLength={setPostsLength}
           />

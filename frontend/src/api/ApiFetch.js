@@ -1,9 +1,15 @@
 import axios from "axios";
 
+//  restaurants fetch
 export async function fetchRestaurant(restaurantname) {
   const res = await axios.get(
     `/api/restaurants/?restaurantname=${restaurantname}`
   );
+  return res;
+}
+
+export async function fetchAllRestaurants() {
+  const res = await axios.get(`/api/restaurants/restaurants`);
   return res;
 }
 

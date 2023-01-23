@@ -9,9 +9,9 @@ import axios from "axios";
 import { IconEdit } from "@tabler/icons";
 
 import NavBar from "../../components/navBar/NavBar";
-import UserFeed from "../../components/feed/UserFeed";
 import FollowBtn from "../../components/followBtn/FollowBtn";
 import noImage from "../../assets/noImage2.jpg";
+import ProfileFeed from "../../components/profileFeed/ProfileFeed";
 
 import st from "../../assets/st.jpg";
 import "./userProfile.css";
@@ -25,7 +25,7 @@ const UserProfile = () => {
 
   const usernameParams = useParams().username;
   const { user: currentUser } = useContext(AuthContext);
-  console.log(user);
+
   useEffect(() => {
     const fetchUser = async () => {
       const res = await axios.get(`/api/users/?username=${usernameParams}`);
@@ -110,7 +110,10 @@ const UserProfile = () => {
         </div>
         <div>
           {" "}
-          <UserFeed username={usernameParams} setPostsLength={setPostsLength} />
+          <ProfileFeed
+            username={usernameParams}
+            setPostsLength={setPostsLength}
+          />
         </div>
       </div>
     </>

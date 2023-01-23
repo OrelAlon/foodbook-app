@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 
@@ -29,25 +29,6 @@ const UserProfile = () => {
     };
     fetchUser();
   }, [usernameParams]);
-
-  // useEffect(() => {
-  //   if (Object.keys(user).length !== 0) {
-  //     setFollowers(user.followers.length);
-  //     setIsFollowing(user.followings.length);
-  //   }
-  // }, [user]);
-
-  // const followHandler = () => {
-  //   try {
-  //     axios.put(`/api/users/${user._id}/followuser`, {
-  //       userId: currentUser._id,
-  //     });
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  //   setFollowers(isFollowed ? followers - 1 : followers + 1);
-  //   setIsFollowed(!isFollowed);
-  // };
 
   return (
     <>

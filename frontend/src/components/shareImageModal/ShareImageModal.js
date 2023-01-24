@@ -174,6 +174,7 @@ function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
               getCreateLabel={(query) => `+ Create ${query}`}
               onCreate={(query) => createNewRest(query)}
               searchable
+              required
               style={styleSelect}
               creatable
               clearable

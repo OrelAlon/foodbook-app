@@ -6,11 +6,10 @@ import axios from "axios";
 
 import NavBar from "../../components/navBar/NavBar";
 import Loading from "../../components/loading/Loading";
-import ImageUpload from "../../components/imageUpload/ImageUpload";
+import ImageDisplay from "../../components/imageDisplay/ImageDisplay";
 
 import { cities } from "../../api/foodData";
 import { IconPhotoPlus } from "@tabler/icons";
-
 import { Select } from "@mantine/core";
 
 const EditPostPage = () => {
@@ -124,7 +123,7 @@ const EditPostPage = () => {
               </label>
               {file && (
                 <div className='img-upload'>
-                  <ImageUpload file={file} setFile={setFile} />
+                  <ImageDisplay file={file} setFile={setFile} />
                 </div>
               )}
             </div>

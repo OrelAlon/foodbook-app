@@ -2,7 +2,7 @@ import { useState, useRef, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import { Loader } from "@mantine/core";
-import ImageUpload from "../../components/imageUpload/ImageUpload";
+import ImageDisplay from "../../components/imageDisplay/ImageDisplay";
 
 import axios from "axios";
 
@@ -118,7 +118,7 @@ const Register = () => {
                 </label>
 
                 {file && (
-                  <ImageUpload
+                  <ImageDisplay
                     className={"register-image"}
                     file={file}
                     setFile={setFile}

@@ -18,7 +18,7 @@ import {
   cities,
 } from "../../api/foodData";
 import logo from "../../assets/transparent.png";
-import ImageUpload from "../imageUpload/ImageUpload";
+import ImageUpload from "../imageDisplay/ImageDisplay";
 import { IconPhotoPlus } from "@tabler/icons";
 
 import "./shareImageModal.css";

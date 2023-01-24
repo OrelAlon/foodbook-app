@@ -5,7 +5,7 @@ import { AuthContext } from "../../context/AuthContext";
 import axios from "axios";
 
 import NavBar from "../../components/navBar/NavBar";
-import ImageUpload from "../../components/imageUpload/ImageUpload";
+import ImageUpload from "../../components/imageDisplay/ImageDisplay";
 import ChangePasswordModel from "../../components/changePasswordModel/ChangePasswordModel";
 
 import { IconPhotoPlus } from "@tabler/icons";

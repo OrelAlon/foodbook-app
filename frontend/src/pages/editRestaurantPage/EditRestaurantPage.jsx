@@ -5,7 +5,7 @@ import { useParams } from "react-router";
 import axios from "axios";
 
 import NavBar from "../../components/navBar/NavBar";
-import ImageUpload from "../../components/imageUpload/ImageUpload";
+import ImageDisplay from "../../components/imageDisplay/ImageDisplay";
 
 import { cities } from "../../api/foodData";
 import { IconPhotoPlus } from "@tabler/icons";
@@ -117,7 +117,7 @@ const EditRestaurantPage = () => {
             </label>
             {file && (
               <div className='img-upload'>
-                <ImageUpload file={file} setFile={setFile} />
+                <ImageDisplay file={file} setFile={setFile} />
               </div>
             )}
           </div>

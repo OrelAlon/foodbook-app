@@ -7,7 +7,6 @@ import {
   Slider,
   Input,
   Space,
-  Button,
   Select,
   Loader,
 } from "@mantine/core";

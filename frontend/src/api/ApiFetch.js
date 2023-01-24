@@ -1,5 +1,10 @@
 import axios from "axios";
 
+export async function fetchAll(items) {
+  const res = await axios.get(`/api/${items}/${items}`);
+  return res;
+}
+
 //  users fetch
 export async function fetchUserData(username) {
   const res = await axios.get(`/api/users/?username=${username}`);

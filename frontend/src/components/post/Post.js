@@ -17,7 +17,6 @@ const Post = ({ post }) => {
   const [user, setUser] = useState({});
 
   const { user: currentUser } = useContext(AuthContext);
-  const { profilePicture = noAvatar } = currentUser;
 
   const {
     userId,
@@ -52,7 +51,7 @@ const Post = ({ post }) => {
             <Link to={`/profile/${username}`}>
               <img
                 className='postProfileImg'
-                src={user.profilePicture}
+                src={user.profilePicture || noAvatar}
                 alt=''
               />
             </Link>

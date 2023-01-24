@@ -6,6 +6,7 @@ import About from "../pages/about/About";
 import Register from "../pages/register/Register";
 import UserProfile from "../pages/userProfile/UserProfile";
 import PostPage from "../pages/postPage/PostPage";
+import AllItemsPage from "../pages/allItemsPage/AllItemsPage";
 import AllUsers from "../pages/allUsers/AllUsers";
 import AllRestaurants from "../pages/allRestaurants/AllRestaurants";
 import RestaurantProfile from "../pages/restaurantProfile/RestaurantProfile";
@@ -37,7 +38,10 @@ const RouterConfig = () => {
           <Route path='/profile/:username' element={<UserProfile />} />
           <Route path='/post/:id' element={<PostPage />} />
           <Route path='/users' element={<AllUsers />} />
-          <Route path='/restaurants' element={<AllRestaurants />} />
+          <Route
+            path='/restaurants'
+            element={<AllItemsPage type={"restaurants"} />}
+          />
           <Route
             path='/restaurant/:restaurantname'
             element={<RestaurantProfile />}

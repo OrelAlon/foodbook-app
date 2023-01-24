@@ -1,5 +1,8 @@
-import React, { useContext, useState, useEffect, useCallback } from "react";
+import { useContext, useState, useEffect, useCallback } from "react";
 import { AuthContext } from "../../context/AuthContext";
+
+import axios from "axios";
+
 import {
   Modal,
   useMantineTheme,
@@ -8,16 +11,15 @@ import {
   Select,
   Space,
 } from "@mantine/core";
+
 import {
   foodCategoryOptions,
   dishTypeOptions,
   cities,
 } from "../../api/foodData";
-import axios from "axios";
-
+import logo from "../../assets/transparent.png";
 import ImageUpload from "../imageUpload/ImageUpload";
-
-import { BiImage, BiCloudUpload } from "react-icons/bi";
+import { IconFileUpload, IconPhotoPlus } from "@tabler/icons";
 
 import "./shareImageModal.css";
 
@@ -142,7 +144,7 @@ function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
           <div className='upload-image-div'>
             <label htmlFor='file' className='shareOption'>
               <span className='shareText'>Add Your Image</span>
-              <BiImage fontSize={36} color={file ? "green" : "red"} />
+              <IconPhotoPlus size={30} color={file ? "green" : "red"} />
               <input
                 style={{ display: "none" }}
                 type='file'
@@ -205,8 +207,7 @@ function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
 
           <div className='center-div transform'>
             <span className='share' onClick={submitHandler}>
-              Upload
-              <BiCloudUpload fontSize={40} color={"blue"} />
+              <img src={logo} alt={logo} className='save-logo' />
             </span>{" "}
           </div>
         </form>

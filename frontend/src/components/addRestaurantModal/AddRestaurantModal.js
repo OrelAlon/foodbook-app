@@ -17,13 +17,12 @@ import {
   IconHomePlus,
   IconWorld,
   IconCategory,
+  IconPhotoPlus,
 } from "@tabler/icons";
 
 import { foodCategoryOptions, Prices, cities } from "../../api/foodData";
 
 import { submitHandlerAddRestaurant } from "../../api/ApiPostHandle";
-
-import { BiImage } from "react-icons/bi";
 
 function AddRestaurantModal({ addRestaurantOpend, setAddRestaurantOpend }) {
   const theme = useMantineTheme();
@@ -74,7 +73,7 @@ function AddRestaurantModal({ addRestaurantOpend, setAddRestaurantOpend }) {
           <label htmlFor='file' className='shareOption'>
             {/* <span className='shareText'>Upload</span> */}
             Add Image
-            <BiImage fontSize={36} color={file ? "green" : "red"} />
+            <IconPhotoPlus size={30} color={file ? "green" : "red"} />
             <input
               style={{ display: "none" }}
               type='file'
@@ -141,7 +140,7 @@ function AddRestaurantModal({ addRestaurantOpend, setAddRestaurantOpend }) {
         <Space h='xl' />
         <div className='center-div'>{loading && <Loader />}</div>
         {errorMsg && <div className='error msg'>{errorMsg}</div>}
-        <div className='share-btn-div'>
+        <div className='center-div'>
           <Button
             color='teal'
             style={{ margin: "auto" }}

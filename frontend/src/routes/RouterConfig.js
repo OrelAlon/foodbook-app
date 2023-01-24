@@ -7,7 +7,6 @@ import Register from "../pages/register/Register";
 import UserProfile from "../pages/userProfile/UserProfile";
 import PostPage from "../pages/postPage/PostPage";
 import AllItemsPage from "../pages/allItemsPage/AllItemsPage";
-import AllUsers from "../pages/allUsers/AllUsers";
 import RestaurantProfile from "../pages/restaurantProfile/RestaurantProfile";
 import EditRestaurantPage from "../pages/editRestaurantPage/EditRestaurantPage";
 import EditProfileUserPage from "../pages/editProfileUserPage/EditProfileUserPage";

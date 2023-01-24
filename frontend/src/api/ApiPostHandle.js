@@ -11,7 +11,6 @@ export const submitHandlerAddRestaurant = async (
   setErrorMsg,
   setLoading
 ) => {
-  e.preventDefault();
   if (file == null) {
     return setErrorMsg("Please upload an image");
   }

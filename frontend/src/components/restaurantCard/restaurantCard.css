@@ -1,8 +1,6 @@
 .restaurantCard {
-  background-color: rgb(202, 197, 197);
   display: flex;
   justify-content: center;
-
   color: white;
   margin: 0.2rem 1.5rem;
   padding: 0.2rem 1rem;

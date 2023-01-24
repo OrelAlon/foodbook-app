@@ -80,7 +80,7 @@ function AddRestaurantModal({ addRestaurantOpend, setAddRestaurantOpend }) {
             />
           </label>
         </div>
-        <Space h='xl' />
+        <Space h='sm' />
         <div>
           <Input.Wrapper
             label='Restaurant Name:'
@@ -95,7 +95,7 @@ function AddRestaurantModal({ addRestaurantOpend, setAddRestaurantOpend }) {
               required
             />
           </Input.Wrapper>
-          <Space h='xl' />
+          <Space h='sm' />
           <Select
             data={cities}
             onChange={setCity}
@@ -103,7 +103,7 @@ function AddRestaurantModal({ addRestaurantOpend, setAddRestaurantOpend }) {
             style={{ width: "80%", margin: "auto", color: "dark.9" }}
             required
           />{" "}
-          <Space h='xl' />
+          <Space h='sm' />
           <Input.Wrapper
             label='Instagram Place:'
             style={{ width: "80%", margin: "auto", color: "dark.9" }}
@@ -114,7 +114,7 @@ function AddRestaurantModal({ addRestaurantOpend, setAddRestaurantOpend }) {
               type='text'
             />
           </Input.Wrapper>
-          <Space h='xl' />
+          <Space h='sm' />
           <MultiSelect
             data={foodCategoryOptions}
             onChange={setSelectFoodCatgory}
@@ -122,7 +122,6 @@ function AddRestaurantModal({ addRestaurantOpend, setAddRestaurantOpend }) {
             style={{ width: "80%", margin: "auto" }}
           />{" "}
         </div>
-        <Space h='xl' />
         <Space h='sm' />
         <div className='slide-div'>
           <Slider
@@ -136,7 +135,6 @@ function AddRestaurantModal({ addRestaurantOpend, setAddRestaurantOpend }) {
             }}
           />
         </div>
-        <Space h='xl' />
         <div className='center-div'>{loading && <Loader />}</div>
         {errorMsg && <div className='error msg'>{errorMsg}</div>}
         <div className='center-div transform'>

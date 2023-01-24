@@ -1,5 +1,5 @@
 body {
-  background-color: #d3d3d3;
+  background-color: #f3f0f0;
   font-family: "Montserrat", sans-serif;
 }
 .transform :active {
@@ -69,7 +69,7 @@ body {
   justify-content: center;
   align-items: center;
   text-align: center;
-  margin-top: 25px;
+  margin-top: 15px;
   font-weight: bold;
   justify-content: space-evenly;
 }

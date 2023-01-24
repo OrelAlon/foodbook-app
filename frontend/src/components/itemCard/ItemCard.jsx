@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { Link } from "react-router-dom";
 
-import axios from "axios";
+import { deleteItem } from "../../api/ApiDeleteHandel";
 
 import { IconPencil, IconTrashX } from "@tabler/icons";
 
@@ -10,17 +10,21 @@ import noImage from "../../assets/noImage2.jpg";
 
 import "./itemCard.css";
 
-const ItemCard = ({ restaurant }) => {
+const ItemCard = ({ restaurant, user, type }) => {
   const { user: currentUser } = useContext(AuthContext);
 
+  const { _id } = restaurant || user;
+
   const deleteHandler = async () => {
-    if (
-      window.confirm(
-        `Are you sure you want to delete ${restaurant.restaurantname}?`
-      )
-    ) {
+    const confirm = window.confirm(
+      `Are you sure you want to delete ${
+        type === "users" ? user.username : restaurant.restaurantname
+      }?`
+    );
+
+    if (confirm) {
       try {
-        await axios.delete(`/api/restaurants/${restaurant._id}`);
+        await deleteItem(type, _id);
         window.location.reload();
       } catch (error) {
         console.log(error);
@@ -31,25 +35,44 @@ const ItemCard = ({ restaurant }) => {
   return (
     <div className='restaurantCard'>
       <Link
-        to={`/restaurant/${restaurant.restaurantname}`}
+        to={
+          type === "users"
+            ? `/profile/${user.username}`
+            : `/restaurant/${restaurant.restaurantname}`
+        }
         style={{ textDecoration: "none" }}
       >
         <img
           className='rightbarProfileImg'
-          src={restaurant.profilePicture || noImage}
+          src={
+            (type === "users"
+              ? user.profilePicture
+              : restaurant.profilePicture) || noImage
+          }
           alt=''
         />
-        <div className='restaurantName'>{restaurant.restaurantname}</div>
-      </Link>
-      <Link to={`/editrestaurant/${restaurant.restaurantname}`}>
-        <span className='icon transform '>
-          <IconPencil />
-        </span>
+        <div className='restaurantName'>
+          {" "}
+          {type === "users" ? user.username : restaurant.restaurantname}
+        </div>
       </Link>
       {currentUser.isAdmin && (
-        <span className='icon transform delete' onClick={deleteHandler}>
-          <IconTrashX />
-        </span>
+        <>
+          <Link
+            to={
+              type === "users"
+                ? `/editprofile/${user._id}`
+                : `/editrestaurant/${restaurant.restaurantname}`
+            }
+          >
+            <span className='icon transform '>
+              <IconPencil />
+            </span>
+          </Link>
+          <span className='icon transform delete' onClick={deleteHandler}>
+            <IconTrashX />
+          </span>
+        </>
       )}
     </div>
   );

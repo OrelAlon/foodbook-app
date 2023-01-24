@@ -16,13 +16,15 @@ const AllItemsPage = ({ type }) => {
   const [items, setItems] = useState([]);
   const [searchItem, setSearchItem] = useState("");
   const [loading, setLoading] = useState(true);
-  console.log(items);
+
   const [addRestaurantOpend, setAddRestaurantOpend] = useState(false);
 
-  console.log(type);
   const searchLowerCase = searchItem.toLowerCase();
 
   const fetchdata = async () => {
+    setItems([]);
+    setLoading(true);
+
     try {
       const res = await fetchAll(type);
       setItems(res.data);
@@ -34,7 +36,7 @@ const AllItemsPage = ({ type }) => {
 
   useEffect(() => {
     fetchdata();
-  }, []);
+  }, [type]);
 
   return (
     <>
@@ -47,22 +49,26 @@ const AllItemsPage = ({ type }) => {
 
       <div className='restaurantSContainer'>
         <div className='center-div'>
-          <h1 style={{ display: "inline-block" }}>
-            Restaurants{" "}
-            <span className='transform'>
-              {" "}
-              <IconSquarePlus
-                className='add-btn'
-                onClick={() => setAddRestaurantOpend(true)}
-              />
-            </span>
-          </h1>
+          {type === "users" ? (
+            <h1>Users</h1>
+          ) : (
+            <h1>
+              Restaurants
+              <span className='transform'>
+                {" "}
+                <IconSquarePlus
+                  className='add-btn'
+                  onClick={() => setAddRestaurantOpend(true)}
+                />
+              </span>
+            </h1>
+          )}
         </div>
 
         <Input
           icon={<IconSearch size={16} />}
           onChange={(e) => setSearchItem(e.target.value)}
-          placeholder='Search By Restaurant...'
+          placeholder='Search...'
           style={{ width: "80%", margin: "auto" }}
           styles={{ input: { "&::placeholder": { textAlign: "center" } } }}
         />
@@ -76,7 +82,7 @@ const AllItemsPage = ({ type }) => {
                   : item.restaurantname.toLowerCase().includes(searchLowerCase);
               })
               .map((restaurant, i) => (
-                <ItemCard key={i} restaurant={restaurant} />
+                <ItemCard key={i} restaurant={restaurant} type={type} />
               ))}
           {type === "users" &&
             items
@@ -85,7 +91,7 @@ const AllItemsPage = ({ type }) => {
                   ? item
                   : item.username.toLowerCase().includes(searchLowerCase);
               })
-              .map((user, i) => <ItemCard key={i} user={user} />)}
+              .map((user, i) => <ItemCard key={i} user={user} type={type} />)}
         </div>
       </div>
     </>

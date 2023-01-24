@@ -31,6 +31,22 @@ function AddRestaurantModal({ addRestaurantOpend, setAddRestaurantOpend }) {
   const [errorMsg, setErrorMsg] = useState("");
   const [loading, setLoading] = useState(false);
 
+  const submitHandler = async (e) => {
+    e.preventDefault();
+    console.log("gege");
+    await submitHandlerAddRestaurant(
+      e,
+      restaurantName,
+      city,
+      price,
+      instagramLink,
+      selectFoodCatgory,
+      file,
+      setErrorMsg,
+      setLoading
+    );
+  };
+
   return (
     <Modal
       overlayColor={
@@ -46,21 +62,7 @@ function AddRestaurantModal({ addRestaurantOpend, setAddRestaurantOpend }) {
       onClose={() => setAddRestaurantOpend(false)}
     >
       {/* Modal content */}
-      <form
-        onSubmit={(e) =>
-          submitHandlerAddRestaurant(
-            e,
-            restaurantName,
-            city,
-            price,
-            instagramLink,
-            selectFoodCatgory,
-            file,
-            setErrorMsg,
-            setLoading
-          )
-        }
-      >
+      <form onSubmit={submitHandler}>
         {" "}
         <div className='center-div'>
           <h1>Add Restaurant</h1>
@@ -137,7 +139,7 @@ function AddRestaurantModal({ addRestaurantOpend, setAddRestaurantOpend }) {
         <div className='center-div'>{loading && <Loader />}</div>
         {errorMsg && <div className='error msg'>{errorMsg}</div>}
         <div className='center-div transform'>
-          <span className='share' onClick={submitHandlerAddRestaurant}>
+          <span className='share' onClick={submitHandler}>
             <img src={logo} alt={logo} className='save-logo' />
           </span>{" "}
         </div>

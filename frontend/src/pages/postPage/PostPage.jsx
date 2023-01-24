@@ -38,6 +38,10 @@ const PostPage = () => {
   return (
     <>
       <NavBar />
+      <div className='center-div go-back-div transform cursor'>
+        {" "}
+        <GoBackButton />
+      </div>
       {isLoading ? (
         <div className='center-div'>
           <Loading />
@@ -83,10 +87,6 @@ const PostPage = () => {
           </div>
         </div>
       )}
-      <div className='go-back-div transform cursor'>
-        {" "}
-        <GoBackButton />
-      </div>
     </>
   );
 };

@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { TiArrowBack } from "react-icons/ti";
+import { IconChevronLeft } from "@tabler/icons";
 
 const GoBackButton = () => {
   const navigate = useNavigate();
@@ -7,7 +7,7 @@ const GoBackButton = () => {
 
   return (
     <div>
-      <TiArrowBack onClick={goBack} fontSize={40} />
+      <IconChevronLeft onClick={goBack} size={40} />
     </div>
   );
 };

@@ -19,7 +19,7 @@ import {
 } from "../../api/foodData";
 import logo from "../../assets/transparent.png";
 import ImageUpload from "../imageUpload/ImageUpload";
-import { IconFileUpload, IconPhotoPlus } from "@tabler/icons";
+import { IconPhotoPlus } from "@tabler/icons";
 
 import "./shareImageModal.css";
 

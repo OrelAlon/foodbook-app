@@ -9,7 +9,7 @@ import Loading from "../../components/loading/Loading";
 import ImageUpload from "../../components/imageUpload/ImageUpload";
 
 import { cities } from "../../api/foodData";
-import { BiImage } from "react-icons/bi";
+import { IconPhotoPlus } from "@tabler/icons";
 
 import { Select } from "@mantine/core";
 
@@ -113,7 +113,7 @@ const EditPostPage = () => {
             Image:
             <div className='upload-image-div'>
               <label htmlFor='file' className='shareOption'>
-                <BiImage fontSize={36} color={file ? "green" : "red"} />
+                <IconPhotoPlus size={30} color={file ? "green" : "red"} />
                 <input
                   style={{ display: "none" }}
                   type='file'

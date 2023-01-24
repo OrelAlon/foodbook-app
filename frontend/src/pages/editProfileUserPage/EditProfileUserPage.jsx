@@ -8,7 +8,7 @@ import NavBar from "../../components/navBar/NavBar";
 import ImageUpload from "../../components/imageUpload/ImageUpload";
 import ChangePasswordModel from "../../components/changePasswordModel/ChangePasswordModel";
 
-import { BiImage } from "react-icons/bi";
+import { IconPhotoPlus } from "@tabler/icons";
 import { Loader } from "@mantine/core";
 
 import "./editProfileUserPage.css";
@@ -107,7 +107,7 @@ const EditProfileUserPage = () => {
           <div className='upload-image-div'>
             <label htmlFor='file' className='shareOption'>
               {/* <span className='shareText'>Upload</span> */}
-              <BiImage fontSize={36} color={file ? "green" : "red"} />
+              <IconPhotoPlus size={30} color={file ? "green" : "red"} />
               <input
                 style={{ display: "none" }}
                 type='file'

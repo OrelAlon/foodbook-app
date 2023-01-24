@@ -121,12 +121,12 @@ body {
   margin: auto;
   margin-top: 20px;
 }
-.go-back-div {
+/* .go-back-div {
   position: fixed;
-  right: 10px;
-  bottom: 10px;
+  left: 50px;
+  top: 70px;
   z-index: 100;
-}
+} */
 .go-back-div:hover {
   color: rgb(48, 85, 232);
 }

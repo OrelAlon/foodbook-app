@@ -7,7 +7,7 @@ import ImageUpload from "../../components/imageUpload/ImageUpload";
 import axios from "axios";
 
 import foodbook from "../../assets/foodbook.png";
-import { BiImage } from "react-icons/bi";
+import { IconPhotoPlus } from "@tabler/icons";
 
 const Register = () => {
   const [file, setFile] = useState(null);
@@ -108,7 +108,7 @@ const Register = () => {
               <div className='shareOptions transform share-div center-div'>
                 <label htmlFor='file' className='shareOption '>
                   <span className='shareText'>Add Image </span>
-                  <BiImage fontSize={22} color={file ? "green" : "red"} />
+                  <IconPhotoPlus size={26} color={file ? "green" : "red"} />
                   <input
                     style={{ display: "none" }}
                     type='file'

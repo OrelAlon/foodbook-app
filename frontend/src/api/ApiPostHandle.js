@@ -2,7 +2,6 @@ import axios from "axios";
 
 // add rest
 export const submitHandlerAddRestaurant = async (
-  e,
   restaurantName,
   city,
   price,
@@ -36,7 +35,7 @@ export const submitHandlerAddRestaurant = async (
     await axios.post("/api/restaurants/", data);
     window.location.reload();
   } catch (error) {
-    setErrorMsg(error.response.data.error);
+    console.log(error.response);
   }
 };
 

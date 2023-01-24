@@ -107,7 +107,6 @@ const Register = () => {
               </div>
               <div className='shareOptions transform share-div center-div'>
                 <label htmlFor='file' className='shareOption '>
-                  <span className='shareText'>Add Image </span>
                   <IconPhotoPlus size={26} color={file ? "green" : "red"} />
                   <input
                     style={{ display: "none" }}

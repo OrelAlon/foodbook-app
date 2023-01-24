@@ -13,6 +13,7 @@ import {
 } from "@mantine/core";
 
 import { IconPhotoPlus } from "@tabler/icons";
+import logo from "../../assets/transparent.png";
 
 import { foodCategoryOptions, Prices, cities } from "../../api/foodData";
 
@@ -138,15 +139,10 @@ function AddRestaurantModal({ addRestaurantOpend, setAddRestaurantOpend }) {
         <Space h='xl' />
         <div className='center-div'>{loading && <Loader />}</div>
         {errorMsg && <div className='error msg'>{errorMsg}</div>}
-        <div className='center-div'>
-          <Button
-            color='teal'
-            style={{ margin: "auto" }}
-            type={"submit"}
-            size='md'
-          >
-            Save
-          </Button>
+        <div className='center-div transform'>
+          <span className='share' onClick={submitHandlerAddRestaurant}>
+            <img src={logo} alt={logo} className='save-logo' />
+          </span>{" "}
         </div>
       </form>
     </Modal>

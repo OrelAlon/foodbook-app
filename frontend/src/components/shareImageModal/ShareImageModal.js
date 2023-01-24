@@ -39,9 +39,14 @@ function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
   const [errorMsg, setErrorMsg] = useState("");
 
   const styleSelect = { width: "80%", margin: "auto" };
+
   const fetchRestaurants = useCallback(async () => {
-    const res = await axios.get(`/api/restaurants/restaurants`);
-    sortRestaurants(res.data);
+    try {
+      const res = await axios.get(`/api/restaurants/restaurants`);
+      sortRestaurants(res.data);
+    } catch (error) {
+      console.error(error);
+    }
   }, []);
 
   const sortRestaurants = (res) => {
@@ -139,7 +144,7 @@ function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
         {/* Modal content */}
         <form className='infoForm' onSubmit={submitHandler}>
           <div className='center-div '>
-            <h2>Share your experience with us</h2>
+            <h3>Share your experience with us</h3>
           </div>
           <div className='upload-image-div'>
             <label htmlFor='file' className='shareOption'>

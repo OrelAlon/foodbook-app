@@ -17,7 +17,8 @@ const DownBar = () => {
   const [shareImageOpened, setShareImageOpened] = useState(false);
 
   const { user: currentUser } = useContext(AuthContext);
-  const { username = "default", profilePicture = noAvatar } = currentUser;
+
+  const { profilePicture = noAvatar, username = "" } = currentUser || {};
 
   return (
     <>

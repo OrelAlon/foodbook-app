@@ -13,7 +13,7 @@ import {
   Loader,
 } from "@mantine/core";
 
-import axios from "axios";
+import { changeUserPassword } from "../../api/ApiPostHandle";
 
 function ChangePasswordModel({ changePasswordModel, setChangePasswordOpened }) {
   const [visible, { toggle }] = useDisclosure(false);
@@ -40,15 +40,11 @@ function ChangePasswordModel({ changePasswordModel, setChangePasswordOpened }) {
       setLoading(true);
 
       // Send a request to the server to update the password
-      const response = await axios.post("/api/users/updatepassword", {
-        newPassword,
-        userId,
-      });
-      setSuccess(response.data.message);
+      const res = await changeUserPassword(newPassword, userId);
+      setSuccess(res.data.message);
       navigate("/");
     } catch (error) {
-      setErrorMsg(error.response.data.error);
-      console.log(error.response.data.error);
+      setErrorMsg(error.res.data.error);
     }
   };
 

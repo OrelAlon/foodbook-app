@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 import axios from "axios";
 
-import { IconEdit, IconEraser } from "@tabler/icons";
+import { IconPencil, IconTrashX } from "@tabler/icons";
 
 import noImage from "../../assets/noImage2.jpg";
 
@@ -30,7 +30,10 @@ const RestaurantCard = ({ restaurant }) => {
 
   return (
     <div className='restaurantCard'>
-      <Link to={`/restaurant/${restaurant.restaurantname}`}>
+      <Link
+        to={`/restaurant/${restaurant.restaurantname}`}
+        style={{ textDecoration: "none" }}
+      >
         <img
           className='rightbarProfileImg'
           src={restaurant.profilePicture || noImage}
@@ -40,12 +43,12 @@ const RestaurantCard = ({ restaurant }) => {
       </Link>
       <Link to={`/editrestaurant/${restaurant.restaurantname}`}>
         <span className='icon transform '>
-          <IconEdit />
+          <IconPencil />
         </span>
       </Link>
       {currentUser.isAdmin && (
         <span className='icon transform delete' onClick={deleteHandler}>
-          <IconEraser />
+          <IconTrashX />
         </span>
       )}
     </div>

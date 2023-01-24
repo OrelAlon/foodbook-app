@@ -78,17 +78,6 @@ const EditProfileUserPage = () => {
           />
         </label>
         <br />
-
-        <label className='profile-edit-form__label'>
-          Instagram Link:
-          <input
-            className='profile-edit-form__input'
-            type='text'
-            value={userInstagram}
-            onChange={(e) => setUserInstagram(e.target.value)}
-          />
-        </label>
-        <br />
         <label className='profile-edit-form__label'>
           Email:
           <input
@@ -96,6 +85,16 @@ const EditProfileUserPage = () => {
             type='email'
             value={userEmail}
             onChange={(e) => setUserEmail(e.target.value)}
+          />
+        </label>
+        <br />{" "}
+        <label className='profile-edit-form__label'>
+          Instagram Link:
+          <input
+            className='profile-edit-form__input'
+            type='text'
+            value={userInstagram}
+            onChange={(e) => setUserInstagram(e.target.value)}
           />
         </label>
         <br />
@@ -126,7 +125,6 @@ const EditProfileUserPage = () => {
         <br />
         {errorMsg && <div className='error msg'>{errorMsg}</div>}
         <div className='center-div'>{loading && <Loader />}</div>
-
         <button className='profile-edit-form__button' type='submit'>
           Save
         </button>

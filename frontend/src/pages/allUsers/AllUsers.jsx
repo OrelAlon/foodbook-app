@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import axios from "axios";
-
+import { fetchAllUsers } from "../../api/ApiFetch";
 import NavBar from "../../components/navBar/NavBar";
 import UserCard from "../../components/userCard/UserCard";
 import Loading from "../../components/loading/Loading";
@@ -15,17 +14,17 @@ const AllUsers = () => {
 
   const searchLowerCase = searchUser.toLowerCase();
 
-  useEffect(() => {
-    const fetchUsers = async () => {
-      try {
-        const res = await axios.get(`/api/users/users`);
-        setUsers(res.data);
-        setLoading(false);
-      } catch (error) {
-        console.log(error.response.data);
-      }
-    };
+  const fetchUsers = async () => {
+    try {
+      const res = await fetchAllUsers();
+      setUsers(res.data);
+      setLoading(false);
+    } catch (error) {
+      console.log(error.response.data);
+    }
+  };
 
+  useEffect(() => {
     fetchUsers();
   }, []);
 

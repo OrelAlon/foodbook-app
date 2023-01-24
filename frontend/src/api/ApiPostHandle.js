@@ -1,5 +1,6 @@
 import axios from "axios";
 
+// add rest
 export const submitHandlerAddRestaurant = async (
   e,
   restaurantName,
@@ -37,4 +38,13 @@ export const submitHandlerAddRestaurant = async (
   } catch (error) {
     setErrorMsg(error.response.data.error);
   }
+};
+
+// change user password
+export const changeUserPassword = async (newPassword, userId) => {
+  const res = await axios.post("/api/users/updatepassword", {
+    newPassword,
+    userId,
+  });
+  return res;
 };

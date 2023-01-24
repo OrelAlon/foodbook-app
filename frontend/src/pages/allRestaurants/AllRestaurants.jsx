@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
-import axios from "axios";
+import { fetchAllRestaurants } from "../../api/ApiFetch";
 
 import NavBar from "../../components/navBar/NavBar";
 import RestaurantCard from "../../components/restaurantCard/RestaurantCard";
@@ -20,16 +20,17 @@ const AllRestaurants = () => {
 
   const searchLowerCase = searchRestaurant.toLowerCase();
 
+  const fetchRestaurants = async () => {
+    try {
+      const res = await fetchAllRestaurants();
+      setRestaurants(res.data);
+      setLoading(false);
+    } catch (error) {
+      console.log(error.response.data);
+    }
+  };
+
   useEffect(() => {
-    const fetchRestaurants = async () => {
-      try {
-        const res = await axios.get(`/api/restaurants/restaurants`);
-        setRestaurants(res.data);
-        setLoading(false);
-      } catch (error) {
-        console.log(error.response.data);
-      }
-    };
     fetchRestaurants();
   }, []);
 

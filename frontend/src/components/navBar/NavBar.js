@@ -24,12 +24,12 @@ const NavBar = ({ setShowGrid, showGrid }) => {
             {showGrid ? "📲" : "💻"}
           </button>
         )}
-        <button
+        {/* <button
           onClick={() => setShareImageOpened(true)}
           className='add-image-btn transform'
         >
           📷
-        </button>
+        </button> */}
         <NavMenu />
       </div>
       <ShareImageModal

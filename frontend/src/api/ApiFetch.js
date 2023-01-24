@@ -6,6 +6,11 @@ export async function fetchUserData(username) {
   return res;
 }
 
+export async function fetchAllUsers() {
+  const res = await axios.get(`/api/users/users`);
+  return res;
+}
+
 //  restaurants fetch
 export async function fetchRestaurantData(restaurantname) {
   const res = await axios.get(

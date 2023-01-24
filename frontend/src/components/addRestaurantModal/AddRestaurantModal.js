@@ -12,13 +12,7 @@ import {
   Loader,
 } from "@mantine/core";
 
-import {
-  IconBrandInstagram,
-  IconHomePlus,
-  IconWorld,
-  IconCategory,
-  IconPhotoPlus,
-} from "@tabler/icons";
+import { IconPhotoPlus } from "@tabler/icons";
 
 import { foodCategoryOptions, Prices, cities } from "../../api/foodData";
 
@@ -68,10 +62,11 @@ function AddRestaurantModal({ addRestaurantOpend, setAddRestaurantOpend }) {
         }
       >
         {" "}
-        <h1 style={{ margin: "auto" }}>Add Restaurant</h1>
+        <div className='center-div'>
+          <h1>Add Restaurant</h1>
+        </div>
         <div className='upload-image-div'>
           <label htmlFor='file' className='shareOption'>
-            {/* <span className='shareText'>Upload</span> */}
             Add Image
             <IconPhotoPlus size={30} color={file ? "green" : "red"} />
             <input
@@ -80,46 +75,49 @@ function AddRestaurantModal({ addRestaurantOpend, setAddRestaurantOpend }) {
               id='file'
               accept='.png,.jpeg,.jpg,.jfif'
               onChange={(e) => setFile(e.target.files[0])}
+              required
             />
           </label>
         </div>
         <Space h='xl' />
         <div>
-          <Input
-            icon={<IconHomePlus size={16} />}
-            style={{ width: "80%", margin: "auto", color: "dark.9" }}
+          <Input.Wrapper
             label='Restaurant Name:'
-            placeholder='Name'
-            onChange={(e) => setRestaurantName(e.target.value)}
-            value={restaurantName}
-            type='text'
             required
-          />
-          <Space h='xl' />
-          <Input
-            icon={<IconBrandInstagram size={16} />}
             style={{ width: "80%", margin: "auto", color: "dark.9" }}
-            label='Instagram:'
-            placeholder='Instagram'
-            onChange={(e) => setInstagramLink(e.target.value)}
-            value={instagramLink}
-            type='text'
-          />
+          >
+            <Input
+              // style={{ width: "80%", margin: "auto", color: "dark.9" }}
+              onChange={(e) => setRestaurantName(e.target.value)}
+              value={restaurantName}
+              type='text'
+              required
+            />
+          </Input.Wrapper>
           <Space h='xl' />
           <Select
             data={cities}
             onChange={setCity}
-            placeholder='city'
-            icon={<IconWorld size={16} />}
+            label='City:'
             style={{ width: "80%", margin: "auto", color: "dark.9" }}
             required
           />{" "}
           <Space h='xl' />
+          <Input.Wrapper
+            label='Instagram Place:'
+            style={{ width: "80%", margin: "auto", color: "dark.9" }}
+          >
+            <Input
+              onChange={(e) => setInstagramLink(e.target.value)}
+              value={instagramLink}
+              type='text'
+            />
+          </Input.Wrapper>
+          <Space h='xl' />
           <MultiSelect
-            icon={<IconCategory size={16} />}
             data={foodCategoryOptions}
             onChange={setSelectFoodCatgory}
-            placeholder='Pick what relevant'
+            label='Pick what relevant'
             style={{ width: "80%", margin: "auto" }}
           />{" "}
         </div>

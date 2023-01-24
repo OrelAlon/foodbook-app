@@ -139,7 +139,7 @@ function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
         {/* Modal content */}
         <form className='infoForm' onSubmit={submitHandler}>
           <div className='center-div '>
-            <h2>Share With Us Your Food</h2>
+            <h2>Share your experience with us</h2>
           </div>
           <div className='upload-image-div'>
             <label htmlFor='file' className='shareOption'>

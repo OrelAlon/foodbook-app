@@ -94,9 +94,10 @@ const getAllPosts = async (req, res) => {
     if (!Object.keys(query).length) query = {};
 
     const posts = await Post.find(query)
-      .sort({ createdAt: -1 })
       .skip(page * pageSize)
-      .limit(pageSize);
+      .limit(pageSize)
+      .sort({ createdAt: -1 });
+
     const total = await Post.countDocuments(query);
 
     const data = {

@@ -20,7 +20,7 @@ const LikePost = ({ id, likes }) => {
     setLoading(true);
 
     try {
-      const response = await axios.put(`/api/posts/${id}/like`, {
+      await axios.put(`/api/posts/${id}/like`, {
         userId: currentUser._id,
       });
       if (!isLiked) {

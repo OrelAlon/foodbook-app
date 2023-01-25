@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 
 import axios from "axios";
+import { submitHandlerEditUser } from "../../api/ApiPutHandler";
 
 import NavBar from "../../components/navBar/NavBar";
 import ImageUpload from "../../components/imageDisplay/ImageDisplay";
@@ -32,35 +33,16 @@ const EditProfileUserPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     // Save the form data to the database here
-    try {
-      setLoading(true);
-
-      const data = new FormData();
-      if (file) {
-        data.set("profilePicture", file);
-      }
-      data.set("username", userName);
-      data.set("instagram", userInstagram);
-      data.set("email", userEmail);
-      data.set("userId", currentUser._id);
-
-      await axios.put("/api/users/" + currentUser._id, data);
-
-      try {
-        const existingUser = await axios.get(
-          `/api/users/?userId=${currentUser._id}`
-        );
-        // save the updated user back to the local storage
-        localStorage.setItem("user", JSON.stringify(existingUser.data));
-
-        // window.location.reload(false);
-        navigate("/");
-      } catch (error) {
-        setErrorMsg(error.response.data.error);
-      }
-    } catch (error) {
-      console.log(error);
-    }
+    submitHandlerEditUser(
+      file,
+      userName,
+      userInstagram,
+      userEmail,
+      currentUser,
+      setLoading,
+      setErrorMsg
+    );
+    navigate("/");
   };
 
   // Render the form

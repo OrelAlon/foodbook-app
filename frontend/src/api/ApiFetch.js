@@ -34,6 +34,10 @@ export async function fetchAllRestaurants() {
 }
 
 //  posts fetch
+export async function fetchPostId(postId) {
+  const res = await axios.get(`/api/posts/?id=${postId}`);
+  return res;
+}
 
 export async function fetchPostsRestaurant(restaurantname) {
   const res = await axios.get(`/api/posts/restaurants/${restaurantname}`);

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 
-import axios from "axios";
+import { fetchPostId } from "../../api/ApiFetch";
 
 import { Image } from "@mantine/core";
 
@@ -20,18 +20,18 @@ const PostPage = () => {
 
   const postId = useParams().id;
 
-  useEffect(() => {
-    setIsLoading(true);
+  const fetchPost = async () => {
+    try {
+      setIsLoading(true);
+      const res = await fetchPostId(postId);
+      setPost(res.data);
+      setIsLoading(false);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
-    const fetchPost = async () => {
-      try {
-        const res = await axios.get(`/api/posts/?id=${postId}`);
-        setPost(res.data);
-        setIsLoading(false);
-      } catch (error) {
-        console.log(error);
-      }
-    };
+  useEffect(() => {
     fetchPost();
   }, [postId]);
 

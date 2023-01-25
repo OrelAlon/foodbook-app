@@ -26,7 +26,10 @@
   margin-bottom: 20px;
   padding: 40px;
 }
-
+.about-me__text-p {
+  font-size: larger;
+  font-weight: bolder;
+}
 .about-me__links {
   display: flex;
   justify-content: space-between;

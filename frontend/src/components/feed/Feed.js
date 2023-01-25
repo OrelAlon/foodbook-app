@@ -1,12 +1,11 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 
 import { fetchPostsWithFilters } from "../../api/ApiFetch";
-import usePosts from "../../api/usePost";
 import PostsFeed from "../postsFeed/PostsFeed";
 import GridFeed from "../gridFeed/GridFeed";
-import Pagination from "../pagination/Pagination";
 import Loading from "../loading/Loading";
 import FilterImagesModel from "../filterImagesModel/FilterImagesModel";
+
 import "./feed.css";
 
 const Feed = ({ showGrid }) => {

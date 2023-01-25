@@ -28,6 +28,7 @@ const Post = React.forwardRef(({ post }, ref) => {
     foodCategory,
     dishType,
   } = post;
+
   const usernameParams = useParams().username;
 
   useEffect(() => {

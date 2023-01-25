@@ -70,6 +70,7 @@
 }
 
 /* Apply the animation class to the element */
-.about-me__text {
-  animation: fadeIn 2.5s ease-in;
+.about-me__text-p {
+  animation: fadeIn 2s ease-in;
+  animation-fill-mode: forwards;
 }

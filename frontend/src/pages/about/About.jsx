@@ -21,13 +21,20 @@ const About = () => {
           <img src={me} alt='Profile' className='about-me__img' />
         </div>
         <div className='about-me__text'>
-          <p>
+          <p
+            className='about-me__text-p'
+            style={{ animationDelay: "2s", opacity: 0 }}
+          >
+            {" "}
             Starting as a small project, it has grown into a real platform for
             food lovers to discover and share their culinary experiences.
           </p>
-          <p>
-            As a developer, I constantly strive to improve the user experience
-            and am proud to utilize the MERN stack to realize this vision
+          <p
+            className='about-me__text-p'
+            style={{ animationDelay: "4s", opacity: 0 }}
+          >
+            As a developer, I constantly strive to learn new things and improve
+            the user experience.
           </p>
         </div>
 

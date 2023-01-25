@@ -33,9 +33,7 @@ function AddRestaurantModal({ addRestaurantOpend, setAddRestaurantOpend }) {
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    console.log("gege");
     await submitHandlerAddRestaurant(
-      e,
       restaurantName,
       city,
       price,

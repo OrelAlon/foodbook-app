@@ -10,6 +10,10 @@ export async function fetchUserData(username) {
   const res = await axios.get(`/api/users/?username=${username}`);
   return res;
 }
+export async function fetchUserDataById(userId) {
+  const res = await axios.get(`/api/users/?userId=${userId}`);
+  return res;
+}
 
 export async function fetchAllUsers() {
   const res = await axios.get(`/api/users/users`);

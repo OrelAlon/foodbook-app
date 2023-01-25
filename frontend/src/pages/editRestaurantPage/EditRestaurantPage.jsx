@@ -2,7 +2,8 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router";
 
-import axios from "axios";
+import { fetchRestaurantData } from "../../api/ApiFetch";
+import { submitHandlerEditRestaurant } from "../../api/ApiPutHandler";
 
 import NavBar from "../../components/navBar/NavBar";
 import ImageDisplay from "../../components/imageDisplay/ImageDisplay";
@@ -30,35 +31,24 @@ const EditRestaurantPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     // Save the form data to the database here
+    await submitHandlerEditRestaurant(
+      file,
+      restaurantName,
+      restaurantCity,
+      restaurantInstagram,
+      restaurant,
+      setLoading
+    );
     try {
-      setLoading(true);
-
-      const data = new FormData();
-      if (file) {
-        data.set("profilePicture", file);
-      }
-      data.set("restaurantname", restaurantName);
-      data.set("city", restaurantCity);
-      data.set("instagram", restaurantInstagram);
-      data.set("restaurantId", restaurant._id);
-
-      await axios.put("/api/restaurants/" + restaurant._id, data);
-
-      try {
-        // window.location.reload(false);
-        navigate("/restaurants");
-      } catch (error) {
-        setErrorMsg(error.response.data.error);
-      }
+      navigate("/restaurants");
     } catch (error) {
-      console.log(error);
+      setErrorMsg(error.response.data.error);
     }
   };
 
   const fetchRestaurant = async () => {
-    const res = await axios.get(
-      `/api/restaurants/?restaurantname=${restaurantnameParams}`
-    );
+    const res = await fetchRestaurantData(restaurantnameParams);
+
     setRestaurant(res.data);
   };
 

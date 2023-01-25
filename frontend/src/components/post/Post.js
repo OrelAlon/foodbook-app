@@ -9,7 +9,7 @@ import LikePost from "../likePost/LikePost";
 import DeletePost from "../deletePost/DeletePost";
 import TimePost from "../timePost/TimePost";
 
-import axios from "axios";
+import { fetchUserDataById } from "../../api/ApiFetch";
 
 import "./post.css";
 
@@ -34,7 +34,7 @@ const Post = React.forwardRef(({ post }, ref) => {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const resUser = await axios.get(`/api/users/?userId=${userId}`);
+        const resUser = await fetchUserDataById(userId);
         setUser(resUser.data);
       } catch (error) {
         console.error(error);

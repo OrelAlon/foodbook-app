@@ -22,7 +22,6 @@ const Feed = ({ showGrid }) => {
 
   useEffect(() => {
     const controller = new AbortController();
-    const { signal } = controller;
 
     const fetch = async () => {
       setIsLoading(true);
@@ -31,16 +30,14 @@ const Feed = ({ showGrid }) => {
         pageNum,
         restaurantUserPick,
         cityPick,
-
         dishTypePick
       );
-      console.log(data);
       setTotal(data.total);
+      console.log(data);
       setResults((prev) => [...prev, ...data.posts]);
       setHasNextPage(Boolean(data.posts.length));
       setIsLoading(false);
       setLoading(false);
-      if (signal.aborted) return;
     };
     fetch();
     return () => controller.abort();
@@ -48,7 +45,6 @@ const Feed = ({ showGrid }) => {
 
   useEffect(() => {
     setLoading(true);
-
     setResults([]);
     setPageNum(1);
   }, [dishTypePick, cityPick, restaurantUserPick]);
@@ -57,7 +53,6 @@ const Feed = ({ showGrid }) => {
   const intObserver = useRef();
   const lastPostRef = useCallback(
     (post) => {
-      if (isLoading) return;
       if (intObserver.current) intObserver.current.disconnect();
       intObserver.current = new IntersectionObserver((posts) => {
         if (posts[0].isIntersecting && hasNextPage) {
@@ -70,7 +65,11 @@ const Feed = ({ showGrid }) => {
   );
 
   const msgResults = "No pictures found, go eat there and upload a picture 😜";
-
+  const content = showGrid ? (
+    <PostsFeed posts={results} ref={lastPostRef} />
+  ) : (
+    <GridFeed images={results} ref={lastPostRef} />
+  );
   return (
     <div className='feed'>
       <div className='feedWrapper'>
@@ -81,15 +80,11 @@ const Feed = ({ showGrid }) => {
         />
 
         {loading ? (
-          <Loading />
+          <div className='center-div'>
+            <Loading />
+          </div>
         ) : (
-          <>
-            {showGrid ? (
-              <PostsFeed posts={results} ref={lastPostRef} />
-            ) : (
-              <GridFeed images={results} ref={lastPostRef} />
-            )}
-          </>
+          <>{content}</>
         )}
 
         {total === 0 && (

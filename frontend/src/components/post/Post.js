@@ -13,7 +13,7 @@ import axios from "axios";
 
 import "./post.css";
 
-const Post = ({ post }) => {
+const Post = React.forwardRef(({ post }, ref) => {
   const [user, setUser] = useState({});
 
   const { user: currentUser } = useContext(AuthContext);
@@ -44,7 +44,7 @@ const Post = ({ post }) => {
   }, [userId]);
 
   return (
-    <div className='post'>
+    <div className='post' ref={ref}>
       <div className='postWrapper'>
         <div className='postTop'>
           <div className='postTopLeft'>
@@ -99,6 +99,6 @@ const Post = ({ post }) => {
       </div>
     </div>
   );
-};
+});
 
 export default Post;

@@ -1,20 +1,20 @@
-import Post from "../post/Post";
-import GridFeed from "../gridFeed/GridFeed";
+import React from "react";
 
-const PostsFeed = ({ posts, showGrid }) => {
+import Post from "../post/Post";
+
+const PostsFeed = React.forwardRef(({ posts }, ref) => {
   return (
     <div>
       {" "}
-      <div style={{ display: showGrid ? "none" : "" }}>
-        <GridFeed images={posts} />
-      </div>
-      <div style={{ display: showGrid ? "" : "none" }}>
-        {posts.map((p) => (
-          <Post key={p._id} post={p} />
+      <div>
+        {posts.map((p, i) => (
+          <div ref={ref} key={i}>
+            <Post post={p} />
+          </div>
         ))}
       </div>
     </div>
   );
-};
+});
 
 export default PostsFeed;

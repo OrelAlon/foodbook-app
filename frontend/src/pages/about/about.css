@@ -1,41 +1,75 @@
-.about-div {
+.about-me {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding: 55px;
+  font-family: "Montserrat", sans-serif;
 }
 
-.about-logo {
-  width: 15%;
-}
-
-.about-text {
-  text-align: center;
-}
-
-.social-links {
+.about-me__header {
   display: flex;
-  justify-content: center;
-  margin-top: 20px;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
-.social-links a {
-  margin: 0 10px;
+.about-me__title {
+  margin-right: 20px;
 }
 
-.linkedin {
-  color: blue;
+.about-me__img {
+  width: 4.25rem;
+  height: 4.25rem;
+  border-radius: 50%;
 }
 
-.github {
-  color: black;
+.about-me__text {
+  text-align: center;
+  margin-bottom: 20px;
+  padding: 40px;
 }
-.cv {
-  color: green;
+
+.about-me__links {
+  display: flex;
+  justify-content: space-between;
 }
-@media only screen and (max-width: 800px) {
-  .about-logo {
-    width: 25%;
+
+.about-me__link img {
+  margin: 20px;
+}
+
+.about-me__link:hover {
+  color: #999;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .about-me {
+    flex-direction: column;
   }
+  .about-me__header {
+    flex-wrap: wrap;
+  }
+  .about-me__title {
+    width: 100%;
+    text-align: center;
+  }
+  .about-me__img {
+    margin: 0 auto;
+  }
+  .about-me__links {
+    width: 100%;
+    justify-content: center;
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Apply the animation class to the element */
+.about-me__text {
+  animation: fadeIn 2.5s ease-in;
 }

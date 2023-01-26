@@ -63,12 +63,12 @@ const FilterImagesModel = ({
           icon={<IconSearch size={16} />}
           data={cities}
           onChange={setCityPick}
-          placeholder='Whice City ?'
+          placeholder='City'
           searchable
           clearable
           styles={styleSelect}
         />
-        <Space h='sm' />
+        {/* <Space h='sm' />
         <Select
           icon={<IconSearch size={16} />}
           data={dishTypeOptions}
@@ -76,7 +76,7 @@ const FilterImagesModel = ({
           placeholder='Whice Course ?'
           clearable
           styles={styleSelect}
-        />
+        /> */}
         <Space h='sm' />
       </form>
     </>

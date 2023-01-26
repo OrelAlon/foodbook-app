@@ -3,6 +3,7 @@ import React, { useState, useContext } from "react";
 import { Menu, Button } from "@mantine/core";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
+import { IconMenu2 } from "@tabler/icons";
 
 import ShareImageModal from "../shareImageModal/ShareImageModal";
 import "./navMenu.css";
@@ -44,7 +45,7 @@ const NavMenu = () => {
       <Menu shadow='md' width={200} color='gray.2'>
         <Menu.Target>
           <Button width={20} className='ham-btn' style={{ lineHeight: "0" }}>
-            🍔
+            <IconMenu2 />
           </Button>
         </Menu.Target>
 

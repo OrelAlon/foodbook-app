@@ -19,11 +19,7 @@ const RestaurantSchema = new mongoose.Schema(
       default: "",
     },
 
-    followers: {
-      type: Array,
-      default: [],
-    },
-    followings: {
+    stars: {
       type: Array,
       default: [],
     },

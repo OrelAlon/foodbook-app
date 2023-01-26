@@ -75,15 +75,15 @@ const getAllRestaurants = async (req, res) => {
 };
 
 //
-const followRestaurant = async (req, res) => {
+const starRestaurant = async (req, res) => {
   try {
     const restaurant = await Restaurant.findByIdAndUpdate(req.params.id);
-    if (!restaurant.followers.includes(req.body.userId)) {
-      await restaurant.updateOne({ $push: { followers: req.body.userId } });
-      res.status(200).json("The restaurant has been follow");
+    if (!restaurant.stars.includes(req.body.userId)) {
+      await restaurant.updateOne({ $push: { stars: req.body.userId } });
+      res.status(200).json("The restaurant received a star");
     } else {
-      await restaurant.updateOne({ $pull: { followers: req.body.userId } });
-      res.status(200).json("The restaurant has been unfollow");
+      await restaurant.updateOne({ $pull: { stars: req.body.userId } });
+      res.status(200).json("The restaurant lost a star");
     }
   } catch (error) {
     res.status(500).json(err);
@@ -142,7 +142,7 @@ module.exports = {
   getRestaurant,
   getAllRestaurants,
   createTempRestaurant,
-  followRestaurant,
+  starRestaurant,
   updateRestaurant,
   deleteRestaurant,
 };

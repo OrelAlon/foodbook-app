@@ -4,7 +4,7 @@ const {
   getRestaurant,
   getAllRestaurants,
   createTempRestaurant,
-  followRestaurant,
+  starRestaurant,
   updateRestaurant,
   deleteRestaurant,
 } = require("../controllers/restaurantController");
@@ -19,7 +19,7 @@ router.get("/restaurants", getAllRestaurants);
 
 router.put("/:id", updateRestaurant);
 
-router.put("/:id/followrestaurant", followRestaurant);
+router.put("/:id/star", starRestaurant);
 
 router.delete("/:id", deleteRestaurant);
 

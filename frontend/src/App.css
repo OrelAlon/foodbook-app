@@ -1,5 +1,5 @@
 body {
-  background-color: #f3f0f0;
+  background-color: white;
   font-family: "Montserrat", sans-serif;
 }
 .transform :active {
@@ -21,12 +21,12 @@ body {
   width: 12vw;
 }
 
-.logo:hover,
+/* .logo:hover,
 .add-image-btn:hover {
   background-color: #e9ecef;
   border-radius: 5px;
   border: solid rgb(124, 124, 124) 1px;
-}
+} */
 @media only screen and (max-width: 800px) {
   .logo {
     width: 26vw;

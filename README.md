@@ -4,7 +4,7 @@ Foodbook is a social networking platform specifically designed for sharing image
 
 ### => [Working Project](https://foodbook.onrender.com)
 
-![foodbook-logo](./frontend/src/assets/foodbook.jpeg)
+![foodbook-logo](./frontend/src/assets/foodbook.png)
 
 Some main features:
 

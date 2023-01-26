@@ -47,7 +47,7 @@ const PostPage = () => {
           <Loading />
         </div>
       ) : (
-        <div className='image-page '>
+        <div className='image-page'>
           {" "}
           {/*  */}
           <div className='headline-post-img'>

@@ -7,7 +7,7 @@ const GoBackButton = () => {
 
   return (
     <div>
-      <IconChevronLeft onClick={goBack} size={40} />
+      <IconChevronLeft onClick={goBack} size={30} />
     </div>
   );
 };

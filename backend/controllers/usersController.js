@@ -102,15 +102,15 @@ const updatePassword = async (req, res) => {
 };
 
 //
-const followUser = async (req, res) => {
+const starUser = async (req, res) => {
   try {
     const user = await User.findByIdAndUpdate(req.params.id);
-    if (!user.followers.includes(req.body.userId)) {
-      await user.updateOne({ $push: { followers: req.body.userId } });
-      res.status(200).json("The user has been follow");
+    if (!user.stars.includes(req.body.userId)) {
+      await user.updateOne({ $push: { stars: req.body.userId } });
+      res.status(200).json("The user received a star");
     } else {
-      await user.updateOne({ $pull: { followers: req.body.userId } });
-      res.status(200).json("The user has been unfollow");
+      await user.updateOne({ $pull: { stars: req.body.userId } });
+      res.status(200).json("The user lost a star");
     }
   } catch (error) {
     res.status(500).json(err);
@@ -123,5 +123,5 @@ module.exports = {
   updateUser,
   deleteUser,
   updatePassword,
-  followUser,
+  starUser,
 };

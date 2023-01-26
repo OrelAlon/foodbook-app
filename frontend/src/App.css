@@ -29,7 +29,7 @@ body {
 } */
 @media only screen and (max-width: 800px) {
   .logo {
-    width: 26vw;
+    width: 24vw;
   }
   .loading {
     width: 260px;
@@ -37,7 +37,8 @@ body {
 }
 
 .image-page {
-  margin-top: 50px;
+  margin-top: 30px;
+  margin-bottom: 20px;
 }
 .open-image {
   height: 70%;
@@ -69,7 +70,7 @@ body {
   justify-content: center;
   align-items: center;
   text-align: center;
-  margin-top: 15px;
+  margin-top: 5px;
   font-weight: bold;
   justify-content: space-evenly;
 }

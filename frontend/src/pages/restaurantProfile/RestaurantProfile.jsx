@@ -4,6 +4,8 @@ import { useParams } from "react-router";
 import { AuthContext } from "../../context/AuthContext";
 import { fetchRestaurantData } from "../../api/ApiFetch";
 
+import axios from "axios";
+
 import NavBar from "../../components/navBar/NavBar";
 import ProfileFeed from "../../components/profileFeed/ProfileFeed";
 import StarBtn from "../../components/starBtn/StarBtn";
@@ -16,14 +18,22 @@ import "./restaurantProfile.css";
 const RestaurantProfile = () => {
   const [restaurant, setRestaurant] = useState({});
   const [postsLength, setPostsLength] = useState([]);
+  const [star, setStar] = useState();
+  const [isStar, setIsStar] = useState();
+  const [loading, setLoading] = useState(false);
+
+  const { user: currentUser } = useContext(AuthContext);
 
   const restaurantnameParams = useParams().restaurantname;
 
-  // useEffect(() => {
-  //   if (Object.keys(restaurant).length !== 0) {
-  //     setFollowers(restaurant.followers.length);
-  //   }
-  // }, [restaurant]);
+  const checkIfStar =
+    restaurant && restaurant.stars
+      ? restaurant.stars.includes(currentUser._id)
+      : false;
+
+  useEffect(() => {
+    setIsStar(checkIfStar);
+  }, [checkIfStar]);
 
   useEffect(() => {
     const fetchRestaurant = async () => {
@@ -33,6 +43,27 @@ const RestaurantProfile = () => {
     };
     fetchRestaurant();
   }, [restaurantnameParams]);
+
+  const starHandler = async () => {
+    setLoading(true);
+
+    try {
+      await axios.put(`/api/restaurant/${restaurant._id}/restaurant`, {
+        userId: currentUser._id,
+      });
+      if (!isStar) {
+        setStar((prevStar) => prevStar + 1);
+
+        setIsStar(true);
+      } else if (isStar) {
+        setStar((prevStar) => prevStar - 1);
+        setIsStar(false);
+      }
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <>
@@ -51,7 +82,11 @@ const RestaurantProfile = () => {
                   src={restaurant.profilePicture || noImage}
                   alt='jofpin'
                 />
-                <StarBtn />
+                <StarBtn
+                  starHandler={starHandler}
+                  loading={loading}
+                  isStar={isStar}
+                />{" "}
               </div>
               <div className='profile-data'>
                 <h3>{restaurant.restaurantname}</h3>

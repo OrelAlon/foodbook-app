@@ -32,7 +32,6 @@ const Feed = ({ showGrid }) => {
         dishTypePick
       );
       setTotal(data.total);
-      console.log(data);
       setResults((prev) => [...prev, ...data.posts]);
       setHasNextPage(Boolean(data.posts.length));
       setIsLoading(false);
@@ -71,7 +70,7 @@ const Feed = ({ showGrid }) => {
   );
   return (
     <div className='feed'>
-      <div className='feedWrapper'>
+      <div className='filter-div'>
         <FilterImagesModel
           setRestaurantUserPick={setRestaurantUserPick}
           setDishTypePick={setDishTypePick}

@@ -5,11 +5,10 @@ import NavBar from "../../components/navBar/NavBar";
 
 import "./home.css";
 
-const Home = () => {
-  const [showGrid, setShowGrid] = useState(false);
+const Home = ({ showGrid }) => {
   return (
     <>
-      <NavBar setShowGrid={setShowGrid} showGrid={showGrid} />
+      <NavBar />
       <div className='homeContainer'>
         <Feed showGrid={showGrid} />
       </div>

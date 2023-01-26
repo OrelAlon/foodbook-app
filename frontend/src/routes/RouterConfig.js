@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Home from "../pages/home/Home";
@@ -18,6 +19,8 @@ import { ProtectedRoute } from "./ProtectedRoute";
 import React from "react";
 
 const RouterConfig = () => {
+  const [showGrid, setShowGrid] = useState(false);
+
   return (
     <Router>
       <Routes>
@@ -26,7 +29,7 @@ const RouterConfig = () => {
             index
             element={
               <ProtectedRoute>
-                <Home />
+                <Home showGrid={showGrid} />
               </ProtectedRoute>
             }
           />
@@ -55,7 +58,7 @@ const RouterConfig = () => {
           <Route path='/editpost/:id' element={<EditPostPage />}></Route>
         </Route>
       </Routes>
-      <DownBar />
+      <DownBar showGrid={showGrid} setShowGrid={setShowGrid} />
     </Router>
   );
 };

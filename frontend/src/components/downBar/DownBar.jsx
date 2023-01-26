@@ -13,7 +13,7 @@ import {
   IconPhotoPlus,
 } from "@tabler/icons";
 
-const DownBar = () => {
+const DownBar = ({ setShowGrid, showGrid }) => {
   const [shareImageOpened, setShareImageOpened] = useState(false);
 
   const { user: currentUser } = useContext(AuthContext);
@@ -24,9 +24,14 @@ const DownBar = () => {
     <>
       <div className='menu-div-down transform'>
         <div className='btn-downbar transform'>
-          <Link to={`/`}>
-            <IconHome className='black-link' />
-            {/* <IconGridDots /> */}
+          <Link to={`/`} onClick={() => setShowGrid(!showGrid)}>
+            {showGrid ? (
+              <IconGridDots className='black-link' />
+            ) : (
+              <IconHome className='black-link' />
+            )}
+
+            {/*  */}
           </Link>
         </div>
         <div className='btn-downbar transform'>

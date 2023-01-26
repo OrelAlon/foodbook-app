@@ -109,10 +109,7 @@ const UserProfile = () => {
 
                 <li>
                   <a>
-                    <strong>
-                      {star}
-                      {/* {user && user.stars ? user.stars.length : 0} */}
-                    </strong>
+                    <strong>{star}</strong>
                     <span>Stars</span>
                   </a>
                 </li>

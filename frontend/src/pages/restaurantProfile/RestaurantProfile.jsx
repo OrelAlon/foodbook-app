@@ -6,7 +6,7 @@ import { fetchRestaurantData } from "../../api/ApiFetch";
 
 import NavBar from "../../components/navBar/NavBar";
 import ProfileFeed from "../../components/profileFeed/ProfileFeed";
-import FollowBtn from "../../components/followBtn/FollowBtn";
+import StarBtn from "../../components/starBtn/StarBtn";
 
 import noImage from "../../assets/noImage2.jpg";
 import classy from "../../assets/classy-rest.jpg";
@@ -34,18 +34,6 @@ const RestaurantProfile = () => {
     fetchRestaurant();
   }, [restaurantnameParams]);
 
-  // const followHandler = () => {
-  //   try {
-  //     axios.put(`/api/restaurants/${restaurant._id}/followrestaurant`, {
-  //       userId: currentUser._id,
-  //     });
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  //   setFollowers(isFollowed ? followers - 1 : followers + 1);
-  //   setIsFollowed(!isFollowed);
-  // };
-
   return (
     <>
       <NavBar />
@@ -63,7 +51,7 @@ const RestaurantProfile = () => {
                   src={restaurant.profilePicture || noImage}
                   alt='jofpin'
                 />
-                <FollowBtn />
+                <StarBtn />
               </div>
               <div className='profile-data'>
                 <h3>{restaurant.restaurantname}</h3>

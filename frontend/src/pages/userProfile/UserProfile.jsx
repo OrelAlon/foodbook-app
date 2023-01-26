@@ -51,13 +51,10 @@ const UserProfile = () => {
         userId: currentUser._id,
       });
       if (!isStar) {
-        console.log("is falst");
         setStar((prevStar) => prevStar + 1);
 
         setIsStar(true);
       } else if (isStar) {
-        console.log("is true");
-
         setStar((prevStar) => prevStar - 1);
         setIsStar(false);
       }

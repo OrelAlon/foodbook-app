@@ -24,22 +24,27 @@ const UserProfile = () => {
   const [loading, setLoading] = useState(false);
   const { user: currentUser } = useContext(AuthContext);
 
-  console.log(isStar);
-  console.log(star);
   const usernameParams = useParams().username;
 
+  const checkIfStar =
+    user && user.stars ? user.stars.includes(currentUser._id) : false;
+
   useEffect(() => {
-    const fetchUser = async () => {
-      const res = await fetchUserData(usernameParams);
-      setUser(res.data);
-      setStar(res.data.stars.length);
-    };
+    setIsStar(checkIfStar);
+  }, [checkIfStar]);
+
+  const fetchUser = async () => {
+    const res = await fetchUserData(usernameParams);
+    setUser(res.data);
+    setStar(res.data.stars.length);
+  };
+
+  useEffect(() => {
     fetchUser();
   }, [usernameParams]);
 
   const starHandler = async () => {
     setLoading(true);
-    console.log(isStar);
 
     try {
       await axios.put(`/api/users/${user._id}/star`, {
@@ -79,7 +84,11 @@ const UserProfile = () => {
                   alt='profile-image'
                 />
 
-                <StarBtn starHandler={starHandler} />
+                <StarBtn
+                  starHandler={starHandler}
+                  loading={loading}
+                  isStar={isStar}
+                />
                 {usernameParams === currentUser.username && (
                   <Link to={`/editprofile/${user.username}`} className='none'>
                     <span className='icon'>

@@ -126,9 +126,7 @@
   font-weight: 700;
   cursor: pointer;
 }
-.transform :active {
-  transform: translateY(2px);
-}
+
 .foodbook-img {
   width: 45%;
 }

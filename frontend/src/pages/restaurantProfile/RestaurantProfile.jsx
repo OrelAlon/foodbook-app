@@ -23,7 +23,6 @@ const RestaurantProfile = () => {
   const [loading, setLoading] = useState(false);
 
   const { user: currentUser } = useContext(AuthContext);
-
   const restaurantnameParams = useParams().restaurantname;
 
   const checkIfStar =
@@ -40,6 +39,7 @@ const RestaurantProfile = () => {
       const res = await fetchRestaurantData(restaurantnameParams);
 
       setRestaurant(res.data);
+      setStar(res.data.stars.length);
     };
     fetchRestaurant();
   }, [restaurantnameParams]);
@@ -48,7 +48,7 @@ const RestaurantProfile = () => {
     setLoading(true);
 
     try {
-      await axios.put(`/api/restaurant/${restaurant._id}/restaurant`, {
+      await axios.put(`/api/restaurants/${restaurant._id}/star`, {
         userId: currentUser._id,
       });
       if (!isStar) {
@@ -102,7 +102,7 @@ const RestaurantProfile = () => {
                 </li>
                 <li>
                   <a>
-                    <strong>5</strong>
+                    <strong>{star}</strong>
                     <span>Stars</span>
                   </a>
                 </li>

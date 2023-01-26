@@ -12,14 +12,17 @@ const ProfileFeed = ({ username, restaurantname, setPostsLength }) => {
   const [loading, setLoading] = useState(true);
 
   const fetchPosts = async () => {
+    console.log("fetchPosts");
     try {
       setLoading(true);
       if (username && username !== undefined) {
+        console.log("username");
         const res = await fetchPostsUser(username);
 
         setPosts(res.data);
         setPostsLength(res.data.length);
       } else if (restaurantname && restaurantname !== undefined) {
+        console.log("restaurantname");
         const res = await fetchPostsRestaurant(restaurantname);
         setPosts(res.data);
         setPostsLength(res.data.length);

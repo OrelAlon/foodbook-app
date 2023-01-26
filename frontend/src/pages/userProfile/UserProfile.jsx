@@ -19,41 +19,40 @@ import "./userProfile.css";
 const UserProfile = () => {
   const [user, setUser] = useState({});
   const [postsLength, setPostsLength] = useState([]);
-  const [star, setStar] = useState(user && user.stars ? user.stars.length : 0);
+  const [star, setStar] = useState();
   const [isStar, setIsStar] = useState();
   const [loading, setLoading] = useState(false);
   const { user: currentUser } = useContext(AuthContext);
 
-  const checkIfStar =
-    user && user.stars ? user.stars.includes(currentUser._id) : false;
-
+  console.log(isStar);
+  console.log(star);
   const usernameParams = useParams().username;
-  console.log(user);
 
   useEffect(() => {
     const fetchUser = async () => {
       const res = await fetchUserData(usernameParams);
       setUser(res.data);
+      setStar(res.data.stars.length);
     };
     fetchUser();
   }, [usernameParams]);
 
-  useEffect(() => {
-    setIsStar(checkIfStar);
-  }, []);
-
   const starHandler = async () => {
     setLoading(true);
+    console.log(isStar);
 
     try {
-      await axios.put(`/api/users/${user.id}/star`, {
+      await axios.put(`/api/users/${user._id}/star`, {
         userId: currentUser._id,
       });
       if (!isStar) {
+        console.log("is falst");
         setStar((prevStar) => prevStar + 1);
 
         setIsStar(true);
       } else if (isStar) {
+        console.log("is true");
+
         setStar((prevStar) => prevStar - 1);
         setIsStar(false);
       }
@@ -105,7 +104,8 @@ const UserProfile = () => {
                 <li>
                   <a>
                     <strong>
-                      {user && user.stars ? user.stars.length : 0}
+                      {star}
+                      {/* {user && user.stars ? user.stars.length : 0} */}
                     </strong>
                     <span>Stars</span>
                   </a>

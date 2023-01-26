@@ -46,7 +46,7 @@ const Post = React.forwardRef(({ post }, ref) => {
 
   return (
     <div className='post' ref={ref}>
-      <div className='postWrapper'>
+      <div className='post-wrapper'>
         <div className='postTop'>
           <div className='postTopLeft'>
             <Link to={`/profile/${username}`}>

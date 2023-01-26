@@ -2,7 +2,7 @@
   width: 85%;
   align-items: center;
   margin: auto;
-  margin-top: 35px;
+  margin-top: 10px;
 }
 .postBottomRight {
   max-width: 15rem;
@@ -12,9 +12,9 @@
   margin: 14px;
 }
 
-.postWrapper {
+.post-wrapper {
   padding: 10px;
-  background-color: rgb(243, 238, 238);
+  background-color: rgb(250, 247, 247);
 }
 
 .postTop {

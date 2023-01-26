@@ -9,12 +9,10 @@
 .rightbarProfileImg {
   width: 4rem;
   height: 4rem;
-  /* border-radius: 50%; */
   object-fit: cover;
   border: solid 3px rgb(167, 167, 167);
   padding: 6px;
   border-style: outset;
-  background-color: aliceblue;
   position: relative;
 }
 .restaurantName {

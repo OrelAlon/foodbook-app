@@ -18,7 +18,7 @@ const NavBar = () => {
       <div className='menu-div transform'>
         <Button
           onClick={() => setShareImageOpened(true)}
-          className='ham-btn transform'
+          className='nav-btn transform'
         >
           <IconPhotoPlus />
         </Button>

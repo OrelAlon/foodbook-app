@@ -3,12 +3,13 @@ import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 
 import { AuthContext } from "../../context/AuthContext";
+import axios from "axios";
 
 import { fetchUserData } from "../../api/ApiFetch";
 import { IconEdit } from "@tabler/icons";
 
 import NavBar from "../../components/navBar/NavBar";
-import FollowBtn from "../../components/followBtn/FollowBtn";
+import StarBtn from "../../components/starBtn/StarBtn";
 import noImage from "../../assets/noImage2.jpg";
 import ProfileFeed from "../../components/profileFeed/ProfileFeed";
 
@@ -18,9 +19,16 @@ import "./userProfile.css";
 const UserProfile = () => {
   const [user, setUser] = useState({});
   const [postsLength, setPostsLength] = useState([]);
+  const [star, setStar] = useState(user && user.stars ? user.stars.length : 0);
+  const [isStar, setIsStar] = useState();
+  const [loading, setLoading] = useState(false);
+  const { user: currentUser } = useContext(AuthContext);
+
+  const checkIfStar =
+    user && user.stars ? user.stars.includes(currentUser._id) : false;
 
   const usernameParams = useParams().username;
-  const { user: currentUser } = useContext(AuthContext);
+  console.log(user);
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -29,6 +37,31 @@ const UserProfile = () => {
     };
     fetchUser();
   }, [usernameParams]);
+
+  useEffect(() => {
+    setIsStar(checkIfStar);
+  }, []);
+
+  const starHandler = async () => {
+    setLoading(true);
+
+    try {
+      await axios.put(`/api/users/${user.id}/star`, {
+        userId: currentUser._id,
+      });
+      if (!isStar) {
+        setStar((prevStar) => prevStar + 1);
+
+        setIsStar(true);
+      } else if (isStar) {
+        setStar((prevStar) => prevStar - 1);
+        setIsStar(false);
+      }
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <>
@@ -47,7 +80,7 @@ const UserProfile = () => {
                   alt='profile-image'
                 />
 
-                <FollowBtn />
+                <StarBtn starHandler={starHandler} />
                 {usernameParams === currentUser.username && (
                   <Link to={`/editprofile/${user.username}`} className='none'>
                     <span className='icon'>
@@ -59,7 +92,6 @@ const UserProfile = () => {
 
               <div className='profile-data'>
                 <h3>{user.username}</h3>
-                {/* <p>github.com/jofpin</p> */}
               </div>
               <div className='description-profile'>{user.desc}</div>
               <ul className='data'>
@@ -72,7 +104,9 @@ const UserProfile = () => {
 
                 <li>
                   <a>
-                    <strong>3</strong>
+                    <strong>
+                      {user && user.stars ? user.stars.length : 0}
+                    </strong>
                     <span>Stars</span>
                   </a>
                 </li>

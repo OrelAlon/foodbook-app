@@ -9,7 +9,7 @@ import {
   IconHome,
   IconToolsKitchen2,
   IconGridDots,
-  IconInfoSquare,
+  IconStar,
   IconPhotoPlus,
 } from "@tabler/icons";
 
@@ -48,7 +48,7 @@ const DownBar = ({ setShowGrid, showGrid }) => {
 
         <div className='btn-downbar transform'>
           <Link to={`/about`}>
-            <IconInfoSquare className='black-link' />
+            <IconStar className='black-link' />
           </Link>
         </div>
         <div className='btn-downbar transform'>

@@ -181,23 +181,6 @@ const likePost = async (req, res) => {
   }
 };
 
-//
-const disLikePost = async (req, res) => {
-  try {
-    const post = await Post.findByIdAndUpdate(req.params.id);
-
-    if (!post.disLikes.includes(req.body.userId)) {
-      await post.updateOne({ $push: { disLikes: req.body.userId } });
-      res.status(200).json("The post has been disliked");
-    } else {
-      await post.updateOne({ $pull: { disLikes: req.body.userId } });
-      res.status(200).json("The post has been liked");
-    }
-  } catch (err) {
-    res.status(500).json(err);
-  }
-};
-
 module.exports = {
   getPost,
   createPost,
@@ -208,5 +191,4 @@ module.exports = {
   getUsernamePost,
   getRestaurantPosts,
   likePost,
-  disLikePost,
 };

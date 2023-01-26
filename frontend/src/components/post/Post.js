@@ -91,7 +91,6 @@ const Post = React.forwardRef(({ post }, ref) => {
         </div>
         <div className='postBottom '>
           <LikePost id={_id} likes={post.likes} />
-          {/* <DisLikePost id={_id} disLikes={post.disLikes} /> */}
 
           <div className='postBottomRight'>
             <AllTags foodCategory={foodCategory} dishType={dishType} />{" "}

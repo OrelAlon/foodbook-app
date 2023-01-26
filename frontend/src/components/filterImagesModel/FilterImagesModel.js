@@ -4,15 +4,11 @@ import { fetchAllRestaurants } from "../../api/ApiFetch";
 import { Space, Select } from "@mantine/core";
 import { IconSearch } from "@tabler/icons";
 
-import { dishTypeOptions, cities } from "../../api/foodData";
+import { cities } from "../../api/foodData";
 
 import "./filterImagesModel.css";
 
-const FilterImagesModel = ({
-  setRestaurantUserPick,
-  setDishTypePick,
-  setCityPick,
-}) => {
+const FilterImagesModel = ({ setRestaurantUserPick, setCityPick }) => {
   const [restaurantsList, setRestaurantsList] = useState([]);
 
   const styleSelect = {
@@ -68,15 +64,7 @@ const FilterImagesModel = ({
           clearable
           styles={styleSelect}
         />
-        {/* <Space h='sm' />
-        <Select
-          icon={<IconSearch size={16} />}
-          data={dishTypeOptions}
-          onChange={setDishTypePick}
-          placeholder='Whice Course ?'
-          clearable
-          styles={styleSelect}
-        /> */}
+
         <Space h='sm' />
       </form>
     </>

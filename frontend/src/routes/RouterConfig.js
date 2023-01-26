@@ -12,6 +12,7 @@ import RestaurantProfile from "../pages/restaurantProfile/RestaurantProfile";
 import EditRestaurantPage from "../pages/editRestaurantPage/EditRestaurantPage";
 import EditProfileUserPage from "../pages/editProfileUserPage/EditProfileUserPage";
 import EditPostPage from "../pages/editPostPage/EditPostPage";
+import RatingStarsPage from "../pages/ratingStarsPage/RatingStarsPage";
 
 import DownBar from "../components/downBar/DownBar";
 
@@ -56,6 +57,7 @@ const RouterConfig = () => {
             element={<EditProfileUserPage />}
           ></Route>
           <Route path='/editpost/:id' element={<EditPostPage />}></Route>
+          <Route path='/ratingstars' element={<RatingStarsPage />}></Route>
         </Route>
       </Routes>
       <DownBar showGrid={showGrid} setShowGrid={setShowGrid} />

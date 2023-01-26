@@ -73,7 +73,6 @@ const Feed = ({ showGrid }) => {
       <div className='filter-div'>
         <FilterImagesModel
           setRestaurantUserPick={setRestaurantUserPick}
-          setDishTypePick={setDishTypePick}
           setCityPick={setCityPick}
         />
 

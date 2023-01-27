@@ -49,17 +49,16 @@ export const submitHandlerEditUser = async (
 
     await axios.put("/api/users/" + currentUser._id, data);
 
-    try {
-      const existingUser = await axios.get(
-        `/api/users/?userId=${currentUser._id}`
-      );
-      // save the updated user back to the local storage
-      localStorage.setItem("user", JSON.stringify(existingUser.data));
+    console.log("existingUser");
 
-      // window.location.reload(false);
-    } catch (error) {
-      setErrorMsg(error.response.data.error);
-    }
+    const existingUser = await axios.get(
+      `/api/users/?userId=${currentUser._id}`
+    );
+    console.log(existingUser);
+    // save the updated user back to the local storage
+    await localStorage.setItem("user", JSON.stringify(existingUser.data));
+
+    // window.location.reload(false);
   } catch (error) {
     console.log(error);
   }

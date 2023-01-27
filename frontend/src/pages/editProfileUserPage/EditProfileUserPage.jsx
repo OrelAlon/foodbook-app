@@ -56,7 +56,7 @@ const EditProfileUserPage = () => {
             className='profile-edit-form__input'
             type='text'
             value={userName}
-            onChange={(e) => setUserName(e.target.value)}
+            onChange={(e) => setUserName(e.target.value.trim())}
           />
         </label>
         <br />

@@ -67,7 +67,7 @@ const EditRestaurantPage = () => {
             className='profile-edit-form__input'
             type='text'
             value={restaurantName}
-            onChange={(e) => setRestaurantName(e.target.value)}
+            onChange={(e) => setRestaurantName(e.target.value.trim())}
           />
         </label>
         <br />

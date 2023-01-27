@@ -25,11 +25,13 @@ const FilterImagesModel = ({ setRestaurantUserPick, setCityPick }) => {
     const sortRestaurants = (res) => {
       let arr = [];
       res.map((el) => {
-        arr.push({
-          value: el._id,
-          label: el.restaurantname,
-          group: el.city,
-        });
+        if (el.restaurantname) {
+          arr.push({
+            value: el._id,
+            label: el.restaurantname,
+            group: el.city,
+          });
+        }
       });
       return setRestaurantsList(
         arr.sort((a, b) =>
@@ -37,7 +39,6 @@ const FilterImagesModel = ({ setRestaurantUserPick, setCityPick }) => {
         )
       );
     };
-
     fetchRestaurants();
   }, []);
 

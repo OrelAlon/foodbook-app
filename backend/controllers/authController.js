@@ -83,7 +83,10 @@ const googleLogin = async (req, res) => {
       idToken: tokenId,
       audience: process.env.GOOGLE_CLIENT_ID,
     });
-    const { email, email_verified, name } = payload;
+    const { email, email_verified, name, picture } = payload;
+    console.log("payload");
+    console.log(payload);
+
     if (email_verified) {
       const user = await User.findOne({ email });
       if (user) {

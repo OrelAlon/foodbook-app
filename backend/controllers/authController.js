@@ -101,6 +101,15 @@ const googleLogin = async (req, res) => {
         });
         res.status(200).json(logUser);
       }
+      if (!user.profilePicture) {
+        const result = await cloudinary.v2.uploader.upload(picture, {
+          folder: "avatars",
+          width: 200,
+          crop: "scale",
+        });
+        user.profilePicture = result.secure_url;
+        await user.save();
+      }
     }
   } catch (error) {
     res.status(500).json(error);

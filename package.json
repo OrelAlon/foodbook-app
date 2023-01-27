@@ -24,7 +24,6 @@
     "google-auth-library": "^8.7.0",
     "mongoose": "^6.5.4",
     "path": "^0.12.7",
-    "request": "^2.88.2",
     "uuid": "^9.0.0"
   },
   "devDependencies": {

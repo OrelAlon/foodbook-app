@@ -3,6 +3,7 @@ const bcrypt = require("bcrypt");
 const cloudinary = require("cloudinary");
 const { OAuth2Client } = require("google-auth-library");
 var crypto = require("crypto");
+const request = require("request");
 
 const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
 
@@ -102,13 +103,20 @@ const googleLogin = async (req, res) => {
         res.status(200).json(logUser);
       }
       if (!user.profilePicture) {
-        const result = await cloudinary.v2.uploader.upload(picture, {
-          folder: "avatars",
-          width: 200,
-          crop: "scale",
-        });
-        user.profilePicture = result.secure_url;
-        await user.save();
+        request(
+          { url: picture, encoding: null },
+          async (error, response, body) => {
+            if (!error && response.statusCode === 200) {
+              const result = await cloudinary.v2.uploader.upload(body, {
+                folder: "avatars",
+                width: 200,
+                crop: "scale",
+              });
+              user.profilePicture = result.secure_url;
+              await user.save();
+            }
+          }
+        );
       }
     }
   } catch (error) {

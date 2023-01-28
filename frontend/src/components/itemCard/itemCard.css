@@ -10,18 +10,18 @@
   width: 4rem;
   height: 4rem;
   object-fit: cover;
-  border: solid 3px rgb(167, 167, 167);
+  border: solid 2px rgb(167, 167, 167);
   padding: 6px;
   border-style: outset;
   position: relative;
 }
+
 .restaurantName {
   color: black;
   text-align: center;
 }
 
 span.icon {
-  /* position: absolute; */
   top: 10px;
   right: 0;
   border-radius: 100%;

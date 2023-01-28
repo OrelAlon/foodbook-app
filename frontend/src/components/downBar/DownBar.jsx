@@ -47,7 +47,7 @@ const DownBar = ({ setShowGrid, showGrid }) => {
         </div>
 
         <div className='btn-downbar transform'>
-          <Link to={`/about`}>
+          <Link to={`/ratingstars`}>
             <IconStar className='black-link' />
           </Link>
         </div>

@@ -169,6 +169,7 @@ body {
   text-align: center;
   align-items: center;
   margin-bottom: 2rem;
+  background-color: rgb(241, 241, 241);
 }
 
 .star-cards {
@@ -178,23 +179,17 @@ body {
   gap: 1rem;
 }
 
-/* @media (min-width: 600px) {
-  .star-cards {
-    grid-template-columns: repeat(3, 1fr);
-  }
-} */
-
 /* star card */
 
 .star-card {
   display: flex;
   position: relative;
-
   align-items: center;
   width: 70%;
   height: 200px;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   margin: auto;
+  background-color: white;
 }
 
 .star {
@@ -214,19 +209,24 @@ body {
 .star-name {
   font-size: 1.25rem;
 }
-
+.star-count {
+  position: absolute;
+  right: 15px;
+}
 @media (max-width: 600px) {
   .star-card {
-    /* width: 200px;
-    height: 200px; */
     flex-direction: column;
     align-items: center;
   }
   .star-image {
     margin: auto;
+    margin-top: 15px;
   }
   .star-name {
     font-size: 1.25rem;
     margin: 8px;
+  }
+  .star-count {
+    position: static;
   }
 }

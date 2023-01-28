@@ -6,13 +6,17 @@ import StarCard from "../../components/starCard/StarCard";
 
 const RatingStarsPage = () => {
   const [data, setData] = useState();
+  const [loading, setLoading] = useState(true);
 
   console.log(data);
 
   const fetchDate = async () => {
+    setLoading(true);
     const res = await fetchAllUsers();
     setData(res.data.sort((a, b) => b.stars.length - a.stars.length));
+    setLoading(false);
   };
+
   useEffect(() => {
     fetchDate();
   }, []);
@@ -22,13 +26,16 @@ const RatingStarsPage = () => {
       <div className='star-container'>
         RatingStarsPage
         <button>yezs</button>
-        <div className='star-cards'>
-          {" "}
-          <StarCard />
-          <StarCard />
-          <StarCard />
-          <StarCard />
-        </div>
+        {loading && <div>Loading...</div>}
+        {!loading && data.length > 0 ? (
+          <div className='star-cards'>
+            {data.map((user, index) => (
+              <StarCard key={index} user={user} />
+            ))}
+          </div>
+        ) : (
+          <div>No data</div>
+        )}
       </div>
     </>
   );

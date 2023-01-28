@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 
 import { fetchAllUsers } from "../../api/ApiFetch";
 
+import StarCard from "../../components/starCard/StarCard";
+
 const RatingStarsPage = () => {
   const [data, setData] = useState();
 
@@ -16,10 +18,19 @@ const RatingStarsPage = () => {
   }, []);
 
   return (
-    <div>
-      RatingStarsPage
-      <button>yezs</button>
-    </div>
+    <>
+      <div className='star-container'>
+        RatingStarsPage
+        <button>yezs</button>
+        <div className='star-cards'>
+          {" "}
+          <StarCard />
+          <StarCard />
+          <StarCard />
+          <StarCard />
+        </div>
+      </div>
+    </>
   );
 };
 

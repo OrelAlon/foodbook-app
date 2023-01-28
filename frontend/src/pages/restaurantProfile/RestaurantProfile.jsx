@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router";
 
 import { AuthContext } from "../../context/AuthContext";
@@ -82,11 +82,14 @@ const RestaurantProfile = () => {
                   src={restaurant.profilePicture || noImage}
                   alt='jofpin'
                 />
-                <StarBtn
-                  starHandler={starHandler}
-                  loading={loading}
-                  isStar={isStar}
-                />{" "}
+                <div className='div-star cursor transform'>
+                  {" "}
+                  <StarBtn
+                    starHandler={starHandler}
+                    loading={loading}
+                    isStar={isStar}
+                  />{" "}
+                </div>
               </div>
               <div className='profile-data'>
                 <h3>{restaurant.restaurantname}</h3>

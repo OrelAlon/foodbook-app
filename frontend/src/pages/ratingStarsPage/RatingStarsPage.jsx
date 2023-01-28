@@ -24,8 +24,8 @@ const RatingStarsPage = () => {
   return (
     <>
       <div className='star-container'>
-        RatingStarsPage
-        <button>yezs</button>
+        <h2>Rating Stars Page</h2>
+        <button>rest</button>
         {loading && <div>Loading...</div>}
         {!loading && data.length > 0 ? (
           <div className='star-cards'>

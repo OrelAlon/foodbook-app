@@ -1,11 +1,11 @@
 const StarBtn = ({ starHandler, loading, isStar }) => {
   return (
     <>
-      <div className='star-div cursor transform' onClick={starHandler}>
+      <div onClick={starHandler}>
         {loading ? (
-          <button className='loading-emoji'>⭐</button>
+          <div className='loading-emoji'>⭐</div>
         ) : (
-          <button className={isStar ? "" : "grayscaleText "}>⭐</button>
+          <div className={isStar ? "" : "grayscaleText "}>⭐</div>
         )}
       </div>
     </>

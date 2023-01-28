@@ -65,7 +65,7 @@ const PostPage = () => {
             </span>{" "}
           </div>
           {/*  */}
-          <div style={{ width: 440, marginLeft: "auto", marginRight: "auto" }}>
+          <div style={{ width: 370, marginLeft: "auto", marginRight: "auto" }}>
             <Image radius='md' src={post.img} alt={post.img} />
           </div>
           <div className='center-div'>

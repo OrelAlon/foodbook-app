@@ -81,11 +81,14 @@ const UserProfile = () => {
                   alt='profile-image'
                 />
 
-                <StarBtn
-                  starHandler={starHandler}
-                  loading={loading}
-                  isStar={isStar}
-                />
+                <div className='div-star cursor transform'>
+                  {" "}
+                  <StarBtn
+                    starHandler={starHandler}
+                    loading={loading}
+                    isStar={isStar}
+                  />{" "}
+                </div>
                 {usernameParams === currentUser.username && (
                   <Link to={`/editprofile/${user.username}`} className='none'>
                     <span className='icon'>

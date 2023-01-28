@@ -42,7 +42,7 @@ const DownBar = ({ setShowGrid, showGrid }) => {
               <IconUsers className='black-link' />
             </Link>
           ) : (
-            <Link to={`/ratingstars`}>
+            <Link to={`/restaurants`}>
               <IconToolsKitchen2 className='black-link' />
             </Link>
           )}

@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 import ShareImageModal from "../shareImageModal/ShareImageModal";
 
@@ -11,13 +11,15 @@ import {
   IconGridDots,
   IconStar,
   IconPhotoPlus,
+  IconDiamond,
+  IconUsers,
 } from "@tabler/icons";
 
 const DownBar = ({ setShowGrid, showGrid }) => {
   const [shareImageOpened, setShareImageOpened] = useState(false);
 
   const { user: currentUser } = useContext(AuthContext);
-
+  const { pathname } = useLocation();
   const { profilePicture = noAvatar, username = "" } = currentUser || {};
 
   return (
@@ -35,9 +37,15 @@ const DownBar = ({ setShowGrid, showGrid }) => {
           </Link>
         </div>
         <div className='btn-downbar transform'>
-          <Link to={`/restaurants`}>
-            <IconToolsKitchen2 className='black-link' />
-          </Link>
+          {pathname === "/restaurants" ? (
+            <Link to={`/users`}>
+              <IconUsers className='black-link' />
+            </Link>
+          ) : (
+            <Link to={`/ratingstars`}>
+              <IconToolsKitchen2 className='black-link' />
+            </Link>
+          )}
         </div>
         <div
           className='btn-downbar transform'
@@ -47,9 +55,15 @@ const DownBar = ({ setShowGrid, showGrid }) => {
         </div>
 
         <div className='btn-downbar transform'>
-          <Link to={`/ratingstars`}>
-            <IconStar className='black-link' />
-          </Link>
+          {pathname === "/ratingstars" ? (
+            <Link to={`/about`} style={{ textDecoration: "none" }}>
+              <div className='black-link'>💎</div>
+            </Link>
+          ) : (
+            <Link to={`/ratingstars`}>
+              <IconStar className='black-link' />
+            </Link>
+          )}
         </div>
         <div className='btn-downbar transform'>
           <Link to={`/profile/${username}`}>

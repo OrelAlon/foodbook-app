@@ -29,10 +29,13 @@ const RatingStarsPage = () => {
   return (
     <>
       <div className='star-container'>
-        <h2>Rating Stars Page</h2>
-        <button onClick={toggleWhichData}>
-          {whichData === "users" ? "Restaurants" : "Users"}
-        </button>
+        <div className='margin'>
+          <a onClick={toggleWhichData} class='button'>
+            {" "}
+            {whichData === "users" ? "Go To Restaurants" : "Go To Users"}
+          </a>
+        </div>
+
         {!loading && data?.length === 0 ? (
           <div>
             <Loading />

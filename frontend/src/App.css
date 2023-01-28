@@ -165,6 +165,7 @@ body {
 }
 .black-link {
   color: black;
+  text-decoration: none;
 }
 
 .save-logo {
@@ -177,7 +178,6 @@ body {
   text-align: center;
   align-items: center;
   margin-bottom: 2rem;
-  background-color: rgb(241, 241, 241);
 }
 
 .star-cards {
@@ -197,7 +197,7 @@ body {
   height: 200px;
   /* border: 1px solid black; */
   margin: auto;
-  background-color: white;
+  background-color: rgb(241, 241, 241);
 }
 
 .star {
@@ -239,4 +239,56 @@ body {
   .star-count {
     position: static;
   }
+}
+/* button */
+.margin {
+  margin: 50px;
+}
+.button {
+  position: relative;
+  background-color: black;
+  border-radius: 4em;
+  font-size: 16px;
+  color: white;
+  padding: 0.8em 1.8em;
+  cursor: pointer;
+  user-select: none;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition-duration: 0.4s;
+  -webkit-transition-duration: 0.4s; /* Safari */
+}
+
+.button:hover {
+  transition-duration: 0.1s;
+  background-color: #3a3a3a;
+}
+
+.button:after {
+  content: "";
+  display: block;
+  position: absolute;
+  border-radius: 4em;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: all 0.5s;
+  box-shadow: 0 0 10px 40px rgb(170, 170, 170);
+}
+
+.button:active:after {
+  box-shadow: 0 0 0 0 rgb(175, 175, 175);
+  position: absolute;
+  border-radius: 4em;
+  left: 0;
+  top: 0;
+  opacity: 1;
+  transition: 0s;
+}
+
+.button:active {
+  top: 1px;
 }

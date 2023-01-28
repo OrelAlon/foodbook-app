@@ -55,15 +55,9 @@ const DownBar = ({ setShowGrid, showGrid }) => {
         </div>
 
         <div className='btn-downbar transform'>
-          {pathname === "/ratingstars" ? (
-            <Link to={`/about`} style={{ textDecoration: "none" }}>
-              <div className='black-link'>💎</div>
-            </Link>
-          ) : (
-            <Link to={`/ratingstars`}>
-              <IconStar className='black-link' />
-            </Link>
-          )}
+          <Link to={`/ratingstars`}>
+            <IconStar className='black-link' />
+          </Link>
         </div>
         <div className='btn-downbar transform'>
           <Link to={`/profile/${username}`}>

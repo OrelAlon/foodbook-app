@@ -67,7 +67,7 @@ const NavMenu = () => {
             <Menu.Item>✏️ Edit Profile</Menu.Item>{" "}
           </Link>
           <Link to={`/about`} style={style}>
-            <Menu.Item>🍔 About</Menu.Item>{" "}
+            <Menu.Item>💎 About Me</Menu.Item>{" "}
           </Link>
           <Menu.Divider />
           <Menu.Label>Danger zone</Menu.Label>

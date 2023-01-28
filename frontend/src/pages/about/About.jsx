@@ -1,16 +1,11 @@
 import NavBar from "../../components/navBar/NavBar";
-import logo from "../../assets/transparent.png";
 import git from "../../assets/git.png";
 import link from "../../assets/link.png";
 import me from "../../assets/me.jpg";
 import res from "../../assets/ress.png";
-import {
-  IconBrandLinkedin,
-  IconBrandGithub,
-  IconFileInfo,
-} from "@tabler/icons";
 
 import "./about.css";
+
 const About = () => {
   return (
     <>
@@ -23,7 +18,7 @@ const About = () => {
         <div className='about-me__text'>
           <p
             className='about-me__text-p'
-            style={{ animationDelay: "2s", opacity: 0 }}
+            style={{ animationDelay: "1s", opacity: 0 }}
           >
             {" "}
             Starting as a small project, it has grown into a real platform for
@@ -31,7 +26,7 @@ const About = () => {
           </p>
           <p
             className='about-me__text-p'
-            style={{ animationDelay: "4s", opacity: 0 }}
+            style={{ animationDelay: "2s", opacity: 0 }}
           >
             As a developer, I constantly strive to learn new things and improve
             the user experience.

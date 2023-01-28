@@ -292,3 +292,12 @@ body {
 .button:active {
   top: 1px;
 }
+.div-image {
+  width: 400px;
+  margin: auto;
+}
+@media (max-width: 600px) {
+  .div-image {
+    width: 280px;
+  }
+}

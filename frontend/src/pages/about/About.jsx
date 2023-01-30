@@ -50,7 +50,7 @@ const About = () => {
           </a>
           <a
             target='_blank'
-            href='https://drive.google.com/file/d/1DU_z9W7dIIeLniNXZR10N7M85ZA5X7u9/view?usp=sharing'
+            href='https://drive.google.com/file/d/1aMqqF4EBkX0yxGMIkduXb5mzvA5mNDwV/view?usp=sharing'
             className='about-me__link'
           >
             <img src={res} alt='Profile' className='about-me__img' />{" "}

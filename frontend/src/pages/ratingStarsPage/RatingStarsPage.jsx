@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 
-import { fetchAll, fetchAllUsers } from "../../api/ApiFetch";
+import { fetchAll } from "../../api/ApiFetch";
 
+import NavBar from "../../components/navBar/NavBar";
 import Loading from "../../components/loading/Loading";
 import StarCard from "../../components/starCard/StarCard";
 
@@ -28,6 +29,8 @@ const RatingStarsPage = () => {
   };
   return (
     <>
+      <NavBar />
+
       <div className='star-container'>
         <div className='margin'>
           <a onClick={toggleWhichData} class='button'>

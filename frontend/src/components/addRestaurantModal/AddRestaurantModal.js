@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 import {
   Modal,
@@ -87,7 +87,6 @@ function AddRestaurantModal({ addRestaurantOpend, setAddRestaurantOpend }) {
             style={{ width: "80%", margin: "auto", color: "dark.9" }}
           >
             <Input
-              // style={{ width: "80%", margin: "auto", color: "dark.9" }}
               onChange={(e) => setRestaurantName(e.target.value)}
               value={restaurantName}
               type='text'

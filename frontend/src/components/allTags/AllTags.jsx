@@ -1,4 +1,3 @@
-import React from "react";
 import TagPost from "../tagPost/TagPost";
 
 const AllTags = ({ foodCategory = [], dishType = [] }) => {

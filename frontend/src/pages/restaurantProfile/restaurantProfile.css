@@ -36,27 +36,24 @@
   box-shadow: 0 0 0.1em rgba(0, 0, 0, 0.35);
 }
 .div-star {
-  position: absolute;
   position: relative;
   margin-left: 0;
-  font-weight: bold;
   cursor: pointer;
-  background: #3498db;
-  border: 1px solid #2487c9;
-  width: 4%;
+  /* background: #3498db;
+  border: 1px solid #2487c9; */
+  width: 25px;
   font-size: 13px;
-  color: #fff;
   outline: none;
-  border-radius: 0.6em 0.6em;
+  border-radius: 0.4em 0.4em;
   padding: 0.4em;
   margin: auto;
 }
 
-.div-star:hover {
+/* .div-star:hover {
   background: #51a7e0;
   transition: background 0.2s ease-in-out;
   border: 1px solid #2487c9;
-}
+} */
 .profile-page .profile-data,
 .profile-page .description-profile {
   text-align: center;

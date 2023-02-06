@@ -21,12 +21,6 @@ body {
   width: 12vw;
 }
 
-/* .logo:hover,
-.add-image-btn:hover {
-  background-color: #e9ecef;
-  border-radius: 5px;
-  border: solid rgb(124, 124, 124) 1px;
-} */
 @media only screen and (max-width: 800px) {
   .logo {
     width: 24vw;
@@ -130,12 +124,7 @@ body {
   margin: auto;
   margin-top: 20px;
 }
-/* .go-back-div {
-  position: fixed;
-  left: 50px;
-  top: 70px;
-  z-index: 100;
-} */
+
 .go-back-div:hover {
   color: rgb(48, 85, 232);
 }

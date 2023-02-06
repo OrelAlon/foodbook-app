@@ -51,12 +51,6 @@
   object-fit: cover; /* Resize and crop the image to fit the container */
 }
 
-/* .image-grid-img img {
-  border: 1px solid black;
-  border-radius: 10px;
-  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
-} */
-
 @media screen and (max-width: 768px) {
   .image-grid-list {
     grid-gap: 2px;
@@ -69,23 +63,6 @@
   }
 }
 
-/* .image-grid-item {
-  transition: all 0.2s ease-in-out;
-}
-
-.image-grid-item:hover {
-  z-index: 1;
-  transform: scale(1.05);
-} */
-/* 
-.image-grid-img {
-  transition: all 0.2s ease-in-out;
-}
-
-.image-grid-item:hover .image-grid-img {
-  z-index: 1;
-  transform: scale(1.05);
-} */
 .image-grid-item {
   position: relative;
   transition: all 0.2s ease-in-out;

@@ -28,8 +28,8 @@ const About = () => {
             className='about-me__text-p'
             style={{ animationDelay: "2s", opacity: 0 }}
           >
-            As a developer, I constantly strive to learn new things and improve
-            the user experience.
+            As a developer, I constantly strive to learn new things and can't
+            wait to launch my next project.
           </p>
         </div>
 

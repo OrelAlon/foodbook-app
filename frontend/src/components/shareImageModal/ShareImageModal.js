@@ -1,5 +1,6 @@
 import { useContext, useState, useEffect, useCallback } from "react";
 import { AuthContext } from "../../context/AuthContext";
+import { fetchAllRestaurants } from "../../api/ApiFetch";
 
 import axios from "axios";
 
@@ -42,7 +43,7 @@ function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
 
   const fetchRestaurants = useCallback(async () => {
     try {
-      const res = await axios.get(`/api/restaurants/restaurants`);
+      const res = await fetchAllRestaurants();
       sortRestaurants(res.data);
     } catch (error) {
       console.error(error);

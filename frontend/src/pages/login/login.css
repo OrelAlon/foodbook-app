@@ -137,3 +137,15 @@
   color: red;
   font-size: smaller;
 }
+.center-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: 5px;
+  font-weight: bold;
+  justify-content: space-evenly;
+}
+.auto {
+  margin: auto;
+}

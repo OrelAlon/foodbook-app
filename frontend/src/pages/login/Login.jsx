@@ -94,7 +94,7 @@ const Login = () => {
                   Log in
                 </button>
                 <h1 className='errMsg center-div'>{errorMsg}</h1>
-                <div className='center-div loading'>
+                <div className='center-div loading' style={{ margin: "auto" }}>
                   {loading && <Loader />}
                 </div>
               </div>

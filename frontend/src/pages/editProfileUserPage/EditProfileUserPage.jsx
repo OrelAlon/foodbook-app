@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 
 import axios from "axios";
-import { submitHandlerEditUser } from "../../api/ApiPutHandler";
 
 import NavBar from "../../components/navBar/NavBar";
 import ImageUpload from "../../components/imageDisplay/ImageDisplay";

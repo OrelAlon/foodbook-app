@@ -5,8 +5,6 @@ import { fetchPostsUser, fetchPostsRestaurant } from "../../api/ApiFetch";
 import Post from "../post/Post";
 import Loading from "../loading/Loading";
 
-// import "./feed.css";
-
 const ProfileFeed = ({ username, restaurantname, setPostsLength }) => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);

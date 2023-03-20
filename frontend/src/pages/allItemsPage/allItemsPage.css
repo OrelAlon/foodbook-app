@@ -15,6 +15,20 @@
     grid-template-columns: repeat(3, 1fr);
   }
 }
+
+@media (max-width: 600px) {
+  .rightbarProfileImg {
+    width: 14rem;
+    height: 5rem;
+    object-fit: cover;
+    object-fit: contain;
+    object-fit: scale-down;
+    border: solid 2px rgb(167, 167, 167);
+    padding: 6px;
+    border-style: outset;
+    position: relative;
+  }
+}
 .restaurantSearch {
   margin-bottom: 2rem;
   height: 2rem;

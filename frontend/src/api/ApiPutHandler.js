@@ -32,8 +32,7 @@ export const submitHandlerEditUser = async (
   userInstagram,
   userEmail,
   currentUser,
-  setLoading,
-  setErrorMsg
+  setLoading
 ) => {
   try {
     setLoading(true);
@@ -57,8 +56,6 @@ export const submitHandlerEditUser = async (
     console.log(existingUser);
     // save the updated user back to the local storage
     await localStorage.setItem("user", JSON.stringify(existingUser.data));
-
-    // window.location.reload(false);
   } catch (error) {
     console.log(error);
   }

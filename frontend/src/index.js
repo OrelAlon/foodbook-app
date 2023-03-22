@@ -11,5 +11,4 @@ root.render(
   </AuthContextProvider>
 );
 
-// //  ==> npm run start  (form the frontend folder)
-// for concurrently ==> npm run dev ==> from main folder
+// for concurrently ==> npm run dev ==> from root folder

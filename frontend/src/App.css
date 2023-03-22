@@ -147,8 +147,8 @@ body {
 }
 
 .profile-img-downbar {
-  width: 2rem;
-  height: 2rem;
+  width: 2.8rem;
+  height: 2.8rem;
   border-radius: 50%;
   object-fit: cover;
 }

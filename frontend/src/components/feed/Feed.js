@@ -5,6 +5,7 @@ import PostsFeed from "../postsFeed/PostsFeed";
 import GridFeed from "../gridFeed/GridFeed";
 import Loading from "../loading/Loading";
 import FilterImagesModel from "../filterImagesModel/FilterImagesModel";
+import { Notification } from "@mantine/core";
 
 import "./feed.css";
 
@@ -18,6 +19,17 @@ const Feed = ({ showGrid }) => {
   const [loading, setLoading] = useState(true);
   const [total, setTotal] = useState();
   const [hasNextPage, setHasNextPage] = useState(false);
+  const [showNotification, setShowNotification] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setShowNotification(true), 4000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  const handleCloseNotification = () => {
+    setShowNotification(false);
+  };
 
   useEffect(() => {
     const controller = new AbortController();
@@ -75,7 +87,20 @@ const Feed = ({ showGrid }) => {
           setRestaurantUserPick={setRestaurantUserPick}
           setCityPick={setCityPick}
         />
-
+        {showNotification && (
+          <div className='width'>
+            {" "}
+            <Notification
+              closeButtonProps={{ title: "Hide notification" }}
+              color='pink'
+              title='New feature is out'
+              onClick={handleCloseNotification}
+            >
+              Now you can give Your favorite restaurant\user a star⭐ check It
+              out⬇️
+            </Notification>
+          </div>
+        )}
         {loading ? (
           <div className='center-div'>
             <Loading />

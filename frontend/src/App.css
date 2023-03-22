@@ -290,3 +290,8 @@ body {
     width: 280px;
   }
 }
+
+.width {
+  width: 60%;
+  margin: auto;
+}

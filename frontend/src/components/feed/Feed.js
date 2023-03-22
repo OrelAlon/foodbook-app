@@ -96,8 +96,8 @@ const Feed = ({ showGrid }) => {
               title='New feature is out'
               onClick={handleCloseNotification}
             >
-              Now you can give Your favorite restaurant\user a star⭐ check It
-              out⬇️
+              Now you can give Your favorite restaurant\user a star ⭐ check It
+              out ⬇️
             </Notification>
           </div>
         )}

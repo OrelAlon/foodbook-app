@@ -17,7 +17,7 @@ cloudinary.config({
 
 app.use(fileupload({ useTempFiles: true }));
 
-// // middlewares
+// middlewares
 app.use(
   cors({
     origin: ["http://localhost:3000", "https://foodbook.onrender.com/"],

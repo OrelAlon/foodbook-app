@@ -69,8 +69,6 @@ const RestaurantProfile = () => {
     <>
       <NavBar />
 
-      {/* feed */}
-
       <div className='profile-page-container'>
         <div>
           <div className='content-profile-page'>

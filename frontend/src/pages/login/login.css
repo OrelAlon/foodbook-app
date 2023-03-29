@@ -149,3 +149,20 @@
 .auto {
   margin: auto;
 }
+.bottom_ {
+  background-color: #ffffff;
+  text-align: center;
+  padding: 7%;
+  margin-top: 22%;
+}
+.bottom_ {
+  color: #00376b;
+  font-family: "Roboto", sans-serif;
+  font-size: 85%;
+  /* font-weight: 600; */
+  letter-spacing: 1px;
+}
+.bottom_ span {
+  font-weight: bolder;
+  cursor: pointer;
+}

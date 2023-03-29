@@ -296,6 +296,7 @@ body {
   margin: auto;
   padding: 15px;
 }
-.aboutGo {
+.aboutGo,
+.about-me {
   margin-top: 60px;
 }

@@ -146,6 +146,9 @@ const Register = () => {
               <span onClick={() => navigate("/login")}>Sign In</span>
             </div>
           </div>
+          <div className='bottom_ transform'>
+            © 2023 - <span onClick={() => navigate("/about")}>About Me</span>
+          </div>
         </div>
       </div>
     </div>

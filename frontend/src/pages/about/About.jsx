@@ -3,13 +3,15 @@ import git from "../../assets/git.png";
 import link from "../../assets/link.png";
 import me from "../../assets/me.jpg";
 import res from "../../assets/ress.png";
+import GoBackButton from "../../components/goBackButton/GoBackButton";
 
 import "./about.css";
 
 const About = () => {
   return (
     <>
-      <NavBar />
+      {/* <NavBar /> */}
+
       <div className='about-me'>
         <div className='about-me__header'>
           <h1 className='about-me__title'>About Me...</h1>
@@ -55,6 +57,9 @@ const About = () => {
           >
             <img src={res} alt='Profile' className='about-me__img' />{" "}
           </a>
+        </div>
+        <div className='aboutGo'>
+          <GoBackButton />
         </div>
       </div>
     </>

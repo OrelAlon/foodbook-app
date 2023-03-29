@@ -11,8 +11,9 @@ const RouterConfig = () => {
       <Routes>
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
-        <Route path='*' element={<MainLayoutRoutes />} />
         <Route path='/about' element={<About />} />
+
+        <Route path='*' element={<MainLayoutRoutes />} />
       </Routes>
     </Router>
   );

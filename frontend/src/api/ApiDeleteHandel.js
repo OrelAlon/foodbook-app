@@ -7,6 +7,7 @@ export const deletePost = async (id) => {
 };
 
 //
+//
 // post delete
 export const deleteItem = async (type, id) => {
   console.log(type);

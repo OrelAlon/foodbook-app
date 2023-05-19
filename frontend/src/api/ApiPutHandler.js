@@ -1,6 +1,7 @@
 import axios from "axios";
 
 // edit rest
+//
 export const submitHandlerEditRestaurant = async (
   file,
   restaurantName,

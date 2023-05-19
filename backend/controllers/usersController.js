@@ -3,7 +3,7 @@ const Post = require("../models/Post");
 const bcrypt = require("bcrypt");
 const cloudinary = require("cloudinary");
 //
-//
+
 const getUser = async (req, res) => {
   const userId = req.query.userId;
   const username = req.query.username;

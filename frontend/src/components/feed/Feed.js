@@ -87,7 +87,7 @@ const Feed = ({ showGrid }) => {
           setRestaurantUserPick={setRestaurantUserPick}
           setCityPick={setCityPick}
         />
-        {showNotification && (
+        {/* {showNotification && (
           <div className='width'>
             {" "}
             <Notification
@@ -100,7 +100,7 @@ const Feed = ({ showGrid }) => {
               out ⬇️
             </Notification>
           </div>
-        )}
+        )} */}
         {loading ? (
           <div className='center-div'>
             <Loading />

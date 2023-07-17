@@ -12,3 +12,5 @@ export const deleteItem = async (type, id) => {
   const res = await axios.delete(`/api/${type}/${id}`);
   return res;
 };
+
+//test

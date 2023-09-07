@@ -90,6 +90,7 @@ const Feed = ({ showGrid }) => {
         {/* {showNotification && (
           <div className='width'>
             {" "}
+            ..
             <Notification
               closeButtonProps={{ title: "Hide notification" }}
               color='pink'

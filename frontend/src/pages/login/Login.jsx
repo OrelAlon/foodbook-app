@@ -1,17 +1,18 @@
-import { useState, useRef, useContext } from "react";
-import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../../context/AuthContext";
-import { Loader } from "@mantine/core";
-import GoogleLogin from "react-google-login";
-// import { GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google";
+import { useState, useRef, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../context/AuthContext';
+import { Loader } from '@mantine/core';
+// import GoogleLogin from "react-google-login";
 
-import foodbook from "../../assets/foodbook.png";
-import { gapi } from "gapi-script";
+import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
 
-import "./login.css";
+import foodbook from '../../assets/foodbook.png';
+import { gapi } from 'gapi-script';
+
+import './login.css';
 
 const Login = () => {
-  const [errorMsg, setErrorMsg] = useState("");
+  const [errorMsg, setErrorMsg] = useState('');
   const [loading, setLoading] = useState(false);
 
   const emailRef = useRef();
@@ -24,14 +25,14 @@ const Login = () => {
   const handleSubmitLogin = async (e) => {
     e.preventDefault();
     try {
-      setErrorMsg("");
+      setErrorMsg('');
       setLoading(true);
 
       await login({
         email: emailRef.current.value,
         password: passwordRef.current.value,
       });
-      navigate("/");
+      navigate('/');
     } catch (error) {
       setLoading(false);
       setErrorMsg(error.response.data);
@@ -44,33 +45,34 @@ const Login = () => {
       await googleLogin({
         response,
       });
-      navigate("/");
+      navigate('/');
     } catch (error) {
       setLoading(false);
       setErrorMsg(error.response.data);
     }
   };
 
-  const responseGoogle = (response) => {
-    gapi.load("client:auth2", () => {
-      gapi.client.init({
-        clientId: process.env.REACT_APP_GOOGLE_CLIENT_ID,
-        plugin_name: "chat",
-      });
-    });
-    handleGoogleLogin(response);
-  };
+  // const responseGoogle = (response) => {
+  //   gapi.load("client:auth2", () => {
+  //     gapi.client.init({
+  //       clientId: process.env.REACT_APP_GOOGLE_CLIENT_ID,
+  //       plugin_name: "chat",
+  //     });
+  //   });
+  //   handleGoogleLogin(response);
+  // };
+
   return (
     <div>
       <div className='login-page'>
         <div className='login_div'>
           <div className='top_section'>
             <div className='form_heading'>
-              <img className='foodbook-img' src={foodbook} alt='' />{" "}
+              <img className='foodbook-img' src={foodbook} alt='' />{' '}
             </div>
             <form onSubmit={handleSubmitLogin}>
               <div className='input-div'>
-                {" "}
+                {' '}
                 <input
                   className='login-input'
                   placeholder='Email'
@@ -94,7 +96,7 @@ const Login = () => {
                   Log in
                 </button>
                 <h1 className='errMsg center-div'>{errorMsg}</h1>
-                <div className='center-div loading' style={{ margin: "auto" }}>
+                <div className='center-div loading' style={{ margin: 'auto' }}>
                   {loading && <Loader />}
                 </div>
               </div>
@@ -106,27 +108,27 @@ const Login = () => {
               </div>
               <div className='lower_div'>
                 <div className='google-login transform'>
-                  {/* <GoogleOAuthProvider> */}
-                  {/*  */}
-                  <GoogleLogin
-                    clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
-                    buttonText='Login with Google'
-                    onSuccess={responseGoogle}
-                  />
-                  {/* </GoogleOAuthProvider> */}
-                </div>{" "}
+                  <GoogleOAuthProvider>
+                    {/*  */}
+                    <GoogleLogin
+                      clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
+                      buttonText='Login with Google'
+                      onSuccess={handleGoogleLogin}
+                    />
+                  </GoogleOAuthProvider>
+                </div>{' '}
               </div>
               <p className='forgot_password transform'>Forgot password?</p>
             </form>
           </div>
           <div>
             <div className='bottom_section transform'>
-              Don't have an account?{" "}
-              <span onClick={() => navigate("/register")}>Sign up</span>
+              Don't have an account?{' '}
+              <span onClick={() => navigate('/register')}>Sign up</span>
             </div>
           </div>
           <div className='bottom_ transform'>
-            © 2023 - <span onClick={() => navigate("/about")}>About Me</span>
+            © 2023 - <span onClick={() => navigate('/about')}>About Me</span>
           </div>
         </div>
       </div>

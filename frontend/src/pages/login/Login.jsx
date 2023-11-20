@@ -49,6 +49,7 @@ const Login = () => {
     } catch (error) {
       setLoading(false);
       setErrorMsg(error.response.data);
+      console.error('Google Login Error:', error);
     }
   };
 
@@ -109,7 +110,6 @@ const Login = () => {
               <div className='lower_div'>
                 <div className='google-login transform'>
                   <GoogleOAuthProvider>
-                    {/*  */}
                     <GoogleLogin
                       clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
                       buttonText='Login with Google'

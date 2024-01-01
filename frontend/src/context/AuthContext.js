@@ -15,7 +15,7 @@ export const AuthContextProvider = ({ children }) => {
 
   const googleLogin = async ({ response }) => {
     const res = await axios.post("api/auth/googlelogin", {
-      tokenId: response.tokenId,
+      tokenId: response.credential,
     });
     setCurrentUser(res.data);
   };

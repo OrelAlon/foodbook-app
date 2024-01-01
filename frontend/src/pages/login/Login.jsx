@@ -109,9 +109,8 @@ const Login = () => {
               </div>
               <div className='lower_div'>
                 <div className='google-login transform'>
-                  <GoogleOAuthProvider>
+                  <GoogleOAuthProvider  clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}>
                     <GoogleLogin
-                      clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
                       buttonText='Login with Google'
                       onSuccess={handleGoogleLogin}
                     />

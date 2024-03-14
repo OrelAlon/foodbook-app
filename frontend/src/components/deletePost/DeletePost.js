@@ -15,7 +15,7 @@ const DeletePost = ({ id }) => {
   return (
     <>
       <div className='postTopRight delete' onClick={deleteHandler}>
-        ;s;s{" "}
+        X{" "}
       </div>
     </>
   );

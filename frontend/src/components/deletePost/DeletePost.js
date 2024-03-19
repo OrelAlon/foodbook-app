@@ -22,3 +22,6 @@ const DeletePost = ({ id }) => {
 };
 
 export default DeletePost;
+
+
+// test

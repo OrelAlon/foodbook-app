@@ -1,5 +1,6 @@
 .homeContainer {
   display: flex;
+  justify-content: center;
   width: 100%;
   color: black;
   /* background: url("../../assets/gold2.jpg") no-repeat center center fixed; */
@@ -29,6 +30,8 @@
   border: solid rgb(124, 124, 124) 1px;
   align-items: center;
 }
+
 .add-image-btn img {
-  margin: 0 auto; /* centers the image horizontally within the button */
+  margin: 0 auto;
+  /* centers the image horizontally within the button */
 }

@@ -10,7 +10,6 @@ import "./about.css";
 const About = () => {
   return (
     <>
-      {/* <NavBar /> */}
 
       <div className='about-me'>
         <div className='about-me__header'>

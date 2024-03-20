@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import { Routes, Route } from "react-router-dom";
-
+import NavBar from "../components/navBar/NavBar";
 import Home from "../pages/home/Home";
 import About from "../pages/about/About";
 import UserProfile from "../pages/userProfile/UserProfile";
@@ -23,7 +23,9 @@ function MainLayoutRoutes() {
   return (
     <>
       <React.Fragment />
+      <NavBar />
       <div className="page">
+
         <Routes>
           <Route path='/'>
             <Route

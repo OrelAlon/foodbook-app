@@ -40,7 +40,6 @@ const AllItemsPage = ({ type }) => {
 
   return (
     <>
-      <NavBar />
 
       <AddRestaurantModal
         addRestaurantOpend={addRestaurantOpend}

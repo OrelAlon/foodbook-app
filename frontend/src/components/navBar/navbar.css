@@ -8,3 +8,10 @@
 .logo-container {
     width: fit-content;
 }
+
+@media (min-width: 600px) {
+    .navbar-container {
+        padding: 20px;
+    }
+
+}

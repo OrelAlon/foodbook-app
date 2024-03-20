@@ -66,7 +66,6 @@ const UserProfile = () => {
 
   return (
     <>
-      <NavBar />
 
       {/* feed */}
       <div className='profile-page-container'>

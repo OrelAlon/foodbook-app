@@ -67,7 +67,6 @@ const RestaurantProfile = () => {
 
   return (
     <>
-      <NavBar />
 
       <div className='profile-page-container'>
         <div>

@@ -1,4 +1,7 @@
-.feed {}
+.feed {
+  overflow: scroll;
+  height: 85vh;
+}
 
 .filter-div {
   margin-top: 30px;

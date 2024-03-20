@@ -37,7 +37,6 @@ const PostPage = () => {
 
   return (
     <>
-      <NavBar />
 
       {isLoading ? (
         <div className='center-div'>

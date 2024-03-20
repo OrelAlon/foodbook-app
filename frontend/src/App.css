@@ -16,6 +16,8 @@ body {
   .page {
     margin: 0 10%;
   }
+
+
 }
 
 .transform :active {
@@ -45,19 +47,10 @@ body {
 }
 
 .image-page {
-  margin-top: 30px;
-  margin-bottom: 20px;
   height: 78vh;
   overflow: scroll;
 }
 
-/* @media (min-width: 600px) {
-  .image-page {
-    margin-top: 30px;
-    margin-bottom: 20px;
-    height: 78vh;
-  }
-} */
 
 .open-image {
   height: 70%;

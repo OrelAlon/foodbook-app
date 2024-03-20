@@ -69,7 +69,6 @@ const EditPostPage = () => {
 
   return (
     <>
-      <NavBar />
 
       {isLoading ? (
         <Loading />

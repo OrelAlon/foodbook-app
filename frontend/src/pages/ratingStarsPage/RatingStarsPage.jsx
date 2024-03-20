@@ -29,7 +29,6 @@ const RatingStarsPage = () => {
   };
   return (
     <>
-      <NavBar />
 
       <div className='star-container'>
         <div className='margin'>

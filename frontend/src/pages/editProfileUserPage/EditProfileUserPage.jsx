@@ -66,7 +66,6 @@ const EditProfileUserPage = () => {
   // Render the form
   return (
     <>
-      <NavBar />
       <form className='profile-edit-form' onSubmit={handleSubmit}>
         <label className='profile-edit-form__label'>
           Name:

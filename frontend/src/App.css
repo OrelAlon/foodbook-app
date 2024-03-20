@@ -2,6 +2,12 @@ body {
   background-color: white;
   font-family: "Montserrat", sans-serif;
 }
+
+.App {
+  width: 100vw;
+  height: 100vh;
+}
+
 .transform :active {
   transform: translateY(2px);
 }
@@ -25,6 +31,7 @@ body {
   .logo {
     width: 24vw;
   }
+
   .loading {
     width: 260px;
   }
@@ -33,15 +40,18 @@ body {
 .image-page {
   margin-top: 30px;
   margin-bottom: 20px;
-  height: 70%;
+  height: 78vh;
+  overflow: scroll;
 }
-@media (min-width: 600px) {
+
+/* @media (min-width: 600px) {
   .image-page {
     margin-top: 30px;
     margin-bottom: 20px;
-    height: 85vh;
+    height: 78vh;
   }
-}
+} */
+
 .open-image {
   height: 70%;
   width: 100%;
@@ -55,6 +65,7 @@ body {
   width: 50%;
   text-align: right;
 }
+
 .cursor {
   cursor: pointer;
 }
@@ -87,6 +98,7 @@ body {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -96,26 +108,34 @@ body {
 .github {
   text-decoration: none;
 }
+
 .linkedin {
   color: blue;
 }
+
 .github {
   color: black;
 }
+
 .grayscaleText {
   filter: grayscale(100%);
 }
+
 .infoForm h1 {
   align-content: center;
   align-items: center;
   margin: auto;
 }
+
 .headline-post-img {
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   font-size: 20px;
   margin-bottom: 25px;
+  width: 60%;
+  column-gap: 25%;
 }
+
 .post-page-bottom {
   display: flex;
   align-items: center;
@@ -128,6 +148,7 @@ body {
 .go-back-div:hover {
   color: rgb(48, 85, 232);
 }
+
 .menu-div-down {
   display: flex;
   justify-content: center;
@@ -152,6 +173,7 @@ body {
   border-radius: 50%;
   object-fit: cover;
 }
+
 .black-link {
   color: black;
   text-decoration: none;
@@ -207,32 +229,39 @@ body {
   font-size: 1.25rem;
   font-weight: bold;
 }
+
 .star-count {
   position: absolute;
   right: 15px;
 }
+
 @media (max-width: 600px) {
   .star-card {
     flex-direction: column;
     align-items: center;
     width: 100%;
   }
+
   .star-image {
     margin: auto;
     margin-top: 35px;
   }
+
   .star-name {
     font-size: 1rem;
     margin: 8px;
   }
+
   .star-count {
     position: static;
   }
 }
+
 /* button */
 .margin {
   margin: 50px;
 }
+
 .button {
   position: relative;
   background-color: black;
@@ -246,7 +275,8 @@ body {
   text-decoration: none;
   cursor: pointer;
   transition-duration: 0.4s;
-  -webkit-transition-duration: 0.4s; /* Safari */
+  -webkit-transition-duration: 0.4s;
+  /* Safari */
 }
 
 .button:hover {
@@ -281,10 +311,12 @@ body {
 .button:active {
   top: 1px;
 }
+
 .div-image {
   width: 400px;
   margin: auto;
 }
+
 @media (max-width: 600px) {
   .div-image {
     width: 280px;
@@ -296,6 +328,7 @@ body {
   margin: auto;
   padding: 15px;
 }
+
 .aboutGo,
 .about-me {
   margin-top: 60px;

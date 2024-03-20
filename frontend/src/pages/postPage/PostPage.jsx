@@ -38,19 +38,20 @@ const PostPage = () => {
   return (
     <>
       <NavBar />
-      <div className='center-div go-back-div transform cursor'>
-        {" "}
-        <GoBackButton />
-      </div>
+
       {isLoading ? (
         <div className='center-div'>
           <Loading />
         </div>
       ) : (
         <div className='image-page'>
+
           {" "}
           {/*  */}
           <div className='headline-post-img'>
+            <div className=' go-back-div transform cursor'>
+              <GoBackButton />
+            </div>
             <span className=''>
               <Link to={`/profile/${post.username}`} className='linkwithout'>
                 <span className='bold'> {post.username} </span>

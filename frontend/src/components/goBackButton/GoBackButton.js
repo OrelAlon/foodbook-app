@@ -6,9 +6,7 @@ const GoBackButton = () => {
   const goBack = () => navigate(-1);
 
   return (
-    <div>
-      <IconChevronLeft onClick={goBack} size={30} />
-    </div>
+    <IconChevronLeft onClick={goBack} size={30} />
   );
 };
 

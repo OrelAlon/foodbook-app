@@ -12,12 +12,7 @@
   background-size: cover;
 }
 
-.menu-div {
-  position: fixed;
-  right: 10px;
-  top: 10px;
-  z-index: 100;
-}
+.menu-div {}
 
 .add-image-btn {
   margin-left: 2px;

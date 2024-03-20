@@ -1,6 +1,6 @@
 .navbar-container {
-    margin: 0 19%;
     display: flex;
+    padding: 10px;
     align-items: center;
     justify-content: space-between;
 }

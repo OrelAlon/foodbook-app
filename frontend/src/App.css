@@ -8,6 +8,16 @@ body {
   height: 100vh;
 }
 
+.page {
+  padding: 10px;
+}
+
+@media (min-width: 600px) {
+  .page {
+    margin: 0 10%;
+  }
+}
+
 .transform :active {
   transform: translateY(2px);
 }
@@ -17,9 +27,6 @@ body {
 }
 
 .logo {
-  padding: 10px;
-  margin-left: 10px;
-  margin-top: 10px;
   cursor: pointer;
   /* background-color: #e9ecef;
   border-radius: 5px;

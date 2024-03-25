@@ -16,7 +16,7 @@ import Login from "../pages/login/Login";
 import DownBar from "../components/downBar/DownBar";
 import { AuthContext } from "../context/AuthContext";
 import { ProtectedRoute } from "./ProtectedRoute";
-import NavBar from "../components/navBar/NavBar";
+
 function MainLayoutRoutes() {
   const [showGrid, setShowGrid] = useState(false);
   const { user } = useContext(AuthContext);

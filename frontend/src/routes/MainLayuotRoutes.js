@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 
 import { Routes, Route } from "react-router-dom";
 import NavBar from "../components/navBar/NavBar";
@@ -12,14 +12,17 @@ import EditRestaurantPage from "../pages/editRestaurantPage/EditRestaurantPage";
 import EditProfileUserPage from "../pages/editProfileUserPage/EditProfileUserPage";
 import EditPostPage from "../pages/editPostPage/EditPostPage";
 import RatingStarsPage from "../pages/ratingStarsPage/RatingStarsPage";
-
+import Login from "../pages/login/Login";
 import DownBar from "../components/downBar/DownBar";
-
+import { AuthContext } from "../context/AuthContext";
 import { ProtectedRoute } from "./ProtectedRoute";
-
+import NavBar from "../components/navBar/NavBar";
 function MainLayoutRoutes() {
   const [showGrid, setShowGrid] = useState(false);
-
+  const { user } = useContext(AuthContext);
+  if (!user) {
+    return <Login />
+  }
   return (
     <>
       <React.Fragment />

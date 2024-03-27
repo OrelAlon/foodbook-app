@@ -333,3 +333,29 @@ body {
 .about-me {
   margin-top: 60px;
 }
+
+/* 
+ */
+/* Hide scrollbar when there is no scrolling */
+::-webkit-scrollbar {
+  width: 10px; /* Adjust as needed */
+  background-color: transparent; /* Set to match background color */
+  overflow: auto; /* Show scrollbar only when needed */
+}
+
+/* Define scrollbar thumb */
+::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.5); /* Adjust color as needed */
+  border-radius: 10px; /* Adjust border-radius as needed */
+  border: 2px solid transparent; /* Adjust border as needed */
+}
+
+/* Define scrollbar thumb on hover */
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(0, 0, 0, 0.7); /* Adjust hover color as needed */
+}
+
+/* Define scrollbar thumb when being dragged */
+::-webkit-scrollbar-thumb:active {
+  background-color: rgba(0, 0, 0, 0.9); /* Adjust active color as needed */
+}

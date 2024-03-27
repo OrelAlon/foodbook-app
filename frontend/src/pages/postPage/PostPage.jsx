@@ -1,12 +1,10 @@
-import { useState, useEffect } from "react";
+// PostPage.jsx
+
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
-
 import { fetchPostId } from "../../api/ApiFetch";
-
 import { Image } from "@mantine/core";
-
-import NavBar from "../../components/navBar/NavBar";
 import AllTags from "../../components/allTags/AllTags";
 import LikePost from "../../components/likePost/LikePost";
 import TimePost from "../../components/timePost/TimePost";
@@ -17,7 +15,6 @@ import "../../App.css";
 const PostPage = () => {
   const [post, setPost] = useState({});
   const [isLoading, setIsLoading] = useState(true);
-
   const postId = useParams().id;
 
   const fetchPost = async () => {
@@ -37,53 +34,40 @@ const PostPage = () => {
 
   return (
     <>
-
       {isLoading ? (
         <div className='center-div'>
           <Loading />
         </div>
       ) : (
-        <div className='image-page'>
-
-          {" "}
-          {/*  */}
-          <div className='headline-post-img'>
-            <div className=' go-back-div transform cursor'>
-              <GoBackButton />
-            </div>
-            <span className=''>
-              <Link to={`/profile/${post.username}`} className='linkwithout'>
-                <span className='bold'> {post.username} </span>
-              </Link>
-              at{" "}
-              <Link
-                className='linkwithout'
-                to={`/restaurant/${post.restaurantname}`}
-              >
-                <span className='bold'>{post.restaurantname}</span>
-              </Link>
-            </span>{" "}
+        <div className='container'>
+          <div className='restaurant-info'>
+            <Link to={`/profile/${post.username}`} className='linkwithout'>
+              <span className='bold'>{post.username}</span>
+            </Link>
+            {" at "}
+            <Link
+              className='linkwithout'
+              to={`/restaurant/${post.restaurantname}`}
+            >
+              <span className='bold'>{post.restaurantname}</span>
+            </Link>
           </div>
-          {/*  */}
-          <div className='div-image'>
+          <div className='image-container'>
             <Image radius='md' src={post.img} alt={post.img} />
           </div>
-          <div className='center-div'>
-            <TimePost createdAt={post.createdAt} />
+          <div className='comment-container'>
+            <input type='text' placeholder='Add a comment...' />
           </div>
-          <div className='post-page-bottom'>
-            <div className='postBottomLeft'>
-              {" "}
+          <div className='bottom-container'>
+            <div className='left'>
               <LikePost id={post?._id} likes={post?.likes} />
-              {/* <DisLikePost id={post?._id} disLikes={post?.disLikes} /> */}
             </div>
-
-            <div className='postBottomRight'>
-              <AllTags
-                foodCategory={post.foodCategory}
-                dishType={post.dishType}
-              />{" "}
+            <div className='right'>
+              <TimePost createdAt={post.createdAt} />
             </div>
+          </div>
+          <div className='go-back'>
+            <GoBackButton />
           </div>
         </div>
       )}

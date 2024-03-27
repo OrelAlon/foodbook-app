@@ -140,7 +140,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 40%;
+  width: 30%;
   margin: auto;
   margin-top: 20px;
 }
@@ -358,4 +358,64 @@ body {
 /* Define scrollbar thumb when being dragged */
 ::-webkit-scrollbar-thumb:active {
   background-color: rgba(0, 0, 0, 0.9); /* Adjust active color as needed */
+}
+@media (max-width: 600px) {
+  .post-page-bottom {
+    width: 80%;
+
+  }
+}
+
+/* 
+
+post page:
+
+
+*/
+
+
+.container {
+  border: 2px solid black;
+  padding: 20px;
+  margin: 20px;
+  width: 80%; /* Adjust width as needed */
+  margin: auto; /* Center the container */
+}
+
+.restaurant-info {
+  font-weight: bold;
+}
+
+.image-container {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.image-container img {
+  max-width: 100%; /* Ensure image doesn't exceed its container */
+  height: auto; /* Maintain aspect ratio */
+}
+
+.comment-container {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.comment-container input[type='text'] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.bottom-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.go-back {
+  margin-top: 20px;
+  text-align: center;
 }

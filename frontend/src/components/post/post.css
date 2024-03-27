@@ -76,7 +76,7 @@
 .postBottomLeft {
   display: flex;
   align-items: center;
-  width: 6rem;
+  width: 10rem;
 }
 
 .likeIcon {
@@ -86,7 +86,7 @@
 }
 
 .postLikeCounter {
-  font-size: 0.7rem;
+  font-size: 1.4rem;
 }
 
 .deleteIcon {

@@ -419,3 +419,33 @@ post page:
   margin-top: 20px;
   text-align: center;
 }
+
+/*  */
+.left,
+.right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid black;
+  border-radius: 5px; 
+  padding:5px 15px; 
+  cursor: pointer; 
+  width: calc(48% - 2px); 
+  box-sizing: border-box; 
+  text-align: center; 
+  white-space: nowrap; 
+  overflow: hidden; 
+  text-overflow: ellipsis; 
+  font-size: 16px;
+}
+
+
+.left {
+  background-color: rgb(182, 182, 237); 
+  margin-right: 1%; 
+}
+
+.right {
+  background-color: rgb(177, 140, 116); 
+  margin-left: 1%; 
+}

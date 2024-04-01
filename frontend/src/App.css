@@ -375,7 +375,7 @@ post page:
 
 
 .container {
-  border: 2px solid black;
+  /* border: 2px solid ; */
   padding: 20px;
   margin: 20px;
   width: 80%; /* Adjust width as needed */
@@ -446,6 +446,6 @@ post page:
 }
 
 .right {
-  background-color: rgb(177, 140, 116); 
+  background-color: rgb(194, 239, 207); 
   margin-left: 1%; 
 }

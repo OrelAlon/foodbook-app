@@ -396,15 +396,14 @@ html, body {
   height: 100vh; /* Fill available vertical space */
 
   /* Set initial width to 80% */
-  width: 80%;
   max-height: 90vh;
 
 }
 
 /* Adjust width based on viewport width */
-@media (min-width: 50%) {
+@media (min-width: 600px) {
   .container {
-    width: 50%;
+    width: 500PX;
   }
 }
 .restaurant-info {
@@ -419,10 +418,8 @@ html, body {
 }
 
 .image-container img {
-  max-width: 100%; /* Ensure image doesn't exceed its container */
-  max-height: 70vh; /* Set maximum height to 70% of viewport height */
-  width: auto; /* Maintain aspect ratio */
-  height: auto; /* Maintain aspect ratio */
+  width: 100%; /* Image will fill container width */
+  height: 70vh; /* Set image height to 70% of viewport height */
 }
 
 .comment-container {

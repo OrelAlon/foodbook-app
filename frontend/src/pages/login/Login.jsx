@@ -132,7 +132,7 @@ const Login = () => {
         </div>
         {/* </div> */}
         <div className='bottom_ transform'>
-          © 2023 - <span onClick={() => navigate('/about')}>About Me</span>
+          © 2023 - <span onClick={() => navigate('/about')}>About</span>
         </div>
       </div>
     </div>

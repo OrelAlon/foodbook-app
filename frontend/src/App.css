@@ -475,3 +475,53 @@ html, body {
   background-color: rgb(194, 239, 207);
   margin-left: 1%;
 }
+
+.comment {
+  margin-bottom: 8px; /* Adjust this value for the desired space between comments */
+}
+
+.comment-text {
+  font-size: 14px; /* Adjust font size as needed */
+}
+
+.comment-container {
+  margin-top: 20px;
+  text-align: center;
+  width: 100%; /* Ensure input takes full width */
+  display: flex; /* Make children elements flex items */
+  align-items: center; /* Align items vertically */
+}
+
+.comment-input {
+  flex: 1; /* Take remaining space */
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-right: 10px; /* Add space between input and button */
+}
+
+.add-comment-btn {
+  padding: 10px 20px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.add-comment-btn:hover {
+  background-color: #0056b3;
+}
+
+.add-comment-btn:focus {
+  outline: none;
+}
+
+.comment {
+  margin-bottom: 8px;
+  padding: 10px;
+  background-color: #f0f0f0;
+  border-radius: 4px;
+  font-size: 14px;
+}

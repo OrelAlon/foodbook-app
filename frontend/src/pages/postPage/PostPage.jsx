@@ -13,6 +13,9 @@ import "../../App.css";
 const PostPage = () => {
   const [post, setPost] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+  const [comment, setComment] = useState("");
+  const [commentsVisible, setCommentsVisible] = useState(false);
+  const [comments, setComments] = useState(['greattttttt','so goooddddddd']);
   const postId = useParams().id;
 
   const fetchPost = async () => {
@@ -29,6 +32,19 @@ const PostPage = () => {
   useEffect(() => {
     fetchPost();
   }, [postId]);
+
+  const handleCommentChange = (e) => {
+    setComment(e.target.value);
+  };
+
+  const handleAddComment = () => {
+    setComments([...comments, comment]);
+    setComment("");
+  };
+
+  const toggleCommentsVisibility = () => {
+    setCommentsVisible(!commentsVisible);
+  };
 
   return (
     <>
@@ -54,8 +70,16 @@ const PostPage = () => {
             <Image radius='md' src={post.img} alt={post.img} />
           </div>
           <div className='comment-container'>
-            <input type='text' placeholder='Add a comment...' />
-          </div>
+  <input
+    type='text'
+    placeholder='Add a comment...'
+    value={comment}
+    onChange={handleCommentChange}
+    className='comment-input'
+  />
+  <button onClick={handleAddComment} className='add-comment-btn'>Add</button>
+</div>
+
           <div className='bottom-container'>
             <div className='left'>
               <LikePost id={post?._id} likes={post?.likes} />
@@ -64,9 +88,24 @@ const PostPage = () => {
               <TimePost createdAt={post.createdAt} />
             </div>
           </div>
+          <div className='comments-wrapper'>
+            <button onClick={toggleCommentsVisibility}>
+              {commentsVisible ? "Hide Comments" : "Show Comments"}
+            </button>
+            {commentsVisible && (
+              <div className='comments'>
+                {comments.map((comment, index) => (
+                  <div key={index} className='comment'>
+                    {comment}
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
           <div className='go-back'>
             <GoBackButton />
           </div>
+         
         </div>
       )}
     </>

@@ -3,7 +3,6 @@ import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import { fetchPostId } from "../../api/ApiFetch";
 import { Image } from "@mantine/core";
-import AllTags from "../../components/allTags/AllTags";
 import LikePost from "../../components/likePost/LikePost";
 import TimePost from "../../components/timePost/TimePost";
 import Loading from "../../components/loading/Loading";
@@ -15,7 +14,7 @@ const PostPage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [comment, setComment] = useState("");
   const [commentsVisible, setCommentsVisible] = useState(false);
-  const [comments, setComments] = useState(['greattttttt','so goooddddddd']);
+  const [comments, setComments] = useState(['מנה מדהימה!','חובה לבוא בשביל זה']);
   const postId = useParams().id;
 
   const fetchPost = async () => {

@@ -489,7 +489,7 @@ html, body {
   text-align: center;
   width: 100%; 
   display: flex; 
-  align-items: center; /* Align items vertically */
+  align-items: center; 
 }
 
 .comment-input {

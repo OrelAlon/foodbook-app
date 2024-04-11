@@ -59,4 +59,6 @@
 }
 .icon {
   display: block;
+  margin: 0 auto; /* This will center the block horizontally */
+  text-align: center; /* This will center the content inside the block */
 }

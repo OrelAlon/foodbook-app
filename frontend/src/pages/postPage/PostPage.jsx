@@ -90,7 +90,7 @@ const PostPage = () => {
           </div>
           <div className='comments-wrapper'>
             <button onClick={toggleCommentsVisibility}>
-              {commentsVisible ? "Hide Comments" : "Show Comments"}
+              {commentsVisible ? "Hide Comments △" : "Show Comments ▼"}
             </button>
             {commentsVisible && (
               <div className='comments'>

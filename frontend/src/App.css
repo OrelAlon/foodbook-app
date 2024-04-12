@@ -373,15 +373,39 @@ post page:
 
 */
 
-
-.container {
-  border: 2px solid black;
-  padding: 20px;
-  margin: 20px;
-  width: 80%; /* Adjust width as needed */
-  margin: auto; /* Center the container */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto; /* Enable vertical scrolling if needed */
 }
 
+#root {
+  height: 100%;
+}
+
+.container {
+  padding: 20px;
+  margin: auto; /* Center the container */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  overflow: hidden; /* Hide any overflow */
+  height: 100vh; /* Fill available vertical space */
+
+  /* Set initial width to 80% */
+  max-height: 90vh;
+
+}
+
+/* Adjust width based on viewport width */
+@media (min-width: 600px) {
+  .container {
+    width: 500PX;
+  }
+}
 .restaurant-info {
   font-weight: bold;
 }
@@ -389,16 +413,19 @@ post page:
 .image-container {
   margin-top: 20px;
   text-align: center;
+  max-width: 100%; /* Ensure image doesn't exceed its container */
+  overflow: hidden; /* Hide overflow for images */
 }
 
 .image-container img {
-  max-width: 100%; /* Ensure image doesn't exceed its container */
-  height: auto; /* Maintain aspect ratio */
+  width: 100%; /* Image will fill container width */
+  height: 70vh; /* Set image height to 70% of viewport height */
 }
 
 .comment-container {
   margin-top: 20px;
   text-align: center;
+  width: 100%; /* Ensure input takes full width */
 }
 
 .comment-container input[type='text'] {
@@ -412,10 +439,105 @@ post page:
 .bottom-container {
   display: flex;
   justify-content: space-between;
-  margin-top: 20px;
+  margin-top: 10px;
+  width: 100%; /* Ensure it takes full width */
 }
 
 .go-back {
   margin-top: 20px;
   text-align: center;
+  width: 100%; /* Ensure it takes full width */
+}
+
+.left,
+.right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  padding: 5px 15px;
+  cursor: pointer;
+  width: calc(48% - 2px);
+  box-sizing: border-box;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 16px;
+}
+
+.left {
+  background-color: rgb(182, 182, 237);
+  margin-right: 1%;
+}
+
+.right {
+  background-color: rgb(194, 239, 207);
+  margin-left: 1%;
+}
+
+.comment {
+  margin-bottom: 8px; /* Adjust this value for the desired space between comments */
+}
+
+.comment-text {
+  font-size: 14px; /* Adjust font size as needed */
+}
+
+.comment-container {
+  margin-top: 20px;
+  text-align: center;
+  width: 100%; 
+  display: flex; 
+  align-items: center; 
+}
+
+.comment-input {
+  flex: 1; /* Take remaining space */
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-right: 10px; /* Add space between input and button */
+}
+
+.add-comment-btn {
+  padding: 10px 20px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.add-comment-btn:hover {
+  background-color: #0056b3;
+}
+
+.add-comment-btn:focus {
+  outline: none;
+}
+
+.comment {
+  margin-bottom: 8px;
+  padding: 10px;
+  background-color: #f0f0f0;
+  border-radius: 4px;
+  font-size: 14px;
+  
+}
+.comments-wrapper button {
+  background: none;
+  border: none;
+  padding: 15px; 
+  cursor: pointer;
+  color: #0056b3;
+}
+
+.comments-wrapper button:hover {
+  text-decoration: underline; 
+}
+
+.comments-wrapper button:focus {
+  outline: none;
 }

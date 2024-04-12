@@ -36,6 +36,7 @@ export const cities = [
   { value: "haifa", label: "haifa" },
   { value: "bat-yam", label: "bat-yam" },
   { value: "hadera", label: "hadera" },
+  { value: "eilat", label: "eilat" },
   { value: "herzliya", label: "herzliya" },
   { value: "jerusalem", label: "jerusalem" },
   { value: "nazareth", label: "nazareth" },

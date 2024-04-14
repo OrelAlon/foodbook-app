@@ -66,8 +66,10 @@ const PostPage = () => {
             </Link>
           </div>
           <div className='image-container'>
-            <Image radius='md' src={post.img} alt={post.img} />
-          </div>
+  <Image radius='md' src={post.img} alt={post.img}   h="auto"
+      w="auto"
+      fit="contain"/>
+</div>
           <div className='comment-container'>
   <input
     type='text'

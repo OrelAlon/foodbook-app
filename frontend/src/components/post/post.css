@@ -94,6 +94,17 @@
 }
 .bold {
   font-weight: bold;
+  /* text-decoration: underline; */
+  padding: 2px; 
+ 
+}
+
+.bold:hover {
+  /* font-weight: bolder; */
+  text-decoration: underline;
+  padding: 2px; 
+  color: blue ;
+ 
 }
 .postText {
   display: flex;

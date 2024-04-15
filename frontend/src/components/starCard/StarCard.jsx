@@ -8,6 +8,9 @@ import StarBtn from "../starBtn/StarBtn";
 
 import noAvatar from "../../assets/noAvatar.png";
 
+import './starCard.css';
+
+
 const StarCard = ({ item }) => {
   const [isStar, setIsStar] = useState();
   const [loading, setLoading] = useState(false);
@@ -46,19 +49,30 @@ const StarCard = ({ item }) => {
   };
 
   return (
-    <div className='star-card'>
-      <div className='star cursor transform'>
+    <>
+    <div className="restaurant-box">
+      <img src={profilePicture || noAvatar} alt="תמונה של המסעדה" />
+      <div className="restaurant-info">
+       
+        <Link
+          to={username ? `/profile/${username}` : `/restaurant/${restaurantname}`}
+          style={{ textDecoration: "none" }}
+        >
+
+<h2 className="star-name">{username || restaurantname}</h2>
+      <div className="star-count">with {star} stars</div>
+        </Link>
+        <div className="star cursor transform">
         <StarBtn isStar={isStar} starHandler={starHandler} loading={loading} />
       </div>
-      <Link
-        to={username ? `/profile/${username}` : `/restaurant/${restaurantname}`}
-        style={{ textDecoration: "none" }}
-      >
-        <img className='star-image' src={profilePicture || noAvatar} alt='' />{" "}
-      </Link>
-      <div className='star-name'>{username || restaurantname}</div>{" "}
-      <div className='star-count'>with {star} stars</div>
+        {/* <a href="https://www.example.com" target="_blank">
+          לאתר האינטרנט
+        </a> */}
+      </div>
     </div>
+  
+   
+  </>
   );
 };
 

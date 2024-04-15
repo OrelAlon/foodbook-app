@@ -212,10 +212,10 @@ body {
 }
 
 .star {
-  position: absolute;
   top: 8px;
   left: 8px;
   font-size: larger;
+  padding: 10px;
 }
 
 .star-image {
@@ -230,10 +230,6 @@ body {
   font-weight: bold;
 }
 
-.star-count {
-  position: absolute;
-  right: 15px;
-}
 
 @media (max-width: 600px) {
   .star-card {
@@ -252,9 +248,7 @@ body {
     margin: 8px;
   }
 
-  .star-count {
-    position: static;
-  }
+
 }
 
 /* button */
@@ -540,3 +534,5 @@ html, body {
 .comments-wrapper button:focus {
   outline: none;
 }
+
+

@@ -1,21 +1,32 @@
+@import '../../constants/styles';
+
 .post {
-  width: 85%;
   align-items: center;
   margin: auto;
   margin-top: 3px;
 }
+
 .postBottomRight {
   max-width: 15rem;
 }
+
 .posttime {
   font-size: 0.7rem;
   margin: 14px;
 }
 
 .post-wrapper {
+  // display: flex;
   padding: 10px;
+  border-radius: $border-radius-m;
   background-color: rgb(250, 247, 247);
   /* border: solid 3px rgb(167, 167, 167); */
+}
+
+.posts-feed-container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 8px;
 }
 
 .postTop {
@@ -41,18 +52,22 @@
   /* font-weight: 500; */
   margin: 0 10px;
 }
+
 .restaurantname {
   font-size: 0.8rem;
 }
+
 .postDate {
   font-size: 18px;
   line-break: auto;
 }
+
 .postInfo {
   display: flex;
   align-items: center;
   margin-left: 20px;
 }
+
 .postCenter {
   margin: 20px 0;
 }
@@ -62,7 +77,8 @@
   display: block;
   margin: auto;
   border: 1px solid rgb(138, 138, 138);
-  width: 36.625rem;
+
+  width: 32.625rem;
   height: 26.625rem;
   object-fit: cover;
 }
@@ -92,39 +108,45 @@
 .deleteIcon {
   cursor: pointer;
 }
+
 .bold {
   font-weight: bold;
   /* text-decoration: underline; */
-  padding: 2px; 
- 
+  padding: 2px;
+
 }
 
 .bold:hover {
   /* font-weight: bolder; */
   text-decoration: underline;
-  padding: 2px; 
-  color: blue ;
- 
+  padding: 2px;
+  color: blue;
+
 }
+
 .postText {
   display: flex;
   align-items: center;
   font-size: 1rem;
   text-align: center;
 }
+
 .linkwithout {
   text-decoration: none;
   color: black;
 }
+
 @media only screen and (max-width: 780px) {
   .postImg {
     width: 90%;
     height: 17.625rem;
   }
+
   .post {
     width: 100%;
   }
 }
+
 .delete {
   cursor: pointer;
 }

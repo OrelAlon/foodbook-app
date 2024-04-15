@@ -27,8 +27,7 @@ function MainLayoutRoutes() {
     <>
       <React.Fragment />
       <NavBar />
-      <div className="page">
-
+      <div className="page-container">
         <Routes>
           <Route path='/'>
             <Route

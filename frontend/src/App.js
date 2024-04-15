@@ -1,5 +1,5 @@
 import React from "react";
-import "./App.css";
+import "./App.scss";
 import RouterConfig from "./routes/RouterConfig";
 import TestApi from "./api/TestApi";
 

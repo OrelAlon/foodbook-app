@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 import ImageModal from "../imageModal/ImageModal";
 
-import "./gridFeed.css";
+import "./gridFeed.scss";
 const GridFeed = React.forwardRef(({ images }, ref) => {
   const [openedImage, setOpenedImage] = useState(false);
 

@@ -219,7 +219,7 @@ function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
           </div>
         </form>
       </Modal>
-    </>
+    </ >
   );
 }
 

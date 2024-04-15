@@ -1,6 +1,8 @@
+@import './constants/styles';
+
 body {
   background-color: white;
-  font-family: "Montserrat", sans-serif;
+  font-family: $font-primary;
 }
 
 .App {
@@ -8,17 +10,11 @@ body {
   height: 100vh;
 }
 
-.page {
+.page-container {
   padding: 10px;
 }
 
-@media (min-width: 600px) {
-  .page {
-    margin: 0 10%;
-  }
 
-
-}
 
 .transform :active {
   transform: translateY(2px);
@@ -33,18 +29,10 @@ body {
   /* background-color: #e9ecef;
   border-radius: 5px;
   border: solid rgb(124, 124, 124) 1px; */
-  width: 12vw;
+  width: 150px;
 }
 
-@media only screen and (max-width: 800px) {
-  .logo {
-    width: 24vw;
-  }
 
-  .loading {
-    width: 260px;
-  }
-}
 
 .image-page {
   height: 78vh;
@@ -211,12 +199,7 @@ body {
   background-color: rgb(241, 241, 241);
 }
 
-.star {
-  top: 8px;
-  left: 8px;
-  font-size: larger;
-  padding: 10px;
-}
+
 
 .star-image {
   width: 100px;
@@ -231,26 +214,9 @@ body {
 }
 
 
-@media (max-width: 600px) {
-  .star-card {
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-  }
-
-  .star-image {
-    margin: auto;
-    margin-top: 35px;
-  }
-
-  .star-name {
-    font-size: 1rem;
-    margin: 8px;
-  }
 
 
-}
-
+/////
 /* button */
 .margin {
   margin: 50px;
@@ -311,12 +277,6 @@ body {
   margin: auto;
 }
 
-@media (max-width: 600px) {
-  .div-image {
-    width: 280px;
-  }
-}
-
 .width {
   width: 75%;
   margin: auto;
@@ -328,50 +288,17 @@ body {
   margin-top: 60px;
 }
 
-/* 
- */
-/* Hide scrollbar when there is no scrolling */
-::-webkit-scrollbar {
-  width: 10px; /* Adjust as needed */
-  background-color: transparent; /* Set to match background color */
-  overflow: auto; /* Show scrollbar only when needed */
-}
-
-/* Define scrollbar thumb */
-::-webkit-scrollbar-thumb {
-  background-color: rgba(0, 0, 0, 0.5); /* Adjust color as needed */
-  border-radius: 10px; /* Adjust border-radius as needed */
-  border: 2px solid transparent; /* Adjust border as needed */
-}
-
-/* Define scrollbar thumb on hover */
-::-webkit-scrollbar-thumb:hover {
-  background-color: rgba(0, 0, 0, 0.7); /* Adjust hover color as needed */
-}
-
-/* Define scrollbar thumb when being dragged */
-::-webkit-scrollbar-thumb:active {
-  background-color: rgba(0, 0, 0, 0.9); /* Adjust active color as needed */
-}
-@media (max-width: 600px) {
-  .post-page-bottom {
-    width: 80%;
-
-  }
-}
-
-/* 
-
-post page:
 
 
-*/
 
-html, body {
+
+html,
+body {
   height: 100%;
   margin: 0;
   padding: 0;
-  overflow-y: auto; /* Enable vertical scrolling if needed */
+  overflow-y: auto;
+  /* Enable vertical scrolling if needed */
 }
 
 #root {
@@ -380,33 +307,35 @@ html, body {
 
 .container {
   padding: 20px;
-  margin: auto; /* Center the container */
+  margin: auto;
+  /* Center the container */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
   box-sizing: border-box;
-  overflow: hidden; /* Hide any overflow */
-  height: 100vh; /* Fill available vertical space */
+  overflow: hidden;
+  /* Hide any overflow */
+  height: 100vh;
+  /* Fill available vertical space */
 
   /* Set initial width to 80% */
-  max-width: 90vw; /* Set a maximum width to prevent horizontal overflow */
+  max-width: 90vw;
+  /* Set a maximum width to prevent horizontal overflow */
 }
 
-/* Adjust width based on viewport width */
-@media (min-width: 600px) {
-  .container {
-    width: 500px;
-  }
-}
+
 .restaurant-info {
   font-weight: bold;
 }
+
 .image-container {
   width: 100%;
-  max-width: 600px; /* Set a maximum width for the container */
+  max-width: 600px;
+  /* Set a maximum width for the container */
   overflow: hidden;
-  margin: 0 auto; /* Center the container horizontally */
+  margin: 0 auto;
+  /* Center the container horizontally */
 }
 
 .image-container img {
@@ -418,7 +347,8 @@ html, body {
 .comment-container {
   margin-top: 20px;
   text-align: center;
-  width: 100%; /* Ensure input takes full width */
+  width: 100%;
+  /* Ensure input takes full width */
 }
 
 .comment-container input[type='text'] {
@@ -433,13 +363,15 @@ html, body {
   display: flex;
   justify-content: space-between;
   margin-top: 10px;
-  width: 100%; /* Ensure it takes full width */
+  width: 100%;
+  /* Ensure it takes full width */
 }
 
 .go-back {
   margin-top: 20px;
   text-align: center;
-  width: 100%; /* Ensure it takes full width */
+  width: 100%;
+  /* Ensure it takes full width */
 }
 
 .left,
@@ -470,28 +402,32 @@ html, body {
 }
 
 .comment {
-  margin-bottom: 8px; /* Adjust this value for the desired space between comments */
+  margin-bottom: 8px;
+  /* Adjust this value for the desired space between comments */
 }
 
 .comment-text {
-  font-size: 14px; /* Adjust font size as needed */
+  font-size: 14px;
+  /* Adjust font size as needed */
 }
 
 .comment-container {
   margin-top: 20px;
   text-align: center;
-  width: 100%; 
-  display: flex; 
-  align-items: center; 
+  width: 100%;
+  display: flex;
+  align-items: center;
 }
 
 .comment-input {
-  flex: 1; /* Take remaining space */
+  flex: 1;
+  /* Take remaining space */
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
-  margin-right: 10px; /* Add space between input and button */
+  margin-right: 10px;
+  /* Add space between input and button */
 }
 
 .add-comment-btn {
@@ -517,22 +453,112 @@ html, body {
   background-color: #f0f0f0;
   border-radius: 4px;
   font-size: 14px;
-  
+
 }
+
 .comments-wrapper button {
   background: none;
   border: none;
-  padding: 15px; 
+  padding: 15px;
   cursor: pointer;
   color: #0056b3;
 }
 
 .comments-wrapper button:hover {
-  text-decoration: underline; 
+  text-decoration: underline;
 }
 
 .comments-wrapper button:focus {
   outline: none;
 }
 
+/* 
+ */
+/* Hide scrollbar when there is no scrolling */
+::-webkit-scrollbar {
+  width: 5px;
+  /* Adjust as needed */
+  background-color: transparent;
+  /* Set to match background color */
+  overflow: auto;
+  /* Show scrollbar only when needed */
+}
 
+/* Define scrollbar thumb */
+::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.5);
+  /* Adjust color as needed */
+  border-radius: 10px;
+  /* Adjust border-radius as needed */
+  border: 2px solid transparent;
+  /* Adjust border as needed */
+}
+
+/* Define scrollbar thumb on hover */
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+  /* Adjust hover color as needed */
+}
+
+/* Define scrollbar thumb when being dragged */
+::-webkit-scrollbar-thumb:active {
+  background-color: rgba(0, 0, 0, 0.9);
+  /* Adjust active color as needed */
+}
+
+
+
+////////////
+/* Adjust width based on viewport width */
+@media (min-width: $min-screen-size-tablet) {
+  .page-container {
+    margin: 0 10%;
+  }
+
+  // .mantine-adyf3h {
+  //   //this isnt good. need to check the correct name or change component
+  //   width: 80%;
+  //   min-width: $min-screen-size-tablet;
+  //   right: 0;
+  // }
+
+  .container {
+    width: 500px;
+  }
+}
+
+@media (max-width: $min-screen-size-tablet) {
+  ::-webkit-scrollbar {
+    visibility: hidden;
+    width: 0;
+  }
+
+  .star-card {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .star-image {
+    margin: auto;
+    margin-top: 35px;
+  }
+
+  .star-name {
+    font-size: 1rem;
+    margin: 8px;
+  }
+
+  // .star-count {
+  //   position: static;
+  // }
+
+  .div-image {
+    width: 280px;
+  }
+
+  .post-page-bottom {
+    width: 80%;
+
+  }
+}

@@ -4,7 +4,7 @@
 
 .content-profile-page {
   margin: 1em auto;
-  width: 80%;
+
 }
 
 .card {
@@ -19,6 +19,7 @@
   margin: 0 auto;
   text-align: center;
 }
+
 .profile-page .img-profile .profile-bgHome {
   border-bottom: 0.2em solid #f5f5f5;
   width: 100%;
@@ -26,6 +27,7 @@
   object-fit: cover;
   background: no-repeat center center #505050;
 }
+
 .profile-page .img-profile .avatar {
   margin: 0 auto;
   background: #fff;
@@ -35,6 +37,7 @@
   margin-top: -5em;
   box-shadow: 0 0 0.1em rgba(0, 0, 0, 0.35);
 }
+
 .div-star {
   position: relative;
   margin-left: 0;
@@ -54,22 +57,26 @@
   text-align: center;
   padding: 0 1.5em;
 }
+
 .profile-page .profile-data h3 {
   margin-top: 0.35em;
   color: #292f33;
   margin-bottom: 0;
   font-weight: bold;
 }
+
 .profile-page .profile-data p {
   color: #8899a6;
   font-size: 1.1em;
   margin-top: 0;
   margin-bottom: 0.5em;
 }
+
 .profile-page .description-profile {
   color: #75787b;
   font-size: 0.98em;
 }
+
 .profile-page .data {
   margin-bottom: 0;
   cursor: pointer;
@@ -78,6 +85,7 @@
   display: table;
   width: 100.15%;
 }
+
 .profile-page .data li {
   margin: 0;
   padding: 0;
@@ -86,19 +94,24 @@
   text-align: center;
   border-left: 0.1em solid transparent;
 }
+
 .profile-page .data li:first-child {
   border-left: 0;
 }
+
 .profile-page .data li:first-child a {
   border-bottom-left-radius: 0.3rem;
 }
+
 .profile-page .data li:last-child a {
   border-bottom-right-radius: 0.3rem;
 }
+
 .profile-page .data li a,
 .profile-page .data li strong {
   display: block;
 }
+
 .profile-page .data li a {
   background-color: #f7f7f7;
   border-top: 1px solid rgba(242, 242, 242, 0.5);
@@ -108,22 +121,27 @@
   padding: 0.33em 0;
   color: #46494c;
 }
+
 .profile-page .data li a strong,
 .profile-page .data li a span {
   font-weight: 600;
   line-height: 1;
 }
+
 .profile-page .data li a strong {
   font-size: 1.3em;
 }
+
 .profile-page .data li a span {
   color: #717a7e;
 }
+
 .profile-page .data li a:hover {
   background: rgba(0, 0, 0, 0.05);
   border-bottom: 0.2em solid #3498db;
   color: #3498db;
 }
+
 .profile-page .data li a:hover span {
   color: #3498db;
 }

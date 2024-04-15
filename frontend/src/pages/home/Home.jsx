@@ -1,16 +1,11 @@
 import Feed from "../../components/feed/Feed";
-
-import "./home.css";
+import "./home.scss";
 
 const Home = ({ showGrid }) => {
   return (
-    <>
-
-
-      <div className='homeContainer'>
-        <Feed showGrid={showGrid} />
-      </div>
-    </>
+    <div className='homeContainer'>
+      <Feed showGrid={showGrid} />
+    </div>
   );
 };
 

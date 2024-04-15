@@ -11,7 +11,7 @@ import TimePost from "../timePost/TimePost";
 
 import { fetchUserDataById } from "../../api/ApiFetch";
 
-import "./post.css";
+import "./post.scss";
 
 const Post = React.forwardRef(({ post }, ref) => {
   const [user, setUser] = useState({});
@@ -58,19 +58,19 @@ const Post = React.forwardRef(({ post }, ref) => {
             </Link>
             <span className='postUsername'>
               <Link to={`/profile/${username}`} className='linkwithout'>
-                <span className='bold '> {username} </span>
+                <span className='bold '>{username} </span>
               </Link>
-              at{" "}
+              at
               <Link
                 className='linkwithout'
                 to={`/restaurant/${restaurantname}`}
               >
-                <span className='restaurantname bold'>{restaurantname}</span>
+                <span className='restaurantname bold'> {restaurantname}</span>
               </Link>
-            </span>{" "}
+            </span>
           </div>
           <div style={{ display: "flex", alignitems: "center" }}>
-            {" "}
+
             <div className='posttime'>
               <TimePost createdAt={createdAt} />
             </div>
@@ -82,18 +82,20 @@ const Post = React.forwardRef(({ post }, ref) => {
             {usernameParams === currentUser.username && <DeletePost id={_id} />}
           </div>
         </div>
+        <div className="post-center-bottom-wrapper">
 
-        <div className='postCenter'>
-          {" "}
-          <Link to={`/post/${_id}`}>
-            <img className='postImg' src={img} alt={img} />
-          </Link>
-        </div>
-        <div className='postBottom '>
-          <LikePost id={_id} likes={post.likes} />
+          <div className='postCenter'>
 
-          <div className='postBottomRight'>
-            <AllTags foodCategory={foodCategory} dishType={dishType} />{" "}
+            <Link to={`/post/${_id}`}>
+              <img className='postImg' src={img} alt={img} />
+            </Link>
+          </div>
+          <div className='postBottom '>
+            <LikePost id={_id} likes={post.likes} />
+
+            <div className='postBottomRight'>
+              <AllTags foodCategory={foodCategory} dishType={dishType} />{" "}
+            </div>
           </div>
         </div>
       </div>

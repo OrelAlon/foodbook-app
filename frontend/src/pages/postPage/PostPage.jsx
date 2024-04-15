@@ -7,14 +7,14 @@ import LikePost from "../../components/likePost/LikePost";
 import TimePost from "../../components/timePost/TimePost";
 import Loading from "../../components/loading/Loading";
 import GoBackButton from "../../components/goBackButton/GoBackButton";
-import "../../App.css";
+import "../../App.scss";
 
 const PostPage = () => {
   const [post, setPost] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [comment, setComment] = useState("");
   const [commentsVisible, setCommentsVisible] = useState(false);
-  const [comments, setComments] = useState(['מנה מדהימה!','חובה לבוא בשביל זה']);
+  const [comments, setComments] = useState(['מנה מדהימה!', 'חובה לבוא בשביל זה']);
   const postId = useParams().id;
 
   const fetchPost = async () => {
@@ -66,20 +66,20 @@ const PostPage = () => {
             </Link>
           </div>
           <div className='image-container'>
-  <Image radius='md' src={post.img} alt={post.img}   h="auto"
-      w="auto"
-      fit="contain"/>
-</div>
+            <Image radius='md' src={post.img} alt={post.img} h="auto"
+              w="auto"
+              fit="contain" />
+          </div>
           <div className='comment-container'>
-  <input
-    type='text'
-    placeholder='Add a comment...'
-    value={comment}
-    onChange={handleCommentChange}
-    className='comment-input'
-  />
-  <button onClick={handleAddComment} className='add-comment-btn'>Add</button>
-</div>
+            <input
+              type='text'
+              placeholder='Add a comment...'
+              value={comment}
+              onChange={handleCommentChange}
+              className='comment-input'
+            />
+            <button onClick={handleAddComment} className='add-comment-btn'>Add</button>
+          </div>
 
           <div className='bottom-container'>
             <div className='left'>
@@ -106,7 +106,7 @@ const PostPage = () => {
           <div className='go-back'>
             <GoBackButton />
           </div>
-         
+
         </div>
       )}
     </>

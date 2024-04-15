@@ -1,6 +1,7 @@
 .feed {
   overflow: scroll;
   height: 85vh;
+  width: 100%;
 }
 
 .filter-div {

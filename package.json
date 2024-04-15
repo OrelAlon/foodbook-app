@@ -23,7 +23,7 @@
     "google-auth-library": "^8.7.0",
     "mongoose": "^6.5.4",
     "path": "^0.12.7",
-    "scss": "^0.2.4"
+    "sass": "^1.75.0"
   },
   "devDependencies": {
     "concurrently": "^7.6.0",

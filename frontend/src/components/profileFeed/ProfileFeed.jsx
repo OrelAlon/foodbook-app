@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 import { fetchPostsUser, fetchPostsRestaurant } from "../../api/ApiFetch";
-
+import './profile-feed.scss';
 import Post from "../post/Post";
 import Loading from "../loading/Loading";
 

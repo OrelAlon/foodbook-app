@@ -1,9 +1,12 @@
+@import '../../constants/_styles.scss';
+
 .grid-container {
   margin: auto;
 }
+
 .image-grid-list {
   display: grid;
-  grid-template-columns: repeat(3, minmax(100px, 293px));
+  grid-template-columns: repeat(3, minmax(100px, calc(100%/3)));
   justify-content: center;
 }
 
@@ -12,6 +15,7 @@
   position: relative;
   display: block;
 }
+
 .image-grid-img {
   margin: 1px;
 }
@@ -19,7 +23,11 @@
 .image-grid-img img {
   width: 100%;
   vertical-align: top;
+  height: 25vw;
+  min-height: 120px;
+  object-fit: cover;
 }
+
 .image-grid-overlay {
   background: rgba(0, 0, 0, 0.4);
   position: absolute;
@@ -33,6 +41,7 @@
   color: white;
   text-align: center;
 }
+
 .image-grid:hover .image-grid-overlay {
   display: flex;
 }
@@ -45,19 +54,14 @@
   text-align: center;
   display: inline-block;
 }
-.image-grid-img img {
-  width: 100%;
-  height: 230px; /* Set a fixed height for the image */
-  object-fit: cover; /* Resize and crop the image to fit the container */
-}
 
-@media screen and (max-width: 768px) {
+
+
+@media screen and (max-width: $max-screen-size-tablet) {
   .image-grid-list {
     grid-gap: 2px;
   }
-  .image-grid-img img {
-    height: 120px; /* Set a smaller height for the image on small screens */
-  }
+
   .grid-container {
     width: 100%;
   }

@@ -2,9 +2,10 @@ import { useState, useEffect } from "react";
 
 import { fetchAll } from "../../api/ApiFetch";
 
-import NavBar from "../../components/navBar/NavBar";
 import Loading from "../../components/loading/Loading";
 import StarCard from "../../components/starCard/StarCard";
+
+
 
 const RatingStarsPage = () => {
   const [data, setData] = useState();
@@ -44,6 +45,7 @@ const RatingStarsPage = () => {
           </div>
         ) : (
           <>
+
             {data?.length > 0 && (
               <div className='star-cards'>
                 {data.map((item, index) => (

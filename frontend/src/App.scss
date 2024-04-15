@@ -199,12 +199,7 @@ body {
   background-color: rgb(241, 241, 241);
 }
 
-.star {
-  position: absolute;
-  top: 8px;
-  left: 8px;
-  font-size: larger;
-}
+
 
 .star-image {
   width: 100px;
@@ -218,10 +213,6 @@ body {
   font-weight: bold;
 }
 
-.star-count {
-  position: absolute;
-  right: 15px;
-}
 
 
 
@@ -558,9 +549,9 @@ body {
     margin: 8px;
   }
 
-  .star-count {
-    position: static;
-  }
+  // .star-count {
+  //   position: static;
+  // }
 
   .div-image {
     width: 280px;

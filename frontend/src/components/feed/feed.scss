@@ -1,0 +1,24 @@
+@import '../../constants/_styles.scss';
+
+.feed {
+  overflow: scroll;
+  height: 85vh;
+  width: 100%;
+}
+
+.filter-div {
+  margin-top: 30px;
+}
+
+
+@media (min-width: $min-screen-size-tablet) {
+  .feed {
+    width: 80%;
+  }
+}
+
+@media (min-width: $max-screen-size-tablet) {
+  .feed {
+    width: 70%;
+  }
+}

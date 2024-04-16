@@ -7,7 +7,7 @@ import Loading from "../loading/Loading";
 import FilterImagesModel from "../filterImagesModel/FilterImagesModel";
 import { Notification } from "@mantine/core";
 
-import "./feed.css";
+import "./feed.scss";
 
 const Feed = ({ showGrid }) => {
   const [restaurantUserPick, setRestaurantUserPick] = useState("");

@@ -52,61 +52,64 @@ const PostPage = () => {
           <Loading />
         </div>
       ) : (
-        <div className='container'>
-          <div className='restaurant-info'>
-            <Link to={`/profile/${post.username}`} className='linkwithout'>
-              <span className='bold'>{post.username}</span>
-            </Link>
-            {" at "}
-            <Link
-              className='linkwithout'
-              to={`/restaurant/${post.restaurantname}`}
-            >
-              <span className='bold'>{post.restaurantname}</span>
-            </Link>
-          </div>
-          <div className='image-container'>
-            <Image radius='md' src={post.img} alt={post.img} h="auto"
-              w="auto"
-              fit="contain" />
-          </div>
-          <div className='comment-container'>
-            <input
-              type='text'
-              placeholder='Add a comment...'
-              value={comment}
-              onChange={handleCommentChange}
-              className='comment-input'
-            />
-            <button onClick={handleAddComment} className='add-comment-btn'>Add</button>
-          </div>
+        <div className="pop-up-container">
 
-          <div className='bottom-container'>
-            <div className='left'>
-              <LikePost id={post?._id} likes={post?.likes} />
+          <div className='post-page-container'>
+            <div className='restaurant-info'>
+              <Link to={`/profile/${post.username}`} className='linkwithout'>
+                <span className='bold'>{post.username}</span>
+              </Link>
+              {" at "}
+              <Link
+                className='linkwithout'
+                to={`/restaurant/${post.restaurantname}`}
+              >
+                <span className='bold'>{post.restaurantname}</span>
+              </Link>
             </div>
-            <div className='right'>
-              <TimePost createdAt={post.createdAt} />
+            <div className='image-container'>
+              <Image radius='md' src={post.img} alt={post.img} h="auto"
+                w="auto"
+                fit="contain" />
             </div>
-          </div>
-          <div className='comments-wrapper'>
-            <button onClick={toggleCommentsVisibility}>
-              {commentsVisible ? "Hide Comments △" : "Show Comments ▼"}
-            </button>
-            {commentsVisible && (
-              <div className='comments'>
-                {comments.map((comment, index) => (
-                  <div key={index} className='comment'>
-                    {comment}
-                  </div>
-                ))}
+            <div className='comment-container'>
+              <input
+                type='text'
+                placeholder='Add a comment...'
+                value={comment}
+                onChange={handleCommentChange}
+                className='comment-input'
+              />
+              <button onClick={handleAddComment} className='add-comment-btn'>Add</button>
+            </div>
+
+            <div className='bottom-container'>
+              <div className='left'>
+                <LikePost id={post?._id} likes={post?.likes} />
               </div>
-            )}
-          </div>
-          <div className='go-back'>
-            <GoBackButton />
-          </div>
+              <div className='right'>
+                <TimePost createdAt={post.createdAt} />
+              </div>
+            </div>
+            <div className='comments-wrapper'>
+              <button onClick={toggleCommentsVisibility}>
+                {commentsVisible ? "Hide Comments △" : "Show Comments ▼"}
+              </button>
+              {commentsVisible && (
+                <div className='comments'>
+                  {comments.map((comment, index) => (
+                    <div key={index} className='comment'>
+                      {comment}
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+            <div className='go-back'>
+              <GoBackButton />
+            </div>
 
+          </div>
         </div>
       )}
     </>

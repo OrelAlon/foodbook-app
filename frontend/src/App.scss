@@ -144,7 +144,7 @@ body {
   position: fixed;
   width: 100%;
   bottom: 0;
-  z-index: 100;
+  z-index: 1;
   margin: auto;
   background-color: whitesmoke;
   justify-content: space-between;
@@ -305,23 +305,29 @@ body {
   height: 100%;
 }
 
-.container {
+.pop-up-container {
+  overflow: scroll;
+  padding: 5px 0;
+}
+
+
+
+.post-page-container {
   padding: 20px;
   margin: auto;
   /* Center the container */
   display: flex;
   flex-direction: column;
-  align-items: center;
+  // align-items: center;
   justify-content: flex-start;
   box-sizing: border-box;
   overflow: hidden;
   /* Hide any overflow */
   height: 100vh;
   /* Fill available vertical space */
-
-  /* Set initial width to 80% */
-  max-width: 90vw;
-  /* Set a maximum width to prevent horizontal overflow */
+  // /* Set initial width to 80% */
+  // max-width: 90vw;
+  // /* Set a maximum width to prevent horizontal overflow */
 }
 
 
@@ -332,10 +338,9 @@ body {
 .image-container {
   width: 100%;
   max-width: 600px;
-  /* Set a maximum width for the container */
   overflow: hidden;
   margin: 0 auto;
-  /* Center the container horizontally */
+  // height: 90%;
 }
 
 .image-container img {
@@ -348,8 +353,10 @@ body {
   margin-top: 20px;
   text-align: center;
   width: 100%;
-  /* Ensure input takes full width */
+  display: flex;
+  align-items: center;
 }
+
 
 .comment-container input[type='text'] {
   width: 100%;
@@ -364,14 +371,81 @@ body {
   justify-content: space-between;
   margin-top: 10px;
   width: 100%;
-  /* Ensure it takes full width */
 }
 
 .go-back {
+  //
+  position: fixed;
+  left: 0;
+  //
   margin-top: 20px;
   text-align: center;
-  width: 100%;
+  // width: 100%;
   /* Ensure it takes full width */
+}
+
+@media (min-width: $min-screen-size-tablet) {
+  .pop-up-container {
+    left: 0;
+    position: absolute;
+    width: 100vw;
+    border: solid;
+    top: 0;
+    z-index: 2;
+    overflow: hidden;
+    background: rgb(0 0 0 / 81%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+
+  .post-page-container {
+    padding: 20px;
+    display: flex;
+    box-sizing: border-box;
+    width: 90%;
+    overflow: hidden;
+    height: 60%;
+    column-gap: 16px;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-end;
+    background-color: white;
+    flex-wrap: wrap;
+    border-radius: 16px;
+
+    .image-container {
+      width: 40%;
+      max-width: 600px;
+      overflow: hidden;
+      margin: 0 auto;
+      height: 80%;
+    }
+
+    .comment-container {
+      margin-top: 20px;
+      text-align: center;
+      width: 50%;
+      display: flex;
+      align-items: center;
+    }
+
+    .bottom-container {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+      width: 50%;
+    }
+
+    .go-back {
+      color: white;
+      position: fixed;
+      left: 10px;
+      top: 30px;
+    }
+
+  }
 }
 
 .left,
@@ -401,23 +475,14 @@ body {
   margin-left: 1%;
 }
 
-.comment {
-  margin-bottom: 8px;
-  /* Adjust this value for the desired space between comments */
-}
+
 
 .comment-text {
   font-size: 14px;
   /* Adjust font size as needed */
 }
 
-.comment-container {
-  margin-top: 20px;
-  text-align: center;
-  width: 100%;
-  display: flex;
-  align-items: center;
-}
+
 
 .comment-input {
   flex: 1;
@@ -453,7 +518,6 @@ body {
   background-color: #f0f0f0;
   border-radius: 4px;
   font-size: 14px;
-
 }
 
 .comments-wrapper button {
@@ -515,17 +579,9 @@ body {
     margin: 0 10%;
   }
 
-  // .mantine-adyf3h {
-  //   //this isnt good. need to check the correct name or change component
-  //   width: 80%;
-  //   min-width: $min-screen-size-tablet;
-  //   right: 0;
-  // }
-
-  .container {
-    width: 500px;
-  }
 }
+
+
 
 @media (max-width: $min-screen-size-tablet) {
   ::-webkit-scrollbar {
@@ -549,9 +605,6 @@ body {
     margin: 8px;
   }
 
-  // .star-count {
-  //   position: static;
-  // }
 
   .div-image {
     width: 280px;

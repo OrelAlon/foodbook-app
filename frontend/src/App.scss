@@ -373,13 +373,18 @@ body {
   width: 100%;
 }
 
+.post-page-header {
+  display: flex;
+  align-items: center;
+}
+
 .go-back {
   //
-  position: fixed;
-  left: 0;
-  //
-  margin-top: 20px;
-  text-align: center;
+  // position: fixed;
+  // left: 0;
+  // //
+  // margin-top: 20px;
+  // text-align: center;
   // width: 100%;
   /* Ensure it takes full width */
 }
@@ -404,29 +409,24 @@ body {
     padding: 20px;
     display: flex;
     box-sizing: border-box;
-    width: 90%;
-    overflow: hidden;
-    height: 60%;
+    overflow: scroll;
+    height: 89%;
     column-gap: 16px;
-    flex-direction: column;
     align-items: stretch;
-    justify-content: flex-end;
     background-color: white;
-    flex-wrap: wrap;
     border-radius: 16px;
 
     .image-container {
-      width: 40%;
-      max-width: 600px;
-      overflow: hidden;
+      width: auto;
       margin: 0 auto;
-      height: 80%;
+      height: 50vh;
+      // overflow: visible;
     }
 
     .comment-container {
       margin-top: 20px;
       text-align: center;
-      width: 50%;
+      // width: 50%;
       display: flex;
       align-items: center;
     }
@@ -435,15 +435,75 @@ body {
       display: flex;
       justify-content: space-between;
       margin-top: 10px;
-      width: 50%;
+      // width: 50%;
     }
 
+    .post-page-header {}
+
     .go-back {
-      color: white;
-      position: fixed;
-      left: 10px;
-      top: 30px;
+      // color: white;
+      // position: fixed;
+      // left: 10px;
+      // top: 30px;
     }
+
+  }
+}
+
+//for laptop we have a bit different arrangement
+@media (min-width: $max-screen-size-tablet) {
+  .pop-up-container {
+    left: 0;
+    position: absolute;
+    width: 100vw;
+    border: solid;
+    top: 0;
+    z-index: 2;
+    overflow: hidden;
+    background: rgb(0 0 0 / 81%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+
+  .post-page-container {
+    padding: 20px;
+    display: flex;
+    box-sizing: border-box;
+    overflow: hidden;
+    height: 65%;
+    width: 50%;
+    // min-width: 700px;
+    column-gap: 16px;
+    background-color: white;
+    border-radius: 16px;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+
+    .image-container {
+      margin: 0 auto;
+      width: 50%;
+      height: auto;
+    }
+
+    .comment-container {
+      margin-top: 60px;
+      text-align: center;
+      width: 40%;
+      display: flex;
+      align-items: center;
+    }
+
+    .bottom-container {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+      width: 40%;
+
+    }
+
 
   }
 }

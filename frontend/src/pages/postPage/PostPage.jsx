@@ -55,21 +55,28 @@ const PostPage = () => {
         <div className="pop-up-container">
 
           <div className='post-page-container'>
-            <div className='restaurant-info'>
-              <Link to={`/profile/${post.username}`} className='linkwithout'>
-                <span className='bold'>{post.username}</span>
-              </Link>
-              {" at "}
-              <Link
-                className='linkwithout'
-                to={`/restaurant/${post.restaurantname}`}
-              >
-                <span className='bold'>{post.restaurantname}</span>
-              </Link>
+            <div className="post-page-header">
+
+              <div className='go-back'>
+                <GoBackButton />
+              </div>
+              <div className='restaurant-info'>
+                <Link to={`/profile/${post.username}`} className='linkwithout'>
+                  <span className='bold'>{post.username}</span>
+                </Link>
+                {" at "}
+                <Link
+                  className='linkwithout'
+                  to={`/restaurant/${post.restaurantname}`}
+                >
+                  <span className='bold'>{post.restaurantname}</span>
+                </Link>
+              </div>
             </div>
             <div className='image-container'>
-              <Image radius='md' src={post.img} alt={post.img} h="auto"
+              <Image radius='md' src={post.img} alt={post.img}
                 w="auto"
+                height={"50vh"}
                 fit="contain" />
             </div>
             <div className='comment-container'>
@@ -105,9 +112,7 @@ const PostPage = () => {
                 </div>
               )}
             </div>
-            <div className='go-back'>
-              <GoBackButton />
-            </div>
+
 
           </div>
         </div>

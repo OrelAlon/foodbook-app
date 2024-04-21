@@ -11,7 +11,7 @@ import { IconSquarePlus, IconSearch } from "@tabler/icons";
 import { Input } from "@mantine/core";
 
 import "./allItemsPage.css";
-
+//
 const AllItemsPage = ({ type }) => {
   const [items, setItems] = useState([]);
   const [searchItem, setSearchItem] = useState("");

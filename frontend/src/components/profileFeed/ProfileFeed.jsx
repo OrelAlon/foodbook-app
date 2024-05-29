@@ -33,7 +33,7 @@ const ProfileFeed = ({ username, restaurantname, setPostsLength }) => {
   }, [username, restaurantname]);
 
   return (
-    <div className='feed'>
+    <div>
       {loading ? (
         <div className='center-div'>
           <Loading />

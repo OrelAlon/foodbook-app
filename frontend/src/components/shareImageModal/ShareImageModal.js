@@ -171,7 +171,7 @@ function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
               data={restaurantsList}
               onChange={setRestaurantUserPick}
               value={restaurantUserPick}
-              label='Resraurant:'
+              label='Restaurant:'
               getCreateLabel={(query) => `+ Create ${query}`}
               onCreate={(query) => createNewRest(query)}
               searchable

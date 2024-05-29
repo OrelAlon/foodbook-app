@@ -49,7 +49,7 @@ const FilterImagesModel = ({ setRestaurantUserPick, setCityPick }) => {
           icon={<IconSearch size={16} />}
           data={restaurantsList}
           onChange={setRestaurantUserPick}
-          placeholder='Search By Resraurant ...'
+          placeholder='Search By Restaurant ...'
           searchable
           clearable
           styles={styleSelect}

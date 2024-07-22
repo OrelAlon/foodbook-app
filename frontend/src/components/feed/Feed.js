@@ -108,6 +108,10 @@ const Feed = ({ showGrid }) => {
         <FilterImagesModel
           setRestaurantUserPick={setRestaurantUserPick}
           setCityPick={setCityPick}
+          setDishTypePick={setDishTypePick}
+          restaurantUserPick={restaurantUserPick}
+          cityPick={cityPick}
+          dishTypePick={dishTypePick}
         />
         {loading ? (
           <div className='center-div'>

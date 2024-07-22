@@ -1,19 +1,19 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 
-import { fetchAllRestaurants } from "../../api/ApiFetch";
-import { Space, Select } from "@mantine/core";
-import { IconSearch } from "@tabler/icons";
+import { fetchAllRestaurants } from '../../api/ApiFetch';
+import { Space, Select } from '@mantine/core';
+import { IconSearch } from '@tabler/icons';
 
-import { cities } from "../../api/foodData";
+import { cities } from '../../api/foodData';
 
-import "./filterImagesModel.css";
+import './filterImagesModel.css';
 
 const FilterImagesModel = ({ setRestaurantUserPick, setCityPick }) => {
   const [restaurantsList, setRestaurantsList] = useState([]);
 
   const styleSelect = {
-    root: { margin: "auto" },
-    input: { "&::placeholder": { textAlign: "center" } },
+    root: { margin: 'auto' },
+    input: { '&::placeholder': { textAlign: 'center' } },
   };
   useEffect(() => {
     const fetchRestaurants = async () => {

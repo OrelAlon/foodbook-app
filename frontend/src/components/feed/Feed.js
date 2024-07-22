@@ -1,18 +1,28 @@
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useRef, useCallback } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { fetchPostsWithFilters } from '../../api/ApiFetch';
+import PostsFeed from '../postsFeed/PostsFeed';
+import GridFeed from '../gridFeed/GridFeed';
+import Loading from '../loading/Loading';
+import FilterImagesModel from '../filterImagesModel/FilterImagesModel';
+import { Notification } from '@mantine/core';
 
-import { fetchPostsWithFilters } from "../../api/ApiFetch";
-import PostsFeed from "../postsFeed/PostsFeed";
-import GridFeed from "../gridFeed/GridFeed";
-import Loading from "../loading/Loading";
-import FilterImagesModel from "../filterImagesModel/FilterImagesModel";
-import { Notification } from "@mantine/core";
-
-import "./feed.scss";
+import './feed.scss';
 
 const Feed = ({ showGrid }) => {
-  const [restaurantUserPick, setRestaurantUserPick] = useState("");
-  const [cityPick, setCityPick] = useState("");
-  const [dishTypePick, setDishTypePick] = useState("");
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const searchParams = new URLSearchParams(location.search);
+  const initialRestaurantUserPick = searchParams.get('restaurant') || '';
+  const initialCityPick = searchParams.get('city') || '';
+  const initialDishTypePick = searchParams.get('dishType') || '';
+
+  const [restaurantUserPick, setRestaurantUserPick] = useState(
+    initialRestaurantUserPick
+  );
+  const [cityPick, setCityPick] = useState(initialCityPick);
+  const [dishTypePick, setDishTypePick] = useState(initialDishTypePick);
   const [pageNum, setPageNum] = useState(1);
   const [results, setResults] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -23,7 +33,6 @@ const Feed = ({ showGrid }) => {
 
   useEffect(() => {
     const timer = setTimeout(() => setShowNotification(true), 4000);
-
     return () => clearTimeout(timer);
   }, []);
 
@@ -59,6 +68,19 @@ const Feed = ({ showGrid }) => {
     setPageNum(1);
   }, [dishTypePick, cityPick, restaurantUserPick]);
 
+  // Update URL params on filter change
+  useEffect(() => {
+    const searchParams = new URLSearchParams();
+    if (restaurantUserPick) searchParams.set('restaurant', restaurantUserPick);
+    if (cityPick) searchParams.set('city', cityPick);
+    if (dishTypePick) searchParams.set('dishType', dishTypePick);
+
+    navigate({
+      pathname: location.pathname,
+      search: searchParams.toString(),
+    });
+  }, [restaurantUserPick, cityPick, dishTypePick, navigate, location.pathname]);
+
   // infinite_scroll
   const intObserver = useRef();
   const lastPostRef = useCallback(
@@ -74,7 +96,7 @@ const Feed = ({ showGrid }) => {
     [isLoading, hasNextPage]
   );
 
-  const msgResults = "No pictures found, go eat there and upload a picture 😜";
+  const msgResults = 'No pictures found, go eat there and upload a picture 😜';
   const content = showGrid ? (
     <PostsFeed posts={results} ref={lastPostRef} />
   ) : (
@@ -87,23 +109,6 @@ const Feed = ({ showGrid }) => {
           setRestaurantUserPick={setRestaurantUserPick}
           setCityPick={setCityPick}
         />
-        {/* {showNotification && (
-          <div className='width'>
-
-            {" "}
-            ..
-            <Notification
-            
-              closeButtonProps={{ title: "Hide notification" }}
-              color='pink'
-              title='New feature is out'
-              onClick={handleCloseNotification}
-            >
-              Now you can give Your favorite restaurant\user a star ⭐ check It
-              out ⬇️
-            </Notification>
-          </div>
-        )} */}
         {loading ? (
           <div className='center-div'>
             <Loading />

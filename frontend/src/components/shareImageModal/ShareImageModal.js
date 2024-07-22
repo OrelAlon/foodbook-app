@@ -1,8 +1,8 @@
-import { useContext, useState, useEffect, useCallback } from "react";
-import { AuthContext } from "../../context/AuthContext";
-import { fetchAllRestaurants } from "../../api/ApiFetch";
+import { useContext, useState, useEffect, useCallback } from 'react';
+import { AuthContext } from '../../context/AuthContext';
+import { fetchAllRestaurants } from '../../api/ApiFetch';
 
-import axios from "axios";
+import axios from 'axios';
 
 import {
   Modal,
@@ -11,18 +11,18 @@ import {
   Loader,
   Select,
   Space,
-} from "@mantine/core";
+} from '@mantine/core';
 
 import {
   foodCategoryOptions,
   dishTypeOptions,
   cities,
-} from "../../api/foodData";
-import logo from "../../assets/transparent.png";
-import ImageUpload from "../imageDisplay/ImageDisplay";
-import { IconPhotoPlus } from "@tabler/icons";
+} from '../../api/foodData';
+import logo from '../../assets/transparent.png';
+import ImageUpload from '../imageDisplay/ImageDisplay';
+import { IconPhotoPlus } from '@tabler/icons';
 
-import "./shareImageModal.css";
+import './shareImageModal.css';
 
 function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
   const theme = useMantineTheme();
@@ -37,9 +37,9 @@ function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
 
   const [loading, setLoading] = useState(false);
   const [file, setFile] = useState(null);
-  const [errorMsg, setErrorMsg] = useState("");
+  const [errorMsg, setErrorMsg] = useState('');
 
-  const styleSelect = { width: "80%", margin: "auto" };
+  const styleSelect = { width: '80%', margin: 'auto' };
 
   const fetchRestaurants = useCallback(async () => {
     try {
@@ -87,26 +87,26 @@ function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
   const submitHandler = async (e) => {
     e.preventDefault();
     if (file == null) {
-      return setErrorMsg("Please add an image");
+      return setErrorMsg('Please add an image');
     }
     if (restaurantUserPick == null) {
-      return setErrorMsg("Please choose a restaurant");
+      return setErrorMsg('Please choose a restaurant');
     }
     try {
-      setErrorMsg("");
+      setErrorMsg('');
 
       setLoading(true);
 
       const data = new FormData();
-      data.set("img", file);
-      data.set("userId", user._id);
-      data.set("username", user.username);
-      data.set("restaurantId", selectRestaurant.value);
-      data.set("restaurantname", selectRestaurant.label);
-      data.set("city", selectCity || selectRestaurant.group);
-      data.set("foodCategory", JSON.stringify(selectFoodCatgory));
-      data.set("dishType", JSON.stringify(selectDishType));
-      await axios.post("/api/posts", data);
+      data.set('img', file);
+      data.set('userId', user._id);
+      data.set('username', user.username);
+      data.set('restaurantId', selectRestaurant.value);
+      data.set('restaurantname', selectRestaurant.label);
+      data.set('city', selectCity || selectRestaurant.group);
+      data.set('foodCategory', JSON.stringify(selectFoodCatgory));
+      data.set('dishType', JSON.stringify(selectDishType));
+      await axios.post('/api/posts', data);
       window.location.reload();
     } catch (error) {
       setErrorMsg(error.response.data.error);
@@ -115,7 +115,7 @@ function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
 
   const createNewRest = async (query) => {
     setAddInputCities(true);
-    await axios.post("/api/restaurants/temprest", { query });
+    await axios.post('/api/restaurants/temprest', { query });
     const res = await axios.get(`/api/restaurants/?restaurantname=${query}`);
 
     const item = { value: res.data._id, label: res.data.restaurantname };
@@ -131,7 +131,7 @@ function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
     <>
       <Modal
         overlayColor={
-          theme.colorScheme === "dark"
+          theme.colorScheme === 'dark'
             ? theme.colors.dark[9]
             : theme.colors.gray[2]
         }
@@ -150,9 +150,9 @@ function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
           <div className='upload-image-div'>
             <label htmlFor='file' className='shareOption'>
               <span className='shareText'>Add Your Image</span>
-              <IconPhotoPlus size={30} color={file ? "green" : "red"} />
+              <IconPhotoPlus size={30} color={file ? 'green' : 'red'} />
               <input
-                style={{ display: "none" }}
+                style={{ display: 'none' }}
                 type='file'
                 id='file'
                 accept='.png,.jpeg,.jpg,.jfif'
@@ -205,7 +205,7 @@ function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
               label='Food Category:'
               style={styleSelect}
               clearable
-            />{" "}
+            />{' '}
           </div>
           <Space h='sm' />
           <Space h='sm' />
@@ -215,11 +215,11 @@ function ShareImageModal({ shareImageOpened, setShareImageOpened }) {
           <div className='center-div transform'>
             <span className='share' onClick={submitHandler}>
               <img src={logo} alt={logo} className='save-logo' />
-            </span>{" "}
+            </span>{' '}
           </div>
         </form>
       </Modal>
-    </ >
+    </>
   );
 }
 

@@ -148,7 +148,7 @@ const PostPage = () => {
                         onClick={() => handleDeleteComment(comment._id)}
                         className='delete-comment-btn'
                       >
-                        Delete
+                        🗑️
                       </button>
                     </div>
                   ))}

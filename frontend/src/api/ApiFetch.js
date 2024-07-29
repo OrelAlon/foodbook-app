@@ -1,4 +1,6 @@
-import axios from "axios";
+import axios from 'axios';
+
+const BASE_URL = 'http://localhost:5500';
 
 export async function fetchAll(items) {
   const res = await axios.get(`/api/${items}/${items}`);
@@ -57,10 +59,34 @@ export async function fetchPostsWithFilters(
 ) {
   const res = await axios.get(
     `/api/posts/feed?page=${page}${
-      restaurantUserPick !== null ? `&search=${restaurantUserPick}` : ""
-    }${cityPick !== null ? `&city=${cityPick}` : ""}${
-      dishTypePick !== null ? `&dishType=${dishTypePick}` : ""
+      restaurantUserPick !== null ? `&search=${restaurantUserPick}` : ''
+    }${cityPick !== null ? `&city=${cityPick}` : ''}${
+      dishTypePick !== null ? `&dishType=${dishTypePick}` : ''
     }`
   );
   return res.data;
 }
+
+// Add a comment to a post
+export async function addCommentToPost(postId, comment) {
+  const res = await axios.post(`/api/posts/${postId}/comment`, comment);
+  return res.data;
+}
+
+// Fetch comments by post ID
+export async function fetchCommentsByPostId(postId) {
+  const res = await axios.get(`/api/posts/${postId}/comments`);
+  return res.data;
+}
+
+export const deleteCommentFromPost = async (postId, commentId) => {
+  try {
+    const response = await axios.delete(
+      `${BASE_URL}/api/posts/${postId}/comments/${commentId}`
+    );
+    return response.data;
+  } catch (error) {
+    console.error('Error deleting comment:', error);
+    throw error;
+  }
+};

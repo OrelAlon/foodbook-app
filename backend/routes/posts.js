@@ -1,4 +1,5 @@
-const router = require("express").Router();
+const express = require('express');
+const router = express.Router();
 const {
   getPost,
   createPost,
@@ -9,24 +10,33 @@ const {
   getUsernamePost,
   getRestaurantPosts,
   likePost,
-} = require("../controllers/postController");
+  addComment,
+  fetchComments,
+  deleteComment,
+} = require('../controllers/postController');
 
-router.get("/", getPost);
+router.get('/', getPost);
 
-router.post("/", createPost);
+router.post('/', createPost);
 
-router.put("/:id", updatePost);
+router.put('/:id', updatePost);
 
-router.delete("/:id", deletePost);
+router.delete('/:id', deletePost);
 
-router.get("/feed", getAllPosts);
+router.get('/feed', getAllPosts);
 
-router.get("/timeline/:userId", getUserPost);
+router.get('/timeline/:userId', getUserPost);
 
-router.get("/profile/:username", getUsernamePost);
+router.get('/profile/:username', getUsernamePost);
 
-router.get("/restaurants/:restaurantname", getRestaurantPosts);
+router.get('/restaurants/:restaurantname', getRestaurantPosts);
 
-router.put("/:id/like", likePost);
+router.put('/:id/like', likePost);
+
+router.post('/:id/comment', addComment);
+
+router.get('/:id/comments', fetchComments);
+
+router.delete('/:postId/comments/:commentId', deleteComment);
 
 module.exports = router;
